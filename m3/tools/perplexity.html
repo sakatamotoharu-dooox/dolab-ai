@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perplexity AI の紹介 | Do Lab AI</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    /* AIツール紹介ページ — 共通レイアウト（テーマ色をツール別に差し替え） */
+    :root{ --tool:#20808d; --tool-d:#0f5c66; --tool-bg:#e3f2f4; }
+    /* フォント種類を開発ガイド(#122)と統一 */
+    body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;}
+    .page-title{font-size:42px !important;line-height:1.18;}
+    .toolhead{display:flex;align-items:center;gap:16px;margin:6px 0 6px;}
+    .toollogo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,var(--tool),#1fb6c1);color:#fff;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+    .toolhead .maker{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--tool-d);text-transform:uppercase;}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--tool);color:#fff;font-size:15px;font-weight:800;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity .2s;}
+    .cta:hover{opacity:.88;color:#fff;}
+    .backlink{display:inline-block;margin-bottom:18px;font-size:13px;font-weight:700;color:var(--navy-2);}
+    .printbtn{float:right;background:var(--tool);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
+    .printbtn:hover{opacity:.88;}
+
+    .sec{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px 30px;margin-bottom:20px;box-shadow:var(--shadow);}
+    .sec-h{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .sec-no{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--tool),var(--tool-d));color:#fff;font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+    .sec-h h2{font-size:26px;font-weight:900;color:var(--navy);line-height:1.25;}
+    .sec .lead{font-size:16px;color:var(--text);line-height:1.8;}
+    .sec .lead b{color:var(--tool-d);}
+
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 2px;}
+    .chip{background:var(--tool-bg);color:var(--tool-d);font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;}
+
+    .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .plan{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 18px;text-align:center;}
+    .plan.hl{border:2px solid var(--tool);position:relative;box-shadow:var(--shadow-lg);}
+    .plan.hl::before{content:"おすすめ";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:12px;font-weight:800;padding:3px 13px;border-radius:999px;}
+    .plan .name{font-size:17px;font-weight:900;color:var(--navy);}
+    .plan .price{font-size:21px;font-weight:900;color:var(--tool-d);margin:6px 0 2px;line-height:1.15;}
+    .plan .price span{font-size:12px;color:var(--muted);font-weight:500;}
+    .plan .who{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .ucard{background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:20px 22px;}
+    .ucard .ic{font-size:34px;}
+    .ucard h4{font-size:21px;font-weight:800;color:var(--navy);margin:6px 0 6px;}
+    .ucard p{font-size:16px;color:var(--muted);line-height:1.7;}
+
+    .prompt{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--tool);border-radius:10px;padding:14px 18px;margin:10px 0;}
+    .prompt .q{font-size:12.5px;font-weight:800;color:var(--tool-d);margin-bottom:4px;}
+    .prompt p{font-size:15px;color:var(--text);line-height:1.7;}
+    .callout{display:flex;gap:16px;align-items:flex-start;background:var(--tool-bg);border:1px solid #c9e3e6;border-radius:12px;padding:16px 20px;margin-top:14px;}
+    .callout .ic{font-size:28px;flex:0 0 auto;}
+    .callout h4{font-size:17px;font-weight:800;color:var(--tool-d);margin-bottom:3px;}
+    .callout p{font-size:14px;color:var(--text);line-height:1.7;}
+    /* 会話デモ（自動再生・動画風アニメーション） */
+    .democap{font-size:14px;font-weight:700;color:var(--tool-d);margin:20px 0 6px;}
+    .demo{background:#0d1117;border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(11,37,69,.18);}
+    .demo-bar{background:#1b2230;display:flex;align-items:center;gap:7px;padding:10px 14px;}
+    .demo-bar .d{width:11px;height:11px;border-radius:50%;}
+    .demo-bar .r{background:#ff5f57;}.demo-bar .y{background:#febc2e;}.demo-bar .g{background:#28c840;}
+    .demo-bar .t{margin-left:8px;font-size:12px;color:#8a93a8;font-weight:700;flex:1;}
+    .demo-bar .live{font-size:10px;font-weight:800;color:#fff;background:var(--tool);padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+    .demo-body{padding:16px;min-height:206px;display:flex;flex-direction:column;justify-content:flex-end;}
+    .bub{padding:10px 14px;border-radius:13px;margin-bottom:9px;font-size:14.5px;max-width:88%;line-height:1.6;opacity:0;}
+    .bub.me{background:var(--tool);color:#fff;margin-left:auto;border-bottom-right-radius:4px;}
+    .bub.ai{background:#eef1f5;color:#1e2438;border-bottom-left-radius:4px;}
+    .bub .who{display:block;font-size:11px;font-weight:800;margin-bottom:2px;opacity:.85;}
+    .bub.ai .who{color:var(--tool-d);opacity:1;}
+    .bub .src{display:block;margin-top:5px;font-size:11px;color:#5f6b7a;}
+    .b1{animation:b1 13s infinite;}.b2{animation:b2 13s infinite;}.b3{animation:b3 13s infinite;}.b4{animation:b4 13s infinite;}
+    @keyframes b1{0%,3%{opacity:0;transform:translateY(7px);}7%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b2{0%,20%{opacity:0;transform:translateY(7px);}25%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b3{0%,46%{opacity:0;transform:translateY(7px);}51%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b4{0%,66%{opacity:0;transform:translateY(7px);}71%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @media(prefers-reduced-motion:reduce){.bub{opacity:1 !important;animation:none !important;}}
+
+    .vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .vsbox{border:1px solid var(--border);border-radius:12px;padding:22px 24px;background:var(--bg);}
+    .vsbox h4{font-size:21px;font-weight:800;margin-bottom:12px;color:var(--muted);}
+    .vsbox.me{border-color:var(--tool);background:var(--tool-bg);}
+    .vsbox.me h4{color:var(--tool-d);}
+    .vsbox ul{list-style:none;margin:0;padding:0;}
+    .vsbox li{font-size:16px;color:var(--text);line-height:1.9;padding-left:20px;position:relative;}
+    .vsbox li::before{content:"・";position:absolute;left:0;color:var(--tool);}
+
+    .links{display:flex;flex-wrap:wrap;gap:10px;}
+    .links a{font-size:14px;font-weight:700;color:var(--navy-2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-decoration:none;}
+    .links a:hover{border-color:var(--tool);}
+    .fine{font-size:12.5px;color:var(--muted);margin-top:12px;}
+
+    @media(max-width:720px){.plans,.grid2,.vs{grid-template-columns:1fr;}}
+    @media print{
+      @page{margin:14mm;}
+      .site-header,.site-footer,.backlink,.printbtn{display:none !important;}
+      .page-container{margin:0;max-width:100%;padding:0;}
+      .sec{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
+      .bub{opacity:1 !important;animation:none !important;}
+      a[href]{color:var(--navy);text-decoration:none;}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">Do Lab AI</a>
+      <nav>
+        <a href="../index.html">学ぶ（M3）</a>
+        <a href="../../m1/index.html">設計書Bot（M1）</a>
+        <a href="../../m2/index.html">AIパック（M2）</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
+    <a href="index.html" class="backlink">← AIツール紹介 一覧に戻る</a>
+    <p class="page-sub" style="color:var(--tool-d);font-weight:700;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;">M3 — 学ぶ ｜ AIツール紹介</p>
+
+    <div class="toolhead">
+      <div class="toollogo">✦</div>
+      <div>
+        <div class="maker">Perplexity</div>
+        <h1 class="page-title" style="margin:0;">Perplexity AI</h1>
+      </div>
+    </div>
+    <p class="page-sub" style="margin:6px 0 16px;">質問するとWebをリアルタイムにAI検索し、<b>出典（ソース）付き</b>で答えてくれる“調べもの特化”のAI。</p>
+    <a class="cta" href="https://www.perplexity.ai" target="_blank" rel="noopener">公式サイトを開く →</a>
+
+    <div style="height:22px;"></div>
+
+    <!-- ① 概要・特徴 -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">1</div><h2>サービス概要・特徴</h2></div>
+      <p class="lead">Perplexity AIは、<b>リアルタイム検索＋AI回答</b>を組み合わせた“AI検索エンジン”。質問すると最新のWeb情報を調べて要約し、<b>必ず出典リンク付き</b>で答えてくれます。「答えの根拠」を確認しながら使えるのが最大の特徴です。</p>
+      <div class="chips">
+        <span class="chip">🔎 リアルタイムWeb検索</span>
+        <span class="chip">📎 出典（ソース）付き回答</span>
+        <span class="chip">🗂️ Spaces（調査の作業空間）</span>
+        <span class="chip">🆕 最新情報に強い</span>
+      </div>
+    </section>
+
+    <!-- ② 使い方のポイント -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">2</div><h2>使い方のポイント（プロンプト例）</h2></div>
+      <p class="lead" style="margin-bottom:10px;">「<b>何を・どの範囲で・出典つきで</b>」と頼むと、調べもの精度が上がります👇</p>
+      <div class="prompt"><div class="q">📊 市場リサーチ</div><p>「〇〇業界の国内市場規模と最新トレンドを、出典つきで3点教えて。」</p></div>
+      <div class="prompt"><div class="q">🏢 競合調査</div><p>「競合A社の最近の新サービスと評判を、ソース付きで要約して。」</p></div>
+      <div class="prompt"><div class="q">🆕 最新情報</div><p>「先月の△△に関する最新ニュースを、信頼できる出典つきでまとめて。」</p></div>
+
+      <div class="callout">
+        <span class="ic">🗂️</span>
+        <div><h4>便利機能：Spaces</h4><p>テーマごとに関連リンクやファイルをまとめ、その範囲で検索・対話できる“調査の作業空間”。社内での共有にも便利です。</p></div>
+      </div>
+
+      <p class="democap">▼ 実際に動かしている様子（自動再生）</p>
+      <div class="demo">
+        <div class="demo-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">Perplexity</span><span class="live">● 自動再生</span></div>
+        <div class="demo-body">
+          <div class="bub me b1"><span class="who">あなた</span>国内の中小企業向けクラウド会計ソフトの主要3社と特徴を、出典つきで教えて。</div>
+          <div class="bub ai b2"><span class="who">✦ Perplexity</span>主要3社は A社・B社・C社。特徴は…（自動連携・確定申告対応 など）。<span class="src">🔗 出典：① 公式サイト ② 比較記事 ③ レビュー</span></div>
+          <div class="bub me b3"><span class="who">あなた</span>各社の料金も比較して。</div>
+          <div class="bub ai b4"><span class="who">✦ Perplexity</span>料金を表で比較しました。各項目に出典リンクを添えています 👇</div>
+        </div>
+      </div>
+      <p class="fine">※ 上記は表示イメージです（自動でくり返し再生）。実際の画面は Perplexity 公式でご確認ください。</p>
+    </section>
+
+    <!-- ③ 中小企業での活用シーン -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">3</div><h2>中小企業での主な活用シーン</h2></div>
+      <div class="grid2">
+        <div class="ucard"><span class="ic">🏢</span><h4>競合調査</h4><p>競合の動向・新サービス・評判を出典つきで把握。</p></div>
+        <div class="ucard"><span class="ic">📊</span><h4>市場リサーチ</h4><p>市場規模・トレンド・統計を根拠つきで素早く収集。</p></div>
+        <div class="ucard"><span class="ic">🆕</span><h4>最新情報収集</h4><p>業界ニュースや制度変更を、信頼できる出典つきで。</p></div>
+        <div class="ucard"><span class="ic">✅</span><h4>事実確認（裏取り）</h4><p>「本当に正しいか」を出典リンクで確認しながら調査。</p></div>
+        <div class="ucard"><span class="ic">📋</span><h4>比較・選定</h4><p>複数の製品・サービス・ベンダーを条件つきで比較表にまとめる。</p></div>
+        <div class="ucard"><span class="ic">📝</span><h4>レポート作成</h4><p>調査結果をそのまま構造化してレポートの下書きに変換。</p></div>
+      </div>
+    </section>
+
+    <!-- ④ Google検索との使い分け -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">4</div><h2>Google検索との使い分け</h2></div>
+      <p class="lead" style="margin-bottom:12px;">どちらも「調べる」ツールですが、得意が違います。</p>
+      <div class="vs">
+        <div class="vsbox"><h4>🔵 Google検索</h4><ul>
+          <li>リンク一覧から<b>自分で探す</b></li>
+          <li>一次情報・公式ページに直接たどり着きたい時</li>
+          <li>幅広く・深く掘りたい調べもの</li>
+        </ul></div>
+        <div class="vsbox me"><h4>✦ Perplexity</h4><ul>
+          <li><b>答えを要約＋出典付き</b>で返してくれる</li>
+          <li>要点を素早く把握したい時</li>
+          <li>複数ソースをまとめて比較したい時</li>
+        </ul></div>
+      </div>
+      <p style="font-size:15px;color:var(--text);line-height:1.8;margin-top:14px;">使い分けのコツ：<b style="color:var(--tool-d);">まずPerplexityで要点と出典を把握 → 重要な一次情報はGoogleで原典を確認</b>、が効率的です。</p>
+    </section>
+
+    <!-- ⑤ 料金プラン -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">5</div><h2>料金プラン</h2></div>
+      <div class="plans">
+        <div class="plan"><div class="name">Free</div><div class="price">¥0<span>/月</span></div><div class="who">基本の検索・回答<br>（出典付き）が使える</div></div>
+        <div class="plan hl"><div class="name">Pro</div><div class="price">約¥3,000<span>/月</span></div><div class="who">高度な検索回数UP・<br>上位モデル・ファイル分析</div></div>
+      </div>
+      <p class="fine">※ 料金・提供内容は変わることがあります。法人向けプランもあります。正確な内容は <b>Perplexity 公式ページ</b> でご確認ください。</p>
+    </section>
+
+    <!-- ⑥ 公式リンク -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">6</div><h2>公式リンク</h2></div>
+      <div class="links">
+        <a href="https://www.perplexity.ai" target="_blank" rel="noopener">🔗 Perplexity（perplexity.ai）</a>
+        <a href="https://www.perplexity.ai/hub/faq" target="_blank" rel="noopener">🔗 ヘルプ・FAQ</a>
+        <a href="../compare.html">⚖️ AIツール比較表</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
+  </footer>
+</body>
+</html>
