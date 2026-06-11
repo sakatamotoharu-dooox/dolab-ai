@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cowork セクション ページ構造・URL設計</title>
+<style>
+  :root{--navy:#0b2545;--navy2:#163a6b;--m3:#9b5de5;--m3d:#7b3fc4;--bg:#f6f7fb;--white:#fff;--line:#e3e6f0;--ink:#1e2438;--sub:#5d6480;--soft:#f3ecfd;--code:#0f1530;--ok:#2a9d8f;--accent:#d96704;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.9;font-size:18.5px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2) 60%,#1e4a8a);color:#fff;padding:36px 0 32px;}
+  header .in{max-width:920px;margin:0 auto;padding:0 26px;}
+  header .tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:6px 16px;border-radius:999px;font-size:14px;font-weight:700;margin-bottom:12px;}
+  header h1{font-size:33px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+  header p{font-size:15px;color:rgba(255,255,255,.85);}
+  .doc{max-width:920px;margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:44px 52px;box-shadow:0 6px 24px rgba(11,37,69,.06);}
+  h2{font-size:29px;font-weight:900;color:var(--navy);margin:34px 0 14px;padding:13px 0 13px 18px;border-left:8px solid var(--m3);background:var(--soft);border-radius:0 12px 12px 0;}
+  h2:first-of-type{margin-top:6px;}
+  h3{font-size:22px;font-weight:800;color:var(--m3d);margin:22px 0 8px;}
+  p{margin:10px 0;}
+  ul,ol{margin:10px 0 10px 8px;padding-left:26px;}
+  li{margin:8px 0;font-size:17.5px;}
+  ul li::marker,ol li::marker{color:var(--m3);}
+  code{background:var(--soft);color:var(--m3d);padding:2px 7px;border-radius:5px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.88em;}
+  pre{background:var(--code);color:#e6e9ff;border-radius:11px;padding:18px 22px;overflow-x:auto;font-size:14px;line-height:1.8;margin:8px 0 4px;font-family:"SF Mono",Menlo,Consolas,monospace;box-shadow:0 8px 22px rgba(11,37,69,.18);}
+  .figcap{font-size:15.5px;font-weight:800;color:var(--m3d);margin:22px 0 6px;}
+  table{width:100%;border-collapse:collapse;font-size:16.5px;margin:12px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  thead th{background:var(--navy);color:#fff;font-weight:800;white-space:nowrap;}
+  tbody tr:nth-child(even){background:#fff;}
+  tbody tr:last-child td{border-bottom:none;}
+  td:first-child{font-weight:700;color:var(--navy);}
+  td code{background:#fff;color:var(--ink);border:none;font-weight:600;font-size:16.5px;padding:3px 4px;}
+  .rec{background:#eef9f6;border:1px solid #b9e3da;border-left:5px solid var(--ok);border-radius:10px;padding:14px 18px;margin:12px 0;}
+  .rec b{color:#1f7a5c;}
+  blockquote{background:var(--soft);border-left:4px solid var(--m3);border-radius:8px;padding:12px 16px;font-size:15px;color:var(--ink);margin:12px 0;}
+  hr{border:none;border-top:1px solid var(--line);margin:30px 0;}
+  .toc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px 30px;margin:20px 0;box-shadow:0 2px 10px rgba(11,37,69,.04);}
+  .toc strong{display:block;color:var(--m3);font-size:19px;font-weight:900;margin-bottom:12px;}
+  .toc a{color:var(--navy);text-decoration:none;font-weight:800;}
+  .toc a:hover{text-decoration:underline;}
+  .toc ol{margin:0;padding-left:28px;}
+  .toc li{margin:10px 0;font-size:18.5px;}
+  .meta{color:var(--sub);font-size:14px;}
+  .badge{display:inline-block;font-size:12px;font-weight:800;border-radius:6px;padding:2px 8px;}
+  .b-rec{background:#e3f6f1;color:#1f7a5c;}.b-no{background:#fbe9e7;color:#b3402a;}.b-soon{background:#fdf1e1;color:#a85a1c;}
+  @media(max-width:640px){.doc{padding:26px 20px;}header h1{font-size:24px;}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <span class="tag">🗺 URL & PAGE DESIGN</span>
+  <h1>Cowork セクション — ページ構造・URL設計</h1>
+  <p>Do Lab AI 内に Cowork 関連ページを追加・整理するための設計メモ（Issue #123）</p>
+</div></header>
+
+<div class="doc">
+  <p class="meta">前提：Cowork は M3「学ぶ」の主要トピック。既存の <code>m1/ m2/ m3/</code> 体系と README のURL設計（フラット配置）に合わせる。<br>既存ページ：<code>m3/cowork.html</code>（基本・#120）／<code>m3/cowork-features.html</code>（機能・#121）</p>
+
+  <div class="toc"><strong>目次</strong>
+    <ol>
+      <li><a href="#s1">URL設計案（3案の比較）</a></li>
+      <li><a href="#s2">必要なページ一覧と各ページの役割</a></li>
+      <li><a href="#s3">README のURL設計との整合性</a></li>
+      <li><a href="#s4">サイトマップに組み込む位置</a></li>
+      <li><a href="#s5">ページ間の遷移・導線</a></li>
+    </ol>
+  </div>
+
+  <h2 id="s1">1. URL設計（採用：フラット配置）</h2>
+  <p>Cowork のページは <b>M3「学ぶ」配下にフラットに配置</b>します（README のURL設計と同じ方式）。</p>
+  <div class="rec">
+    <b style="font-size:1.05em;">✅ 採用：フラット配置</b>
+    <p style="margin:10px 0;">URL例：　<code>/m3/cowork.html</code>　／　<code>/m3/cowork-features.html</code></p>
+    <b>選んだ理由</b>
+    <ul style="margin-top:6px;">
+      <li>READMEのURL設計が全て <code>/m3/xxx.html</code> のフラット構成 → <b>同じ規則で整合</b>。</li>
+      <li>公開済み／PR中の <code>cowork.html</code>・<code>cowork-features.html</code> の <b>URLを変えずに済む</b>。</li>
+      <li>新規ファイルを足すだけでよく、<b>実装コストが最小</b>。</li>
+    </ul>
+  </div>
+  <p class="meta">※ サブフォルダ型（<code>/m3/cowork/</code>）や独立セクション型（<code>/cowork/</code>）も検討しましたが、READMEのフラット設計・M3体系と整合する本案を採用しました。ページが5本以上に増えた段階で、サブフォルダ＋ハブ型への移行を再検討します。</p>
+
+  <h2 id="s2">2. 必要なページ一覧と各ページの役割</h2>
+  <table>
+    <thead><tr><th>URL</th><th>ページ名</th><th>役割</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr><td><code>/m3/cowork.html</code></td><td>Cowork 基本的な使い方</td><td><b>入口</b>。概要・セットアップ・基本操作・料金</td><td>✅ 作成済み(#120)</td></tr>
+      <tr><td><code>/m3/cowork-features.html</code></td><td>Cowork 機能と活用事例</td><td>主要機能・活用事例・競合比較</td><td>✅ 作成済み(#121)</td></tr>
+      <tr><td><code>/m3/cowork-prompts.html</code></td><td>Cowork プロンプト集</td><td>業務別の指示文テンプレをコピーして使う</td><td><span class="badge b-soon">🔜 将来</span></td></tr>
+      <tr><td><code>/m3/cowork-faq.html</code></td><td>Cowork よくある質問</td><td>つまずきポイント・トラブル対処</td><td><span class="badge b-soon">🔜 将来</span></td></tr>
+      <tr><td><code>/m3/cowork-cases.html</code></td><td>Cowork 導入事例</td><td>業種別の具体的な成功事例</td><td><span class="badge b-soon">🔜 任意</span></td></tr>
+    </tbody>
+  </table>
+  <blockquote>当面は「基本的な使い方」を入口とし、ページが4本以上に増えたら <b>Coworkハブページ</b>（または案Bへ移行）を検討する。</blockquote>
+
+  <h2 id="s3">3. README のURL設計との整合性</h2>
+  <p>README の <code>## URL設計</code> 表に、以下を追記して整合させる（タスクコードは M3 の続番）。</p>
+  <table>
+    <thead><tr><th>URL</th><th>ページ</th><th>対応タスク</th></tr></thead>
+    <tbody>
+      <tr><td><code>/m3/cowork.html</code></td><td>Cowork 基本的な使い方</td><td>M3-C06</td></tr>
+      <tr><td><code>/m3/cowork-features.html</code></td><td>Cowork 機能と活用事例</td><td>M3-C07</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>配置・命名（<code>m3/</code> 配下・半角小文字＋ハイフン）ともに既存規則と<b>矛盾なし</b>。</li>
+    <li>READMEのフォルダ構成にも <code>cowork.html</code> / <code>cowork-features.html</code> を追記する。</li>
+  </ul>
+
+  <h2 id="s4">4. サイトマップに組み込む位置</h2>
+  <ul>
+    <li><b>位置</b>：M3「学ぶ」セクション内。「初めてのClaude Code」の直後に <b>Cowork 学習グループ</b>としてカードを並べる。</li>
+    <li>独立セクション（m1/m2/m3 と並ぶ）にはしない（案C 不採用）。Coworkは「学ぶ」の中の1テーマ。</li>
+  </ul>
+  <p class="figcap">▼ 図：サイトマップ上の組み込み位置</p>
+  <pre>/ （ダッシュボード）
+└─ /m3/ （M3 学ぶ）
+   ├─ 初めてのClaude Code
+   ├─ ▼ Cowork（学習グループ）
+   │   ├─ Cowork 基本的な使い方        ← 入口
+   │   └─ Cowork 機能と活用事例
+   │       （将来：プロンプト集 / FAQ / 導入事例）
+   ├─ AIツール比較表
+   ├─ プロンプト集
+   └─ …</pre>
+
+  <h2 id="s5">5. ページ間の遷移・導線</h2>
+  <h3>導線ルール</h3>
+  <ol>
+    <li><b>入口</b>：ダッシュボード →「学ぶ（M3）」→ M3トップのカードから各 Cowork ページへ。</li>
+    <li><b>戻り導線</b>：各 Cowork ページ上部に「← M3 学ぶ トップに戻る」を常設（実装済み）。</li>
+    <li><b>相互リンク</b>：「基本的な使い方」⇄「機能と活用事例」を相互にリンク（実装済み）。</li>
+    <li><b>ヘッダーナビ</b>：全ページ共通ヘッダーから「学ぶ（M3）／M1／M2」へ移動可能（既存）。</li>
+    <li>将来ハブを作る場合は <code>M3トップ → Coworkハブ → 各ページ</code> の2階層導線に切り替える。</li>
+  </ol>
+  <p class="figcap">▼ 図：ページ間の遷移・導線</p>
+  <pre>[ダッシュボード /]
+      │  「学ぶ（M3）」
+      ▼
+[M3トップ /m3/] ──カード──▶ [Cowork 基本的な使い方]  ⇄  [Cowork 機能と活用事例]
+                                   │                          │
+                          （各ページ上部）            （各ページ上部）
+                          「← M3 学ぶ トップに戻る」   「← M3 学ぶ トップに戻る」</pre>
+
+  <hr>
+  <h2 style="background:var(--navy);color:#fff;border-left-color:#ffe14d;">まとめ（結論）</h2>
+  <ul>
+    <li><b>URL設計</b>：案A（<code>/m3/cowork*.html</code> のフラット配置）を採用。READMEと整合。</li>
+    <li><b>ページ構成</b>：基本／機能の2本を軸に、将来プロンプト集・FAQ・事例を追加。</li>
+    <li><b>配置</b>：M3「学ぶ」内の Cowork 学習グループ。独立セクションにはしない。</li>
+    <li><b>導線</b>：M3トップ起点＋ページ相互リンク＋共通の戻り導線で回遊性を確保。</li>
+  </ul>
+
+  <p class="meta" style="margin-top:24px;">作成：Do Lab AI ｜ Cowork セクション設計（Issue #123）</p>
+</div>
+</body>
+</html>
