@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Cowork の機能と活用事例 | Do Lab AI</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* フォント種類を開発ガイド(#122)と統一 */
+    body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;}
+    .page-title{font-size:50px !important;line-height:1.15;}
+    .page-container > .page-sub{font-size:17px;}
+    .guide-sec{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:22px;box-shadow:var(--shadow);}
+    .guide-head{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+    .guide-no{flex:0 0 auto;width:60px;height:60px;border-radius:15px;background:linear-gradient(135deg,var(--m3),#7b3fc4);color:#fff;font-size:31px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+    .guide-head .en{font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--m3);}
+    .guide-head h2{font-size:33px;font-weight:900;color:var(--navy);line-height:1.22;}
+    .guide-sec .lead{font-size:17px;color:var(--text);margin-bottom:6px;line-height:1.75;}
+    .guide-sec .lead b{color:var(--m3);}
+    .guide-sec .lead a{color:var(--m3);font-weight:700;}
+
+    .feat{display:grid;grid-template-columns:1fr;gap:12px;}
+    .fcard{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;}
+    .fcard .ic{font-size:38px;flex:0 0 auto;line-height:1;}
+    .fcard h4{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:5px;}
+    .fcard p{font-size:15px;color:var(--muted);line-height:1.65;}
+
+    .use{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .ucard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 20px;border-top:4px solid var(--m3);}
+    .ucard .tag{font-size:14px;font-weight:800;color:var(--m3);letter-spacing:.4px;}
+    .ucard h4{font-size:23px;font-weight:800;color:var(--navy);margin:5px 0 10px;line-height:1.3;}
+    .ucard p{font-size:16px;color:var(--text);line-height:1.7;margin-bottom:12px;}
+    .ucard .merit{font-size:15px;color:#1f7a5c;background:#eaf6f2;border-radius:8px;padding:9px 13px;line-height:1.6;}
+    .biz-tag{display:inline-block;font-size:13px;font-weight:800;border-radius:6px;padding:3px 11px;margin-bottom:6px;}
+    .biz{background:#eaf0fb;color:#2540b8;}.psn{background:#fdf1e7;color:#a85a1c;}
+
+    .table-scroll{overflow-x:auto;border-radius:11px;border:1px solid var(--border);margin:6px 0;}
+    table{width:100%;border-collapse:collapse;font-size:15.5px;background:#fff;min-width:720px;}
+    th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;}
+    thead th{background:var(--navy);color:#fff;font-weight:800;white-space:nowrap;font-size:15px;}
+    thead th.cw{background:var(--m3);font-size:16.5px;}
+    tbody tr:last-child td{border-bottom:none;}
+    .col-cw{background:#f7f1fe;font-weight:600;color:var(--navy);}
+    td:first-child{font-weight:700;color:var(--navy);background:var(--bg);}
+
+    .reco{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .rcard{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center;}
+    .rcard .big{font-size:42px;}
+    .rcard h4{font-size:18px;font-weight:800;color:var(--navy);margin:8px 0 5px;}
+    .rcard p{font-size:14.5px;color:var(--muted);line-height:1.6;}
+
+    .src{font-size:12px;color:var(--muted);line-height:1.9;}
+    .src a{color:var(--navy-2);}
+    .backlink{display:inline-block;margin-bottom:20px;font-size:13px;font-weight:700;color:var(--navy-2);}
+    .printbtn{float:right;background:var(--m3);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
+    .printbtn:hover{opacity:.88;}
+    @media(max-width:720px){.feat,.use,.reco{grid-template-columns:1fr;}}
+    @media print{
+      @page{margin:14mm;}
+      body{background:#fff;font-size:11.5px;}
+      .site-header,.site-footer,.backlink,.printbtn{display:none !important;}
+      .page-container{margin:0;max-width:100%;padding:0;}
+      .guide-sec{box-shadow:none;border:1px solid #ccc;break-inside:avoid;page-break-inside:avoid;margin-bottom:12px;}
+      a[href]{color:var(--navy);text-decoration:none;}
+      .page-title{font-size:28px !important;}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Do Lab AI</a>
+      <nav>
+        <a href="index.html">学ぶ（M3）</a>
+        <a href="../m1/index.html">設計書Bot（M1）</a>
+        <a href="../m2/index.html">AIパック（M2）</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
+    <a href="index.html" class="backlink">← M3 学ぶ トップに戻る</a>
+    <p class="page-sub" style="color:var(--m3);font-weight:700;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;">M3 — 学ぶ ｜ 機能と活用事例</p>
+    <h1 class="page-title">Claude Cowork でできること</h1>
+    <p class="page-sub">主要機能・実際の活用事例（ビジネス／個人）・競合ツールとの違いを、初心者向けにまとめました。</p>
+
+    <!-- ① 概要 -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">1</div><div><div class="en">Overview</div><h2>Claude Cowork とは</h2></div></div>
+      <p class="lead">パソコンのファイルやブラウザを自律的に操作して作業を代行するAIエージェントです。質問に答えるだけでなく、実際にPC作業を完了させる<b>“AIの同僚”</b>です。</p>
+      <p class="lead" style="margin-top:10px;">まず使い方を知りたい方は <a href="cowork.html">「初めてのClaude Cowork（基本的な使い方）」</a> をどうぞ。</p>
+    </section>
+
+    <!-- ② 主要機能 -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">2</div><div><div class="en">Features</div><h2>主要機能一覧</h2></div></div>
+      <div class="feat">
+        <div class="fcard"><span class="ic">📂</span><div><h4>ローカルファイルを直接操作</h4><p>アップロード・ダウンロード不要で、PC内のファイルを直接読み書き。</p></div></div>
+        <div class="fcard"><span class="ic">🧩</span><div><h4>マルチステップ自動実行</h4><p>依頼を分析→計画→サブタスクに分解し、複雑な作業を一気通貫で実行。</p></div></div>
+        <div class="fcard"><span class="ic">📊</span><div><h4>プロ品質の成果物</h4><p>数式入りExcel、PowerPoint、整形済み文書をそのまま生成。</p></div></div>
+        <div class="fcard"><span class="ic">🌐</span><div><h4>ブラウザ操作（Computer Use）</h4><p>「Claude in Chrome」でWeb閲覧・情報抽出・フォーム入力を自動化。</p></div></div>
+        <div class="fcard"><span class="ic">⏰</span><div><h4>スケジュール自動実行</h4><p>タスクを保存し、オンデマンドや定期実行で繰り返し作業を自動化。</p></div></div>
+      </div>
+      <p class="src" style="margin-top:12px;">出典：Claude公式ヘルプ「Get started with Claude Cowork」ほか。</p>
+    </section>
+
+    <!-- ③ 活用事例 -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">3</div><div><div class="en">Use cases</div><h2>活用事例とメリット</h2></div></div>
+      <p class="lead" style="margin-bottom:14px;">実際の業務・日常での使われ方を、得られるメリットとあわせて整理しました。</p>
+      <div class="use">
+        <div class="ucard"><span class="biz-tag biz">ビジネス</span><span class="tag">経理・総務</span><h4>領収書→Excel集計</h4><p>フォルダ内の領収書PDFから日付・店名・金額を読み取り、表に自動集計。</p><div class="merit">✓ 手入力ミスを削減し、正確性とスピードが向上</div></div>
+        <div class="ucard"><span class="biz-tag biz">ビジネス</span><span class="tag">法務</span><h4>契約書の一次レビュー</h4><p>長い契約書を読み、注意すべき条項やリスクを洗い出し。</p><div class="merit">✓ 専門家チェック前の“たたき”として時間短縮</div></div>
+        <div class="ucard"><span class="biz-tag biz">ビジネス</span><span class="tag">営業・企画</span><h4>メモ→提案書(PPT)</h4><p>商談メモやテキストから、提案資料の初稿を自動作成。</p><div class="merit">✓ ゼロから作る手間を削減し、構成の土台が即完成</div></div>
+        <div class="ucard"><span class="biz-tag biz">ビジネス</span><span class="tag">リサーチ</span><h4>Web調査・要約</h4><p>ブラウザを操作して情報収集。自由記述やCSVをテーマ別に要約。</p><div class="merit">✓ 大量の情報を分類・要約して意思決定を支援</div></div>
+        <div class="ucard"><span class="biz-tag psn">個人</span><span class="tag">家計・暮らし</span><h4>家計簿・明細整理</h4><p>レシートや明細を読み取り、月別・費目別に集計・整理。</p><div class="merit">✓ 面倒な入力作業を任せて家計管理がラクに</div></div>
+        <div class="ucard"><span class="biz-tag psn">個人</span><span class="tag">ファイル整理</span><h4>大量ファイルの仕分け</h4><p>写真や書類を年月・種別でフォルダ分け・リネーム・移動。</p><div class="merit">✓ 散らかったフォルダを一気に自動整頓</div></div>
+      </div>
+    </section>
+
+    <!-- ④ 競合比較 -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">4</div><div><div class="en">Comparison</div><h2>競合ツールとの比較</h2></div></div>
+      <p class="lead" style="margin-bottom:12px;">AIエージェントは「プラットフォーム連携型」と「汎用自律型」に大別されます。Coworkは<b>ローカルPC作業に強い</b>のが特徴です。</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>　</th><th class="cw">Claude Cowork ✳️</th><th>ChatGPT (Agent/Operator)</th><th>Gemini</th><th>Microsoft Copilot</th><th>Manus</th></tr></thead>
+          <tbody>
+            <tr><td>タイプ</td><td class="col-cw">デスクトップ常駐エージェント</td><td>ブラウザ操作エージェント</td><td>Workspace連携AI</td><td>Office連携AI</td><td>汎用自律エージェント</td></tr>
+            <tr><td>強み</td><td class="col-cw">ローカルファイル操作＋VM＋ブラウザ操作</td><td>Web操作・情報収集</td><td>Google連携・検索</td><td>Microsoft 365連携</td><td>マルチモデルで丸投げ実行</td></tr>
+            <tr><td>主な連携先</td><td class="col-cw">ローカル / MCP / Chrome</td><td>Web / 一部アプリ</td><td>Google Workspace</td><td>Microsoft 365</td><td>各種サービス</td></tr>
+            <tr><td>こんな人に</td><td class="col-cw">定型のPC作業が多い人</td><td>Web作業中心の人</td><td>Google中心の人</td><td>MS Office中心の人</td><td>とにかく実行を任せたい人</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src" style="margin-top:12px;">※ 各ツールは進化が速く、上記は2026年6月時点の傾向です。</p>
+    </section>
+
+    <!-- ⑤ おすすめ -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">5</div><div><div class="en">Who is it for</div><h2>こんな人におすすめ</h2></div></div>
+      <div class="reco">
+        <div class="rcard"><div class="big">🧾</div><h4>定型作業が多い</h4><p>毎月の集計・整理・レポートをまるごと自動化したい。</p></div>
+        <div class="rcard"><div class="big">💻</div><h4>非エンジニア</h4><p>コードは書けないが、AIの実行力を仕事に活かしたい。</p></div>
+        <div class="rcard"><div class="big">🏢</div><h4>中小企業・個人事業</h4><p>外注や高額SaaSに頼らず、社内で効率化を進めたい。</p></div>
+      </div>
+    </section>
+
+    <!-- 関連ページ（相互リンク・#123 導線設計） -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">6</div><div><div class="en">Related</div><h2>関連ページ</h2></div></div>
+      <p class="lead" style="margin-bottom:14px;">まず使い方から知りたい方は「基本的な使い方」へ。あわせてどうぞ。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="cowork.html" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--m3),#7b3fc4);border-radius:10px;padding:13px 22px;text-decoration:none;">✳️ Cowork 基本的な使い方 →</a>
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--navy);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:13px 22px;text-decoration:none;">🏠 M3 学ぶ トップ</a>
+      </div>
+    </section>
+
+    <!-- 参考 -->
+    <section class="guide-sec">
+      <div class="guide-head"><div class="guide-no">7</div><div><div class="en">References</div><h2>参考・出典</h2></div></div>
+      <p class="lead" style="margin-bottom:8px;">公式情報に加え、解説記事・事例記事も参照してまとめています。</p>
+      <p class="src">
+        ・<a href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Claude公式ヘルプ「Get started with Claude Cowork」</a><br>
+        ・<a href="https://pc.watch.impress.co.jp/docs/topic/feature/2103480.html" target="_blank" rel="noopener">PC Watch「Claude Cowork 5つの使い方」</a><br>
+        ・<a href="https://jp.ext.hp.com/techdevice/ai/ai_explained_61/" target="_blank" rel="noopener">HP Tech&Device TV「Claude Cowork完全ガイド」</a><br>
+        ・<a href="https://manaslu.me/column/ai-platform-agent-comparison" target="_blank" rel="noopener">6大AI徹底比較（ChatGPT/Gemini/Claude/Copilot/Manus/Genspark）</a>
+      </p>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
+  </footer>
+</body>
+</html>
