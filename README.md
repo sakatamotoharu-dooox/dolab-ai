@@ -14,6 +14,8 @@
 | `/` | ダッシュボード（トップ） | UI-02 |
 | `/m3/` | M3 学ぶ トップ | UI-01 |
 | `/m3/claude-code.html` | 初めてのClaude Code | M3-C01 |
+| `/m3/cowork.html` | Cowork 基本的な使い方 | M3-C06 |
+| `/m3/cowork-features.html` | Cowork 機能と活用事例 | M3-C07 |
 | `/m3/compare.html` | AIツール比較表 | M3-C02 |
 | `/m3/prompts.html` | プロンプト集 | M3-C03 |
 | `/m3/tools.html` | AIツール紹介 | M3-C04 |
@@ -39,6 +41,8 @@ dolab-ai/
 └── m3/
     ├── index.html      # M3 トップ
     ├── claude-code.html
+    ├── cowork.html           # Cowork 基本的な使い方
+    ├── cowork-features.html  # Cowork 機能と活用事例
     ├── compare.html
     ├── prompts.html
     ├── tools.html
