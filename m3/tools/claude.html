@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude.ai（Anthropic）の紹介 | Do Lab AI</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    /* AIツール紹介ページ — 共通レイアウト（テーマ色をツール別に差し替え） */
+    :root{ --tool:#cc785c; --tool-d:#a85a3c; --tool-bg:#f6ece5; }
+    /* フォント種類を開発ガイド(#122)と統一 */
+    body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;}
+    .page-title{font-size:42px !important;line-height:1.18;}
+    .toolhead{display:flex;align-items:center;gap:16px;margin:6px 0 6px;}
+    .toollogo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,var(--tool),var(--tool-d));color:#fff;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+    .toolhead .maker{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--tool-d);text-transform:uppercase;}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--tool);color:#fff;font-size:15px;font-weight:800;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity .2s;}
+    .cta:hover{opacity:.88;color:#fff;}
+    .backlink{display:inline-block;margin-bottom:18px;font-size:13px;font-weight:700;color:var(--navy-2);}
+    .printbtn{float:right;background:var(--tool);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
+    .printbtn:hover{opacity:.88;}
+
+    .sec{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px 30px;margin-bottom:20px;box-shadow:var(--shadow);}
+    .sec-h{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .sec-no{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--tool),var(--tool-d));color:#fff;font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+    .sec-h h2{font-size:26px;font-weight:900;color:var(--navy);line-height:1.25;}
+    .sec .lead{font-size:16px;color:var(--text);line-height:1.8;}
+    .sec .lead b{color:var(--tool-d);}
+
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 2px;}
+    .chip{background:var(--tool-bg);color:var(--tool-d);font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;}
+
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .plan{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 18px;text-align:center;}
+    .plan.hl{border:2px solid var(--tool);position:relative;box-shadow:var(--shadow-lg);}
+    .plan.hl::before{content:"定番";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:12px;font-weight:800;padding:3px 13px;border-radius:999px;}
+    .plan .name{font-size:17px;font-weight:900;color:var(--navy);}
+    .plan .price{font-size:21px;font-weight:900;color:var(--tool-d);margin:6px 0 2px;line-height:1.15;}
+    .plan .price span{font-size:12px;color:var(--muted);font-weight:500;}
+    .plan .who{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .ucard{background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:20px 22px;}
+    .ucard .ic{font-size:34px;}
+    .ucard h4{font-size:21px;font-weight:800;color:var(--navy);margin:6px 0 6px;}
+    .ucard p{font-size:16px;color:var(--muted);line-height:1.7;}
+
+    .prompt{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--tool);border-radius:10px;padding:14px 18px;margin:10px 0;}
+    .prompt .q{font-size:12.5px;font-weight:800;color:var(--tool-d);margin-bottom:4px;}
+    .prompt p{font-size:15px;color:var(--text);line-height:1.7;}
+    /* 会話デモ（自動再生・動画風アニメーション） */
+    .democap{font-size:14px;font-weight:700;color:var(--tool-d);margin:20px 0 6px;}
+    .demo{background:#0d1117;border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(11,37,69,.18);}
+    .demo-bar{background:#1b2230;display:flex;align-items:center;gap:7px;padding:10px 14px;}
+    .demo-bar .d{width:11px;height:11px;border-radius:50%;}
+    .demo-bar .r{background:#ff5f57;}.demo-bar .y{background:#febc2e;}.demo-bar .g{background:#28c840;}
+    .demo-bar .t{margin-left:8px;font-size:12px;color:#8a93a8;font-weight:700;flex:1;}
+    .demo-bar .live{font-size:10px;font-weight:800;color:#fff;background:var(--tool);padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+    .demo-body{padding:16px;min-height:206px;display:flex;flex-direction:column;justify-content:flex-end;}
+    .bub{padding:10px 14px;border-radius:13px;margin-bottom:9px;font-size:14.5px;max-width:88%;line-height:1.6;opacity:0;}
+    .bub.me{background:var(--tool);color:#fff;margin-left:auto;border-bottom-right-radius:4px;}
+    .bub.ai{background:#eef1f5;color:#1e2438;border-bottom-left-radius:4px;}
+    .bub .who{display:block;font-size:11px;font-weight:800;margin-bottom:2px;opacity:.85;}
+    .bub.ai .who{color:var(--tool-d);opacity:1;}
+    .b1{animation:b1 13s infinite;}.b2{animation:b2 13s infinite;}.b3{animation:b3 13s infinite;}.b4{animation:b4 13s infinite;}
+    @keyframes b1{0%,3%{opacity:0;transform:translateY(7px);}7%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b2{0%,20%{opacity:0;transform:translateY(7px);}25%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b3{0%,46%{opacity:0;transform:translateY(7px);}51%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b4{0%,66%{opacity:0;transform:translateY(7px);}71%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @media(prefers-reduced-motion:reduce){.bub{opacity:1 !important;animation:none !important;}}
+
+    .callout{display:flex;gap:16px;align-items:flex-start;background:var(--tool-bg);border:1px solid #e7d3c6;border-radius:12px;padding:18px 20px;}
+    .callout .ic{font-size:30px;flex:0 0 auto;}
+    .callout h4{font-size:18px;font-weight:800;color:var(--tool-d);margin-bottom:4px;}
+    .callout p{font-size:14.5px;color:var(--text);line-height:1.7;}
+    .callout a{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:var(--tool-d);}
+
+    .links{display:flex;flex-wrap:wrap;gap:10px;}
+    .links a{font-size:14px;font-weight:700;color:var(--navy-2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-decoration:none;}
+    .links a:hover{border-color:var(--tool);}
+    .fine{font-size:12.5px;color:var(--muted);margin-top:12px;}
+
+    @media(max-width:720px){.plans,.grid2{grid-template-columns:1fr;}}
+    @media print{
+      @page{margin:14mm;}
+      .site-header,.site-footer,.backlink,.printbtn{display:none !important;}
+      .page-container{margin:0;max-width:100%;padding:0;}
+      .sec{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
+      .bub{opacity:1 !important;animation:none !important;}
+      a[href]{color:var(--navy);text-decoration:none;}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">Do Lab AI</a>
+      <nav>
+        <a href="../index.html">学ぶ（M3）</a>
+        <a href="../../m1/index.html">設計書Bot（M1）</a>
+        <a href="../../m2/index.html">AIパック（M2）</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
+    <a href="index.html" class="backlink">← AIツール紹介 一覧に戻る</a>
+    <p class="page-sub" style="color:var(--tool-d);font-weight:700;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;">M3 — 学ぶ ｜ AIツール紹介</p>
+
+    <div class="toolhead">
+      <div class="toollogo">✳</div>
+      <div>
+        <div class="maker">Anthropic</div>
+        <h1 class="page-title" style="margin:0;">Claude.ai</h1>
+      </div>
+    </div>
+    <p class="page-sub" style="margin:6px 0 16px;">長い文章をていねいに読み解くのが得意なAI。文章の質と安全性を重視するAnthropic社が提供。</p>
+    <a class="cta" href="https://claude.ai" target="_blank" rel="noopener">公式サイトを開く →</a>
+
+    <div style="height:22px;"></div>
+
+    <!-- ① 概要・特徴 -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">1</div><h2>サービス概要・特徴</h2></div>
+      <p class="lead">Claude.aiは、Anthropicが開発した<b>対話型AI</b>。とくに<b>長い文章の読解・要約</b>、<b>自然で読みやすい文章作成</b>に強く、あいまいな指示には勝手に進めず確認してくれる<b>誠実さ・安全性</b>が持ち味です。</p>
+      <div class="chips">
+        <span class="chip">📚 長文処理が得意（大量の資料もOK）</span>
+        <span class="chip">✍️ 文章品質が高い</span>
+        <span class="chip">🤝 誠実・安全性を重視</span>
+        <span class="chip">🖼️ 画像・PDFも読める</span>
+      </div>
+    </section>
+
+    <!-- ② 使い方のポイント -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">2</div><h2>使い方のポイント（プロンプト例）</h2></div>
+      <p class="lead" style="margin-bottom:10px;">長い資料はそのまま貼る／添付するのが効果的。「<b>何を・どんな観点で・どんな形式に</b>」を伝えると精度が上がります👇</p>
+      <div class="prompt"><div class="q">📄 長文の要約</div><p>「この資料を読んで、要点・結論・残課題に分けてまとめて。専門用語には注釈をつけて。」</p></div>
+      <div class="prompt"><div class="q">📝 報告書づくり</div><p>「以下のメモから社内向け報告書を見出し付きで作成。事実と所感を分けて書いて。」</p></div>
+      <div class="prompt"><div class="q">✨ 文章の推敲</div><p>「この文章を、意味を変えずに丁寧で簡潔なビジネス文体に直して。」</p></div>
+
+      <p class="democap">▼ 実際に動かしている様子（自動再生）</p>
+      <div class="demo">
+        <div class="demo-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">Claude</span><span class="live">● 自動再生</span></div>
+        <div class="demo-body">
+          <div class="bub me b1"><span class="who">あなた</span>この30ページのレポートを読んで、要点を3つと、経営判断に必要なリスクを教えて。</div>
+          <div class="bub ai b2"><span class="who">✳ Claude</span>拝読しました。要点は ①国内売上は堅調 ②新規事業は黒字化が遅延 ③人件費が増加傾向。注意すべきリスクは「来期の原価上昇」です。</div>
+          <div class="bub me b3"><span class="who">あなた</span>そのリスクの根拠ページは？</div>
+          <div class="bub ai b4"><span class="who">✳ Claude</span>12〜14ページが該当します。原材料費の前年比＋18%という記載が根拠です。</div>
+        </div>
+      </div>
+      <p class="fine">※ 上記は表示イメージです（自動でくり返し再生）。実際の画面は Claude 公式でご確認ください。</p>
+    </section>
+
+    <!-- ③ 中小企業での活用シーン -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">3</div><h2>中小企業での主な活用シーン</h2></div>
+      <div class="grid2">
+        <div class="ucard"><span class="ic">📚</span><h4>長文要約</h4><p>契約書・レポート・長いメールスレッドの要点整理。</p></div>
+        <div class="ucard"><span class="ic">📝</span><h4>報告書作成</h4><p>メモや素材から、読みやすい報告書・提案書を作成。</p></div>
+        <div class="ucard"><span class="ic">📒</span><h4>マニュアル整備</h4><p>業務手順を整理し、社内マニュアルとして文書化。</p></div>
+        <div class="ucard"><span class="ic">🔍</span><h4>チェック・添削</h4><p>文章の誤り・抜け漏れの確認、表現の改善提案。</p></div>
+        <div class="ucard"><span class="ic">🌐</span><h4>翻訳・多言語対応</h4><p>ニュアンスを保った自然な翻訳、英文メールのチェック。</p></div>
+        <div class="ucard"><span class="ic">💡</span><h4>アイデア出し</h4><p>企画・キャッチコピー・改善案を多角的に提案。</p></div>
+      </div>
+    </section>
+
+    <!-- ④ Projects機能 -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">4</div><h2>Projects 機能の概要</h2></div>
+      <div class="callout">
+        <span class="ic">🗂️</span>
+        <div>
+          <h4>よく使う資料を“覚えさせて”繰り返し使える</h4>
+          <p>社内規定・テンプレート・過去資料などを <b>Project</b> に登録しておくと、毎回貼り付けなくても、その文脈を踏まえた回答が得られます。チームでの共有にも便利です。</p>
+          <a href="claude-projects.html">詳しくは「Claude Projects」ページへ →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Claude Code との違い -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">5</div><h2>Claude Code との違い</h2></div>
+      <p class="lead">同じClaudeでも用途が異なります。</p>
+      <div class="grid2" style="margin-top:12px;">
+        <div class="ucard"><span class="ic">💬</span><h4>Claude.ai（このページ）</h4><p>ブラウザ／アプリで<b>会話して使う</b>AI。要約・文章作成・相談など日常業務向け。</p></div>
+        <div class="ucard"><span class="ic">⌨️</span><h4>Claude Code</h4><p>PCの<b>ファイルを操作して作業を代行</b>するエージェント。自動化や開発向け。</p></div>
+      </div>
+      <div class="links" style="margin-top:14px;">
+        <a href="../claude-code.html">⌨️ 初めての Claude Code を見る →</a>
+      </div>
+    </section>
+
+    <!-- ⑥ 料金プラン -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">6</div><h2>料金プラン</h2></div>
+      <div class="plans">
+        <div class="plan"><div class="name">Free</div><div class="price">¥0<span>/月</span></div><div class="who">まず試す・<br>個人の軽い利用</div></div>
+        <div class="plan hl"><div class="name">Pro</div><div class="price">約¥3,000<span>/月</span></div><div class="who">個人で<br>本格的に使う</div></div>
+        <div class="plan"><div class="name">Team</div><div class="price">約¥3,800<span>/人・月</span></div><div class="who">チームで共有・<br>管理機能つき</div></div>
+      </div>
+      <p class="fine">※ 料金は為替・プラン改定で変わります。上位の Max・Enterprise もあります。正確な金額は <b>claude.ai / claude.com の公式ページ</b> でご確認ください。</p>
+    </section>
+
+    <!-- ⑦ 公式リンク -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">7</div><h2>公式リンク</h2></div>
+      <div class="links">
+        <a href="https://claude.ai" target="_blank" rel="noopener">🔗 Claude（claude.ai）</a>
+        <a href="https://www.anthropic.com" target="_blank" rel="noopener">🔗 Anthropic 公式サイト</a>
+        <a href="https://support.anthropic.com" target="_blank" rel="noopener">🔗 ヘルプセンター</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
+  </footer>
+</body>
+</html>
