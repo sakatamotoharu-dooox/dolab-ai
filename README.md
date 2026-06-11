@@ -60,3 +60,12 @@ git push
 ```
 
 GitHub Pages の反映には最大5分かかる場合があります。
+
+---
+
+## 開発ガイド
+
+ページの追加・更新手順（環境構築・ファイル構成・ローカル確認・デプロイ・コーディング規約）は、開発ガイドにまとめています。
+
+- 📄 [DEVELOPMENT.md](DEVELOPMENT.md)（Markdown版）
+- 🖥 [docs/development-guide.html](docs/development-guide.html)（ブラウザ閲覧用の整形版）
