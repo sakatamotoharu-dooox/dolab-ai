@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Copilot の紹介 | Do Lab AI</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    /* AIツール紹介ページ — 共通レイアウト（テーマ色をツール別に差し替え） */
+    :root{ --tool:#0078d4; --tool-d:#005a9e; --tool-bg:#e5f1fb; }
+    /* フォント種類を開発ガイド(#122)と統一 */
+    body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;}
+    .page-title{font-size:42px !important;line-height:1.18;}
+    .toolhead{display:flex;align-items:center;gap:16px;margin:6px 0 6px;}
+    .toollogo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#0078d4,#2aa5e0 50%,#41c2a8);color:#fff;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+    .toolhead .maker{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--tool-d);text-transform:uppercase;}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--tool);color:#fff;font-size:15px;font-weight:800;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity .2s;}
+    .cta:hover{opacity:.88;color:#fff;}
+    .backlink{display:inline-block;margin-bottom:18px;font-size:13px;font-weight:700;color:var(--navy-2);}
+    .printbtn{float:right;background:var(--tool);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
+    .printbtn:hover{opacity:.88;}
+
+    .sec{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px 30px;margin-bottom:20px;box-shadow:var(--shadow);}
+    .sec-h{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .sec-no{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--tool),var(--tool-d));color:#fff;font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+    .sec-h h2{font-size:26px;font-weight:900;color:var(--navy);line-height:1.25;}
+    .sec .lead{font-size:16px;color:var(--text);line-height:1.8;}
+    .sec .lead b{color:var(--tool-d);}
+
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 2px;}
+    .chip{background:var(--tool-bg);color:var(--tool-d);font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;}
+
+    .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .plan{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 18px;text-align:center;}
+    .plan.hl{border:2px solid var(--tool);position:relative;box-shadow:var(--shadow-lg);}
+    .plan.hl::before{content:"業務利用向け";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:12px;font-weight:800;padding:3px 13px;border-radius:999px;white-space:nowrap;}
+    .plan .name{font-size:17px;font-weight:900;color:var(--navy);}
+    .plan .price{font-size:21px;font-weight:900;color:var(--tool-d);margin:6px 0 2px;line-height:1.15;}
+    .plan .price span{font-size:12px;color:var(--muted);font-weight:500;}
+    .plan .who{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .ucard{background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:20px 22px;}
+    .ucard .ic{font-size:34px;}
+    .ucard h4{font-size:21px;font-weight:800;color:var(--navy);margin:6px 0 6px;}
+    .ucard p{font-size:16px;color:var(--muted);line-height:1.7;}
+
+    .prompt{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--tool);border-radius:10px;padding:14px 18px;margin:10px 0;}
+    .prompt .q{font-size:12.5px;font-weight:800;color:var(--tool-d);margin-bottom:4px;}
+    .prompt p{font-size:15px;color:var(--text);line-height:1.7;}
+    /* 会話デモ（自動再生・動画風アニメーション） */
+    .democap{font-size:14px;font-weight:700;color:var(--tool-d);margin:20px 0 6px;}
+    .demo{background:#0d1117;border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(11,37,69,.18);}
+    .demo-bar{background:#1b2230;display:flex;align-items:center;gap:7px;padding:10px 14px;}
+    .demo-bar .d{width:11px;height:11px;border-radius:50%;}
+    .demo-bar .r{background:#ff5f57;}.demo-bar .y{background:#febc2e;}.demo-bar .g{background:#28c840;}
+    .demo-bar .t{margin-left:8px;font-size:12px;color:#8a93a8;font-weight:700;flex:1;}
+    .demo-bar .live{font-size:10px;font-weight:800;color:#fff;background:var(--tool);padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+    .demo-body{padding:16px;min-height:206px;display:flex;flex-direction:column;justify-content:flex-end;}
+    .bub{padding:10px 14px;border-radius:13px;margin-bottom:9px;font-size:14.5px;max-width:88%;line-height:1.6;opacity:0;}
+    .bub.me{background:var(--tool);color:#fff;margin-left:auto;border-bottom-right-radius:4px;}
+    .bub.ai{background:#eef1f5;color:#1e2438;border-bottom-left-radius:4px;}
+    .bub .who{display:block;font-size:11px;font-weight:800;margin-bottom:2px;opacity:.85;}
+    .bub.ai .who{color:var(--tool-d);opacity:1;}
+    .b1{animation:b1 13s infinite;}.b2{animation:b2 13s infinite;}.b3{animation:b3 13s infinite;}.b4{animation:b4 13s infinite;}
+    @keyframes b1{0%,3%{opacity:0;transform:translateY(7px);}7%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b2{0%,20%{opacity:0;transform:translateY(7px);}25%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b3{0%,46%{opacity:0;transform:translateY(7px);}51%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @keyframes b4{0%,66%{opacity:0;transform:translateY(7px);}71%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
+    @media(prefers-reduced-motion:reduce){.bub{opacity:1 !important;animation:none !important;}}
+
+    .wsgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+    .ws{display:flex;gap:13px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:15px 17px;}
+    .ws .ic{font-size:26px;flex:0 0 auto;}
+    .ws h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px;}
+    .ws p{font-size:13.5px;color:var(--muted);line-height:1.6;}
+
+    .links{display:flex;flex-wrap:wrap;gap:10px;}
+    .links a{font-size:14px;font-weight:700;color:var(--navy-2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-decoration:none;}
+    .links a:hover{border-color:var(--tool);}
+    .fine{font-size:12.5px;color:var(--muted);margin-top:12px;}
+
+    @media(max-width:720px){.plans,.grid2,.wsgrid{grid-template-columns:1fr;}}
+    @media print{
+      @page{margin:14mm;}
+      .site-header,.site-footer,.backlink,.printbtn{display:none !important;}
+      .page-container{margin:0;max-width:100%;padding:0;}
+      .sec{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
+      .bub{opacity:1 !important;animation:none !important;}
+      a[href]{color:var(--navy);text-decoration:none;}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">Do Lab AI</a>
+      <nav>
+        <a href="../index.html">学ぶ（M3）</a>
+        <a href="../../m1/index.html">設計書Bot（M1）</a>
+        <a href="../../m2/index.html">AIパック（M2）</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
+    <a href="index.html" class="backlink">← AIツール紹介 一覧に戻る</a>
+    <p class="page-sub" style="color:var(--tool-d);font-weight:700;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;">M3 — 学ぶ ｜ AIツール紹介</p>
+
+    <div class="toolhead">
+      <div class="toollogo">✦</div>
+      <div>
+        <div class="maker">Microsoft</div>
+        <h1 class="page-title" style="margin:0;">Microsoft Copilot</h1>
+      </div>
+    </div>
+    <p class="page-sub" style="margin:6px 0 16px;">Word・Excel・Outlook・Teams など、普段のMicrosoft 365アプリの中で使えるAIアシスタント。</p>
+    <a class="cta" href="https://copilot.microsoft.com" target="_blank" rel="noopener">公式サイトを開く →</a>
+
+    <div style="height:22px;"></div>
+
+    <!-- ① 概要・特徴 -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">1</div><h2>サービス概要・特徴</h2></div>
+      <p class="lead">Microsoft Copilot（旧 Bing AI / Microsoft 365 Copilot）は、Microsoftが提供するAIアシスタント。<b>Word・Excel・Outlook・Teams など Microsoft 365 アプリに組み込まれている</b>のが最大の特徴で、普段の業務アプリの中でそのままAIを呼び出せます。Webチャット版（無料）もあります。</p>
+      <div class="chips">
+        <span class="chip">🧩 Microsoft 365に統合</span>
+        <span class="chip">🪟 Windowsにも標準搭載</span>
+        <span class="chip">🔎 Web検索（Bing）連携</span>
+        <span class="chip">🖼️ 画像生成にも対応</span>
+      </div>
+    </section>
+
+    <!-- ② 使い方のポイント -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">2</div><h2>使い方のポイント（プロンプト例）</h2></div>
+      <p class="lead" style="margin-bottom:10px;">「<b>どのアプリの・何を・どうしたいか</b>」を伝えると、各アプリの中で効率よく使えます👇</p>
+      <div class="prompt"><div class="q">📊 Excelの数式</div><p>「この売上表に、月別合計と前月比を出す数式を入れて。グラフも作って。」</p></div>
+      <div class="prompt"><div class="q">🗒️ Teamsの議事録</div><p>「この会議の文字起こしから、決定事項とToDo（担当つき）を箇条書きでまとめて。」</p></div>
+      <div class="prompt"><div class="q">📧 Outlookのメール</div><p>「このスレッドを3行で要約して、丁寧な返信案も作って。」</p></div>
+
+      <p class="democap">▼ 実際に動かしている様子（自動再生）</p>
+      <div class="demo">
+        <div class="demo-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">Microsoft Copilot（Excel）</span><span class="live">● 自動再生</span></div>
+        <div class="demo-body">
+          <div class="bub me b1"><span class="who">あなた</span>この売上表に、月別合計を出す数式と前月比を入れて。</div>
+          <div class="bub ai b2"><span class="who">✦ Copilot</span>合計は SUM、前月比は (今月−先月)/先月 で算出します。C列とD列に数式を入れました。</div>
+          <div class="bub me b3"><span class="who">あなた</span>月別売上のグラフも作って。</div>
+          <div class="bub ai b4"><span class="who">✦ Copilot</span>折れ線グラフを作成し、シートに挿入しました 👇</div>
+        </div>
+      </div>
+      <p class="fine">※ 上記は表示イメージです（自動でくり返し再生）。実際の画面は Microsoft 公式でご確認ください。</p>
+    </section>
+
+    <!-- ③ Office連携 -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">3</div><h2>Word・Excel・Teams・Outlook での活用</h2></div>
+      <p class="lead" style="margin-bottom:12px;">普段使う Microsoft 365 アプリの中で、そのままCopilotを呼び出せます（Microsoft 365 Copilot 契約時）。</p>
+      <div class="wsgrid">
+        <div class="ws"><span class="ic">📝</span><div><h4>Word</h4><p>文章のたたき台作成・要約・体裁の調整。</p></div></div>
+        <div class="ws"><span class="ic">📊</span><div><h4>Excel</h4><p>数式の作成、集計・分析、グラフの自動生成。</p></div></div>
+        <div class="ws"><span class="ic">🎥</span><div><h4>Teams</h4><p>会議の自動要約・メモ作成、ToDo抽出。</p></div></div>
+        <div class="ws"><span class="ic">📧</span><div><h4>Outlook</h4><p>長いメールの要約、返信文の下書き作成。</p></div></div>
+        <div class="ws"><span class="ic">📽️</span><div><h4>PowerPoint</h4><p>プレゼン資料のたたき台作成・スライド構成の提案。</p></div></div>
+        <div class="ws"><span class="ic">📓</span><div><h4>OneNote</h4><p>メモの整理・議事録のまとめ・アイデアの構造化。</p></div></div>
+      </div>
+    </section>
+
+    <!-- ④ 中小企業での活用シーン -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">4</div><h2>中小企業での主な活用シーン</h2></div>
+      <div class="grid2">
+        <div class="ucard"><span class="ic">🗒️</span><h4>議事録の自動化</h4><p>Teams会議をそのまま要約し、決定事項とToDoを整理。</p></div>
+        <div class="ucard"><span class="ic">📈</span><h4>Excel数式の生成</h4><p>「やりたいこと」を言うだけで集計・分析の数式を作成。</p></div>
+        <div class="ucard"><span class="ic">📧</span><h4>メール要約・返信</h4><p>Outlookの長いスレッドを要約し、返信案も用意。</p></div>
+        <div class="ucard"><span class="ic">📑</span><h4>資料作成</h4><p>Word・PowerPointで報告書や提案資料のたたき台を作成。</p></div>
+        <div class="ucard"><span class="ic">🌐</span><h4>翻訳・多言語対応</h4><p>海外取引先へのメールや資料を自然な英語に翻訳。</p></div>
+        <div class="ucard"><span class="ic">🔍</span><h4>チェック・校正</h4><p>文章の誤り・抜け漏れの確認、表現の改善提案。</p></div>
+      </div>
+    </section>
+
+    <!-- ⑤ 他ツールとの使い分け -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">5</div><h2>他ツールとの使い分け</h2></div>
+      <p class="lead" style="margin-bottom:10px;"><b>Microsoft Copilotは「Microsoft 365（Office）を使う職場」に最適</b>。Word・Excel・Teamsの中で完結できます。Google中心なら <b>Gemini</b>、まず万能に試すなら <b>ChatGPT</b>、長文・丁寧さなら <b>Claude</b> が得意です。</p>
+      <div class="links">
+        <a href="gemini.html">✦ Gemini の紹介</a>
+        <a href="chatgpt.html">🤖 ChatGPT の紹介</a>
+        <a href="../compare.html">⚖️ AIツール比較表</a>
+      </div>
+    </section>
+
+    <!-- ⑥ 料金プラン -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">6</div><h2>料金プラン</h2></div>
+      <div class="plans">
+        <div class="plan"><div class="name">無料版（Copilot）</div><div class="price">¥0<span>/月</span></div><div class="who">Webチャットで利用<br>（旧 Bing Chat）</div></div>
+        <div class="plan hl"><div class="name">Microsoft 365 Copilot</div><div class="price">約¥4,500<span>/人・月</span></div><div class="who">Word/Excel/Teams等の<br>アプリ内で利用（M365契約が必要）</div></div>
+      </div>
+      <p class="fine">※ 料金・提供条件は変わることがあります（年契約・対象ライセンスなどの条件あり）。正確な内容は <b>Microsoft 公式ページ</b> でご確認ください。</p>
+    </section>
+
+    <!-- ⑦ 公式リンク -->
+    <section class="sec">
+      <div class="sec-h"><div class="sec-no">7</div><h2>公式リンク</h2></div>
+      <div class="links">
+        <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">🔗 Microsoft Copilot（copilot.microsoft.com）</a>
+        <a href="https://www.microsoft.com/microsoft-365/copilot" target="_blank" rel="noopener">🔗 Microsoft 365 Copilot</a>
+        <a href="https://support.microsoft.com/copilot" target="_blank" rel="noopener">🔗 ヘルプ・サポート</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
+  </footer>
+</body>
+</html>
