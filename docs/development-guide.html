@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do Lab AI 開発ガイド（ページ開発・更新手順）</title>
+<style>
+  :root{--navy:#0b2545;--navy2:#163a6b;--m3:#9b5de5;--m3d:#7b3fc4;--bg:#f6f7fb;--white:#fff;--line:#e3e6f0;--ink:#1e2438;--sub:#5d6480;--soft:#f3ecfd;--code:#0f1530;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.9;font-size:17.5px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2) 60%,#1e4a8a);color:#fff;padding:36px 0 32px;}
+  header .in{max-width:920px;margin:0 auto;padding:0 26px;}
+  header .tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:6px 16px;border-radius:999px;font-size:14px;font-weight:700;margin-bottom:12px;}
+  header h1{font-size:34px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+  header p{font-size:15px;color:rgba(255,255,255,.85);}
+  .doc{max-width:920px;margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:44px 52px;box-shadow:0 6px 24px rgba(11,37,69,.06);}
+  h2{font-size:27px;font-weight:900;color:var(--navy);margin:34px 0 14px;padding:12px 0 12px 18px;border-left:8px solid var(--m3);background:var(--soft);border-radius:0 12px 12px 0;}
+  h2:first-of-type{margin-top:8px;}
+  h3{font-size:19px;font-weight:800;color:var(--m3d);margin:24px 0 8px;}
+  p{margin:10px 0;}
+  ul,ol{margin:10px 0 10px 8px;padding-left:26px;}
+  li{margin:7px 0;font-size:16.5px;}
+  ul li::marker,ol li::marker{color:var(--m3);}
+  code{background:var(--soft);color:var(--m3d);padding:2px 7px;border-radius:5px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.88em;}
+  pre{background:var(--code);color:#e6e9ff;border-radius:11px;padding:16px 20px;overflow-x:auto;font-size:14px;line-height:1.7;margin:12px 0;}
+  pre code{background:none;color:inherit;padding:0;}
+  .cm{color:#8b93c9;}
+  table{width:100%;border-collapse:collapse;font-size:15.5px;margin:12px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  thead th{background:var(--navy);color:#fff;font-weight:800;}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody tr:last-child td{border-bottom:none;}
+  td:first-child{font-weight:700;color:var(--navy);}
+  blockquote{background:none;border:none;border-radius:0;padding:0;font-size:15px;color:var(--sub);margin:12px 0;}
+  hr{border:none;border-top:1px solid var(--line);margin:30px 0;}
+  /* 手順リスト（番号付き丸） */
+  .steplist{list-style:none;margin:14px 0;padding:0;counter-reset:st;}
+  .steplist li{position:relative;padding:13px 0 13px 56px;border-bottom:1px solid var(--line);font-size:17.5px;line-height:1.7;}
+  .steplist li:last-child{border-bottom:none;}
+  .steplist li::before{counter-increment:st;content:counter(st);position:absolute;left:6px;top:12px;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--m3),var(--m3d));color:#fff;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;}
+  .steplist li b{color:var(--navy);}
+  .steplist li .note{display:block;font-size:15.5px;font-weight:400;color:var(--sub);margin-top:5px;line-height:1.6;}
+  /* ターミナル画面風（実際のコマンド） */
+  .term{background:#0d1530;border-radius:12px;overflow:hidden;margin:12px 0;box-shadow:0 10px 28px rgba(11,37,69,.22);}
+  .term-bar{background:#1b2547;display:flex;align-items:center;gap:8px;padding:11px 16px;}
+  .term-bar .d{width:12px;height:12px;border-radius:50%;}
+  .term-bar .r{background:#ff5f57;}.term-bar .y{background:#febc2e;}.term-bar .g{background:#28c840;}
+  .term-bar .t{margin-left:8px;font-size:13px;color:#8a93c2;font-family:"SF Mono",Menlo,Consolas,monospace;}
+  .term-body{padding:18px 22px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;line-height:1.95;color:#e6e9ff;}
+  .term-body .p{color:#7be0b0;}
+  .term-body .cm2{color:#8a93c2;}
+  .codecap{font-size:14px;font-weight:700;color:var(--m3d);margin:20px 0 4px;}
+  .codenote{font-size:13.5px;color:var(--sub);margin:8px 0 0;}
+  .toc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px 34px;margin:22px 0;}
+  .toc strong{display:block;color:var(--m3);font-size:18px;font-weight:900;letter-spacing:.05em;margin-bottom:14px;}
+  .toc a{color:var(--navy);text-decoration:none;font-weight:800;}
+  .toc a:hover{text-decoration:underline;}
+  .toc ol{margin:0;padding-left:30px;}
+  .toc li{margin:11px 0;font-size:19px;}
+  .toc li::marker{color:var(--m3);font-weight:900;}
+  .meta{color:var(--sub);font-size:14px;}
+  @media(max-width:640px){.doc{padding:26px 20px;}header h1{font-size:25px;}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <span class="tag">🛠 DEVELOPMENT GUIDE</span>
+  <h1>Do Lab AI 開発ガイド</h1>
+  <p>サイトのページを追加・更新するための手順書（特に M3 Cowork 系ページを想定）</p>
+</div></header>
+
+<div class="doc">
+  <p class="meta">公開URL：https://sakatamotoharu-dooox.github.io/dolab-ai/　/　リポジトリ：sakatamotoharu-dooox/dolab-ai　/　想定読者：制作担当（開発経験が浅くても追える粒度）</p>
+
+  <div class="toc"><strong>目次</strong>
+    <ol>
+      <li><a href="#s1">開発環境のセットアップ手順</a></li>
+      <li><a href="#s2">ファイル構成・編集対象ファイル</a></li>
+      <li><a href="#s3">ローカル確認方法</a></li>
+      <li><a href="#s4">デプロイ手順（push → GitHub Pages）</a></li>
+      <li><a href="#s5">コーディング規約・命名ルール</a></li>
+    </ol>
+  </div>
+
+  <h2 id="s1">1. 開発環境のセットアップ手順</h2>
+  <h3>必要なもの</h3>
+  <ul>
+    <li><b>Git</b>（バージョン管理）</li>
+    <li><b>テキストエディタ</b>（VS Code 推奨）</li>
+    <li><b>ブラウザ</b>（Google Chrome 推奨／PDF生成にも使用）</li>
+    <li><b>GitHubアカウント</b>（リポジトリへのアクセス権限・SSH鍵登録を推奨）</li>
+  </ul>
+  <h3>クローン手順</h3>
+  <p>リポジトリを手元に複製し、最新の <code>main</code> に更新します。</p>
+  <p class="codecap">▼ 実行コマンド</p>
+  <pre><code><span class="cm"># 1. リポジトリをクローン（SSH）</span>
+git clone git@github.com:sakatamotoharu-dooox/dolab-ai.git
+cd dolab-ai
+
+<span class="cm"># 2. 最新の main に更新（2回目以降）</span>
+git switch main
+git pull</code></pre>
+  <blockquote>※ SSHが使えない場合はHTTPSクローンでも可。ビルドツールや npm は不要です（素のHTML/CSSサイトのため）。</blockquote>
+
+  <h2 id="s2">2. ファイル構成・編集対象ファイル</h2>
+  <p>サイト全体は次のような構成です。セクション（M1／M2／M3）ごとにフォルダが分かれています。</p>
+  <p class="codecap">▼ ディレクトリ構成図</p>
+  <pre><code>dolab-ai/
+├── index.html            <span class="cm"># トップ（ダッシュボード）</span>
+├── assets/style.css      <span class="cm"># 共通デザイン ★全ページに影響</span>
+├── m1/index.html         <span class="cm"># M1 設計書Bot（--m1 コーラル）</span>
+├── m2/index.html         <span class="cm"># M2 AIパック（--m2 オレンジ）</span>
+└── m3/                   <span class="cm"># M3 学ぶ（--m3 パープル）</span>
+    ├── index.html          <span class="cm"># M3トップ ★ページ追加時はここにカードを足す</span>
+    ├── claude-code.html
+    ├── cowork.html          <span class="cm"># Cowork 基本的な使い方</span>
+    ├── cowork-features.html <span class="cm"># Cowork 機能と活用事例</span>
+    ├── tools/              <span class="cm"># AIツール紹介ページ群（ChatGPT/Claude など）</span>
+    │   ├── index.html        <span class="cm"># AIツール紹介トップ（一覧）</span>
+    │   └── chatgpt.html       <span class="cm"># 例：ChatGPT 紹介</span>
+    └── （compare.html / prompts.html など）</code></pre>
+  <h3>編集対象の早見表</h3>
+  <table>
+    <thead><tr><th>やりたいこと</th><th>編集するファイル</th></tr></thead>
+    <tbody>
+      <tr><td>新しいページを追加</td><td>該当ディレクトリ（例 <code>m3/</code>）に新規 <code>.html</code> を作成</td></tr>
+      <tr><td>一覧（M3トップ）に載せる</td><td><code>m3/index.html</code> に <code>card c-m3</code> のカードを1つ追加</td></tr>
+      <tr><td>AIツール紹介ページを追加</td><td><code>m3/tools/</code> に新規 <code>.html</code>、<code>m3/tools/index.html</code>（一覧）にも追記</td></tr>
+      <tr><td>そのページだけの見た目</td><td>対象ページの <code>&lt;style&gt;</code> ブロック</td></tr>
+      <tr><td>サイト全体の共通デザイン</td><td><code>assets/style.css</code> ★影響範囲が大きいので慎重に</td></tr>
+    </tbody>
+  </table>
+
+  <h3>URL設計・配置の方針</h3>
+  <ul>
+    <li>ページは原則 <b><code>/m3/xxx.html</code> のフラット配置</b>（README の URL 設計に準拠）。</li>
+    <li>AIツール紹介ページは <b><code>/m3/tools/</code> 配下</b>にまとめる（例 <code>/m3/tools/chatgpt.html</code>）。</li>
+    <li>Cowork セクションの詳しい構成・URL設計・サイトマップ位置・導線は、設計ドキュメント <code>docs/cowork-section-design.md</code> を参照（Issue #123）。</li>
+  </ul>
+
+  <h2 id="s3">3. ローカル確認方法</h2>
+  <p>公開前に、必ず手元のブラウザで確認します。</p>
+  <ul>
+    <li><b>方法A（手軽）</b>：対象の <code>.html</code> をダブルクリック／ブラウザにドラッグ（<code>file://</code>）</li>
+    <li><b>方法B（推奨）</b>：簡易サーバを立てる（リンクが本番に近い形で動く）
+      <pre><code>python3 -m http.server 8000
+<span class="cm"># → http://localhost:8000/m3/cowork.html を開く</span></code></pre>
+    </li>
+  </ul>
+  <h3>確認ポイント</h3>
+  <ul>
+    <li>ヘッダー／フッターが共通の見た目か</li>
+    <li>ページ内・ページ間のリンクが切れていないか</li>
+    <li>スマホ幅でレイアウトが崩れないか（レスポンシブ）</li>
+  </ul>
+
+  <h2 id="s4">4. デプロイ手順（push → GitHub Pages）</h2>
+  <p><code>main</code> への変更が GitHub Pages で<b>自動公開</b>されます（反映に最大5分）。<b>ブランチを切ってPR経由</b>でのマージを推奨します。次の <b>1〜7</b> の順で進めます。</p>
+  <ol class="steplist">
+    <li><b>作業ブランチを作成する</b><span class="note">例：<code>add-m3-xxx</code></span></li>
+    <li><b>ページを編集し、ローカルで表示を確認する</b><span class="note">第3章の方法で確認する</span></li>
+    <li><b>変更をコミットする</b><span class="note">何を変えたか短くメッセージを書く</span></li>
+    <li><b>GitHubへ push する</b></li>
+    <li><b>GitHub上でPRを作成する</b><span class="note">Compare &amp; pull request。対応Issueがあれば本文に <code>Closes #番号</code></span></li>
+    <li><b>レビュー後にマージする</b><span class="note">マージすると <code>main</code> に反映される</span></li>
+    <li><b>数分後、公開URLで確認する</b><span class="note">例：<code>https://sakatamotoharu-dooox.github.io/dolab-ai/m3/xxx.html</code></span></li>
+  </ol>
+
+  <p class="codecap">▼ 実際のコマンド（ステップ 1〜4 のターミナル操作）</p>
+  <div class="term">
+    <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">ターミナル — dolab-ai</span></div>
+    <div class="term-body"><span class="cm2"># 1. 作業ブランチを作成</span><br><span class="p">$</span> git switch -c add-m3-xxx<br><br><span class="cm2"># 2. 編集 → ローカルで表示確認（第3章）</span><br><br><span class="cm2"># 3. 変更をコミット</span><br><span class="p">$</span> git add m3/xxx.html m3/index.html<br><span class="p">$</span> git commit -m "m3: ○○ページを追加"<br><br><span class="cm2"># 4. GitHubへ push</span><br><span class="p">$</span> git push -u origin add-m3-xxx</div>
+  </div>
+  <p class="codenote">※ ステップ <b>5〜7</b>（PR作成・マージ・公開確認）は、GitHubの画面上での操作です。<code>gh</code> コマンドが無い環境では、PRの作成だけブラウザで行います（push までは Git で完結）。</p>
+  <h3>（任意）PDF版を作る</h3>
+  <p>配布用PDFが必要な場合、Google Chrome のヘッドレス機能で生成できます。各ページに <code>@media print</code> を用意しておくと、きれいなPDFになります。</p>
+  <p class="codecap">▼ 生成コマンド</p>
+  <pre><code>"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --no-pdf-header-footer \
+  --print-to-pdf="m3/xxx.pdf" \
+  "file://$(pwd)/m3/xxx.html"</code></pre>
+
+  <h2 id="s5">5. コーディング規約・命名ルール</h2>
+  <h3>ファイル・配置</h3>
+  <ul>
+    <li>ファイル名は<b>半角英小文字＋ハイフン</b>（例：<code>cowork-features.html</code>）。日本語・スペース不可。</li>
+    <li>配置先：学ぶ系は <code>m3/</code>、設計書Botは <code>m1/</code>、AIパックは <code>m2/</code>。</li>
+    <li>1ページ＝<b>1つのHTMLファイル</b>で作成する。</li>
+  </ul>
+  <p class="codecap">▼ 実行イメージ：正しい場所・名前でファイルを作る</p>
+  <div class="term">
+    <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">ターミナル</span></div>
+    <div class="term-body"><span class="cm2"># 学ぶ系のページは m3/ 配下に、半角英小文字＋ハイフンで作成</span><br><span class="p">$</span> cd m3<br><span class="p">$</span> touch cowork-features.html<br><span class="p">→</span> m3/cowork-features.html を作成しました</div>
+  </div>
+  <h3>ブランチ・PR</h3>
+  <ul>
+    <li>ブランチ名は内容がわかる英小文字＋ハイフン（例：<code>add-m3-cowork-features</code>）。</li>
+    <li>コミットメッセージは日本語OK。「何を・どうしたか」を簡潔に書く。</li>
+    <li>1つのPR＝1つのまとまった変更。</li>
+  </ul>
+  <p class="codecap">▼ 実行イメージ：ブランチ作成 → コミット → push</p>
+  <div class="term">
+    <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">ターミナル</span></div>
+    <div class="term-body"><span class="cm2"># ① 内容がわかる名前でブランチを作成</span><br><span class="p">$</span> git switch -c add-m3-cowork-features<br><br><span class="cm2"># ② 変更をコミット（何を・どうしたか）</span><br><span class="p">$</span> git add m3/cowork-features.html<br><span class="p">$</span> git commit -m "m3: Cowork機能ページを追加"<br><br><span class="cm2"># ③ push（このあと GitHub で PR を作成）</span><br><span class="p">$</span> git push -u origin add-m3-cowork-features</div>
+  </div>
+
+  <hr>
+  <h2>付録：Issue対応の基本フロー</h2>
+  <ol>
+    <li><b>Issueを確認</b> → 必要なら公式・事例などを追加調査</li>
+    <li><b>ブランチ作成</b> → ページ作成/更新 → <b>ローカル確認</b></li>
+    <li><b>PR作成</b>（<code>Closes #番号</code>）→ レビュー → <b>マージ</b> → 公開確認</li>
+  </ol>
+  <blockquote>※ 複数のPRが同じ <code>m3/index.html</code> を編集する場合、後からマージする方で<b>競合</b>が出ることがあります。1つマージするごとに最新 <code>main</code> に合わせて調整してください。</blockquote>
+
+  <p class="meta" style="margin-top:24px;">作成：Do Lab AI 開発ガイド ｜ 株式会社 Dooox</p>
+</div>
+</body>
+</html>
