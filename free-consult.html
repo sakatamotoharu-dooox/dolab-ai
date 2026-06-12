@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>無料相談 | Do Lab AI</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .consult-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 60%, #1e4a8a 100%);
+      color: var(--white);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .consult-hero h1 {
+      font-size: clamp(20px, 2.8vw, 28px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .consult-hero p {
+      font-size: 13px;
+      color: rgba(255,255,255,.8);
+      max-width: 480px;
+      margin: 0 auto 20px;
+    }
+    .consult-hero .cta-wrap {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .consult-body {
+      max-width: 860px;
+      margin: 64px auto;
+      padding: 0 24px;
+      display: grid;
+      gap: 48px;
+    }
+
+    /* --- 特典バナー --- */
+    .benefits-banner {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+    }
+    .benefit-item {
+      text-align: center;
+    }
+    .benefit-icon {
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .benefit-item strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .benefit-item span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* --- 対象者 --- */
+    .target-section h2,
+    .flow-section h2,
+    .form-section h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .target-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      list-style: none;
+    }
+    .target-list li {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--m3);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .target-list li::before {
+      content: "✓";
+      color: var(--m3);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* --- 流れ --- */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+    .flow-steps li {
+      counter-increment: step;
+      background: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-radius: 0;
+      position: relative;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .flow-steps li:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+    .flow-steps li:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+    .flow-steps li::before {
+      content: counter(step);
+      display: block;
+      width: 36px;
+      height: 36px;
+      background: var(--m3);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 16px;
+      border-radius: 50%;
+      line-height: 36px;
+      margin: 0 auto 12px;
+    }
+    .flow-steps li strong {
+      display: block;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .flow-steps li:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--m3);
+      font-weight: 900;
+      font-size: 18px;
+      z-index: 1;
+    }
+
+    /* --- Googleフォーム埋め込み --- */
+    .form-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .gform-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .gform-wrap iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    /* --- FAQ --- */
+    .faq-section h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: var(--font);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-q::after {
+      content: "+";
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--m3);
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    @media (max-width: 640px) {
+      .benefits-banner { padding: 24px 20px; }
+      .form-section { padding: 24px 20px; }
+      .flow-steps { grid-template-columns: 1fr; }
+      .flow-steps li:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+      .flow-steps li:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+      .flow-steps li:not(:last-child)::after {
+        content: "↓";
+        right: 50%;
+        top: auto;
+        bottom: -14px;
+        transform: translateX(50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Do Lab AI</a>
+      <nav>
+        <a href="m1/index.html">設計書Bot（M1）</a>
+        <a href="m2/index.html">AIパック（M2）</a>
+        <a href="m3/index.html">学ぶ（M3）</a>
+        <a href="free-consult.html" class="btn-primary" style="padding:8px 16px;font-size:13px;border-radius:6px;">無料相談</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <div class="consult-hero">
+    <p class="hero-tag">無料相談 — 完全無料・30分</p>
+    <h1>まず話してみてください。<br>一緒に考えます。</h1>
+    <p>「AIを使ってみたいけど何から始めればいい？」そんな段階でも大丈夫。現状をお聞きして、最適なステップをご提案します。</p>
+    <div class="cta-wrap">
+      <a href="#form" class="btn-primary" style="font-size:15px;padding:14px 40px;">今すぐ申し込む →</a>
+      <a href="#flow" class="btn-secondary" style="font-size:15px;padding:14px 40px;">流れを見る</a>
+    </div>
+  </div>
+
+  <div class="consult-body">
+
+    <!-- 特典バナー -->
+    <div class="benefits-banner">
+      <div class="benefit-item">
+        <div class="benefit-icon">🕐</div>
+        <strong>30分・完全無料</strong>
+        <span>費用は一切かかりません</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💻</div>
+        <strong>オンライン対応</strong>
+        <span>Zoom / Google Meet</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">📋</div>
+        <strong>その場でプラン提案</strong>
+        <span>最適なステップをご案内</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🔒</div>
+        <strong>営業一切なし</strong>
+        <span>相談後の押し売りなし</span>
+      </div>
+    </div>
+
+    <!-- こんな方に -->
+    <div class="target-section">
+      <h2>こんな方に向いています</h2>
+      <ul class="target-list">
+        <li>AIを業務に活かしたいが何から始めるかわからない</li>
+        <li>外注せず自分・社内でAIを動かせるようになりたい</li>
+        <li>ChatGPTは使っているがもっと深く活用したい</li>
+        <li>設計書・指示文を自分で作れるようになりたい</li>
+        <li>中小企業・士業・個人事業主として業務を効率化したい</li>
+        <li>特命AI集中道場・特命AI室に興味がある</li>
+      </ul>
+    </div>
+
+    <!-- 流れ -->
+    <div class="flow-section" id="flow">
+      <h2>申し込みから相談までの流れ</h2>
+      <ol class="flow-steps">
+        <li><strong>フォーム送信</strong>現状や課題を入力</li>
+        <li><strong>日程調整</strong>2営業日以内にご連絡</li>
+        <li><strong>無料相談</strong>オンライン30分</li>
+        <li><strong>プラン提案</strong>最適なステップをご案内</li>
+      </ol>
+    </div>
+
+    <!-- Googleフォーム埋め込み -->
+    <div class="form-section" id="form">
+      <h2>無料相談を申し込む</h2>
+      <p class="form-note">入力内容は相談対応のみに使用します。営業目的での連絡はしません。送信後、2営業日以内にメールでご連絡します。</p>
+      <div class="gform-wrap">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScLem-5XFtd1eXJCLDpBUFOvrSVrx260bpoiLzafpD02SpFRg/viewform?embedded=true"
+          height="920"
+          title="無料相談申し込みフォーム">
+          読み込んでいます…
+        </iframe>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>よくある質問</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">本当に無料ですか？</button>
+          <p class="faq-a">はい、完全無料です。相談後に費用が発生することはありません。有料プランのご提案をする場合でも、その場での契約を求めることはありません。</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">AIの知識がなくても大丈夫ですか？</button>
+          <p class="faq-a">まったく問題ありません。「AIって何から始めればいい？」という段階の方が最も多くご相談くださっています。現状をお聞きしながら、最適なステップをご案内します。</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">どんな業種・職種でも相談できますか？</button>
+          <p class="faq-a">はい。中小企業・士業・個人事業主・フリーランスなど、業種や規模を問わずご相談いただけます。特に社労士・製造業・小売サービス業での実績が豊富です。</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">相談後に必ず契約しなければなりませんか？</button>
+          <p class="faq-a">いいえ。相談後の契約は一切不要です。まずは現状の課題を整理し、方向性を確認するだけでも大丈夫です。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
