@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini（Google）の紹介 | Do Lab AI</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  :root{--gem:#4285f4;--gem-d:#2b6cd4;--gem-bg:#e8f0fe;--navy:#0b2545;--ink:#1f2937;--sub:#5a6480;--line:#e2e8f0;--bg:#f6f8fc;--white:#fff;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:16px;-webkit-font-smoothing:antialiased;}
+  html{scroll-behavior:smooth;}
+
+  /* ツールページ ヒーロー（まとめのヘッダーをサイト内ページ用に） */
+  .hero{background:linear-gradient(135deg,#4285f4,#9b72f2 60%,#d96570);color:#fff;padding:38px 0 34px;}
+  .hero .in{max-width:980px;margin:0 auto;padding:0 26px;}
+  .hero .maker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.92;margin-bottom:6px;}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:12px;}
+  .hero h1{font-size:40px;font-weight:900;line-height:1.25;margin-bottom:8px;}
+  .hero p{font-size:15px;color:rgba(255,255,255,.92);}
+  .hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#fff;color:var(--gem-d);font-size:15px;font-weight:800;padding:11px 24px;border-radius:8px;text-decoration:none;}
+  .hero .cta:hover{opacity:.9;}
+
+  .wrap{max-width:980px;margin:0 auto;padding:24px 26px 60px;}
+  .toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+  .backlink{display:inline-block;font-size:13px;font-weight:700;color:var(--gem-d);text-decoration:none;}
+  .backlink:hover{text-decoration:underline;}
+  .printbtn{background:var(--gem);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
+  .printbtn:hover{opacity:.88;}
+
+  .toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 26px;margin:8px 0 24px;box-shadow:0 2px 10px rgba(11,37,69,.05);}
+  .toc strong{display:block;color:var(--gem-d);font-size:14px;font-weight:800;letter-spacing:.05em;margin-bottom:10px;}
+  .toc ol{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 18px;padding-left:20px;}
+  .toc li{font-size:14.5px;margin:3px 0;}
+  .toc a{color:var(--navy);text-decoration:none;font-weight:700;}
+  .toc a:hover{color:var(--gem-d);text-decoration:underline;}
+
+  .feature{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 12px rgba(11,37,69,.05);}
+  .fh{background:linear-gradient(135deg,var(--gem-bg),#fff);padding:18px 24px;display:flex;align-items:center;gap:15px;border-bottom:1px solid var(--line);}
+  .fh .ic{font-size:34px;flex:0 0 auto;line-height:1;}
+  .fh h2{font-size:22px;font-weight:900;color:var(--navy);line-height:1.3;}
+  .fh .en{font-size:12px;font-weight:800;color:var(--gem-d);letter-spacing:.04em;}
+  dl{padding:18px 24px;display:grid;grid-template-columns:120px 1fr;gap:0;}
+  dt{font-size:13px;font-weight:800;color:var(--gem-d);padding:12px 0;border-top:1px solid var(--line);}
+  dd{font-size:15px;color:var(--ink);line-height:1.85;padding:12px 0;border-top:1px solid var(--line);}
+  dl > dt:first-of-type,dl > dt:first-of-type + dd{border-top:none;}
+  dd b{color:var(--gem-d);}
+  .plan{display:inline-block;font-size:12.5px;font-weight:800;border-radius:7px;padding:3px 11px;margin:2px 4px 2px 0;}
+  .p-free{background:#eafaf4;color:#0c7d61;border:1px solid #bfe6d8;}
+  .p-pro{background:#e9f0ff;color:#2540b8;border:1px solid #cfe0f7;}
+  .p-ws{background:#fdf1e1;color:#a85a1c;border:1px solid #f3d6b3;}
+
+  .note{background:#fff7eb;border:1px solid #f6d391;border-radius:12px;padding:14px 20px;font-size:14px;color:#7a5a16;margin:6px 0 22px;}
+  .note b{color:#9a6300;}
+  .src{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 26px;margin-top:10px;font-size:13.5px;color:var(--sub);line-height:1.9;}
+  .src h3{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;}
+  .src a{color:var(--gem-d);}
+
+  @media(max-width:680px){.toc ol{grid-template-columns:1fr;}dl{grid-template-columns:1fr;}dt{border-top:1px solid var(--line);padding-bottom:0;}dd{border-top:none;padding-top:4px;}.hero h1{font-size:28px;}}
+  @media print{
+    @page{margin:14mm;}
+    .site-header,.site-footer,.backlink,.printbtn,.hero .cta{display:none !important;}
+    .hero{background:none;color:var(--navy);padding:0 0 10px;}
+    .hero .tag{background:none;border:1px solid #ccc;color:var(--navy);}
+    .hero p{color:var(--sub);}
+    .feature{box-shadow:none;break-inside:avoid;}
+    a[href]{color:var(--navy);text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">Do Lab AI</a>
+      <nav>
+        <a href="../index.html">学ぶ（M3）</a>
+        <a href="../../m1/index.html">設計書Bot（M1）</a>
+        <a href="../../m2/index.html">AIパック（M2）</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero"><div class="in">
+    <span class="maker">Google</span>
+    <span class="tag">✦ FEATURE GUIDE ｜ 2026年版</span>
+    <h1>Gemini 独自機能まとめ</h1>
+    <p>Google製AI「Gemini」の主要9機能を「概要・使い方・活用例・対応プラン」で整理（公式・最新記事をもとに調査）。</p>
+    <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="cta">Gemini を開く →</a>
+  </div></header>
+
+  <div class="wrap">
+    <div class="toprow">
+      <a href="index.html" class="backlink">← AIツール紹介 一覧に戻る</a>
+      <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
+    </div>
+
+    <div class="note">⚠️ <b>料金・プラン名・モデル名・仕様は頻繁に変わります。</b>導入前に必ず Gemini / Google の公式ページで最新情報をご確認ください。プラン表記は目安です（無料＝Free、AI Pro＝個人有料、Workspace＝法人向け）。</div>
+
+    <div class="toc"><strong>収録機能（9つ）</strong>
+      <ol>
+        <li><a href="#f1">Gemini Advanced（高性能モデル）</a></li>
+        <li><a href="#f2">Google Workspace連携</a></li>
+        <li><a href="#f3">Deep Research（深掘り調査）</a></li>
+        <li><a href="#f4">Gems（カスタムAI作成）</a></li>
+        <li><a href="#f5">画像生成（Imagen）</a></li>
+        <li><a href="#f6">音声会話（Gemini Live）</a></li>
+        <li><a href="#f7">動画理解（YouTube・動画）</a></li>
+        <li><a href="#f8">長文コンテキスト（100万トークン）</a></li>
+        <li><a href="#f9">NotebookLM連携</a></li>
+      </ol>
+    </div>
+
+    <!-- 1 -->
+    <div class="feature" id="f1">
+      <div class="fh"><span class="ic">⭐</span><div><div class="en">GEMINI ADVANCED / GOOGLE AI PRO</div><h2>① Gemini Advanced（高性能モデル）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>最上位モデルに使える上位プラン。<b>旧「Gemini Advanced」は現在「Google AI Pro／Ultra」プランへ再編</b>され、<b>Gemini 3.1 Pro／Ultra</b>（最上位は超大規模処理）にアクセスできる。</dd>
+        <dt>使い方</dt><dd>有料プランを契約し、モデル選択で Pro／Ultra を指定。難しい分析・長文・コーディングで高精度な回答に。</dd>
+        <dt>活用例</dt><dd>高度なデータ分析、長文資料の読み込み、企画立案、プログラミング支援、研究・調査。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料：Flash中心＋Proは制限付き</span><span class="plan p-pro">Google AI Pro（約¥2,900）／Ultra</span></dd>
+      </dl>
+    </div>
+
+    <!-- 2 -->
+    <div class="feature" id="f2">
+      <div class="fh"><span class="ic">🧩</span><div><div class="en">GOOGLE WORKSPACE</div><h2>② Google Workspace連携（Gmail・Docs・Sheets・Meet）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>Gmail・Docs・Sheets・Slides・Meet・Drive に<b>「サイドパネル」として統合</b>。普段のGoogleアプリの中でそのままAIを呼び出せる。</dd>
+        <dt>使い方</dt><dd>各アプリ右側のサイドパネルから依頼。アプリを横断した情報検索・要約・生成も可能。<b>Workspace Studio</b>ではコード不要で業務フローを自動化。</dd>
+        <dt>活用例</dt><dd>Gmailの返信下書き・要約、Docsの文章作成、Sheetsの集計・分析、Meetの会議自動要約、複数アプリ連携の自動化。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-ws">Workspace Business Standard以上に標準搭載（追加料金なし）</span><span class="plan p-pro">個人は AI Pro 等</span> ※Starterは Gmail のみ。</dd>
+      </dl>
+    </div>
+
+    <!-- 3 -->
+    <div class="feature" id="f3">
+      <div class="fh"><span class="ic">🔬</span><div><div class="en">DEEP RESEARCH</div><h2>③ Deep Research（深掘り調査機能）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>Geminiが<b>自動でWeb検索を繰り返し、数十ページ規模のリサーチレポートを生成</b>する機能。</dd>
+        <dt>使い方</dt><dd>gemini.google.com にログイン → 入力欄下部のメニューから「<b>Deep Research</b>」を選択し、テーマを指示。</dd>
+        <dt>活用例</dt><dd>市場・競合調査、業界動向のレポート化、出典つきの情報収集。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料も利用可（1日の回数上限あり）</span><span class="plan p-pro">AI Pro 以上で回数・精度が向上</span></dd>
+      </dl>
+    </div>
+
+    <!-- 4 -->
+    <div class="feature" id="f4">
+      <div class="fh"><span class="ic">💎</span><div><div class="en">GEMS</div><h2>④ Gems（カスタムAI作成）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>特定用途に特化した<b>“自分専用AIエキスパート”をノーコードで作成</b>（ChatGPTのGPTs相当）。プリメイドGemも用意。</dd>
+        <dt>使い方</dt><dd>サイドバー「Gem」→「<b>Gemを作成</b>」→ 役割・指示・参照資料を設定。一度作れば選ぶだけで呼び出せる。</dd>
+        <dt>活用例</dt><dd>定型業務の専用アシスタント、文体・ルールを固定した文章作成、社内ナレッジ対応。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料で基本作成可（1日回数制限／Deep Research連携Gemは月5回）</span><span class="plan p-pro">AI Pro で上限緩和</span></dd>
+      </dl>
+    </div>
+
+    <!-- 5 -->
+    <div class="feature" id="f5">
+      <div class="fh"><span class="ic">🎨</span><div><div class="en">IMAGE GENERATION (IMAGEN)</div><h2>⑤ 画像生成（Imagen）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>テキストから画像を生成。2026年の主要モデルは <b>Imagen 4／Nano Banana 2／Nano Banana Pro</b>。文字表記・フォント描画が改良されている。</dd>
+        <dt>使い方</dt><dd>チャットで「<b>〜の画像を作って</b>」。会話で色・構図・文字を調整できる。</dd>
+        <dt>活用例</dt><dd>SNSバナー、サムネイル、資料イラスト、ロゴ案、商品イメージ。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料で利用可</span><span class="plan p-pro">AI Pro／Ultra で高性能・大量生成</span></dd>
+      </dl>
+    </div>
+
+    <!-- 6 -->
+    <div class="feature" id="f6">
+      <div class="fh"><span class="ic">🎙️</span><div><div class="en">GEMINI LIVE</div><h2>⑥ 音声会話モード（Gemini Live）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>自然な音声で<b>リアルタイム会話</b>できる機能。<b>日本語に完全対応</b>、40以上の言語に対応。</dd>
+        <dt>使い方</dt><dd>アプリで Gemini Live を起動。<b>カメラ共有・画面共有</b>をしながら、見せて質問することも可能。</dd>
+        <dt>活用例</dt><dd>移動中の壁打ち、語学の会話練習、面接リハーサル、ハンズフリーでの相談。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料に含まれる（音声・カメラ・画面共有）</span></dd>
+      </dl>
+    </div>
+
+    <!-- 7 -->
+    <div class="feature" id="f7">
+      <div class="fh"><span class="ic">🎬</span><div><div class="en">VIDEO UNDERSTANDING</div><h2>⑦ 動画理解（YouTube・動画ファイル）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>長文コンテキストを活かし、<b>動画の内容を理解・要約</b>。1時間規模の動画も一度に処理でき、YouTubeのURLや動画ファイルを解析できる。</dd>
+        <dt>使い方</dt><dd>YouTubeのリンクや動画ファイルを渡して「<b>要点をまとめて</b>」「この場面を説明して」と指示。</dd>
+        <dt>活用例</dt><dd>長い動画・講義の要約、会議録画の整理、参考動画からの情報抽出。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料でも一部可</span><span class="plan p-pro">AI Pro／Ultra で大容量・高精度</span></dd>
+      </dl>
+    </div>
+
+    <!-- 8 -->
+    <div class="feature" id="f8">
+      <div class="fh"><span class="ic">📚</span><div><div class="en">LONG CONTEXT</div><h2>⑧ 長文コンテキスト（最大100万トークン）</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>一度に<b>大量の情報</b>を処理できるのが強み。<b>100万トークン</b>＝書籍数冊／1時間の動画／約3万行のコード規模。最上位（Ultra）では<b>200万トークン</b>に拡大。</dd>
+        <dt>使い方</dt><dd>長大なPDF・複数資料・コードベース・動画をまとめて投入し、横断的に分析・要約させる。</dd>
+        <dt>活用例</dt><dd>大量資料の一括分析、長編動画・音声の処理、巨大なコード/仕様書の読み込み。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-pro">AI Pro／Ultra で本領発揮（大容量処理）</span></dd>
+      </dl>
+    </div>
+
+    <!-- 9 -->
+    <div class="feature" id="f9">
+      <div class="fh"><span class="ic">📓</span><div><div class="en">NOTEBOOKLM</div><h2>⑨ NotebookLM連携</h2></div></div>
+      <dl>
+        <dt>概要</dt><dd>自分の資料を読み込ませ、<b>出典つきで回答・整理する“研究ノート”ツール</b>。最新Geminiモデル＋100万トークン文脈で動作し、音声要約（Audio Overview）なども。</dd>
+        <dt>使い方</dt><dd>NotebookLMに資料（PDF・URL等）をアップロード → 質問・要約・<b>ポッドキャスト風の音声化</b>。</dd>
+        <dt>活用例</dt><dd>社内資料の横断Q&A、研究・学習ノート、大量資料からの要点抽出と音声まとめ。</dd>
+        <dt>対応プラン</dt><dd><span class="plan p-free">無料でも利用可</span><span class="plan p-pro">Google AI Pro に含まれ上限拡大</span></dd>
+      </dl>
+    </div>
+
+    <!-- 出典 -->
+    <div class="src">
+      <h3>参考・出典（2026年時点の調査）</h3>
+      ・<a href="https://gemini.google/jp/subscriptions/?hl=ja" target="_blank" rel="noopener">Gemini 公式（Google AI Pro / Ultra）</a> ／ <a href="https://gemini.google.com/updates?hl=ja" target="_blank" rel="noopener">Gemini リリース最新情報</a><br>
+      ・<a href="https://support.google.com/gemini/answer/15229592?hl=ja" target="_blank" rel="noopener">Workspaceアプリ接続（公式ヘルプ）</a> ／ <a href="https://gemini.google/jp/overview/gems/?hl=ja" target="_blank" rel="noopener">Gems 公式</a><br>
+      ・<a href="https://www.ai-souken.com/article/what-is-gemini-advanced" target="_blank" rel="noopener">Gemini料金ガイド</a> ／ <a href="https://aipicks.jp/mag/gemini-gems-guide-2026" target="_blank" rel="noopener">Gems完全ガイド2026</a> ／ <a href="https://tech-camp.in/ai-navi/gemini-deep-research/" target="_blank" rel="noopener">Deep Research解説</a><br>
+      ・<a href="https://gemini.google/overview/long-context/" target="_blank" rel="noopener">長文コンテキスト（公式）</a> ／ <a href="https://9to5google.com/2025/10/29/notebooklm-chat-upgrade/" target="_blank" rel="noopener">NotebookLM 100万トークン</a> ／ <a href="https://miralab.co.jp/media/gemini-live/" target="_blank" rel="noopener">Gemini Live 解説</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Gemini 独自機能まとめ ｜ Do Lab AI ｜ 2026年6月作成　※仕様・料金は変動します。最新は公式でご確認ください。</p>
+  </footer>
+</body>
+</html>
