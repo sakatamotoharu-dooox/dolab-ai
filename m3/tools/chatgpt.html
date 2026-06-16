@@ -51,11 +51,13 @@
   .sechd:hover{filter:brightness(1.06);}
   .sechd::after{content:"▾";margin-left:auto;font-size:18px;font-weight:900;opacity:.92;transition:transform .25s;flex:0 0 auto;}
   .sec.open .sechd::after{transform:rotate(180deg);}
-  .secteaser{background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(11,37,69,.05);}
-  .secteaser p{font-size:13.5px;color:var(--ink);margin:0;line-height:1.7;flex:1 1 340px;}
-  .secteaser p b{color:var(--gpt-d);}
-  .more-btn{flex:0 0 auto;background:var(--gpt-bg);color:var(--gpt-d);border:1.5px solid var(--gpt);border-radius:9px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s;}
-  .more-btn:hover{background:var(--gpt);color:#fff;}
+  .secteaser{background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;padding:18px 24px 20px;box-shadow:0 2px 12px rgba(11,37,69,.05);}
+  .tz-lead{font-size:14px;color:var(--ink);margin:0 0 9px;line-height:1.85;}
+  .tz-lead b{color:var(--gpt-d);}
+  .tz-points{font-size:12.5px;color:var(--sub);margin:0 0 14px;line-height:1.75;padding:8px 12px;background:#f6faf8;border-radius:8px;}
+  .tz-points b{color:var(--gpt-d);}
+  .more-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gpt);color:#fff;border:none;border-radius:9px;padding:11px 22px;font-size:13.5px;font-weight:800;cursor:pointer;transition:opacity .15s,transform .1s;box-shadow:0 2px 8px rgba(16,163,127,.28);}
+  .more-btn:hover{opacity:.9;transform:translateY(-1px);}
   .sec.open .secteaser{display:none;}
   .secbody{display:none;}
   .sec.open .secbody{display:block;}
@@ -184,7 +186,11 @@
   <!-- 1 実用性 -->
   <div class="sec" id="s1">
     <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">独自機能のUX：Canvas／画像編集／音声／デスクトップ統合／GPTs</div></div></div>
-    <div class="secteaser"><p>この章でわかること：<b>Deep Research・agent mode</b> など、ChatGPTが“仕事の面倒”を肩代わりする独自機能と、使うと実際に何が変わるか。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">ChatGPTは日本語で話しかけるだけで、調べ物・PC操作・資料づくりまで代行する“デキるアシスタント”に進化しました。<b>Deep Research</b>（出典つきの調査を数十分で）や <b>agent mode</b>（ブラウザ操作の代行）など、仕事の面倒を肩代わりする独自機能を、使うと何が変わるかまで具体的に紹介します。</p>
+      <p class="tz-points"><b>この章の要点：</b>Deep Research ／ agent mode ／ Canvas ／ 画像・音声 ／ GPTs ／ 入出力でできること</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <p><b>ChatGPTは、チャット欄に日本語で話しかけるだけで使えるAI</b>です。2026年のいまは、ただ質問に答えるだけでなく、<b>自分でネットを調べ、パソコン操作を代行し、資料まで作ってくれる“デキるアシスタント”</b>に進化しました。</p>
       <p>うれしいのは、<b>むずかしい専門知識や“上手な命令文”が書けなくても大丈夫</b>なこと。画面のボタンを押したり、ふだんの言葉で「〜して」と頼むだけで使えるよう工夫されています。文章づくり・調べ物・画像づくり・データ分析を、<b>1つのアプリ</b>で完結できます。</p>
@@ -244,7 +250,11 @@
   <!-- 2 技術戦略 -->
   <div class="sec" id="s2">
     <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">モデル構造・推論方式・開発/連携基盤・企業導入アーキテクチャ</div></div></div>
-    <div class="secteaser"><p>この章でわかること：ChatGPTの<b>裏側のしくみ</b>と、<b>RAG・AIゲートウェイ</b>など「社内データを安全に業務利用する土台」の作り方。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">ChatGPTの裏側は「速く返す・深く考える・交通整理する」役割分担チーム。社内で安全に業務利用する土台として、<b>RAG</b>（社内資料を“出典つき”で答えに使うしくみ）と <b>AIゲートウェイ</b>（モデルを差し替え自由にする中継層）を解説します。RAGとファインチューニングの使い分けも。</p>
+      <p class="tz-points"><b>この章の要点：</b>統一システム／ルーター ／ RAG・GraphRAG ／ AIゲートウェイ ／ MCP ／ FTとの使い分け</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <div class="callout">🧩 <b>この章をひとことで</b>：ChatGPTの「裏側のしくみ」と「会社で安全に動かす土台」の話です。専門用語が続くので<b>太字カッコ内にやさしい言い換え</b>を添えました。結論だけ知りたい人は、章末の<b>💪もたらす効果</b>へ。</div>
       <h3>モデルの内部構造：1つの巨大AIではなく“役割分担チーム”</h3>
@@ -292,7 +302,11 @@
   <!-- 3 モデル戦略 -->
   <div class="sec" id="s3">
     <div class="sechd"><span class="n">3</span><div><h2>モデル戦略と選定基準</h2><div class="src">ライセンス/TCO・API最適化・マルチモデル・KPI</div></div></div>
-    <div class="secteaser"><p>この章でわかること：無料／Plus／Business／Enterprise、<b>結局どれが正解か</b>。料金とROIで選ぶ判断基準。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">無料／Plus（$20）／Business／Enterprise の料金体系と“ぜんぶ込みの費用（TCO）”、2026年のクレジット制、API最適化、用途別のマルチモデル戦略を整理。結論は <b>「個人＝Plus、法人＝Business」</b>。料金で迷ったら、まずこの章です。</p>
+      <p class="tz-points"><b>この章の要点：</b>料金表・TCO ／ クレジット制 ／ API最適化 ／ マルチモデル ／ KPI</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <p>選び方は「無料か、月20ドルか」の単純な二択から、<b>“AIにいくら使い、いくら得しているか”を管理する段階</b>（専門用語で<b>AI-FinOps＝AIのコスト管理術</b>）へ進みました。新しいモデルほど料金が跳ね上がるため、使用量を見える化しないと、<b>部署ごとに勝手に契約・課金が増える“無秩序な広がり”（AIスプロール）</b>で予算を浪費します。だから ①最適なプラン選び ②安全なデータ連携 ③用途別の使い分け ④効果の測定 をセットで考える必要があります。</p>
 
@@ -335,7 +349,11 @@
   <!-- 4 セキュリティ -->
   <div class="sec" id="s4">
     <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・リスク管理</h2><div class="src">データ境界・漏洩メカニズム・規制・ガバナンス</div></div></div>
-    <div class="secteaser"><p>この章でわかること：<b>機密を入れても大丈夫？</b> 学習オプトアウト・漏洩の型・規制・ガバナンスの要点。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">「機密を入れても大丈夫？」に答える章。プラン別の<b>学習利用とデータ境界</b>、情報漏洩の5類型と実例、日本・EUの規制、DLP・ゼロトラストなどのガバナンスまで。<b>情シス・法務・上司を説得する材料</b>がここで揃います。</p>
+      <p class="tz-points"><b>この章の要点：</b>学習オプトアウト ／ 漏洩5類型 ／ 規制（日本・EU） ／ ガバナンス・DLP</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <h3>プラン別のデータプライバシー境界</h3>
       <div class="tbl-scroll"><table>
@@ -384,7 +402,11 @@
   <!-- 5 ベンダーリスク -->
   <div class="sec" id="s5">
     <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">単一モデルの罠・BCP・マルチLLM・TPRM</div></div></div>
-    <div class="secteaser"><p>この章でわかること：<b>1社依存の落とし穴</b>と、「止まらない・高すぎない・乗り換えられる」体制の作り方。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">1社のAIだけに頼ると <b>SPOF（止まると全部止まる急所）</b> とロックインという経営リスクに。マルチLLM＋AIゲートウェイで稼働率99.5%→99.99%、動的ルーティングでAPI費が半減した例も。<b>止まらない・高すぎない・乗り換えられる</b>体制の作り方を解説します。</p>
+      <p class="tz-points"><b>この章の要点：</b>SPOF・BCP ／ マルチLLM ／ コスト最適化 ／ サーキットブレーカー</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <p>1社のAIだけに業務を作り込みすぎると、<b>ベンダーロックイン（その会社から乗り換えられない状態）</b>と<b>単一障害点（SPOF＝そこが止まると全部止まる急所）</b>が生まれます。これはIT部門だけの話ではなく、<b>事業が止まるかどうかという経営リスク（BCP＝事業継続）</b>です。</p>
 
@@ -445,7 +467,11 @@
   <!-- 6 ROI -->
   <div class="sec" id="s6">
     <div class="sechd"><span class="n">6</span><div><h2>ROI（投資対効果）の定量化</h2><div class="src">PoC→PoI・KPI・国内事例・ガバナンス</div></div></div>
-    <div class="secteaser"><p>この章でわかること：<b>“なんとなく便利”を金額で示す</b>方法。工数削減の試算と国内大企業の実績。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead"><b>“なんとなく便利”を金額で示す</b>章。工数削減の試算（提案書づくり約60%減ほか）、ROIの計算式、よくある失敗の回避策、<b>パナソニック コネクト（年44.8万時間削減）</b>など国内大企業の実績まで。稟議・予算化の根拠がそのまま手に入ります。</p>
+      <p class="tz-points"><b>この章の要点：</b>KPI設計（4軸） ／ ROI試算 ／ 失敗回避 ／ 国内事例</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <p>日本市場はPoC（技術検証）から<b>PoI（投資の証明）</b>へ。経営にROIを数値で示す段階。<b>ベースライン（Before）の可視化</b>が起点。</p>
       <div class="tbl-scroll"><table>
@@ -492,7 +518,11 @@
   <!-- 7 競合市場 -->
   <div class="sec" id="s7">
     <div class="sechd"><span class="n">7</span><div><h2>競合・市場ポジション</h2><div class="src">市場シェア・グローバル/国産LLM・コモディティ化</div></div></div>
-    <div class="secteaser"><p>この章でわかること：<b>ChatGPT・Gemini・Claude</b> の今の勢力図と、自社のための選び方。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead"><b>ChatGPT・Gemini・Claude</b> の今の勢力図と各社の強み・最適業務、国産LLM（tsuzumi／cotomi）の台頭、テキスト生成のコモディティ化まで。結論は「ChatGPTを軸にマルチLLMで適材適所」。<b>自社に合うAIの選び方</b>が見えてきます。</p>
+      <p class="tz-points"><b>この章の要点：</b>市場シェアの傾向 ／ 各社の強み ／ 国産LLM ／ コモディティ化</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <p>市場は「一強」→「三つ巴」→<b>用途別の多極化</b>へ。推奨は<b>マルチLLM戦略＋AIガバナンス</b>。</p>
 
@@ -531,7 +561,11 @@
   <!-- 8 業種別シナリオ -->
   <div class="sec" id="s8">
     <div class="sechd"><span class="n">8</span><div><h2>業種別の活用シナリオ</h2><div class="src">部門別の具体的ユースケース</div></div></div>
-    <div class="secteaser"><p>この章でわかること：営業・経理・開発など<b>部門別の具体的な使い方</b>。自部署はどこから始めるか。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">コーポレート（法務・経理・人事）・営業・マーケ・バックオフィス・開発・士業など、<b>部門別の具体的なユースケース</b>と、それぞれ主に使う機能を一覧化。<b>「自部署はどこから始めるか」</b>が一目で分かり、小さく始めて定着させるコツも紹介します。</p>
+      <p class="tz-points"><b>この章の要点：</b>部門別シナリオ ／ 使う機能 ／ 始め方のコツ</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <div class="tbl-scroll"><table>
         <tr><th>部門・業界</th><th>シナリオ</th><th>主に使う機能</th></tr>
@@ -551,7 +585,11 @@
   <!-- 9 導入・運用・定着 -->
   <div class="sec" id="s9">
     <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">ガイドライン・教育・評価・推進体制</div></div></div>
-    <div class="secteaser"><p>この章でわかること：<b>「配って終わり」にしない</b>ための、教育・評価・推進体制（CoE）の設計。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">導入を <b>「配って終わり＝誰も使わない」にしない</b> ための設計。入力してよい情報のガイドライン標準化、パイロット→Quick Win、教育・評価制度、推進チーム（CoE）まで、<b>定着させる4ステップ</b>を具体的に解説します。</p>
+      <p class="tz-points"><b>この章の要点：</b>ガイドライン標準化 ／ 段階導入 ／ 教育・評価 ／ CoE</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <h3>① ガイドラインとプロンプトの標準化</h3>
       <ul>
@@ -581,7 +619,11 @@
   <!-- 10 エージェンティックAI -->
   <div class="sec" id="s10">
     <div class="sechd"><span class="n">10</span><div><h2>エージェンティックAI</h2><div class="src">自律エージェント・MCP連携・Human-in-the-Loop</div></div></div>
-    <div class="secteaser"><p>この章でわかること：AIが“相談相手”から<b>“仕事を片付ける戦力”</b>へ。自律実行のしくみと安全設計。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">2026年最大のトレンド、AIが目標を自分で分解・実行する <b>“新しい労働力”</b> へ。MCP連携・自己修復・思考の可視化のしくみと、お金や本番データに関わる重要操作は<b>人が承認する（Human-in-the-Loop）</b>安全設計を解説します。</p>
+      <p class="tz-points"><b>この章の要点：</b>自律実行のしくみ ／ MCP ／ 安全設計（HITL）</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <p>2026年最大のトレンドは、AIが「対話相手」から<b>目標達成のため自律的に判断・実行する「エージェンティックAI」</b>へ進化したこと。AIを効率化ツールでなく<b>「自律的に判断・実行する新しい労働力」</b>として組織設計に組み込む段階。AI事業者ガイドラインは「複数エージェントが協調する目標主導型システム」と定義。</p>
       <h3>メカニズム（ゴールを指定するだけ）</h3>
@@ -600,7 +642,11 @@
   <!-- 11 ロードマップ -->
   <div class="sec" id="s11">
     <div class="sechd"><span class="n">11</span><div><h2>最新アップデート・ロードマップ</h2><div class="src">モデル世代交代の時系列と今後</div></div></div>
-    <div class="secteaser"><p>この章でわかること：モデル世代交代の<b>時系列と今後の予定</b>。いつ・何が変わるか。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">GPT-5.5公開などモデル世代交代の <b>時系列と今後の予定</b> を一覧化。「いつ・何が変わるか」を押さえ、古いモデルの退役や新機能の波に<b>乗り遅れないため</b>の章です。</p>
+      <p class="tz-points"><b>この章の要点：</b>世代交代の時系列 ／ 退役スケジュール ／ 今後の予定</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <div class="tbl-scroll"><table>
         <tr><th>時期</th><th>出来事</th></tr>
@@ -618,7 +664,11 @@
   <!-- 12 制限・注意点 -->
   <div class="sec" id="s12">
     <div class="sechd"><span class="n">12</span><div><h2>制限・注意点</h2><div class="src">ハルシネーション・上限・鮮度・機密</div></div></div>
-    <div class="secteaser"><p>この章でわかること：使う前に知っておく<b>限界</b>。ハルシネーション・利用上限・機密の注意点。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
+    <div class="secteaser">
+      <p class="tz-lead">使う前に知っておくべき <b>限界</b>。利用上限・コンテキスト上限・ハルシネーション（もっともらしい誤り）・知識の鮮度・機密・著作権の注意点をまとめています。<b>トラブルを避ける最終チェック</b>に。</p>
+      <p class="tz-points"><b>この章の要点：</b>利用上限 ／ ハルシネーション ／ 知識の鮮度 ／ 機密・著作権</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
     <div class="secbody">
       <ul>
         <li><b>利用上限</b>：無料はメッセージ数・高度機能に制限。Plus＜Pro で緩和（上限は一定時間でリセット）。</li>
