@@ -47,13 +47,25 @@
   .toc a:hover{color:var(--gpt-d);text-decoration:underline;}
 
   .sec{margin:0 0 16px;}
-  .sechd{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--gpt),var(--gpt-d));color:#fff;border-radius:14px;padding:18px 24px;cursor:pointer;user-select:none;transition:filter .15s,border-radius .15s;}
+  .sechd{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--gpt),var(--gpt-d));color:#fff;border-radius:14px 14px 0 0;padding:18px 24px;cursor:pointer;user-select:none;transition:filter .15s;}
   .sechd:hover{filter:brightness(1.06);}
   .sechd::after{content:"▾";margin-left:auto;font-size:18px;font-weight:900;opacity:.92;transition:transform .25s;flex:0 0 auto;}
-  .sec.open .sechd{border-radius:14px 14px 0 0;}
   .sec.open .sechd::after{transform:rotate(180deg);}
+  .secteaser{background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(11,37,69,.05);}
+  .secteaser p{font-size:13.5px;color:var(--ink);margin:0;line-height:1.7;flex:1 1 340px;}
+  .secteaser p b{color:var(--gpt-d);}
+  .more-btn{flex:0 0 auto;background:var(--gpt-bg);color:var(--gpt-d);border:1.5px solid var(--gpt);border-radius:9px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s;}
+  .more-btn:hover{background:var(--gpt);color:#fff;}
+  .sec.open .secteaser{display:none;}
   .secbody{display:none;}
   .sec.open .secbody{display:block;}
+  .overview{background:linear-gradient(135deg,#0b2545,#15407a);color:#fff;border-radius:14px;padding:20px 26px;margin:8px 0 26px;}
+  .overview .ov-h{font-size:16px;font-weight:900;margin-bottom:8px;}
+  .overview p{font-size:14px;line-height:1.85;color:#e7eef7;margin-bottom:8px;}
+  .overview p b{color:#7fe7c8;}
+  .ov-routes{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .ov-routes a{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:8px;}
+  .ov-routes a:hover{background:rgba(255,255,255,.24);}
   .sechd .n{flex:0 0 auto;width:44px;height:44px;border-radius:11px;background:rgba(255,255,255,.18);font-size:21px;font-weight:900;display:flex;align-items:center;justify-content:center;}
   .sechd h2{font-size:22px;font-weight:900;line-height:1.3;}
   .sechd .src{font-size:11.5px;font-weight:700;opacity:.85;margin-top:2px;}
@@ -92,6 +104,7 @@
     @page{margin:14mm;}
     .site-header,.printbtn,.backlink,.accordion-ctrl{display:none !important;}
     .secbody{display:block !important;}
+    .secteaser{display:none !important;}
     .sechd::after{display:none !important;}
     .sechd{border-radius:14px 14px 0 0 !important;}
     .hero{background:none;color:var(--navy);padding:0 0 10px;}
@@ -145,6 +158,12 @@
 
   <div class="callout">🚀 <b>今すぐ始める3ステップ</b>　①無料/Goで“時間を食う作業”を1つ試す → ②効果（時間削減）を計測して Plus/Business を稟議 → ③1チームでQuick Winを作り全社へ展開。</div>
 
+  <div class="overview">
+    <div class="ov-h">📚 このレポートの歩き方</div>
+    <p>本レポートは、ChatGPTを<b>「現場の実用」から「経営の戦略」まで全12章</b>で網羅しています。全部を読む必要はありません。各章は<b>タイトル＋ひとこと説明＋「詳しく見る」ボタン</b>で並んでいるので、<b>気になるテーマだけ開けます</b>。まず下の説明を眺め、知りたいところからアクセスしてください。</p>
+    <p class="ov-routes"><b style="align-self:center;color:#fff;font-size:12.5px;">目的別の入口 →</b><a href="#s1">とにかく何ができる？</a><a href="#s3">料金で選びたい</a><a href="#s4">安全性が不安</a><a href="#s6">効果を数字で示したい</a><a href="#s8">自部署の使い方</a></p>
+  </div>
+
   <div class="toc"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11.5px;letter-spacing:0;">👆 各見出しをクリックで詳細を開閉／目次の項目クリックでその章へジャンプ＆展開</span></strong>
     <ol>
       <li><a href="#s1">ChatGPTの実用性</a></li>
@@ -165,6 +184,7 @@
   <!-- 1 実用性 -->
   <div class="sec" id="s1">
     <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">独自機能のUX：Canvas／画像編集／音声／デスクトップ統合／GPTs</div></div></div>
+    <div class="secteaser"><p>この章でわかること：<b>Deep Research・agent mode</b> など、ChatGPTが“仕事の面倒”を肩代わりする独自機能と、使うと実際に何が変わるか。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <p><b>ChatGPTは、チャット欄に日本語で話しかけるだけで使えるAI</b>です。2026年のいまは、ただ質問に答えるだけでなく、<b>自分でネットを調べ、パソコン操作を代行し、資料まで作ってくれる“デキるアシスタント”</b>に進化しました。</p>
       <p>うれしいのは、<b>むずかしい専門知識や“上手な命令文”が書けなくても大丈夫</b>なこと。画面のボタンを押したり、ふだんの言葉で「〜して」と頼むだけで使えるよう工夫されています。文章づくり・調べ物・画像づくり・データ分析を、<b>1つのアプリ</b>で完結できます。</p>
@@ -224,6 +244,7 @@
   <!-- 2 技術戦略 -->
   <div class="sec" id="s2">
     <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">モデル構造・推論方式・開発/連携基盤・企業導入アーキテクチャ</div></div></div>
+    <div class="secteaser"><p>この章でわかること：ChatGPTの<b>裏側のしくみ</b>と、<b>RAG・AIゲートウェイ</b>など「社内データを安全に業務利用する土台」の作り方。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <div class="callout">🧩 <b>この章をひとことで</b>：ChatGPTの「裏側のしくみ」と「会社で安全に動かす土台」の話です。専門用語が続くので<b>太字カッコ内にやさしい言い換え</b>を添えました。結論だけ知りたい人は、章末の<b>💪もたらす効果</b>へ。</div>
       <h3>モデルの内部構造：1つの巨大AIではなく“役割分担チーム”</h3>
@@ -271,6 +292,7 @@
   <!-- 3 モデル戦略 -->
   <div class="sec" id="s3">
     <div class="sechd"><span class="n">3</span><div><h2>モデル戦略と選定基準</h2><div class="src">ライセンス/TCO・API最適化・マルチモデル・KPI</div></div></div>
+    <div class="secteaser"><p>この章でわかること：無料／Plus／Business／Enterprise、<b>結局どれが正解か</b>。料金とROIで選ぶ判断基準。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <p>選び方は「無料か、月20ドルか」の単純な二択から、<b>“AIにいくら使い、いくら得しているか”を管理する段階</b>（専門用語で<b>AI-FinOps＝AIのコスト管理術</b>）へ進みました。新しいモデルほど料金が跳ね上がるため、使用量を見える化しないと、<b>部署ごとに勝手に契約・課金が増える“無秩序な広がり”（AIスプロール）</b>で予算を浪費します。だから ①最適なプラン選び ②安全なデータ連携 ③用途別の使い分け ④効果の測定 をセットで考える必要があります。</p>
 
@@ -313,6 +335,7 @@
   <!-- 4 セキュリティ -->
   <div class="sec" id="s4">
     <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・リスク管理</h2><div class="src">データ境界・漏洩メカニズム・規制・ガバナンス</div></div></div>
+    <div class="secteaser"><p>この章でわかること：<b>機密を入れても大丈夫？</b> 学習オプトアウト・漏洩の型・規制・ガバナンスの要点。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <h3>プラン別のデータプライバシー境界</h3>
       <div class="tbl-scroll"><table>
@@ -361,6 +384,7 @@
   <!-- 5 ベンダーリスク -->
   <div class="sec" id="s5">
     <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">単一モデルの罠・BCP・マルチLLM・TPRM</div></div></div>
+    <div class="secteaser"><p>この章でわかること：<b>1社依存の落とし穴</b>と、「止まらない・高すぎない・乗り換えられる」体制の作り方。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <p>1社のAIだけに業務を作り込みすぎると、<b>ベンダーロックイン（その会社から乗り換えられない状態）</b>と<b>単一障害点（SPOF＝そこが止まると全部止まる急所）</b>が生まれます。これはIT部門だけの話ではなく、<b>事業が止まるかどうかという経営リスク（BCP＝事業継続）</b>です。</p>
 
@@ -421,6 +445,7 @@
   <!-- 6 ROI -->
   <div class="sec" id="s6">
     <div class="sechd"><span class="n">6</span><div><h2>ROI（投資対効果）の定量化</h2><div class="src">PoC→PoI・KPI・国内事例・ガバナンス</div></div></div>
+    <div class="secteaser"><p>この章でわかること：<b>“なんとなく便利”を金額で示す</b>方法。工数削減の試算と国内大企業の実績。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <p>日本市場はPoC（技術検証）から<b>PoI（投資の証明）</b>へ。経営にROIを数値で示す段階。<b>ベースライン（Before）の可視化</b>が起点。</p>
       <div class="tbl-scroll"><table>
@@ -467,6 +492,7 @@
   <!-- 7 競合市場 -->
   <div class="sec" id="s7">
     <div class="sechd"><span class="n">7</span><div><h2>競合・市場ポジション</h2><div class="src">市場シェア・グローバル/国産LLM・コモディティ化</div></div></div>
+    <div class="secteaser"><p>この章でわかること：<b>ChatGPT・Gemini・Claude</b> の今の勢力図と、自社のための選び方。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <p>市場は「一強」→「三つ巴」→<b>用途別の多極化</b>へ。推奨は<b>マルチLLM戦略＋AIガバナンス</b>。</p>
 
@@ -505,6 +531,7 @@
   <!-- 8 業種別シナリオ -->
   <div class="sec" id="s8">
     <div class="sechd"><span class="n">8</span><div><h2>業種別の活用シナリオ</h2><div class="src">部門別の具体的ユースケース</div></div></div>
+    <div class="secteaser"><p>この章でわかること：営業・経理・開発など<b>部門別の具体的な使い方</b>。自部署はどこから始めるか。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <div class="tbl-scroll"><table>
         <tr><th>部門・業界</th><th>シナリオ</th><th>主に使う機能</th></tr>
@@ -524,6 +551,7 @@
   <!-- 9 導入・運用・定着 -->
   <div class="sec" id="s9">
     <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">ガイドライン・教育・評価・推進体制</div></div></div>
+    <div class="secteaser"><p>この章でわかること：<b>「配って終わり」にしない</b>ための、教育・評価・推進体制（CoE）の設計。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <h3>① ガイドラインとプロンプトの標準化</h3>
       <ul>
@@ -553,6 +581,7 @@
   <!-- 10 エージェンティックAI -->
   <div class="sec" id="s10">
     <div class="sechd"><span class="n">10</span><div><h2>エージェンティックAI</h2><div class="src">自律エージェント・MCP連携・Human-in-the-Loop</div></div></div>
+    <div class="secteaser"><p>この章でわかること：AIが“相談相手”から<b>“仕事を片付ける戦力”</b>へ。自律実行のしくみと安全設計。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <p>2026年最大のトレンドは、AIが「対話相手」から<b>目標達成のため自律的に判断・実行する「エージェンティックAI」</b>へ進化したこと。AIを効率化ツールでなく<b>「自律的に判断・実行する新しい労働力」</b>として組織設計に組み込む段階。AI事業者ガイドラインは「複数エージェントが協調する目標主導型システム」と定義。</p>
       <h3>メカニズム（ゴールを指定するだけ）</h3>
@@ -571,6 +600,7 @@
   <!-- 11 ロードマップ -->
   <div class="sec" id="s11">
     <div class="sechd"><span class="n">11</span><div><h2>最新アップデート・ロードマップ</h2><div class="src">モデル世代交代の時系列と今後</div></div></div>
+    <div class="secteaser"><p>この章でわかること：モデル世代交代の<b>時系列と今後の予定</b>。いつ・何が変わるか。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <div class="tbl-scroll"><table>
         <tr><th>時期</th><th>出来事</th></tr>
@@ -588,6 +618,7 @@
   <!-- 12 制限・注意点 -->
   <div class="sec" id="s12">
     <div class="sechd"><span class="n">12</span><div><h2>制限・注意点</h2><div class="src">ハルシネーション・上限・鮮度・機密</div></div></div>
+    <div class="secteaser"><p>この章でわかること：使う前に知っておく<b>限界</b>。ハルシネーション・利用上限・機密の注意点。</p><button class="more-btn" type="button">📖 詳しく見る</button></div>
     <div class="secbody">
       <ul>
         <li><b>利用上限</b>：無料はメッセージ数・高度機能に制限。Plus＜Pro で緩和（上限は一定時間でリセット）。</li>
@@ -613,6 +644,10 @@
   secs.forEach(function(sec){
     var hd = sec.querySelector('.sechd');
     if(hd){ hd.addEventListener('click', function(){ sec.classList.toggle('open'); }); }
+  });
+  // 「詳しく見る」ボタンでその章を開く
+  document.querySelectorAll('.more-btn').forEach(function(b){
+    b.addEventListener('click', function(e){ e.stopPropagation(); var s=b.closest('.sec'); if(s){ s.classList.add('open'); } });
   });
   // 目次クリック：対象章を開いてからジャンプ
   document.querySelectorAll('.toc a').forEach(function(a){
