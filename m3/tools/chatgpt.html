@@ -33,6 +33,9 @@
   .backlink:hover{text-decoration:underline;}
   .printbtn{background:var(--gpt);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
   .printbtn:hover{opacity:.88;}
+  .accordion-ctrl{display:flex;gap:8px;flex-wrap:wrap;}
+  .ctrlbtn{background:#fff;color:var(--gpt-d);border:1.5px solid var(--gpt);border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;}
+  .ctrlbtn:hover{background:var(--gpt-bg);}
   .note{background:#fff7eb;border:1px solid #f6d391;border-radius:12px;padding:14px 20px;font-size:13.5px;color:#7a5a16;margin:8px 0 24px;}
   .note b{color:#9a6300;}
 
@@ -43,8 +46,14 @@
   .toc a{color:var(--navy);text-decoration:none;}
   .toc a:hover{color:var(--gpt-d);text-decoration:underline;}
 
-  .sec{margin:0 0 34px;}
-  .sechd{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--gpt),var(--gpt-d));color:#fff;border-radius:14px 14px 0 0;padding:18px 24px;}
+  .sec{margin:0 0 16px;}
+  .sechd{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--gpt),var(--gpt-d));color:#fff;border-radius:14px;padding:18px 24px;cursor:pointer;user-select:none;transition:filter .15s,border-radius .15s;}
+  .sechd:hover{filter:brightness(1.06);}
+  .sechd::after{content:"▾";margin-left:auto;font-size:18px;font-weight:900;opacity:.92;transition:transform .25s;flex:0 0 auto;}
+  .sec.open .sechd{border-radius:14px 14px 0 0;}
+  .sec.open .sechd::after{transform:rotate(180deg);}
+  .secbody{display:none;}
+  .sec.open .secbody{display:block;}
   .sechd .n{flex:0 0 auto;width:44px;height:44px;border-radius:11px;background:rgba(255,255,255,.18);font-size:21px;font-weight:900;display:flex;align-items:center;justify-content:center;}
   .sechd h2{font-size:22px;font-weight:900;line-height:1.3;}
   .sechd .src{font-size:11.5px;font-weight:700;opacity:.85;margin-top:2px;}
@@ -81,7 +90,10 @@
   @media(max-width:760px){.toc ol{grid-template-columns:1fr;}.hero h1{font-size:24px;}dl{grid-template-columns:1fr;}dt{border-top:1px solid var(--line);padding-bottom:0;}dd{border-top:none;padding-top:2px;}}
   @media print{
     @page{margin:14mm;}
-    .site-header,.printbtn,.backlink{display:none !important;}
+    .site-header,.printbtn,.backlink,.accordion-ctrl{display:none !important;}
+    .secbody{display:block !important;}
+    .sechd::after{display:none !important;}
+    .sechd{border-radius:14px 14px 0 0 !important;}
     .hero{background:none;color:var(--navy);padding:0 0 10px;}
     .hero .tag,.hero .pill{background:none;border:1px solid #ccc;color:var(--navy);}
     .hero p,.hero .maker{color:var(--sub);}
@@ -118,7 +130,11 @@
 <div class="wrap">
   <div class="toprow">
     <a href="#s1" class="backlink">↓ 本編（目次）へ</a>
-    <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
+    <div class="accordion-ctrl">
+      <button class="ctrlbtn" id="openAll">＋ すべて開く</button>
+      <button class="ctrlbtn" id="closeAll">－ すべて閉じる</button>
+      <button class="printbtn" onclick="document.querySelectorAll('.sec').forEach(function(s){s.classList.add('open')});window.print();">🖨 PDFで保存／印刷</button>
+    </div>
   </div>
   <div class="note">⚠️ 料金・モデル名・法規制・市場シェアは頻繁に変動します。本レポートは<b>2026年6月時点</b>の公式・最新情報に基づく整理です。各社公式で最新をご確認ください。文中<b>★＝一次情報で未確認（要確認）</b>。市場シェアは<b>測定方法で数値が大きく異なる</b>ため傾向で解釈してください。</div>
 
@@ -129,7 +145,7 @@
 
   <div class="callout">🚀 <b>今すぐ始める3ステップ</b>　①無料/Goで“時間を食う作業”を1つ試す → ②効果（時間削減）を計測して Plus/Business を稟議 → ③1チームでQuick Winを作り全社へ展開。</div>
 
-  <div class="toc"><strong>目次</strong>
+  <div class="toc"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11.5px;letter-spacing:0;">👆 各見出しをクリックで詳細を開閉／目次の項目クリックでその章へジャンプ＆展開</span></strong>
     <ol>
       <li><a href="#s1">ChatGPTの実用性</a></li>
       <li><a href="#s2">技術戦略</a></li>
@@ -589,5 +605,31 @@
 <footer>
   ChatGPT 企業活用 総合戦略レポート（2026年版）｜ Dooox AIリソース ｜ 作成：2026年6月　※詳細は各項目の個別レポート（01〜06）を参照。仕様・料金・規制は変動します。最新は公式でご確認ください。
 </footer>
+
+<script>
+(function(){
+  var secs = document.querySelectorAll('.sec');
+  // 見出しクリックで開閉
+  secs.forEach(function(sec){
+    var hd = sec.querySelector('.sechd');
+    if(hd){ hd.addEventListener('click', function(){ sec.classList.toggle('open'); }); }
+  });
+  // 目次クリック：対象章を開いてからジャンプ
+  document.querySelectorAll('.toc a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var t = document.getElementById(a.getAttribute('href').slice(1));
+      if(t){ t.classList.add('open'); }
+    });
+  });
+  // すべて開く／閉じる
+  var oa = document.getElementById('openAll'), ca = document.getElementById('closeAll');
+  if(oa){ oa.addEventListener('click', function(){ secs.forEach(function(s){ s.classList.add('open'); }); }); }
+  if(ca){ ca.addEventListener('click', function(){ secs.forEach(function(s){ s.classList.remove('open'); }); }); }
+  // 初期表示：URLに#指定があればその章、無ければ第1章だけ開く
+  var hash = location.hash ? document.querySelector(location.hash) : null;
+  if(hash && hash.classList.contains('sec')){ hash.classList.add('open'); }
+  else { var first = document.getElementById('s1'); if(first){ first.classList.add('open'); } }
+})();
+</script>
 </body>
 </html>
