@@ -101,54 +101,59 @@
       <div class="app-main-inner">
 
         <div class="app-page-header">
-          <h1 class="app-page-title">相談・サポート</h1>
-          <p class="app-page-sub">ライザップ型の伴走支援ハブ。ロードマップ・進捗・メッセージ・開発サポートをここから管理する。</p>
+          <h1 class="app-page-title">伴走サポート</h1>
+          <p class="app-page-sub">AI推進プロジェクトの管理室。ロードマップ・進捗・3者間メッセージ・開発サポートをここに集約します。社長も運営も担当者も、ここを見れば状況がわかります。</p>
         </div>
 
-        <!-- ロードマップ進捗バー -->
+        <!-- ロードマップ：最優先表示 -->
         <div class="panel">
           <div class="panel-title">
-            現在のロードマップ
+            ロードマップ — AI推進の全体像
             <a href="roadmap/index.html">詳細を見る</a>
           </div>
-          <div class="ph ph-l">
+          <div class="ph ph-l" style="border-color:var(--m3);">
             <div class="ph-icon">🗺</div>
-            <div class="ph-name">ロードマップ進捗バー</div>
-            <div class="ph-note">Phase 1〜3 の進捗バー。現在位置・完了ステップ・次のアクションを表示。</div>
+            <div class="ph-name">フェーズ進捗バー + 現在地マーカー</div>
+            <div class="ph-note">
+              Phase 1「環境構築・設計書作成（M1）」→
+              Phase 2「AIパック稼働・業務テスト（M2）」→
+              Phase 3「改造・本番稼働・自走化（M3）」<br>
+              運営チームが初回相談後に設計。社長・担当者・運営の3者で共有する。
+            </div>
           </div>
         </div>
 
         <!-- 4つのサポートメニュー -->
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px;">
           <a href="roadmap/index.html" class="content-card cc-purple" style="display:block;">
-            <div class="cc-label">相談の軸</div>
+            <div class="cc-label">進め方の軸</div>
             <h3>ロードマップ</h3>
             <div class="ph ph-m" style="margin-top:10px;">
-              <div class="ph-note">運営が設計した AI推進ロードマップを閲覧・確認できるページ。フェーズ・タスク・期限。</div>
+              <div class="ph-note">フェーズ・マイルストーン・期間の目安を明示。「今ここにいる」が常にわかる。社長・運営・担当者で同一ページを共有。</div>
             </div>
             <span class="cc-link" style="display:block;margin-top:10px;">開く →</span>
           </a>
           <a href="progress/index.html" class="content-card cc-sky" style="display:block;">
-            <div class="cc-label">可視化</div>
+            <div class="cc-label">社長向けレポート</div>
             <h3>進捗・レポート</h3>
             <div class="ph ph-m" style="margin-top:10px;">
-              <div class="ph-note">社長向けの進捗レポート。週次・月次の実績グラフ・達成率・コスト削減試算。</div>
+              <div class="ph-note">「何ができるようになったか」「どれくらい削減できたか」を社長の言葉で定期報告。週次・月次2種類。</div>
             </div>
             <span class="cc-link" style="display:block;margin-top:10px;">開く →</span>
           </a>
           <a href="messages/index.html" class="content-card cc-green" style="display:block;">
-            <div class="cc-label">コミュニケーション</div>
+            <div class="cc-label">3者間コミュニケーション</div>
             <h3>メッセージ</h3>
             <div class="ph ph-m" style="margin-top:10px;">
-              <div class="ph-note">運営チームとのメッセージ。質問・相談・フィードバックのやり取り。未読バッジ表示。</div>
+              <div class="ph-note">社長・運営・担当者の3者間チャット。相談・報告・依頼をスレッドで整理。48時間以内返信保証。</div>
             </div>
             <span class="cc-link" style="display:block;margin-top:10px;">開く →</span>
           </a>
           <a href="support/index.html" class="content-card cc-orange" style="display:block;">
-            <div class="cc-label">実装支援</div>
+            <div class="cc-label">詰まったら頼む</div>
             <h3>開発サポート依頼</h3>
             <div class="ph ph-m" style="margin-top:10px;">
-              <div class="ph-note">AI実装でつまったときの依頼フォーム。スクリーンショット・エラー情報を添付して送信。</div>
+              <div class="ph-note">M1〜M3で解決できない実装の壁は運営チームに依頼。エラー・スクリーンショット添付で即対応。</div>
             </div>
             <span class="cc-link" style="display:block;margin-top:10px;">開く →</span>
           </a>
@@ -157,11 +162,11 @@
         <!-- 最新メッセージプレビュー -->
         <div class="panel" style="margin:0;">
           <div class="panel-title">
-            最新メッセージ
+            最新メッセージ（3者間）
             <a href="messages/index.html">すべて見る</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <div class="ph ph-s"><div class="ph-name">差出人 ＋ 件名 ＋ 日時 ＋ 未読バッジ</div></div>
+            <div class="ph ph-s"><div class="ph-name">差出人（社長 / 運営 / 担当者） ＋ 件名 ＋ 日時 ＋ 未読バッジ</div></div>
             <div class="ph ph-s"><div class="ph-name">差出人 ＋ 件名 ＋ 日時</div></div>
             <div class="ph ph-s"><div class="ph-name">差出人 ＋ 件名 ＋ 日時</div></div>
           </div>
