@@ -7,60 +7,212 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <span class="logo">Do Lab AI</span>
-      <nav>
-        <a href="m1/index.html">設計書Bot（M1）</a>
-        <a href="m2/index.html">AIパック（M2）</a>
-        <a href="m3/index.html">学ぶ（M3）</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScLem-5XFtd1eXJCLDpBUFOvrSVrx260bpoiLzafpD02SpFRg/viewform" class="btn-primary" style="padding:8px 16px;font-size:13px;border-radius:6px;" target="_blank" rel="noopener">無料相談・応募</a>
-      </nav>
+<div class="app-wrapper">
+
+  <header class="mem-topbar">
+    <a href="index.html" class="mem-logo">
+      <div class="mem-logo-mark">D</div>
+      Do Lab AI
+    </a>
+    <span class="mem-sep">/</span>
+    <span class="mem-page">サービス概要</span>
+    <div class="mem-right">
+      <a href="home/index.html" class="btn-login" style="font-size:12px;padding:4px 12px;">ログイン</a>
+      <a href="consult/index.html" class="btn-cta" style="font-size:12px;padding:4px 12px;">無料相談 →</a>
     </div>
   </header>
 
-  <main class="hero">
-    <div class="hero-inner">
-      <p class="hero-tag">中小企業向け AI 活用プラットフォーム</p>
-      <h1>自分で学んで、<br>自分でAIを動かす。</h1>
-      <p class="hero-sub">外注も高額SaaSも不要。Do Lab AI は、業務改善AIを自分で作り・動かし・改造できる人を育てます。</p>
-    </div>
-  </main>
+  <div class="app-body">
 
-  <section class="cards-section">
-    <div class="cards-inner">
-      <div class="card c-m1">
-        <div class="card-label">M1 — 設計書Bot</div>
-        <h2>Claudeに話すと設計書が出る</h2>
-        <p>業務の内容を入力するだけで、AI化のための設計書（MD）が自動生成される。基礎版・選択式版の2パターン。</p>
-        <a href="m1/index.html" class="card-link">M1を使う →</a>
-      </div>
-      <div class="card c-m2">
-        <div class="card-label">M2 — AIパック</div>
-        <h2>すぐ使えるAI指示文セット</h2>
-        <p>社労士向けパックなど、業種別のAI指示文・サンプルデータ・改造手順をセットで提供。受け取ったら即動かせる。</p>
-        <a href="m2/index.html" class="card-link">M2を受け取る →</a>
-      </div>
-      <div class="card c-m3">
-        <div class="card-label">M3 — 学ぶ</div>
-        <h2>AIの基本を身につける</h2>
-        <p>AIツール紹介・プロンプト集・比較表・Claude Code入門・最新ニュース。初心者でも一人で完走できる。</p>
-        <a href="m3/index.html" class="card-link">M3を見る →</a>
-      </div>
-    </div>
-  </section>
+    <aside class="app-sidebar">
+      <a href="home/index.html" class="sb-item ">
+        <span class="sb-icon">🏠</span>マイページ
+      </a>
 
-  <section style="padding:64px 24px;background:var(--navy);">
-    <div style="max-width:680px;margin:0 auto;text-align:center;">
-      <p style="font-size:12px;font-weight:700;letter-spacing:.8px;color:var(--m3);text-transform:uppercase;margin-bottom:12px;">AI診断</p>
-      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--white);margin-bottom:16px;">あなたに合ったAI活用ステップがわかる</h2>
-      <p style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:36px;">3問に答えるだけで、M1・M2・M3のどこから始めるべきかを診断します。</p>
-      <a href="#" class="btn-primary" style="font-size:15px;padding:14px 40px;display:inline-block;">診断スタート →</a>
-    </div>
-  </section>
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">伴走サポート</div>
+      <a href="consult/index.html" class="sb-item ">
+        <span class="sb-icon">💬</span>相談トップ
+      </a>
+      <a href="consult/roadmap/index.html" class="sb-sub ">ロードマップ</a>
+      <a href="consult/progress/index.html" class="sb-sub ">進捗・レポート</a>
+      <a href="consult/messages/index.html" class="sb-sub ">メッセージ</a>
+      <a href="consult/support/index.html" class="sb-sub ">開発サポート</a>
 
-  <footer class="site-footer">
-    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
-  </footer>
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">ツール</div>
+      <a href="design/index.html" class="sb-item ">
+        <span class="sb-icon">📝</span>設計書ツール
+      </a>
+      <a href="packs/index.html" class="sb-item ">
+        <span class="sb-icon">📦</span>AIパック
+      </a>
+
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">学習ステップ</div>
+      <a href="learn/start/index.html" class="sb-item ">
+        <span class="sb-icon">🌱</span>はじめる
+      </a>
+      <a href="learn/build/index.html" class="sb-item ">
+        <span class="sb-icon">🔨</span>作る
+      </a>
+      <a href="learn/customize/index.html" class="sb-item ">
+        <span class="sb-icon">⚙️</span>改造する
+      </a>
+      <a href="learn/advanced/index.html" class="sb-item ">
+        <span class="sb-icon">🚀</span>深める
+      </a>
+
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">参考資料</div>
+      <a href="learn/tools/index.html" class="sb-item ">
+        <span class="sb-icon">🤖</span>AIツール
+      </a>
+      <a href="learn/news/index.html" class="sb-item ">
+        <span class="sb-icon">📰</span>ニュース
+      </a>
+      <a href="learn/videos/index.html" class="sb-item ">
+        <span class="sb-icon">🎬</span>解説動画
+      </a>
+
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">プログラム</div>
+      <a href="programs/dojo/index.html" class="sb-item ">
+        <span class="sb-icon">🎯</span>集中道場
+      </a>
+      <a href="programs/room/index.html" class="sb-item ">
+        <span class="sb-icon">🏠</span>特命AI室
+      </a>
+      <a href="programs/webinar/index.html" class="sb-item ">
+        <span class="sb-icon">📺</span>ウェビナー
+      </a>
+      <a href="programs/office-hours/index.html" class="sb-item ">
+        <span class="sb-icon">🕐</span>オフィスアワー
+      </a>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-main-inner">
+
+        <div class="app-page-header">
+          <h1 class="app-page-title">Do Lab AI とは</h1>
+          <p class="app-page-sub">AI活用をライザップ方式で伴走支援。設計書・AIパック・学習ステップ・相談がひとつのプラットフォームに。</p>
+        </div>
+
+        <!-- サービスキャッチコピーバナー -->
+        <div class="panel">
+          <div class="ph ph-l" style="background:#f0ebff;border-color:#c4aff5;">
+            <div class="ph-icon">🎯</div>
+            <div class="ph-name">サービスキャッチコピー + 概要 + CTA</div>
+            <div class="ph-note">「何者か・何ができるか」が一言でわかるバナー。ログイン誘導 or 無料相談への導線付き。</div>
+          </div>
+        </div>
+
+        <!-- 3本柱 -->
+        <div class="panel">
+          <div class="panel-title">Do Lab AI でできること — 3つのメイン機能</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            <div class="ph ph-l">
+              <div class="ph-icon">📝</div>
+              <div class="ph-name">設計書ツール</div>
+              <div class="ph-note">機能概要・できること・CTA</div>
+            </div>
+            <div class="ph ph-l">
+              <div class="ph-icon">📦</div>
+              <div class="ph-name">AIパック</div>
+              <div class="ph-note">機能概要・できること・CTA</div>
+            </div>
+            <div class="ph ph-l">
+              <div class="ph-icon">🌱</div>
+              <div class="ph-name">学習ステップ</div>
+              <div class="ph-note">機能概要・できること・CTA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 使い方の流れ + 事例 横並び -->
+        <div class="panel" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div>
+            <div class="panel-title">使い方の流れ — 3ステップで本番稼働</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="ph ph-m">
+                <div class="ph-icon">1️⃣</div>
+                <div class="ph-name">Step 1：無料相談・ロードマップ設計</div>
+                <div class="ph-note">ステップ概要テキスト</div>
+              </div>
+              <div class="ph ph-m">
+                <div class="ph-icon">2️⃣</div>
+                <div class="ph-name">Step 2：設計書 → AIパックで即実行</div>
+                <div class="ph-note">ステップ概要テキスト</div>
+              </div>
+              <div class="ph ph-m">
+                <div class="ph-icon">3️⃣</div>
+                <div class="ph-name">Step 3：改造・進捗管理・本番稼働</div>
+                <div class="ph-note">ステップ概要テキスト</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="panel-title">事例・実績 — 導入企業の声</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="ph ph-m"><div class="ph-name">事例カード 1（業種・成果・コメント）</div></div>
+              <div class="ph ph-m"><div class="ph-name">事例カード 2（業種・成果・コメント）</div></div>
+              <div class="ph ph-m"><div class="ph-name">事例カード 3（業種・成果・コメント）</div></div>
+              <div style="text-align:right;">
+                <a href="cases/index.html" style="font-size:12px;font-weight:700;color:var(--navy-2);">すべての事例を見る →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- プログラム・料金 -->
+        <div class="panel">
+          <div class="panel-title">プログラム・料金 — 参加する方法</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            <div class="ph ph-xl">
+              <div class="ph-icon">🥈</div>
+              <div class="ph-name">STANDARD プラン</div>
+              <div class="ph-note">価格・含まれる機能・申込CTA</div>
+            </div>
+            <div class="ph ph-xl" style="border-color:var(--m3);background:#f5f0ff;">
+              <div class="ph-icon">🥇</div>
+              <div class="ph-name">FULL PACKAGE</div>
+              <div class="ph-note">価格・含まれる機能・申込CTA（推奨バッジ付）</div>
+            </div>
+            <div class="ph ph-xl">
+              <div class="ph-icon">🎯</div>
+              <div class="ph-name">集中道場・AI室</div>
+              <div class="ph-note">プログラム詳細・申込CTA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ + CTA -->
+        <div class="panel" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:0;">
+          <div>
+            <div class="panel-title">よくある質問</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="ph ph-m"><div class="ph-name">Q: AIの知識がなくても大丈夫？</div><div class="ph-note">回答テキスト</div></div>
+              <div class="ph ph-m"><div class="ph-name">Q: 解約後もAIは使えますか？</div><div class="ph-note">回答テキスト</div></div>
+              <div class="ph ph-m"><div class="ph-name">Q: Claude APIの費用は別途かかる？</div><div class="ph-note">回答テキスト</div></div>
+            </div>
+            <div style="text-align:right;margin-top:8px;">
+              <a href="faq/index.html" style="font-size:12px;font-weight:700;color:var(--navy-2);">すべてのFAQを見る →</a>
+            </div>
+          </div>
+          <div>
+            <div class="panel-title">無料相談</div>
+            <div class="ph ph-l" style="background:#f0ebff;border-color:#c4aff5;">
+              <div class="ph-icon">💬</div>
+              <div class="ph-name">無料相談への最終CTA</div>
+              <div class="ph-note">「まず話してみてください」コピー + 相談ボタン</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
 </body>
 </html>
