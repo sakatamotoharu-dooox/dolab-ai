@@ -22,8 +22,7 @@
       </div>
     </div>
   </header>
-  <div class="app-body">
-    <aside class="app-sidebar">
+  <aside class="app-sidebar">
     <a href="../../home/index.html" class="sb-item ">
       <span class="sb-icon">🏠</span>マイページ
     </a>
@@ -88,258 +87,40 @@
     <a href="../../programs/office-hours/index.html" class="sb-item ">
       <span class="sb-icon">🕐</span>オフィスアワー
     </a>
-    </aside>
+  </aside>
+  <div class="app-body">
     <main class="app-main">
       <div class="app-main-inner">
         <div class="app-page-header">
           <h1 class="app-page-title">ロードマップ</h1>
-          <p class="app-page-sub">運営チームが設計したAI推進の進め方です。3つのフェーズに分かれており、一緒に進めていきます。</p>
+          <p class="app-page-sub">運営チームが設計したAI推進ロードマップ。フェーズ・タスク・期限を確認できます。</p>
         </div>
-
-        <!-- フェーズ全体図 -->
         <div class="panel">
-          <div class="panel-title">全体の流れ</div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-            <div style="background:#f0ebff;border:2px solid var(--m3);border-radius:10px;padding:16px;">
-              <div style="font-size:11px;font-weight:700;color:var(--m3);margin-bottom:6px;">Phase 1 ● 進行中</div>
-              <div style="font-weight:700;font-size:15px;margin-bottom:6px;">現状把握</div>
-              <div style="font-size:12px;color:var(--gray-2);">今の業務を見える化して、どこをAIで変えるかを決める</div>
-            </div>
-            <div style="background:#f5f5f5;border:2px solid #ddd;border-radius:10px;padding:16px;">
-              <div style="font-size:11px;font-weight:700;color:#aaa;margin-bottom:6px;">Phase 2 ○ 未着手</div>
-              <div style="font-weight:700;font-size:15px;margin-bottom:6px;color:#aaa;">AI導入・テスト</div>
-              <div style="font-size:12px;color:#bbb;">設計書・AIパックを使って実際に動かしてみる</div>
-            </div>
-            <div style="background:#f5f5f5;border:2px solid #ddd;border-radius:10px;padding:16px;">
-              <div style="font-size:11px;font-weight:700;color:#aaa;margin-bottom:6px;">Phase 3 ○ 未着手</div>
-              <div style="font-weight:700;font-size:15px;margin-bottom:6px;color:#aaa;">本番稼働・自走化</div>
-              <div style="font-size:12px;color:#bbb;">現場に定着させて、自分たちで改善できる状態をつくる</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==============================
-             Phase 1 詳細
-        =============================== -->
-        <div class="panel" style="border-left:4px solid var(--m3);">
-          <div class="panel-title" style="color:var(--m3);">Phase 1 — 現状把握フェーズの進め方</div>
-          <p style="font-size:13px;color:var(--gray-2);margin:0 0 20px;">まずは「今どんな業務をどうやっているか」を整理します。ここをしっかりやっておくと、どこにAIを使うと一番効果が出るかがはっきり見えてきます。</p>
-
-          <!-- STEP 1: 業務フローの見える化 -->
-          <div style="margin-bottom:28px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-              <div style="background:var(--m3);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">1</div>
-              <h3 style="margin:0;font-size:15px;">業務フローを見える化する</h3>
-            </div>
-            <p style="font-size:13px;color:var(--gray-2);margin:0 0 16px;padding-left:38px;">今やっている業務の流れを図や表に書き出します。頭の中にあるものを「見える形」にすることで、問題のある場所や自動化できる場所が見つかります。</p>
-            <p style="font-size:13px;font-weight:700;padding-left:38px;margin:0 0 10px;">細分化するときの3つのポイント</p>
-
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-left:38px;">
-
-              <!-- フロー -->
-              <div style="border:1px solid #e0d4f7;border-radius:8px;padding:14px;">
-                <div style="font-size:11px;font-weight:700;color:var(--m3);margin-bottom:6px;">① フロー（作業の流れ）</div>
-                <p style="font-size:12px;color:var(--gray-2);margin:0 0 10px;">一つひとつの作業を、順番どおりに細かく書き出します。</p>
-                <div style="font-size:11px;font-weight:700;margin-bottom:6px;">特に明確にすること</div>
-                <ul style="font-size:12px;color:var(--gray-2);margin:0;padding-left:16px;line-height:1.8;">
-                  <li>どこで「Aならこっち / Bならあっち」と分かれるか（分岐点）</li>
-                  <li>どこで人が「判断」しているか</li>
-                  <li>どこで「待ち時間」が発生しているか</li>
-                  <li>どこで「確認」や「承認」が必要か</li>
-                </ul>
-                <div style="margin-top:10px;padding:8px;background:#f8f4ff;border-radius:6px;font-size:11px;color:var(--gray-2);">
-                  <span style="font-weight:700;">例：</span> 見積依頼を受けた → 担当者が確認 →「新規か既存か」で分岐 → 新規なら上長に報告 → 既存なら自分で作成
-                </div>
-              </div>
-
-              <!-- 行 -->
-              <div style="border:1px solid #e0d4f7;border-radius:8px;padding:14px;">
-                <div style="font-size:11px;font-weight:700;color:var(--m3);margin-bottom:6px;">② 行（縦の切り口）</div>
-                <p style="font-size:12px;color:var(--gray-2);margin:0 0 10px;">同じ「業務名」でも、条件によってやり方が違うことがあります。それを行（縦）で分けます。</p>
-                <div style="font-size:11px;font-weight:700;margin-bottom:6px;">分け方の例</div>
-                <ul style="font-size:12px;color:var(--gray-2);margin:0;padding-left:16px;line-height:1.8;">
-                  <li>新規のお客様 / 既存のお客様</li>
-                  <li>担当者の役割（営業 / 事務 / 管理職）</li>
-                  <li>連絡手段（メール / 電話 / FAX）</li>
-                  <li>金額の大小（少額 / 高額）</li>
-                  <li>案件の種類（通常 / 急ぎ / クレーム）</li>
-                </ul>
-                <div style="margin-top:10px;padding:8px;background:#f8f4ff;border-radius:6px;font-size:11px;color:var(--gray-2);">
-                  <span style="font-weight:700;">例：</span> 「請求書作成」という業務でも、新規と既存では確認先も書類も違う → 行を分けて整理
-                </div>
-              </div>
-
-              <!-- 列 -->
-              <div style="border:1px solid #e0d4f7;border-radius:8px;padding:14px;">
-                <div style="font-size:11px;font-weight:700;color:var(--m3);margin-bottom:6px;">③ 列（横の切り口）</div>
-                <p style="font-size:12px;color:var(--gray-2);margin:0 0 10px;">業務の大きなカテゴリを横に並べます。全体の流れを俯瞰できるようにします。</p>
-                <div style="font-size:11px;font-weight:700;margin-bottom:6px;">並べ方の例（業種別）</div>
-                <ul style="font-size:12px;color:var(--gray-2);margin:0;padding-left:16px;line-height:1.8;">
-                  <li>建設業：問い合わせ → 見積 → 契約 → 施工管理 → 検査 → 請求</li>
-                  <li>社労士：相談受付 → 書類収集 → 手続き申請 → 確認 → 報告</li>
-                  <li>製造業：受注 → 生産計画 → 製造 → 検品 → 出荷 → 請求</li>
-                  <li>小売・EC：注文受付 → 在庫確認 → 発送 → フォロー → 返品対応</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- STEP 2: 業務フローすり合わせ -->
-          <div style="margin-bottom:28px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-              <div style="background:var(--m3);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">2</div>
-              <h3 style="margin:0;font-size:15px;">現場で確認して、実態に合わせる</h3>
-            </div>
-            <p style="font-size:13px;color:var(--gray-2);margin:0 0 16px;padding-left:38px;">最初に作る業務フローはあくまで「たたき台」です。現場の担当者や実際のデータと照らし合わせて、正確な内容に仕上げていきます。これまで「なんとなくやっていた」ことを言葉にする作業でもあります。</p>
-
-            <div style="padding-left:38px;">
-              <p style="font-size:13px;font-weight:700;margin:0 0 10px;">確認するときの3つの視点</p>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">
-                <div style="border:1px solid #e5e5e5;border-radius:8px;padding:12px;">
-                  <div style="font-size:11px;font-weight:700;color:var(--sky);margin-bottom:4px;">🖥 システム・ツールの流れ</div>
-                  <p style="font-size:12px;color:var(--gray-2);margin:0;">どのソフトやアプリを使って作業しているか。情報がどのシステムから次のシステムへ動いているか。</p>
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:8px;padding:12px;">
-                  <div style="font-size:11px;font-weight:700;color:var(--m1);margin-bottom:4px;">📄 書類・データの流れ</div>
-                  <p style="font-size:12px;color:var(--gray-2);margin:0;">どんな書類やファイルが発生するか。誰が作って誰が受け取るか。どこに保存されているか。</p>
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:8px;padding:12px;">
-                  <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:4px;">🗣 人の判断・やりとり</div>
-                  <p style="font-size:12px;color:var(--gray-2);margin:0;">誰が誰に何を伝えるか。どこで承認が必要か。「口頭で確認している」ような暗黙のルールはないか。</p>
-                </div>
-              </div>
-
-              <p style="font-size:13px;font-weight:700;margin:0 0 10px;">すり合わせで確認する項目の例</p>
-              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">担当者情報</span><br>
-                  誰がその業務を担当しているか・役職・兼任しているか
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">発生頻度・タイミング</span><br>
-                  毎日 / 週1回 / 案件ごと / 月末にまとめて など
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">使っているツール・システム</span><br>
-                  Excel / メール / kintone / LINE / 専用ソフト など
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">かかっている時間</span><br>
-                  1件あたりの作業時間・繁忙期はどれくらい増えるか
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">判断の基準</span><br>
-                  どういう場合に誰が決めるか・どこまで自分で判断していいか
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">発生する書類・データ</span><br>
-                  見積書 / 注文書 / 請求書 / 日報 / 議事録 / 報告メール など
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">よくある手戻り・ミス</span><br>
-                  どこで間違いが起きやすいか・何度も確認が必要なのはどこか
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">属人化している部分</span><br>
-                  「この人しかわからない」作業・マニュアル化されていない暗黙のやり方
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">確認先・連絡先</span><br>
-                  社内の上長 / 他部署 / 取引先 / 外注先 など、誰に何を確認するか
-                </div>
-                <div style="border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:12px;color:var(--gray-2);">
-                  <span style="font-weight:700;color:var(--navy);">繁忙期・例外ケース</span><br>
-                  月末 / 決算期 / 季節変動 / イレギュラーな対応が発生するパターン
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- STEP 3: 目的と切り口の共通認識 -->
-          <div>
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-              <div style="background:var(--m3);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">3</div>
-              <h3 style="margin:0;font-size:15px;">目的を決めて、チームで共通認識をつくる</h3>
-            </div>
-            <p style="font-size:13px;color:var(--gray-2);margin:0 0 16px;padding-left:38px;">業務フローを作る前に「なぜ作るのか」を明確にします。目的によって、何を細かく調べるか・誰に何を聞くかが変わります。目的をチーム全員で共有してから進めると、ズレなく正確な業務フローが作れます。</p>
-
-            <div style="padding-left:38px;">
-              <p style="font-size:13px;font-weight:700;margin:0 0 12px;">目的 → 切り口の例</p>
-
-              <div style="display:flex;flex-direction:column;gap:12px;">
-
-                <div style="border:1px solid #e0d4f7;border-radius:8px;overflow:hidden;">
-                  <div style="background:#f0ebff;padding:10px 14px;font-size:12px;font-weight:700;color:var(--m3);">
-                    目的：「メール対応にかかっている時間を減らしたい」
-                  </div>
-                  <div style="padding:12px 14px;">
-                    <p style="font-size:12px;color:var(--gray-2);margin:0 0 8px;">この目的なら、こういう切り口で情報を集めます：</p>
-                    <ul style="font-size:12px;color:var(--gray-2);margin:0;padding-left:16px;line-height:2;">
-                      <li><strong>誰が</strong>対応しているか（担当者 / 社長 / チーム全員）</li>
-                      <li><strong>どんなメール</strong>が来るか（問い合わせ / 発注 / クレーム / 社内連絡）</li>
-                      <li><strong>1日何件</strong>くらい来るか・繁忙期はどのくらい増えるか</li>
-                      <li>返信に<strong>どのくらい時間</strong>がかかっているか（文章を考える時間 / 情報を調べる時間）</li>
-                      <li><strong>どこが一番大変</strong>か（毎回同じことを書いている / 確認が必要で返信できない）</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div style="border:1px solid #e0d4f7;border-radius:8px;overflow:hidden;">
-                  <div style="background:#f0ebff;padding:10px 14px;font-size:12px;font-weight:700;color:var(--m3);">
-                    目的：「新人でも同じクオリティで見積書を作れるようにしたい」
-                  </div>
-                  <div style="padding:12px 14px;">
-                    <p style="font-size:12px;color:var(--gray-2);margin:0 0 8px;">この目的なら、こういう切り口で情報を集めます：</p>
-                    <ul style="font-size:12px;color:var(--gray-2);margin:0;padding-left:16px;line-height:2;">
-                      <li>熟練者は<strong>どんな手順</strong>で見積書を作っているか</li>
-                      <li><strong>どこで経験・勘が必要</strong>になるか（単価の判断 / 工数の見積もり）</li>
-                      <li>過去の見積書のうち<strong>どのパターン</strong>が多いか（定型 / 特注 / 修正依頼）</li>
-                      <li>ミスが起きやすいのは<strong>どの項目</strong>か</li>
-                      <li>承認フローは<strong>誰がどこで確認</strong>しているか</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div style="border:1px solid #e0d4f7;border-radius:8px;overflow:hidden;">
-                  <div style="background:#f0ebff;padding:10px 14px;font-size:12px;font-weight:700;color:var(--m3);">
-                    目的：「月末の請求・経理作業の手間をなくしたい」
-                  </div>
-                  <div style="padding:12px 14px;">
-                    <p style="font-size:12px;color:var(--gray-2);margin:0 0 8px;">この目的なら、こういう切り口で情報を集めます：</p>
-                    <ul style="font-size:12px;color:var(--gray-2);margin:0;padding-left:16px;line-height:2;">
-                      <li>月末に<strong>何の作業がどの順番</strong>で発生するか</li>
-                      <li>データはどこから<strong>どこへ転記</strong>しているか（システム → Excel → 会計ソフト など）</li>
-                      <li>手打ちで入力している作業は<strong>何件・何分</strong>かかるか</li>
-                      <li>ミスが起きたときは<strong>どこまで戻って修正</strong>するか</li>
-                      <li>取引先ごとに<strong>フォーマットや条件が違う</strong>ケースはあるか</li>
-                    </ul>
-                  </div>
-                </div>
-
-              </div>
-
-              <div style="margin-top:16px;padding:12px 14px;background:#f8f9fa;border-radius:8px;border-left:3px solid var(--m3);">
-                <p style="font-size:12px;font-weight:700;color:var(--navy);margin:0 0 6px;">チームで共通認識をつくるコツ</p>
-                <p style="font-size:12px;color:var(--gray-2);margin:0;">目的から出てきた「切り口」をまず言葉にして、社長・担当者・運営チームで確認します。「今回は○○という目的で、△△と□□を重点的に整理します」と一言共有するだけで、ヒアリング時のズレがなくなり、業務フローの精度が上がります。</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- 次のアクション -->
-        <div class="panel" style="margin:0;">
-          <div class="panel-title">次のアクション</div>
-          <div class="ph ph-m">
-            <div class="ph-icon">▶</div>
-            <div class="ph-name">次にやること（運営推奨）</div>
-            <div class="ph-note">運営チームが設定した次のアクション。「M1 設計書Bot」「M3 学ぶ」へのショートカット付き。</div>
-          </div>
-        </div>
+  <div class="panel-title">ロードマップ全体図</div>
+  <div class="ph ph-xl">
+    <div class="ph-icon">🗺</div>
+    <div class="ph-name">フェーズタイムライン</div>
+    <div class="ph-note">Phase 1（導入）→ Phase 2（改造）→ Phase 3（自走）の3フェーズ。現在地ハイライト付き。各フェーズのマイルストーンと期限を表示。</div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-title">現在のフェーズ詳細</div>
+  <div class="ph ph-l">
+    <div class="ph-icon">📍</div>
+    <div class="ph-name">現フェーズのタスクリスト</div>
+    <div class="ph-note">完了済み・進行中・未着手のタスクをチェックリスト形式で表示。各タスクに関連コンテンツリンク付き。</div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-title">次のアクション</div>
+  <div class="ph ph-m">
+    <div class="ph-icon">▶</div>
+    <div class="ph-name">次にやること（運営推奨）</div>
+    <div class="ph-note">運営チームが設定した次のアクション。「学ぶ」「改造する」「相談する」へのショートカット付き。</div>
+  </div>
+</div>
       </div>
     </main>
-  </div>
   </div>
 </div>
 </body>
