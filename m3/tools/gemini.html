@@ -123,6 +123,7 @@
     .brandmark{background:none !important;border:1px solid #ccc !important;color:var(--navy) !important;box-shadow:none !important;}
     .brandname{color:var(--navy) !important;text-shadow:none !important;}
     .sec{break-inside:avoid;}
+    .sec-grid{grid-template-columns:1fr !important;} .feat-grid{grid-template-columns:1fr !important;}
     a[href]{color:var(--navy);text-decoration:none;}
   }
 
@@ -177,6 +178,58 @@
     .hero h1{font-size:27px !important;}
     table{font-size:14px !important;}
   }
+
+  /* ===== カード（ブロック）レイアウト ===== */
+  .blk-h{font-size:20px !important;font-weight:900;color:var(--navy);margin:52px 0 16px;padding:8px 0 8px 14px;border-left:6px solid var(--g);line-height:1.4;}
+  .blk-h:first-child{margin-top:8px;}
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:16px 0 12px;}
+  .feat-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(27,36,71,.06);}
+  .feat-card .fc-h{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:900;color:var(--navy);margin-bottom:9px;line-height:1.4;}
+  .feat-card .fc-ic{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--g-bg);font-size:23px;flex:0 0 auto;line-height:1;}
+  .feat-card p{font-size:16.5px !important;line-height:1.85 !important;margin:0 !important;}
+  .feat-card p b{color:var(--g-d);}
+  .feat-card.wide{grid-column:1 / -1;background:var(--g-bg);border-color:#cdd8f7;}
+  @media(max-width:760px){.feat-grid{grid-template-columns:1fr;}}
+
+  /* ===== 用語クリックで説明ポップアップ ===== */
+  .term{color:var(--g-d);border-bottom:1.5px dotted var(--g);cursor:pointer;font-weight:700;white-space:nowrap;}
+  .term:hover{background:var(--g-bg);}
+  .term-modal{position:fixed;inset:0;background:rgba(15,20,40,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+  .term-modal.show{display:flex;}
+  .tm-box{background:#fff;max-width:460px;width:100%;border-radius:16px;padding:26px 26px 24px;box-shadow:0 14px 44px rgba(0,0,0,.32);position:relative;}
+  .tm-close{position:absolute;top:10px;right:14px;border:none;background:none;font-size:28px;line-height:1;color:var(--sub);cursor:pointer;}
+  .tm-close:hover{color:var(--ink);}
+  .tm-term{font-size:22px;font-weight:900;color:var(--navy);margin-bottom:12px;padding-right:28px;}
+  .tm-def{font-size:18px;line-height:1.9;color:var(--ink);}
+  .term-hint{font-size:13.5px;color:var(--sub);margin:6px 0 18px;}
+
+  /* ===== 配色のメリハリ ===== */
+  table th{background:#eef1f7 !important;color:var(--navy) !important;}
+  .secbody table tr:nth-child(even) td{background:#f7f9fd;}
+  .verdict{border-left:6px solid var(--g);}
+
+  /* ===== 章を2列＋ブロックでまとめる ===== */
+  .grp{margin:34px 0 6px;}
+  .grp-h{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;color:var(--navy);margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid var(--line);}
+  .grp-n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--g);color:#fff;font-size:20px;flex:0 0 auto;box-shadow:0 2px 8px rgba(27,36,71,.18);}
+  .grp-sub{font-size:13px;font-weight:600;color:var(--sub);margin-left:auto;}
+  .sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+  .sec-grid .sec{margin:0;}
+  .sec-grid .sec.open{grid-column:1 / -1;}
+  .sec-grid:has(.sec.open){grid-template-columns:1fr;}
+  @media(max-width:820px){.sec-grid{grid-template-columns:1fr;}}
+
+  /* ===== 章ごとの固有アクセント色 ===== */
+  #s1 .sechd{background:linear-gradient(135deg,#e76f51,#c9543a);} #s1 .blk-h{border-left-color:#e76f51;background:linear-gradient(90deg,rgba(231,111,81,.13),transparent 70%);} #s1 .feat-grid .feat-card{border-left:5px solid #e76f51;} #s1 .feat-card .fc-ic{background:#fdeee9;} #s1 .verdict{border-left-color:#e76f51;}
+  #s2 .sechd{background:linear-gradient(135deg,#e0892e,#bf6f16);} #s2 .blk-h{border-left-color:#e0892e;background:linear-gradient(90deg,rgba(224,137,46,.13),transparent 70%);} #s2 .feat-grid .feat-card{border-left:5px solid #e0892e;} #s2 .feat-card .fc-ic{background:#fbf1e0;} #s2 .verdict{border-left-color:#e0892e;}
+  #s3 .sechd{background:linear-gradient(135deg,#2a9d8f,#1f7e72);} #s3 .blk-h{border-left-color:#2a9d8f;background:linear-gradient(90deg,rgba(42,157,143,.13),transparent 70%);} #s3 .feat-grid .feat-card{border-left:5px solid #2a9d8f;} #s3 .feat-card .fc-ic{background:#e4f4f1;} #s3 .verdict{border-left-color:#2a9d8f;}
+  #s4 .sechd{background:linear-gradient(135deg,#3b82f6,#2563c9);} #s4 .blk-h{border-left-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,.13),transparent 70%);} #s4 .feat-grid .feat-card{border-left:5px solid #3b82f6;} #s4 .feat-card .fc-ic{background:#e8f1fe;} #s4 .verdict{border-left-color:#3b82f6;}
+  #s5 .sechd{background:linear-gradient(135deg,#9b5de5,#7a3fd0);} #s5 .blk-h{border-left-color:#9b5de5;background:linear-gradient(90deg,rgba(155,93,229,.13),transparent 70%);} #s5 .feat-grid .feat-card{border-left:5px solid #9b5de5;} #s5 .feat-card .fc-ic{background:#f1ebfa;} #s5 .verdict{border-left-color:#9b5de5;}
+  #s6 .sechd{background:linear-gradient(135deg,#c9871a,#a66e10);} #s6 .blk-h{border-left-color:#c9871a;background:linear-gradient(90deg,rgba(201,135,26,.13),transparent 70%);} #s6 .feat-grid .feat-card{border-left:5px solid #c9871a;} #s6 .feat-card .fc-ic{background:#fbf3e0;} #s6 .verdict{border-left-color:#c9871a;}
+  #s7 .sechd{background:linear-gradient(135deg,#d6453f,#b22f2a);} #s7 .blk-h{border-left-color:#d6453f;background:linear-gradient(90deg,rgba(214,69,63,.13),transparent 70%);} #s7 .feat-grid .feat-card{border-left:5px solid #d6453f;} #s7 .feat-card .fc-ic{background:#fdeceb;} #s7 .verdict{border-left-color:#d6453f;}
+  #s8 .sechd{background:linear-gradient(135deg,#0d9488,#0a766c);} #s8 .blk-h{border-left-color:#0d9488;background:linear-gradient(90deg,rgba(13,148,136,.13),transparent 70%);} #s8 .feat-grid .feat-card{border-left:5px solid #0d9488;} #s8 .feat-card .fc-ic{background:#e1f3f1;} #s8 .verdict{border-left-color:#0d9488;}
+  #s9 .sechd{background:linear-gradient(135deg,#5b6bd0,#44539f);} #s9 .blk-h{border-left-color:#5b6bd0;background:linear-gradient(90deg,rgba(91,107,208,.13),transparent 70%);} #s9 .feat-grid .feat-card{border-left:5px solid #5b6bd0;} #s9 .feat-card .fc-ic{background:#ebedfb;} #s9 .verdict{border-left-color:#5b6bd0;}
+  #s10 .sechd{background:linear-gradient(135deg,#c2557e,#a13c62);} #s10 .blk-h{border-left-color:#c2557e;background:linear-gradient(90deg,rgba(194,85,126,.13),transparent 70%);} #s10 .feat-grid .feat-card{border-left:5px solid #c2557e;} #s10 .feat-card .fc-ic{background:#fbe9f0;} #s10 .verdict{border-left-color:#c2557e;}
 </style>
 </head>
 <body>
@@ -253,6 +306,8 @@
     </ol>
   </div>
 
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>Geminiの実力を知る<span class="grp-sub">実用性・効果・比較・安全性</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s1">
     <div class="sechd"><span class="n">1</span><div><h2>実用性・業務活用</h2><div class="src">アプリ別の活用／マルチモーダル／超長文／NotebookLM／Workspace統合／Vids</div></div></div>
     <div class="secteaser">
@@ -261,30 +316,24 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiは「文章を作る」だけにとどまりません。<b>メール・文書・表計算など毎日使うアプリに溶け込み、画像・音声・動画も一度にこなす“仕事の土台”</b>へ進化しています。この章は、<b>3つの基本の強み → アプリ別の使い方 → 社内資料専用AI「NotebookLM」 → 動画自動作成「Google Vids」 → 効果</b>の順に紹介します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>マルチモーダル</b>＝文字だけでなく画像・音声・動画も“まとめて理解できる”こと</li>
-          <li><b>グラウンディング</b>＝答えを検索や社内文書に結びつけ、ウソを防ぐしくみ</li>
-          <li><b>ハルシネーション</b>＝AIがもっともらしいウソを言う現象</li>
-        </ul>
-      </div>
 
-      <h3>① 3つの“基本の強み”がすごい</h3>
-      <ul>
-        <li><b>画像・音声・動画もまとめて理解（マルチモーダル）</b>：文字・画像・音声・動画・プログラムを最初からまとめて理解。音声は最大約8.4時間、動画は約45分を一度に処理でき、通話中の音声・動画にもその場で対応します。</li>
-        <li><b>長文を一度に読める</b>：一度に<b>約1,500ページ分（コード3万行／音声19時間）</b>を読み込めるため、細かく分割せず“まるごと”分析できます。よく使う資料は保存して使い回せば、安く速くなります。</li>
-      </ul>
+      <div class="blk-h">3つの“基本の強み”がすごい</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌐</span>画像・音声・動画もまとめて理解</div><p>文字・画像・音声・動画・プログラムを最初からまとめて理解（<span class="term" data-term="マルチモーダル">マルチモーダル</span>）。<b>音声は最大約8.4時間、動画は約45分</b>を一度に処理でき、通話中の音声・動画にもその場で対応します。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📂</span>長文を一度に読める</div><p>一度に<b>約1,500ページ分（コード3万行／音声19時間）</b>を読み込めるため、細かく分割せず“まるごと”分析。よく使う資料は保存して使い回せば、安く速くなります。</p></div>
+      </div>
       <div class="warnbox">⚠️ <b>“何でも詰め込めば良い”わけではない</b>：失敗の記録まで全部入れると過去の失敗に引っ張られて精度が落ちます。<b>「正解・使う場面・確認手順」だけを残す</b>のがコツです。</div>
 
-      <h3>② AIのウソ（ハルシネーション）を抑える</h3>
-      <p>Geminiは答えを<b>Google検索や社内文書に結びつけ、出典（情報のもと）つき</b>で返せます。これでもっともらしいウソを防ぎ、最新の事実にも対応できるので、信頼性が大きく上がります。</p>
-      <div class="warnbox">⚠️ <b>万能ではない</b>：事実が正しいかを測るテスト（ベンチマーク）で<b>83.8%</b>＝裏を返せば<b>約16%は誤り得る</b>。賢いAIは<b>「知らない」と正直に言える（ヘッジング＝自信のなさを正直に出す）</b>度合いが高い一方、簡易なAIは<b>9割近く“自信満々にウソを作る”</b>ことも。<b>健康・お金・法律（YMYL＝人生やお金に関わる重要分野）は人の最終確認を必須</b>とし、「情報が足りなければ推測せず“不明”と書いて」と指示するのが鉄則です。</div>
+      <div class="blk-h">AIのウソ（<span class="term" data-term="ハルシネーション">ハルシネーション</span>）を抑える</div>
+      <p>Geminiは答えを<b>Google検索や社内文書に結びつけ（<span class="term" data-term="グラウンディング">グラウンディング</span>）、出典（情報のもと）つき</b>で返せます。これでもっともらしいウソを防ぎ、最新の事実にも対応できるので、信頼性が大きく上がります。</p>
+      <div class="warnbox">⚠️ <b>万能ではない</b>：事実が正しいかを測るテスト（ベンチマーク）で<b>83.8%</b>＝裏を返せば<b>約16%は誤り得る</b>。賢いAIは<b>「知らない」と正直に言える（<span class="term" data-term="ヘッジング">ヘッジング</span>）</b>度合いが高い一方、簡易なAIは<b>9割近く“自信満々にウソを作る”</b>ことも。<b>健康・お金・法律（YMYL＝人生やお金に関わる重要分野）は人の最終確認を必須</b>とし、「情報が足りなければ推測せず“不明”と書いて」と指示するのが鉄則です。</div>
 
-      <h3>③ Workspace（仕事アプリ）統合 ― “切り替えゼロ”で使える</h3>
+      <div class="blk-h">Workspace（仕事アプリ）統合 ― “切り替えゼロ”で使える</div>
       <p>最大の強みは、別のチャット画面を開かず<b>毎日使うアプリの中にAIが溶け込んでいる</b>こと。画面の横に出る作業パネルがメールやファイルをまとめて検索し、「あの文書のホテル名と担当者は？」に即答→返信に貼り付けまで一気に。文書作成では、リンクした社内資料だけを根拠に書かせれば、AIの推測が混ざるのを防げます。</p>
 
-      <h3>④ アプリ別の使い方</h3>
+      <div class="blk-h">アプリ別の使い方</div>
       <div class="tbl-scroll"><table>
         <tr><th>アプリ</th><th>使いどころ</th><th>もたらす効果</th></tr>
         <tr><td><b>Docs</b></td><td>「@summary」で数十ページを瞬時に要約／出典に基づく起案</td><td>欠席者・役員の<b>文脈把握が数十秒</b>に</td></tr>
@@ -296,23 +345,23 @@
       </table></div>
       <div class="callout">💡 <b>“点”から“流れ”の自動化へ</b>：Workspace Studio（プログラミング不要＝ノーコードで作れるツール）で、<b>商談の録画 → 議事録 → 提案書の初稿（Slides）まで自動で作成</b>といった一連の流れも組めます（GMOの事例）。人は最終調整だけに集中できます。</div>
 
-      <h3>⑤ NotebookLM ― 社内資料“専用”のAI</h3>
+      <div class="blk-h">NotebookLM ― 社内資料“専用”のAI</div>
       <p>NotebookLM（社内資料だけで答える専用AI）は、<b>渡した資料だけを根拠に、必ず引用つきで答える</b>のが特徴。ネット上の不確かな情報が混ざらず、入力はAIの学習にも使われないため、財務レポートやM&A資料など機密も安心して投入できます。</p>
-      <ul>
-        <li><b>音声番組に自動変換</b>：資料を“2人の会話によるポッドキャスト”に変換。移動中に仕様や社内規定を耳から学べます。</li>
-        <li><b>事例</b>：カナダのSonata Designでは「NotebookLMに聞いてから人に聞け」という文化が定着。法務では5年分のメール等を読み込ませ、<b>紛争解決で相手の主張を覆し多額の和解金</b>を獲得。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎧</span>音声番組に自動変換</div><p>資料を“2人の会話によるポッドキャスト”に変換。移動中に仕様や社内規定を<b>耳から学べます</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>事例：Sonata Design</div><p>カナダのSonata Designでは「NotebookLMに聞いてから人に聞け」という文化が定着。法務では5年分のメール等を読み込ませ、<b>紛争解決で相手の主張を覆し多額の和解金</b>を獲得。</p></div>
+      </div>
 
-      <h3>⑥ Google Vids ― 動画を“文書を作る感覚”で</h3>
+      <div class="blk-h">Google Vids ― 動画を“文書を作る感覚”で</div>
       <p>目的と資料を渡すだけで、<b>台本・素材・BGM・構成（初稿）を自動で作成</b>。カメラ不要のAIアバターや、既存スライドを動画にする機能で、研修・社内向けのお知らせ動画をたくさん作れます。</p>
       <div class="warnbox">⚠️ <b>現時点の制約</b>：編集はパソコンのみ／作成機能は英語のみ／差し込める素材は30分以下／プランごとに月の作成回数に上限あり。</div>
 
-      <h3>⑦ どれだけ効くか（効果の体感）</h3>
-      <ul>
-        <li>第三者調査で<b>3年ROI 416%</b>、利用者は<b>週平均3時間（別調査では週105分）</b>を節約。</li>
-        <li><b>質も向上</b>：日常利用者の<b>75%が「仕事の質が上がった」</b>、別調査では<b>93%が「速くなった」・89%が「成果物が高品質に」</b>と回答。</li>
-        <li>事例：コストプラス（週5時間削減）、アタッシュ（問い合わせ電話を80%削減）、ピナコル（従業員96%が時短）。</li>
-      </ul>
+      <div class="blk-h">どれだけ効くか（効果の体感）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📈</span>時短とROI</div><p>第三者調査で<b>3年ROI 416%</b>、利用者は<b>週平均3時間（別調査では週105分）</b>を節約。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>質も向上</div><p>日常利用者の<b>75%が「仕事の質が上がった」</b>、別調査では<b>93%が「速くなった」・89%が「成果物が高品質に」</b>と回答。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🏢</span>導入事例</div><p>コストプラス（<b>週5時間削減</b>）、アタッシュ（問い合わせ電話を<b>80%削減</b>）、ピナコル（<b>従業員96%が時短</b>）。</p></div>
+      </div>
       <div class="warnbox">⚠️ <b>運用の注意</b>：医療では<b>HIPAA（米国の医療情報保護法）の記録（ログ）要件</b>で時短効果が一部打ち消される例や、<b>Drive（ファイル置き場）のAIが見られる範囲の外にある古いデータは、もう一度アップロードし直す手間</b>が要る例も。データの置き方と作業の流れ（ワークフロー）の設計が前提です。</div>
 
       <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
@@ -330,19 +379,12 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiへの投資は「ソフトの値段」ではなく、<b>“時間と知的生産力への投資”</b>です。外部調査では <b>3年でROI 416%・投資回収は6ヶ月未満</b> という、めったに見ない高い効果が実証されています。この章は、<b>料金の全体像 → 効果の金額（ROI）→ 競合とのコスト比較 → 見えにくい出費 → 業種別の効果</b>の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>ROI</b>＝かけたお金がどれだけ得で返るか（投資の“もうけ率”）</li>
-          <li><b>TCO</b>＝ライセンスだけでなく運用まで含めた“ぜんぶ込みの総額”</li>
-          <li><b>モデルルーティング</b>＝仕事の難易度で安いAIと高いAIを使い分けること</li>
-          <li><b>Batch API</b>＝急がない大量処理をまとめて後で回し、安くするしくみ</li>
-        </ul>
-      </div>
 
-      <h3>① 料金の全体像 ― “2つの入口”を分けて見る</h3>
-      <p>Geminiの料金は<b>2系統</b>あります。社員が日常で使う<b>「Workspace（仕事アプリ）に足す機能＝1人ごとの定額」</b>と、自社システムに組み込む<b>「API（外部から呼び出すしくみ）＝使った分だけ払う」</b>です。</p>
-      <h4 style="font-size:14.5px;font-weight:800;color:var(--g-d);margin:12px 0 4px;">(A) Workspaceに足す機能（アドオン）＝1人ごとの定額</h4>
+      <div class="blk-h">料金の全体像 ― “2つの入口”を分けて見る</div>
+      <p>Geminiの料金は<b>2系統</b>あります。社員が日常で使う<b>「Workspace（仕事アプリ）に足す機能＝1人ごとの定額」</b>と、自社システムに組み込む<b>「API（外部から呼び出すしくみ）＝使った分だけ払う（<span class="term" data-term="従量課金">従量課金</span>）」</b>です。</p>
+      <div class="blk-h">(A) Workspaceに足す機能（アドオン）＝1人ごとの定額</div>
       <div class="tbl-scroll"><table>
         <tr><th>エディション</th><th>月額（1人・年契約）</th><th>主な対象</th><th>ねらい（値差の中身）</th></tr>
         <tr><td><b>Gemini Business</b></td><td>$21</td><td>中小・部門単位（〜約300人）</td><td>Gmail（メール）/Docs（文書）/Sheets（表計算）等にAIを統合。入力はAIの学習に使われない</td></tr>
@@ -350,20 +392,20 @@
         <tr><td><b>Enterprise Plus</b></td><td>$50〜$60</td><td>常時ヘビー利用・社内システム深連携</td><td>最上位。ストレージ拡大・ほぼ無制限の利用枠</td></tr>
       </table></div>
       <div class="callout">📐 <b>読み解き</b>：BusinessとEnterpriseの差（月+$9）は、医療・金融など<b>厳しいルールが要る業界では“保険料”</b>。誰が何を見てよいかを役割ごとに管理するしくみが、<b>シャドーAI（会社に無断で個人が使うAI）による情報漏れの巨額リスク</b>を未然に防ぎます。</div>
-      <h4 style="font-size:14.5px;font-weight:800;color:var(--g-d);margin:12px 0 4px;">(B) API（外部から呼び出すしくみ）＝使った分だけ払う（従量課金）</h4>
+      <div class="blk-h">(B) API（外部から呼び出すしくみ）＝使った分だけ払う（従量課金）</div>
       <div class="tbl-scroll"><table>
-        <tr><th>モデル</th><th>得意（ひとことで）</th><th>入力 / 100万トークン（文字のかたまり）</th><th>出力 / 100万トークン（文字のかたまり）</th></tr>
+        <tr><th>モデル</th><th>得意（ひとことで）</th><th>入力 / 100万<span class="term" data-term="トークン">トークン</span>（文字のかたまり）</th><th>出力 / 100万トークン（文字のかたまり）</th></tr>
         <tr><td><b>Gemini 2.5 Flash-Lite</b></td><td>最初の返事・簡単な抜き出し。<b>最安</b></td><td>$0.10</td><td>$0.40</td></tr>
         <tr><td><b>Gemini 3.5 Flash</b></td><td>文章生成・社内検索。速度と精度のバランス</td><td>$1.50</td><td>$9.00</td></tr>
         <tr><td><b>Gemini 3.1 Pro</b></td><td>複雑なコード・高度な分析。<b>最高性能</b></td><td>$2.00</td><td>$12.00</td></tr>
       </table></div>
-      <div class="callout">💡 <b>カギは“使い分け”</b>：入力料金で <b>最安のFlash-Lite($0.10)は最上位Pro($2.00)の1/20</b>。全部を高性能AIにせず、<b>簡単な仕事は安いAI・難しい仕事だけ高いAI</b>に振り分ける（モデルルーティング）だけで、コストを大きく下げられます。</div>
+      <div class="callout">💡 <b>カギは“使い分け”</b>：入力料金で <b>最安のFlash-Lite($0.10)は最上位Pro($2.00)の1/20</b>。全部を高性能AIにせず、<b>簡単な仕事は安いAI・難しい仕事だけ高いAI</b>に振り分ける（<span class="term" data-term="モデルルーティング">モデルルーティング</span>）だけで、コストを大きく下げられます。</div>
 
-      <h3>② 効果の金額（ROI）― 外部調査が示す“けた違いの効果”</h3>
+      <div class="blk-h">効果の金額（ROI）― 外部調査が示す“けた違いの効果”</div>
       <p>Forrester社の調査（2026年2月／従業員2万人・うち1.6万人が日常利用を想定）の<b>3年分・リスク調整後（うまくいかない場合も差し引いた）</b>の結果です。</p>
       <div class="verdict">💰 <b>投資対効果のまとめ</b><br>
-      ・<b class="big" style="color:#9db4ff;">ROI 416%</b>（3年でかけたお金が約4倍で返る）　・<b class="big" style="color:#9db4ff;">投資回収 6ヶ月未満</b><br>
-      ・正味利益（NPV＝将来のもうけを今の価値に直した額）<b>約1.24億ドル（約185億円）</b>　・総便益 約1.53億ドル / 総コスト 約0.30億ドル</div>
+      ・<b class="big" style="color:#9db4ff;"><span class="term" data-term="ROI">ROI</span> 416%</b>（3年でかけたお金が約4倍で返る）　・<b class="big" style="color:#9db4ff;">投資回収 6ヶ月未満</b><br>
+      ・正味利益（<span class="term" data-term="NPV">NPV</span>＝将来のもうけを今の価値に直した額）<b>約1.24億ドル（約185億円）</b>　・総便益 約1.53億ドル / 総コスト 約0.30億ドル</div>
       <p>この大きな効果は、次の<b>5つの“得”</b>の積み上げです。</p>
       <div class="tbl-scroll"><table>
         <tr><th>便益の源泉</th><th>中身</th><th>3年の価値</th></tr>
@@ -375,8 +417,8 @@
       </table></div>
       <div class="callout">🔎 <b>本質</b>：これは「ソフトのアップグレード」ではなく、<b>“人の時間と頭脳を解放して、もうけを生む仕事へ振り向ける投資”</b>。浮いた週3時間が提案スピードや商談数の増加＝<b>売上の成長</b>につながります。</div>
 
-      <h3>③ 競合（Microsoft 365 Copilot）とのコスト比較</h3>
-      <p>AIアシスタントの“定価”は<b>両者とも月$30で同額</b>。でも本当の総額（TCO）を分けるのは<b>「今どの土台（メール・カレンダー等のグループウェア）を使っているか」</b>です。</p>
+      <div class="blk-h">競合（Microsoft 365 Copilot）とのコスト比較</div>
+      <p>AIアシスタントの“定価”は<b>両者とも月$30で同額</b>。でも本当の総額（<span class="term" data-term="TCO">TCO</span>）を分けるのは<b>「今どの土台（メール・カレンダー等のグループウェア）を使っているか」</b>です。</p>
       <div class="tbl-scroll"><table>
         <tr><th>3年のコスト（1,000人）</th><th>Microsoft 365 Copilot（M365 E5前提）</th><th>Gemini Enterprise（Google Workspace前提）</th></tr>
         <tr><td>AIの利用料（ライセンス費）</td><td>$1.08M</td><td>$1.08M</td></tr>
@@ -384,23 +426,23 @@
         <tr><td>導入・連携の初期費</td><td>$15〜25万</td><td>$15〜30万</td></tr>
         <tr><td><b>3年の総額（TCO）の見込み</b></td><td><b>約$1.23〜1.33M</b></td><td><b>約$1.23〜1.38M</b>（Googleだけの環境）／最大$2.46M（追加投資が要る場合）</td></tr>
       </table></div>
-      <ul>
-        <li><b>すでにMicrosoft中心</b>の会社 → Copilotが“追加投資なし”で最も摩擦が少ない。</li>
-        <li><b>すでにGoogle Workspace中心</b>の会社（スタートアップ・IT系・中小） → Geminiが<b>圧倒的に有利</b>。</li>
-        <li>2026年7月にMicrosoftが基本料金を値上げ → <b>Google側への移行圧力が世界的に高まる</b>。</li>
-      </ul>
-      <div class="callout">🧭 <b>見落としがちな技術の強み＝一度に読める量（コンテキストウィンドウ）</b>：ChatGPT Enterpriseの<b>12.8万トークン</b>に対しGeminiは<b>100万〜200万トークン</b>と桁違い。数千ページの契約書やプログラムを<b>分割せず、社内資料を出典つきで答えるしくみ（RAG）も作らず、まるごと貼って分析</b>できるため、<b>付け足しシステムの開発・維持費がゼロに</b>。これが“見えにくい大きなコスト削減”です。</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🪟</span>すでにMicrosoft中心</div><p>Copilotが<b>“追加投資なし”で最も摩擦が少ない</b>選択になります。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚀</span>すでにGoogle Workspace中心</div><p>スタートアップ・IT系・中小など。Geminiが<b>圧倒的に有利</b>です。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⏰</span>2026年7月の値上げ</div><p>Microsoftが基本料金を値上げ → <b>Google側への移行圧力が世界的に高まる</b>。</p></div>
+      </div>
+      <div class="callout">🧭 <b>見落としがちな技術の強み＝一度に読める量（<span class="term" data-term="コンテキストウィンドウ">コンテキストウィンドウ</span>）</b>：ChatGPT Enterpriseの<b>12.8万トークン</b>に対しGeminiは<b>100万〜200万トークン</b>と桁違い。数千ページの契約書やプログラムを<b>分割せず、社内資料を出典つきで答えるしくみ（<span class="term" data-term="RAG">RAG</span>）も作らず、まるごと貼って分析</b>できるため、<b>付け足しシステムの開発・維持費がゼロに</b>。これが“見えにくい大きなコスト削減”です。</div>
 
-      <h3>④ 見えにくい出費と、その抑え方</h3>
+      <div class="blk-h">見えにくい出費と、その抑え方</div>
       <p>APIで自由に作り込むと、利用料以外の<b>“予想外の出費”</b>が利益を圧迫します。先に正体を知って対策を。</p>
       <div class="warnbox">⚠️ <b>4つの“見えにくい出費”</b>：<br>
       ・<b>会話の“記憶”がふくらむ</b>：話の流れを保つため過去のやり取りを毎回送り直す → 使うほど入力トークンが増えて料金も増える。<br>
       ・<b>画像・音声・動画は割高</b>：文字の2〜7倍。音声翻訳は1分で約$0.0368。<br>
-      ・<b>最新検索との照合（グラウンディング）</b>：月5,000回の無料分を超えると、1,000回ごとに$14〜35。<br>
+      ・<b>最新検索との照合（<span class="term" data-term="グラウンディング">グラウンディング</span>）</b>：月5,000回の無料分を超えると、1,000回ごとに$14〜35。<br>
       ・<b>待機させる専用サーバー</b>：機密用に専用GPUを確保すると、使わなくても<b>1基あたり月約$2,642</b>かかり続ける。</div>
-      <div class="callout">💪 <b>こう抑える</b>：① 急がない大量処理は <b>Batch APIで半額</b>。② よく使う長い資料は <b>下書き保存して使い回す（プロンプトキャッシング）で入力料金が1/10</b>。③ <b>シャドーAI（会社に無断で個人が使うAI）を禁止し、安全なGemini Enterpriseへ一本化</b>（二重払いと情報漏れを同時に解消）。</div>
+      <div class="callout">💪 <b>こう抑える</b>：① 急がない大量処理は <b><span class="term" data-term="バッチAPI">Batch API</span>で半額</b>。② よく使う長い資料は <b>下書き保存して使い回す（<span class="term" data-term="コンテキストキャッシュ">プロンプトキャッシング</span>）で入力料金が1/10</b>。③ <b>シャドーAI（会社に無断で個人が使うAI）を禁止し、安全なGemini Enterpriseへ一本化</b>（二重払いと情報漏れを同時に解消）。</div>
 
-      <h3>⑤ 業種別の効果（実際の導入事例）</h3>
+      <div class="blk-h">業種別の効果（実際の導入事例）</div>
       <div class="tbl-scroll"><table>
         <tr><th>領域</th><th>企業</th><th>効果</th></tr>
         <tr><td rowspan="3"><b>開発</b></td><td>CME Group（世界最大級の取引所）</td><td>開発者1人 月10.5時間の余剰、コード統合提案+45%、<b>9ヶ月の新規開発を3〜4ヶ月に</b>。20人→1,000人へ拡大</td></tr>
@@ -430,27 +472,20 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p><b>「すべてに勝つ万能AI」の時代は終わり</b>、仕事の性質で使い分ける時代になりました。この章は、3大サービス（<b>Google Gemini／OpenAI ChatGPT／Anthropic Claude</b>）を、性能・マルチモーダル・料金・安全性の観点で公平に比べ、<b>Geminiの“勝ちどころ”</b>を明確にします。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>マルチモーダル</b>＝文字だけでなく画像・音声・動画もまとめて扱えること</li>
-          <li><b>MCP</b>＝AIと外部ツールをつなぐ“共通の差込口”（業界標準）</li>
-          <li><b>ハーネス</b>＝AIを動かす“実行環境”。同じAIでも環境で成績が変わる</li>
-          <li><b>ZDR（ゼロデータ保持）</b>＝入出力を保存しない契約</li>
-        </ul>
-      </div>
 
-      <h3>① 性能 ― “得意分野”がはっきり分かれる</h3>
+      <div class="blk-h">性能 ― “得意分野”がはっきり分かれる</div>
       <p>最高峰モデル（GPT-5.5／Claude Opus 4.8／Gemini 3.1 Pro）の総合力は<b>ほぼ互角</b>。決め手は“得意分野”です。</p>
       <div class="tbl-scroll"><table>
         <tr><th>得意な領域</th><th>強いモデル</th><th>代表ベンチマーク（目安）</th></tr>
-        <tr><td>複雑な推論・自分で考えて作業まで行うAI（エージェント）・黒い画面（ターミナル）の操作・Webでの調べもの</td><td><b>GPT-5.5</b>（OpenAI）</td><td>Terminal-Bench 82.7%／BrowseComp 90.1%</td></tr>
+        <tr><td>複雑な推論・自分で考えて作業まで行うAI（<span class="term" data-term="エージェント">エージェント</span>）・黒い画面（ターミナル）の操作・Webでの調べもの</td><td><b>GPT-5.5</b>（OpenAI）</td><td>Terminal-Bench 82.7%／BrowseComp 90.1%</td></tr>
         <tr><td>プログラム（コード）の生成・書き直し（リファクタリング）・画面まわり（UI／フロントエンド）・長文生成</td><td><b>Claude Opus 4.8</b>（Anthropic）</td><td>SWE-bench Pro 64.3%</td></tr>
         <tr><td><b>長文処理・文字も画像も音声も動画も扱える（マルチモーダル）・コスト</b></td><td><b>Gemini 3.1 Pro</b>（Google）</td><td>BrowseComp 85.9%／長文・動画で優位</td></tr>
       </table></div>
-      <div class="warnbox">⚠️ <b>“動かす環境（ハーネス）”で成績が変わる</b>：同じAIでも、動かす環境や指示文（プロンプト）の作り方で結果が大きく動きます。<b>点数だけで決めない</b>こと。</div>
+      <div class="warnbox">⚠️ <b>“動かす環境（<span class="term" data-term="ハーネス">ハーネス</span>）”で成績が変わる</b>：同じAIでも、動かす環境や指示文（プロンプト）の作り方で結果が大きく動きます。<b>点数だけで決めない</b>こと。</div>
 
-      <h3>② 一度に読める量＆扱えるデータ（Geminiの主戦場）</h3>
+      <div class="blk-h">一度に読める量＆扱えるデータ（Geminiの主戦場）</div>
       <div class="tbl-scroll"><table>
         <tr><th>項目</th><th>Gemini 3.1 Pro</th><th>GPT-5.5</th><th>Claude Opus 4.8</th></tr>
         <tr><td>一度に読める量（コンテキストウィンドウ）</td><td class="hi">200万トークン</td><td>256K</td><td>100万</td></tr>
@@ -459,10 +494,10 @@
       </table></div>
       <div class="callout">🧭 <b>ここがGeminiの独自価値</b>：<b>長時間の録画や巨大なプログラム／PDFを、分割もRAG（社内資料を検索して出典つきで答えるしくみ）も作らず“まるごと”扱える</b>のは現状Geminiだけ。動画・音声を含む業務では最有力です。</div>
 
-      <h3>③ つなぐ共通規格＝MCP（特定の会社への縛りを避ける土台）</h3>
-      <p>AnthropicがMCPを提唱し、<b>中立の団体へ寄贈。Google・OpenAI・Microsoft・AWSも賛同</b>し、1万を超えるサーバーが稼働。<b>どのAIからでも社内データ・ツールにつなげる</b>ようになり、<b>1社への縛り（ロックイン）を避けやすく、仕事の難易度でAIを使い分けること（モデルルーティング）もしやすく</b>なりました。</p>
+      <div class="blk-h">つなぐ共通規格＝MCP（特定の会社への縛りを避ける土台）</div>
+      <p>Anthropicが<span class="term" data-term="MCP">MCP</span>を提唱し、<b>中立の団体へ寄贈。Google・OpenAI・Microsoft・AWSも賛同</b>し、1万を超えるサーバーが稼働。<b>どのAIからでも社内データ・ツールにつなげる</b>ようになり、<b>1社への縛り（ロックイン）を避けやすく、仕事の難易度でAIを使い分けること（モデルルーティング）もしやすく</b>なりました。</p>
 
-      <h3>④ 料金 ― Geminiが価格でリード</h3>
+      <div class="blk-h">料金 ― Geminiが価格でリード</div>
       <div class="tbl-scroll"><table>
         <tr><th>モデル（API）</th><th>入力 /100万</th><th>出力 /100万</th><th>特性</th></tr>
         <tr><td><b>Gemini 3.1 Pro</b></td><td class="hi">$2.00</td><td class="hi">$12.00</td><td>最上位モデルで<b>競合の約半額</b></td></tr>
@@ -470,18 +505,18 @@
         <tr><td>GPT-5.5</td><td>$5.00〜</td><td>$30.00〜</td><td>使い回し（キャッシュ）で入力1/10に</td></tr>
         <tr><td>Claude Opus 4.8</td><td>$5.00</td><td>$25.00</td><td>コーディング最高峰</td></tr>
       </table></div>
-      <ul>
-        <li><b>月額の使い放題プラン（サブスク）</b>：Google One AI Premium <b>$19.99</b>（5TB込み）／ChatGPT Plus $20・Pro $100/$200／Claude Pro $20・Max $100/$200。</li>
-        <li>⚠️ Claudeは<b>文章をトークンに区切るしくみが新しくなり、同じ文章でも最大+35%のトークン</b>（事実上のコスト増）。OpenAIは<b>自社データでAIを追加学習させる機能（ファインチューニング）を段階的に終了</b>へ。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💳</span>月額の使い放題プラン（サブスク）</div><p>Google One AI Premium <b>$19.99</b>（5TB込み）／ChatGPT Plus $20・Pro $100/$200／Claude Pro $20・Max $100/$200。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚠️</span>他社の留意点</div><p>Claudeは<b>区切りのしくみが新しくなり、同じ文章でも最大+35%のトークン</b>（事実上のコスト増）。OpenAIは<b>追加学習機能（ファインチューニング）を段階的に終了</b>へ。</p></div>
+      </div>
 
-      <h3>⑤ 安全性・サポート（横並びの要点）</h3>
-      <ul>
-        <li><b>AIの学習に使われるか</b>：個人版は使われ得る／<b>3社とも法人（エンタープライズ）版は学習に使わない</b>。</li>
-        <li><b>データを残す期間</b>：Claude <b>7日（業界最短）</b>／OpenAI 30日。いずれも<b>やり取りを保存しない契約（ZDR）</b>が可能。</li>
-        <li><b>データの置き場所</b>：EUのAI規制法（2026年8月・罰金は最大€3,500万 or 売上7%）。<b>Vertex（Googleの開発基盤）は国・地域を指定可能</b>、OpenAIは新モデルでプロジェクト単位＋<b>10%割増</b>。</li>
-        <li><b>サービス品質の約束（SLA）</b>：<b>Vertexは稼働率99.5%＋応答の速さの保証を明示</b>。OpenAI標準は一律の品質保証なし（法人版で優先処理）。</li>
-      </ul>
+      <div class="blk-h">安全性・サポート（横並びの要点）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>AIの学習に使われるか</div><p>個人版は使われ得る／<b>3社とも法人（エンタープライズ）版は学習に使わない</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🗑️</span>データを残す期間</div><p>Claude <b>7日（業界最短）</b>／OpenAI 30日。いずれも<b>やり取りを保存しない契約（ZDR）</b>が可能。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌐</span>データの置き場所</div><p>EUのAI規制法（2026年8月・罰金は最大€3,500万 or 売上7%）。<b>Vertexは国・地域を指定可能</b>、OpenAIは新モデルでプロジェクト単位＋<b>10%割増</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>サービス品質の約束（SLA）</div><p><b>Vertexは稼働率99.5%＋応答の速さの保証を明示</b>。OpenAI標準は一律の品質保証なし（法人版で優先処理）。</p></div>
+      </div>
 
       <div class="verdict">💪 <b>もたらす効果（結論）＝1社に縛られず“適材適所”</b><br>
       ・<b>複雑な推論・自分で作業まで行うAI（エージェント）</b> → GPT-5.5　／　・<b>プログラミング・画面まわり（UI）</b> → Claude Opus 4.8<br>
@@ -500,64 +535,57 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>AIが社内データに直接つながる時代、論点は「何ができるAIか」から<b>「自社のデータをどう守りながら使うか」</b>へ移りました。Geminiは<b>①入力をAIの学習に使わない ②データを国内に置いたまま使える ③国の安全基準（ISMAP）に合格 ④著作権で訴えられてもGoogleが肩代わり</b>まで揃え、リスクを“仕組みで”抑えます。この章は、データ保護 → データ主権 → 認証 → 情報漏れ対策 → エージェントの管理 → 攻撃への防御 → 著作権の肩代わり → 競合の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>ゼロトレーニング</b>＝入力も出力もAIの学習に一切使わない約束</li>
-          <li><b>DSPM</b>＝社内のどこに機密が眠り、誰に見えているかを点検する“健康診断”</li>
-          <li><b>プロンプトインジェクション</b>＝資料やメールに“こっそり仕込んだ命令”でAIを乗っ取る手口</li>
-          <li><b>ISMAP</b>＝日本政府が定めるクラウドの安全基準（合格＝国のお墨付き）</li>
-        </ul>
-      </div>
 
-      <h3>① データは“AIの学習に使わない・本人が見られるものしか見ない”</h3>
-      <ul>
-        <li><b>ゼロトレーニング</b>：入力（質問・データ）も出力（回答）も、<b>GoogleのおおもとのAIの学習には一切使われません</b>（契約の条文で法的に保証）。</li>
-        <li><b>本人が見られるものしか見ない</b>：同じ会社でも、Geminiは<b>その従業員がすでにアクセスできるファイルだけ</b>を見て答えます。人事・財務を見る権限がなければ、その中身は読めません。</li>
-        <li><b>さらに厳格に</b>：監視用の記録（ログ）さえ残さない設定や、対話履歴を残す期間（90日〜無期限／3・18・36ヶ月／オフ）も管理者が細かく決められます。</li>
-      </ul>
+      <div class="blk-h">データは“AIの学習に使わない・本人が見られるものしか見ない”</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span><span class="term" data-term="ゼロトレーニング">ゼロトレーニング</span></div><p>入力（質問・データ）も出力（回答）も、<b>GoogleのおおもとのAIの学習には一切使われません</b>（契約の条文で法的に保証）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔑</span>本人が見られるものしか見ない</div><p>同じ会社でも、Geminiは<b>その従業員がすでにアクセスできるファイルだけ</b>を見て答えます。人事・財務の権限がなければ中身は読めません。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⚙️</span>さらに厳格に</div><p>監視用の記録（ログ）さえ残さない設定や、対話履歴を残す期間（<b>90日〜無期限／3・18・36ヶ月／オフ</b>）も管理者が細かく決められます。</p></div>
+      </div>
       <div class="okbox">✅ <b>NotebookLM Enterprise（社内資料専用AIの法人版）</b>：答えを<b>“渡した資料だけ”に限定</b>してもっともらしい嘘（ハルシネーション）を抑え、<b>終了後はやり取りを何も残しません</b>。機密の調べものに向いています。</div>
 
-      <h3>② データの置き場所（データ主権）― 機密を“日本国内”に置いたまま使える</h3>
-      <ul>
-        <li>主要モデル（Gemini 3.1/2.5 Pro・Flash等）は、<b>東京・大阪のデータセンター</b>で<b>保存も処理も国内に固定</b>して使えます。</li>
-        <li>一部の最新機能はアメリカ（US）が先行することがあるため、<b>機密は“国内固定”のモデル、最新機能の試しはUS</b>と使い分ける運用が定石。</li>
-        <li>NTTデータがGoogleと組んで<b>5,000名の認定専門家を育成</b>するなど、国内のルールに合わせた“自国でデータを管理するAI（ソブリンAI）”の支援体制も整備。</li>
-      </ul>
+      <div class="blk-h">データの置き場所（データ主権）― 機密を“日本国内”に置いたまま使える</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🗾</span>国内に固定して使える</div><p>主要モデル（Gemini 3.1/2.5 Pro・Flash等）は、<b>東京・大阪のデータセンター</b>で<b>保存も処理も国内に固定</b>して使えます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>機密と最新機能を使い分け</div><p>一部の最新機能はアメリカ（US）が先行するため、<b>機密は“国内固定”のモデル、最新機能の試しはUS</b>と使い分ける運用が定石。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🤝</span>国内の支援体制</div><p>NTTデータがGoogleと組んで<b>5,000名の認定専門家を育成</b>するなど、国内ルールに合わせた“自国でデータを管理するAI（ソブリンAI）”の体制も整備。</p></div>
+      </div>
       <div class="warnbox">⚠️ <b>「グローバルEndpoint（世界中で処理する設定）」に注意</b>：処理が速くなる反面、<b>どの国で処理されたか追えなくなる</b>ため、データを国内に置く必要がある業務では使わないこと。</div>
 
-      <h3>③ 国・国際基準の“お墨付き”（認証）</h3>
-      <ul>
-        <li><b>ISMAP登録（2026年4月／Gemini Enterprise・NotebookLM Enterprise）</b>＝<b>日本政府の安全基準に合格（国のお墨付き）</b>。金融・公共・医療などで、法務・コンプライアンス部門の承認を一気に進める後ろ盾に。</li>
-        <li>あわせて <b>ISO 42001（AIの公平さ・透明さの規格）／SOC／ISO 27001系／HIPAA（米国の医療情報保護法）／FedRAMP High／BSI C5</b> など主要な認証を網羅。EUのAI規制への対応にも有効。</li>
-      </ul>
+      <div class="blk-h">国・国際基準の“お墨付き”（認証）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏛️</span><span class="term" data-term="ISMAP">ISMAP</span>登録</div><p><b>2026年4月／Gemini Enterprise・NotebookLM Enterprise</b>＝<b>日本政府の安全基準に合格（国のお墨付き）</b>。金融・公共・医療の承認を一気に進める後ろ盾に。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📜</span>国際規格を網羅</div><p><b>ISO 42001（AIの公平さ・透明さ）／SOC／ISO 27001系／HIPAA／FedRAMP High／BSI C5</b> など主要認証を網羅。EUのAI規制対応にも有効。</p></div>
+      </div>
 
-      <h3>④ 情報漏れを“入口で”止める（誰も無条件に信用しない＝ゼロトラスト）</h3>
-      <ul>
-        <li><b>DLP（機密の持ち出しを見張って止めるしくみ）＋権利管理</b>：機密の目印（ラベル）が付いたファイルは、<b>Geminiの検索・参照の対象から外れます</b> → 「AI経由の裏口からの持ち出し」を仕組みで遮断。</li>
-        <li><b>CSE（自社の鍵でかける暗号化）</b>：暗号の鍵を自社が握るため、<b>GoogleもAIも中身を読めません</b>。最重要の知的財産をAIの処理から物理的に切り離せます。</li>
-      </ul>
-      <div class="warnbox">⚠️ <b>最大の落とし穴は“自社側の権限の放置”</b>：Geminiは権限を正しく守りますが、<b>退職者の権限が残ったファイルや、うっかり全社に公開された共有ドライブ</b>があると、AIが一瞬で掘り出して要約できてしまいます。<b>展開前にDSPM（Sentra/Wiz等）でデータを点検し、行き過ぎた権限を掃除</b>しておくのが鉄則です。</div>
+      <div class="blk-h">情報漏れを“入口で”止める（誰も無条件に信用しない＝ゼロトラスト）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚧</span><span class="term" data-term="DLP">DLP</span>＋権利管理</div><p>機密の目印（ラベル）が付いたファイルは、<b>Geminiの検索・参照の対象から外れます</b> → 「AI経由の裏口からの持ち出し」を仕組みで遮断。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔐</span><span class="term" data-term="CSE">CSE</span>（自社の鍵で暗号化）</div><p>暗号の鍵を自社が握るため、<b>GoogleもAIも中身を読めません</b>。最重要の知的財産をAIの処理から物理的に切り離せます。</p></div>
+      </div>
+      <div class="warnbox">⚠️ <b>最大の落とし穴は“自社側の権限の放置”</b>：Geminiは権限を正しく守りますが、<b>退職者の権限が残ったファイルや、うっかり全社に公開された共有ドライブ</b>があると、AIが一瞬で掘り出して要約できてしまいます。<b>展開前に<span class="term" data-term="DSPM">DSPM</span>（Sentra/Wiz等）でデータを点検し、行き過ぎた権限を掃除</b>しておくのが鉄則です。</div>
 
-      <h3>⑤ 自分で作業するAI（エージェント）の管理（“管制塔”）</h3>
+      <div class="blk-h">自分で作業するAI（エージェント）の管理（“管制塔”）</div>
       <p>AIが社内システムを自分で操作する時代に向け、Geminiは<b>“航空管制塔”のように見張って整理する層</b>を備えます。</p>
-      <ul>
-        <li><b>一人ひとりに身分証</b>：各エージェントに<b>偽造できないデジタルの身分証（ID／24時間ごとに自動更新）</b>を付与 → <b>通行証（トークン）を盗まれても他所では使えません</b>。</li>
-        <li><b>すべての通信は関所を通す</b>：通信は <b>Agent Gateway（関所のような通り道）</b> を必ず通って暗号化・本人確認され、<b>許可一覧（Agent Registry）に無い“勝手なAI”は遮断</b>。</li>
-        <li><b>給与システム並みの記録（監査）</b>：「誰の指示で・どのAIが・どのデータに何をしたか」を後から追えます。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🪪</span>一人ひとりに身分証</div><p>各エージェントに<b>偽造できないデジタルの身分証（ID／24時間ごとに自動更新）</b>を付与 → <b>通行証（トークン）を盗まれても他所では使えません</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚪</span>すべての通信は関所を通す</div><p>通信は <b>Agent Gateway（関所）</b> を必ず通って暗号化・本人確認され、<b>許可一覧（Agent Registry）に無い“勝手なAI”は遮断</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🔍</span>給与システム並みの記録（監査）</div><p>「誰の指示で・どのAIが・どのデータに何をしたか」を<b>後から追えます</b>。</p></div>
+      </div>
 
-      <h3>⑥ AIを狙う攻撃への防御（何重もの守り）</h3>
-      <p>最大の新しい脅威が<b>プロンプトインジェクション</b>（メールや資料に「機密を外部へ送れ」等の命令をこっそり仕込み、AIが読んだ瞬間に乗っ取る手口）。Geminiは何重にも守ります。</p>
-      <ul>
-        <li><b>AI自体を頑丈に</b>（攻撃をまねた訓練で“だまされにくく”）／<b>専用のふるい（フィルタ）</b>で悪意ある命令だけを取り除く。</li>
-        <li><b>こっそり盗み出す手口（EchoLeak）を遮断</b>：外部の画像の読み込みや、あやしいリンクを無効化。</li>
-        <li><b>取り返しのつかない操作は人に確認</b>（「予定を全部削除」等は実行前に承認を求める）。</li>
-        <li><b>AI Threat Defense</b>（Wiz＋Mandiantと連携）で弱点を見つけ、<b>機械の速さで自動修正</b>。</li>
-      </ul>
+      <div class="blk-h">AIを狙う攻撃への防御（何重もの守り）</div>
+      <p>最大の新しい脅威が<b><span class="term" data-term="プロンプトインジェクション">プロンプトインジェクション</span></b>（メールや資料に「機密を外部へ送れ」等の命令をこっそり仕込み、AIが読んだ瞬間に乗っ取る手口）。Geminiは何重にも守ります。</p>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>AI自体を頑丈に</div><p>攻撃をまねた訓練で“だまされにくく”／<b>専用のふるい（フィルタ）</b>で悪意ある命令だけを取り除く。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚫</span>盗み出す手口を遮断</div><p>こっそり盗み出す手口（<b>EchoLeak</b>）を遮断。外部の画像の読み込みや、あやしいリンクを無効化。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✅</span>重大操作は人に確認</div><p>取り返しのつかない操作（「予定を全部削除」等）は<b>実行前に承認</b>を求めます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤖</span>AI Threat Defense</div><p>Wiz＋Mandiantと連携で弱点を見つけ、<b>機械の速さで自動修正</b>。</p></div>
+      </div>
 
-      <h3>⑦ 法的リスクを断つ（著作権の“肩代わり”）</h3>
-      <p>Geminiは業界に先駆けて<b>二段構えの著作権の肩代わり（訴えられたらGoogleが守る保険＝著作権免責）</b>を標準で提供（規約の更新で全顧客に自動で適用）。</p>
+      <div class="blk-h">法的リスクを断つ（著作権の“肩代わり”）</div>
+      <p>Geminiは業界に先駆けて<b>二段構えの著作権の肩代わり（訴えられたらGoogleが守る保険＝<span class="term" data-term="著作権免責">著作権免責</span>）</b>を標準で提供（規約の更新で全顧客に自動で適用）。</p>
       <div class="tbl-scroll"><table>
         <tr><th>免責の種類</th><th>守る範囲</th></tr>
         <tr><td><b>① 学習データ</b></td><td>AIの“学習に使ったデータ”が権利侵害と訴えられても、Googleが防御・補償</td></tr>
@@ -565,12 +593,12 @@
       </table></div>
       <div class="callout">💪 <b>もたらす効果</b>：条件（悪意で侵害しない・自動表示される出典を活かす）を守れば、<b>万一の著作権訴訟をGoogleが肩代わり</b>。法務・リスク部門の承認ハードルが激減し、経営トップが<b>「安心して全社で使え」</b>と号令をかけられます。</div>
 
-      <h3>⑧ 競合（Microsoft Copilot／Azure）との違い</h3>
-      <ul>
-        <li><b>勝敗の7〜8割は“今どこにデータがあるか”</b>。<b>Google中心ならGemini／Microsoft中心ならCopilot</b>が自然な選択。</li>
-        <li><b>一度に読める量</b>：Copilot系の<b>12.8万トークン</b>に対しGeminiは<b>100万〜200万トークン</b>。長い契約書や大量のプログラムを分割せず扱えます。</li>
-        <li><b>開発の土台</b>：Vertex AIは<b>使った分だけ払う方式＋自社製チップ（TPU）で低コスト</b>、AzureはPTU（先に枠を予約する方式）。データの置き場所は東京／大阪を指定して対応できます。</li>
-      </ul>
+      <div class="blk-h">競合（Microsoft Copilot／Azure）との違い</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧭</span>勝敗は“今どこにデータがあるか”</div><p>勝敗の<b>7〜8割</b>がこれで決まります。<b>Google中心ならGemini／Microsoft中心ならCopilot</b>が自然な選択。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📂</span>一度に読める量</div><p>Copilot系の<b>12.8万トークン</b>に対しGeminiは<b>100万〜200万トークン</b>。長い契約書や大量のプログラムを分割せず扱えます。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⚙️</span>開発の土台</div><p>Vertex AIは<b>使った分だけ払う方式＋自社製チップ（TPU）で低コスト</b>、AzureはPTU（先に枠を予約する方式）。置き場所は東京／大阪を指定可能。</p></div>
+      </div>
 
       <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
       Geminiは、生成AI導入の致命傷になりがちな<b>「情報漏れ・法令違反・著作権の訴訟」を、システムの土台から仕組みで防ぎ</b>ます。<b>ゼロトレーニング＋国内データ主権＋ISMAP合格＋著作権の肩代わり</b>が揃うため、規制の厳しい業界でも<b>「導入してよいか」の前提条件をクリア済み</b>。あとは安全に“使い倒す”だけ、という状態に持ち込めます。</div>
@@ -582,6 +610,10 @@
     </div>
   </div>
 
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>料金と組織<span class="grp-sub">料金プラン・人材組織</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s5">
     <div class="sechd"><span class="n">5</span><div><h2>プラン・料金体系</h2><div class="src">自社に最適なプランの選び方／料金改定の背景／競合との価格比較</div></div></div>
     <div class="secteaser">
@@ -590,26 +622,19 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiの料金は<b>“3つの入口”</b>で考えると整理できます。社員が日常で使う<b>Workspace（1人ごとの定額）</b>、個人・クリエイター向けの<b>月額プラン（Google One）</b>、自社システムに組み込む<b>開発者向けAPI（使った分だけ払う）</b>。2025年にWorkspaceは<b>「AIを別売りの追加機能 → 基本プランに最初から付ける」</b>へ大きく変わりました。この章は各料金を整理し、<b>用途別に「どれを選ぶか」</b>を示します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>バンドル</b>＝AI機能を“基本プランに最初から同梱”する方式（追加契約が不要）</li>
-          <li><b>クレジット</b>＝個人プランでAI機能を使うたびに消費する“回数券”</li>
-          <li><b>コンテキストキャッシュ</b>＝よく使う長い資料を“下書き保存”し、入力料金を最大90%下げるしくみ</li>
-          <li><b>バッチAPI</b>＝急がない処理を“まとめて後で”回して半額にするしくみ</li>
-        </ul>
-      </div>
 
-      <h3>① まず全体像 ― 料金は“3つの入口”</h3>
+      <div class="blk-h">まず全体像 ― 料金は“3つの入口”</div>
       <div class="tbl-scroll"><table>
         <tr><th>入口</th><th>誰向け</th><th>課金の形</th></tr>
         <tr><td><b>Workspace（法人）</b></td><td>全社員（知識を使う仕事の人＝ナレッジワーカー）</td><td>1人ごとの<b>定額</b>（AIは基本プランに最初から付く）</td></tr>
-        <tr><td><b>個人の月額プラン（サブスク＝Google One）</b></td><td>個人・フリーランス・クリエイター</td><td>定額＋<b>クレジット（使うたびに減る回数券）</b></td></tr>
+        <tr><td><b>個人の月額プラン（サブスク＝Google One）</b></td><td>個人・フリーランス・クリエイター</td><td>定額＋<b><span class="term" data-term="クレジット">クレジット</span>（使うたびに減る回数券）</b></td></tr>
         <tr><td><b>開発者API（AI Studio／Vertex AI）</b></td><td>開発者・AI推進部門</td><td><b>使った分だけ（トークン＝文字のかたまり単位で従量課金）</b></td></tr>
       </table></div>
 
-      <h3>② Workspace（法人・定額）― 2025年にAIが“標準同梱”に</h3>
-      <p>かつては「基本料金＋高額な追加機能（月$20〜30）」でしたが、2025年1月に<b>追加機能をやめ、基本プランに同梱（バンドル）</b>。基本料金は少し上がりつつ、全員がAIを使える形になりました（日本円・月額の目安）。</p>
+      <div class="blk-h">Workspace（法人・定額）― 2025年にAIが“標準同梱”に</div>
+      <p>かつては「基本料金＋高額な追加機能（月$20〜30）」でしたが、2025年1月に<b>追加機能をやめ、基本プランに同梱（<span class="term" data-term="バンドル">バンドル</span>）</b>。基本料金は少し上がりつつ、全員がAIを使える形になりました（日本円・月額の目安）。</p>
       <div class="tbl-scroll"><table>
         <tr><th>プラン</th><th>月額（改定後）</th><th>AIの権限・特徴</th></tr>
         <tr><td>Business Starter</td><td>800円</td><td><b>AIへの指示（プロンプト）は月5回まで</b>・一度に読める量32k＝事実上のお試し</td></tr>
@@ -619,7 +644,7 @@
       </table></div>
       <div class="callout">📐 <b>選びどころ</b>：<b>多くの企業は Business Standard（1,600円）が最適</b>。Meetの議事録自動化やDocs/Gmailの作成支援が無制限に。<b>Starterは月5回制限で本格運用に不向き</b>なので、業務を変えたいなら早めにStandardへ。機密が厳しい業界はEnterprise。</div>
 
-      <h3>③ 個人・小規模（Google One）</h3>
+      <div class="blk-h">個人・小規模（Google One）</div>
       <div class="tbl-scroll"><table>
         <tr><th>プラン</th><th>月額</th><th>保存容量（ストレージ）／AIクレジット（使える回数）</th><th>特徴</th></tr>
         <tr><td>無料</td><td>0円</td><td>15GB／1日50回</td><td>混雑時は最新モデルが使いにくくなる</td></tr>
@@ -627,7 +652,7 @@
         <tr><td><b>Google AI Pro</b></td><td>2,900円</td><td>5TB／月1,000回</td><td>Gemini 3.1 Pro優先＋<b>動画作成（Veo）優先</b></td></tr>
       </table></div>
 
-      <h3>④ 開発者API（使った分だけ払う）</h3>
+      <div class="blk-h">開発者API（使った分だけ払う）</div>
       <p>自社サービスへの組み込みや自動化はAPI（トークン単位で従量課金）。<b>どのモデルを選ぶかでコストが大きく変わり</b>ます。</p>
       <div class="tbl-scroll"><table>
         <tr><th>モデル</th><th>入力 /100万</th><th>出力 /100万</th><th>用途</th></tr>
@@ -635,19 +660,19 @@
         <tr><td>Gemini 3.5 Flash</td><td>$1.50</td><td>$9.00</td><td>標準。Pro並みの性能で割安</td></tr>
         <tr><td>Gemini 3.1 Pro</td><td>$2.00</td><td>$12.00</td><td>複雑推論・最大200万トークン</td></tr>
       </table></div>
-      <ul>
-        <li><b>コンテキストキャッシュ（長い資料を下書き保存して使い回す）</b>で入力料金を<b>最大90%減</b>、<b>バッチAPI</b>で<b>一律半額</b>。急がない処理ほど安くできます。</li>
-        <li><b>グラウンディング（答えを最新検索と照合すること）</b>は一定回数まで無料、超えた分が課金。外部検索が多い用途は費用の見積もりが必要。</li>
-        <li><b>本番運用はVertex AI（Googleの開発基盤）</b>へ：トークン課金に加え検索・基盤の費用が乗る一方、<b>VPC（社内ネットからの隔離）・CMEK（顧客が管理する暗号鍵）・HIPAA</b>など高度な管理を満たせます（総額は上がるが安全）。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>キャッシュ＋バッチで安く</div><p><b>コンテキストキャッシュ</b>で入力料金を<b>最大90%減</b>、<b>バッチAPI</b>で<b>一律半額</b>。急がない処理ほど安くできます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔍</span>グラウンディングの課金</div><p><b>答えを最新検索と照合</b>するのは一定回数まで無料、超えた分が課金。外部検索が多い用途は費用の見積もりが必要。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🏢</span>本番運用はVertex AIへ</div><p>トークン課金に加え検索・基盤の費用が乗る一方、<b><span class="term" data-term="VPC Service Controls">VPC（社内ネットからの隔離）</span>・<span class="term" data-term="CMEK">CMEK（顧客が管理する暗号鍵）</span>・HIPAA</b>など高度な管理を満たせます（総額は上がるが安全）。</p></div>
+      </div>
 
-      <h3>⑤ 競合とのコスト感（ざっくり）</h3>
-      <ul>
-        <li><b>オフィスソフト統合</b>：Workspace Business Standard <b>約1,600円</b> に対し、Microsoft 365＋Copilotは<b>約4,497円</b>（別売りの追加機能）。全社展開の総額でGeminiが優位。</li>
-        <li><b>API</b>：Gemini 3.1 Proは入力$2.00＝<b>競合の約半額</b>＋200万トークン（詳細は「代替サービス比較」章）。</li>
-      </ul>
+      <div class="blk-h">競合とのコスト感（ざっくり）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📂</span>オフィスソフト統合</div><p>Workspace Business Standard <b>約1,600円</b> に対し、Microsoft 365＋Copilotは<b>約4,497円</b>（別売りの追加機能）。全社展開の総額でGeminiが優位。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>API</div><p>Gemini 3.1 Proは入力$2.00＝<b>競合の約半額</b>＋200万トークン（詳細は「代替サービス比較」章）。</p></div>
+      </div>
 
-      <h3>⑥ どれを選ぶ？（用途別ガイド）</h3>
+      <div class="blk-h">どれを選ぶ？（用途別ガイド）</div>
       <div class="tbl-scroll"><table>
         <tr><th>目的</th><th>おすすめ</th><th>理由</th></tr>
         <tr><td>全社の生産性向上</td><td><b>Business Standard（1,600円）</b></td><td>無制限AI＋Meet議事録。追加稟議なしで全社に行き渡る</td></tr>
@@ -671,36 +696,29 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p>Geminiの全社導入は、単なる便利ツールの追加ではなく、<b>組織のかたち・意思決定・人材のあり方そのものを変える経営テーマ</b>です。情報を「探す・まとめる」手間がほぼゼロになると、これまで人手と階層で支えていた仕事の前提が崩れます。この章は、<b>フラット化 → 管理職の役割の変化 → 人事評価 → 学び直し（リスキリング）→ 定着</b>の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>フロンティア組織</b>＝人とAIエージェントが“同僚”として協働する新しい組織の形</li>
-          <li><b>エージェントボス</b>＝「人◯人＋AI◯体」の配分を最適化する、これからの管理職スキル</li>
-          <li><b>ジョブ型雇用</b>＝年齢でなく“担う仕事と成果”で処遇する仕組み</li>
-          <li><b>心理的安全性</b>＝率直に意見や弱みを出せる“安心できる場”</li>
-        </ul>
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Geminiの全社導入は、単なる便利ツールの追加ではなく、<b>組織のかたち・意思決定・人材のあり方そのものを変える経営テーマ</b>です。情報を「探す・まとめる」手間がほぼゼロになると、これまで人手と階層で支えていた仕事の前提が崩れます。この章は、<b>フラット化 → 管理職の役割の変化 → 人事評価 → 学び直し（<span class="term" data-term="リスキリング">リスキリング</span>）→ 定着</b>の順に整理します。</p>
+
+      <div class="blk-h">組織の階層が減る（フラット化）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📉</span><span class="term" data-term="グレート・フラットニング">グレート・フラットニング</span></div><p>AIが中間管理職の<b>調整や決まりきった作業（資料作成・進捗とりまとめ）を肩代わり</b>し、組織の階層が減ります（大手IT企業で先行）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧩</span>「組織図」から「作業図」へ</div><p>固定の部署より、<b>その仕事に最適な“人＋AI”の組み合わせ</b>をすばやく作っては解散する形（タスクマップ）へ。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🤝</span><span class="term" data-term="フロンティア組織">フロンティア組織</span></div><p>①人がAIで効率化 → ②人がAIを管理 → ③人とAIが“対等に頼み合う”へ進化。<b>「人とAIの比率を最適にする管理職スキル（<span class="term" data-term="エージェントボス">エージェントボス</span>）」</b>が重要に。</p></div>
       </div>
 
-      <h3>① 組織の階層が減る（フラット化）</h3>
-      <ul>
-        <li><b>グレート・フラットニング</b>：AIが中間管理職の<b>社内の調整や決まりきった作業（資料作成・進捗のとりまとめ）を肩代わり</b>し、組織の階層が減ります（大手IT企業で先行）。</li>
-        <li><b>「組織図」から「作業図（タスクマップ）」へ</b>：固定の部署より、<b>その仕事に最適な“人＋AI”の組み合わせ</b>をすばやく作っては解散する形へ。</li>
-        <li><b>フロンティア組織</b>：①人がAIで効率化 → ②人がAIを管理 → ③人とAIが“対等に頼み合う”へと進化。ここで<b>「人とAIの比率を最適にする管理職スキル（エージェントボス）」</b>が重要に。</li>
-      </ul>
-
-      <h3>② 管理職の役割が“人”へ寄る</h3>
+      <div class="blk-h">管理職の役割が“人”へ寄る</div>
       <p>議事録・要約・資料ドラフト・データ集計といった<b>「仕事の管理」はAIが肩代わり</b>。管理職は「進捗を確認する人」から、メンバーが<b>最後までやり切れるよう支える“完遂支援型”</b>へ移ります。</p>
-      <div class="callout">💡 <b>価値が逆転する</b>：基礎スキルがAIで底上げされると、成果の差を生むのは<b>理屈でなく“やる気と心理的安全性”</b>に。対立の調整・隠れた課題への気づき・「この人と働きたい」と思わせる<b>共感力と求心力</b>の価値が急に高まります。</div>
+      <div class="callout">💡 <b>価値が逆転する</b>：基礎スキルがAIで底上げされると、成果の差を生むのは<b>理屈でなく“やる気と<span class="term" data-term="心理的安全性">心理的安全性</span>”</b>に。対立の調整・隠れた課題への気づき・「この人と働きたい」と思わせる<b>共感力と求心力</b>の価値が急に高まります。</div>
 
-      <h3>③ 人事評価・報酬の見直し（待ったなし）</h3>
+      <div class="blk-h">人事評価・報酬の見直し（待ったなし）</div>
       <div class="warnbox">⚠️ <b>“逆転現象”が起きる</b>：AIを使いこなす<b>若手が、ベテランより速く高品質な成果</b>を出す場面が急増。年功序列のままだと貢献と報酬がズレ、<b>最も優秀なAI人材から辞めていく</b>深刻なリスクに。</div>
-      <ul>
-        <li><b>対策＝成果主義／ジョブ型雇用へ</b>：年齢でなく「AIと協働してどれだけ成果を出したか」を評価の軸に。</li>
-        <li><b>評価そのものもAIで再構築</b>：評価基準の標準化、納得度調査、異動候補のマッチングを効率化（松屋フーズはAI面接で昇格基準を統一、明治安田は内勤1万人のAI人事異動を提示）。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>成果主義／<span class="term" data-term="ジョブ型雇用">ジョブ型雇用</span>へ</div><p>年齢でなく「AIと協働して<b>どれだけ成果を出したか</b>」を評価の軸に。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤖</span>評価そのものもAIで再構築</div><p>評価基準の標準化・納得度調査・異動候補のマッチングを効率化（松屋フーズはAI面接で昇格基準を統一、明治安田は<b>内勤1万人のAI人事異動</b>を提示）。</p></div>
+      </div>
       <div class="warnbox">⚠️ ただし、AIで評価する際は<b>評価ロジックの“ブラックボックス化”に注意</b>（過去にIBM Watson事例で問題化）。<b>透明性と説明責任</b>の確保が、制度を機能させる絶対条件です。</div>
 
-      <h3>④ リスキリングと学習文化（投資の前提）</h3>
+      <div class="blk-h">リスキリングと学習文化（投資の前提）</div>
       <p>ツールを配っても<b>使いこなす人がいなければROIはゼロ</b>。先進企業は全社の学び直しに投資し、確実なリターンを得ています。</p>
       <div class="tbl-scroll"><table>
         <tr><th>企業</th><th>施策</th><th>成果</th></tr>
@@ -711,7 +729,7 @@
       </table></div>
       <div class="callout">💪 <b>もたらす効果</b>：研修は“使える人を増やす”だけでなく、<b>埋もれたデジタル人材の発掘</b>と、<b>自分から学べる環境＝最強の人材の引き留め（リテンション）</b>に直結。カギは<b>「学び続け、教え合う文化」</b>を根付かせることです。</div>
 
-      <h3>⑤ “可視化リスク”という人の運用課題</h3>
+      <div class="blk-h">“可視化リスク”という人の運用課題</div>
       <div class="warnbox">⚠️ Geminiは<b>本人が見られる範囲しか見ません</b>が、社内に<b>放置された行き過ぎた共有（退職者の権限・全社に公開された古い機密）</b>があると、「関連資料まとめて」の一言で<b>AIが一気に掘り出して見える化</b>してしまいます。<b>展開前のデータ掃除</b>と、<b>「入力してよい情報／禁止する情報」「ハルシネーションは人が事実確認」</b>を定めた利用ルールが必須です（詳細は「セキュリティ・コンプライアンス」章）。</div>
 
       <div class="verdict">💪 <b>もたらす効果＝経営3アクション</b><br>
@@ -724,6 +742,10 @@
     </div>
   </div>
 
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#c9871a">③</span>法務と導入<span class="grp-sub">法的留意点・導入ロードマップ</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s7">
     <div class="sechd"><span class="n">7</span><div><h2>法的・契約上の留意点</h2><div class="src">利用規約・DPAの確認／生成物の著作権帰属／契約解除時のデータ扱い</div></div></div>
     <div class="secteaser">
@@ -732,17 +754,10 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>導入では性能と同じくらい<b>「契約と法律の整理」</b>が重要です。<b>どの国の法律で争うか・データはAIの学習に使われないか・解約時に消えるか・著作権で訴えられたら誰が守るか</b>は、<b>使うプラン（無料か、有料の法人版か）で根本的に変わります</b>。この章は、準拠法／管轄 → DPA → データ削除 → 無料と有料の決定的な差 → 著作権／IP補償 → 日本国内の法律、の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>DPA（データ処理追加条項）</b>＝データの扱い方を取り決める契約の付属条項</li>
-          <li><b>委託／第三者提供</b>＝“預けて処理させる”か“他社に渡す”か。委託なら本人同意は原則不要</li>
-          <li><b>IP補償（知財補償）</b>＝AIの出力で著作権侵害を訴えられたら肩代わりして守る“保険”</li>
-          <li><b>秘密管理性</b>＝法律で守られる“営業秘密”であるための「秘密として管理している」という要件</li>
-        </ul>
-      </div>
 
-      <h3>① どの国の法律で・どこで争うか（準拠法・管轄）</h3>
+      <div class="blk-h">どの国の法律で・どこで争うか（準拠法・管轄）</div>
       <p>2026年1月の規約改定で、<b>日本の公的機関</b>は準拠法＝<b>日本法</b>、管轄＝<b>東京地方裁判所</b>が明記され（ISMAPへの登録も明示）、自治体が導入しやすくなりました。民間も契約相手は<b>Google Cloud Japan 合同会社</b>ですが、<b>標準の約款には海外の法律が適用される余地</b>が残るため、契約時に法務の確認が要ります。</p>
       <div class="tbl-scroll"><table>
         <tr><th>利用主体</th><th>準拠法／管轄</th><th>実務上の意味</th></tr>
@@ -750,25 +765,25 @@
         <tr><td><b>日本の民間企業</b></td><td>契約内容しだい（海外の法律になる余地）</td><td>契約相手が日本法人かを確認＋不利な条項を細かく確認</td></tr>
       </table></div>
 
-      <h3>② データの扱い（DPA＝データ取り扱い条項。法的には“委託”）</h3>
-      <ul>
-        <li>法人版はDPAにより、<b>データは顧客のもの</b>で、Googleは<b>「サービス提供の目的のみ」</b>で処理（=<b>AIの学習に使い回さない</b>）。</li>
-        <li>日本の個人情報保護法では、これは<b>「委託（預けて処理させること）」に当たります</b>。他社に渡す「第三者提供」ではないので、<b>本人の個別同意なしで業務データ（議事録・クレームの要約・人事の下書き等）を処理させても適法</b>です。</li>
-        <li><b>ガバメントアクセス（政府・捜査機関からのデータ開示要請）</b>：要請を受けても<b>原則は顧客へ通知</b>し、不当・過大なら<b>異議を申し立てる</b>運用。海外でデータを差し押さえられる心配への安心材料に。</li>
-      </ul>
+      <div class="blk-h">データの扱い（<span class="term" data-term="DPA">DPA</span>＝データ取り扱い条項。法的には“委託”）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📄</span>データは顧客のもの</div><p>法人版はDPAにより、Googleは<b>「サービス提供の目的のみ」</b>で処理（=<b>AIの学習に使い回さない</b>）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>法的には“委託”</div><p>日本の個人情報保護法では<b>「委託」に当たり</b>、第三者提供ではないので<b>本人の個別同意なしで業務データ（議事録・要約・下書き等）を処理させても適法</b>です。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🛡️</span><span class="term" data-term="ガバメントアクセス">ガバメントアクセス</span></div><p>政府・捜査機関からの開示要請を受けても<b>原則は顧客へ通知</b>し、不当・過大なら<b>異議を申し立てる</b>運用。海外でデータを差し押さえられる心配への安心材料に。</p></div>
+      </div>
 
-      <h3>③ 契約終了・データ削除（最大180日で完全消去）</h3>
+      <div class="blk-h">契約終了・データ削除（最大180日で完全消去）</div>
       <p>解約や削除指示の後、データは<b>最大180日以内に完全消去</b>されます（4段階）。</p>
       <div class="tbl-scroll"><table>
         <tr><th>段階</th><th>目安</th><th>内容</th></tr>
         <tr><td>① 隔離</td><td>最大24時間</td><td>削除マークを付け、通常アクセスから遮断</td></tr>
         <tr><td>② 復旧猶予</td><td>最大30日</td><td>誤操作・不正からの保護期間</td></tr>
-        <tr><td>③ 実削除</td><td>約2ヶ月以内</td><td>上書き＋<b>暗号の鍵を捨てて中身を読めなくする（暗号化消去）</b>で復元不能に</td></tr>
+        <tr><td>③ 実削除</td><td>約2ヶ月以内</td><td>上書き＋<b>暗号の鍵を捨てて中身を読めなくする（<span class="term" data-term="暗号化消去">暗号化消去</span>）</b>で復元不能に</td></tr>
         <tr><td>④ バックアップ廃棄</td><td>最大180日</td><td>災害復旧用の控えも順次完全消去</td></tr>
       </table></div>
       <div class="callout">📋 <b>実務メモ</b>：この「最大180日」はGDPR（EUの個人データ保護規則）や個人情報保護法の<b>“必要最小限だけ持つ”という考え方に合致</b>。情報セキュリティの監査で<b>「最後の消去処理が適切」と示す客観的な根拠</b>になります。解約前に必要なデータの書き出し（エクスポート）は自社で行うこと。</div>
 
-      <h3>④ 無料版と有料版の“決定的な断絶”</h3>
+      <div class="blk-h">無料版と有料版の“決定的な断絶”</div>
       <div class="tbl-scroll"><table>
         <tr><th>観点</th><th>無料版（個人向けGemini／AI Studioの無料枠）</th><th>有料の法人版（Workspace／Vertex AI／API有料）</th></tr>
         <tr><td>AIの学習に使われるか</td><td><b>使われる</b>（初期設定）</td><td><b>使われない</b>（はっきり許可しない限り）</td></tr>
@@ -778,16 +793,16 @@
       </table></div>
       <div class="warnbox">⚠️ <b>無料版に機密を入れない</b>：あえて使わせない設定（オプトアウト）にしても、<b>目視チェックの対象になった会話は最大3年残り、学習にも使われ得る</b>。API利用は<b>請求先を登録して有料の枠（Paid Tier）に切り替えた瞬間に“学習されない”法的な状態</b>になります（実際の請求がゼロでも効きます）。</div>
 
-      <h3>⑤ 著作権と“肩代わり”（IP補償＝知財の肩代わり保険）</h3>
-      <ul>
-        <li><b>所有権</b>：Googleは作ったものの<b>著作権を主張しない</b>＝仕事（商用）で使えます。ただし<b>最終的な責任は使う人</b>（似ていないかの確認・事実確認は必要）。</li>
-        <li><b>二段構えのIP補償</b>（有料サービスに<b>自動で適用</b>）：<b>①学習に使ったデータ</b>と<b>②作った出力</b>のどちらで訴えられても、Googleが守る・お金を肩代わり。</li>
-      </ul>
+      <div class="blk-h">著作権と“肩代わり”（<span class="term" data-term="IP補償">IP補償</span>＝知財の肩代わり保険）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">©️</span>所有権</div><p>Googleは作ったものの<b>著作権を主張しない</b>＝仕事（商用）で使えます。ただし<b>最終的な責任は使う人</b>（似ていないかの確認・事実確認は必要）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>二段構えのIP補償</div><p>有料サービスに<b>自動で適用</b>。<b>①学習に使ったデータ</b>と<b>②作った出力</b>のどちらで訴えられても、Googleが守る・お金を肩代わり。</p></div>
+      </div>
       <div class="warnbox">⚠️ <b>肩代わりの“対象外”</b>：<b>わざとまねる／出典・安全のふるい（フィルタ）をすり抜ける／侵害の通知を受けても使い続ける／医療の臨床での利用／年齢制限違反／禁止された使い方</b>は対象外。<b>「特定の作品を“まねる”指示文の禁止」「引用・安全機能を切らない」を社内ルール</b>に。</div>
 
-      <h3>⑥ 日本国内法との交錯（ここが要注意）</h3>
+      <div class="blk-h">日本国内法との交錯（ここが要注意）</div>
       <div class="okbox">✅ <b>個人情報保護法</b>：<b>有料の法人版＝「委託」</b>として整理でき、本人の同意なしで適法に処理できます。<b>無料版（学習に使われる）は「第三者提供」扱い</b>になり得て、同意なしの入力は違反のリスク。</div>
-      <div class="warnbox">⚠️ <b>不正競争防止法（致命的）</b>：無料版に自社の機密（仕様書・プログラム・顧客リスト）を入れると、<b>「秘密として管理している」という条件（秘密管理性）が失われ</b>、たとえ漏れたり持ち出されたりしても<b>“営業秘密”として法的に守れなくなる</b>（差し止め・損害賠償ができない）。これが<b>シャドーAI（会社に無断で使うAI）の最大の落とし穴</b>です。</div>
+      <div class="warnbox">⚠️ <b>不正競争防止法（致命的）</b>：無料版に自社の機密（仕様書・プログラム・顧客リスト）を入れると、<b>「秘密として管理している」という条件（<span class="term" data-term="秘密管理性">秘密管理性</span>）が失われ</b>、たとえ漏れたり持ち出されたりしても<b>“営業秘密”として法的に守れなくなる</b>（差し止め・損害賠償ができない）。これが<b>シャドーAI（会社に無断で使うAI）の最大の落とし穴</b>です。</div>
 
       <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
       Geminiは<b>有料の法人版で使えば、法務リスクを“仕組み”で抑えられます</b>。<b>学習に使わない＋委託としての適法性＋最大180日での確実な削除＋二段構えのIP補償＋（公的機関は）日本法・東京地裁</b>。一方、<b>無料版に機密を入れる行為は、個人情報保護法違反・営業秘密を失うという取り返しのつかない損害</b>に直結します。鍵は「<b>無料版を断ち、安全な有料版に一本化</b>」することです。</div>
@@ -804,52 +819,45 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>導入の本当の課題は「優れたAIを買うこと」ではなく、<b>全従業員に定着させ、はっきりした効果（ROI）に変えること</b>です。配って現場任せにすると、一部の人しか使わず元の手作業に戻りがち。さらに、<b>シャドーAI（個人のツールをバラバラに使うこと）</b>による情報漏れも深刻化します。この章は、<b>プラン選び → 導入前の準備 → 5ステップの進め方 → 定着事例 → 効果（ROI）の測定</b>の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>CoE</b>＝部門横断でAI推進を担う“司令塔チーム”</li>
-          <li><b>PoC</b>＝本格導入前の“お試し検証”</li>
-          <li><b>OU（組織部門）</b>＝管理画面で設定を分けられる“部署のまとまり”</li>
-          <li><b>eNPS</b>＝従業員が職場を“人に勧めたいか”で測る満足度指標</li>
-        </ul>
+
+      <div class="blk-h">プラン選びの勘所（管理体制＝ガバナンスを軸に選ぶ）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚫</span>個人向け（無料／AI Pro）はダメ</div><p>入力が<b>AIの学習に使われる・人が目で見てチェックする可能性</b>があり、業務で使うと情報漏れのリスク。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>法人向けは学習不使用の保証つき</div><p>多くの企業は <b>Workspace Business Standard が最強コスパ</b>。300名超や高度なエージェントは <b>Enterprise</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🧩</span>“最初から内蔵”に</div><p>2025年初めの方針変更で、追加機能でなく各プランに内蔵。判断は「AIを足すか」でなく<b>「自社に合うプランの段階はどれか」</b>へ（詳細は「ROI・コスト効果」章）。</p></div>
       </div>
 
-      <h3>① プラン選びの勘所（管理体制＝ガバナンスを軸に選ぶ）</h3>
-      <ul>
-        <li><b>個人向け（無料／AI Pro）はダメ</b>：入力が<b>AIの学習に使われる・人が目で見てチェックする可能性</b>があり、業務で使うと情報漏れのリスク。</li>
-        <li><b>法人向けは「AIの学習に使わない」保証つき</b>。多くの企業は <b>Workspace Business Standard が最強コスパ</b>。300名超や高度なエージェントは <b>Enterprise</b>。</li>
-        <li>2025年初めの方針変更で、Geminiは<b>追加機能でなく各プランに“最初から内蔵”</b>に。判断は「AIを足すか」でなく<b>「自社に合うプランの段階はどれか」</b>へ（詳細は「ROI・コスト効果」章）。</li>
-      </ul>
-
-      <h3>② 導入前の必須準備 ― “権限の棚卸し”が最優先</h3>
+      <div class="blk-h">導入前の必須準備 ― “権限の棚卸し”が最優先</div>
       <div class="warnbox">⚠️ Geminiは<b>本人がアクセスできるデータしか見ません</b>。裏を返すと、<b>設定ミスで広がりすぎた共有権限</b>があると、AIが「本来見えるべきでない情報」まで一瞬で探し出します。<b>展開前に共有フォルダのアクセス権を点検・是正</b>し、<b>DLP（機密の持ち出しを止めるしくみ）</b>や暗号化を設定しておくのが最優先です（詳細は「セキュリティ・コンプライアンス」章）。</div>
 
-      <h3>③ 失敗しない5ステップ・ロードマップ</h3>
-      <ol class="steps">
-        <li><b>目的の明確化＋推進チーム（CoE＝部門横断のAI推進の司令塔）の結成</b>：解決したい業務課題を具体化（例「議事録ゼロ化」「提案書-30%」）。情シス・各部門のエース・セキュリティ担当を<b>部署をまたいで任命</b>。</li>
-        <li><b>安全な環境づくり＋段階的に開放</b>：管理画面で、まず<b>特定の部署（OU）だけ</b>オンに。会話履歴を残す期間を自社方針に合わせ、<b>DLPは最初“警告だけ”</b>にして、誤って引っかかる例を見てから強化。</li>
-        <li><b>リスク対策＋利用ルール（ガイドライン）</b>：<b>入力を禁止する情報／ハルシネーションは人が事実確認／かたより（偏見）チェック</b>を文章で定める。禁止だけでなく<b>「おすすめの使い方・効く指示文の例」も載せて利用を後押し</b>。</li>
-        <li><b>PoC（お試し検証）＋効果測定</b>：いきなり大きな売上でなく、<b>時短率・満足度・提案数などの小さな成果（Quick Wins）を測定</b>。研修で<b>「数時間→数秒」の“こんなに楽になるのか！”という実感</b>を体験させる。</li>
-        <li><b>全社展開＋活用例（ユースケース）を出し続ける</b>：成果の出た指示文・仕事の流れを<b>一覧（カタログ）にして発信し続ける</b>。「あの人が成果を出している→自分も」という前向きな連鎖で文化として定着。</li>
-      </ol>
+      <div class="blk-h">失敗しない5ステップ・ロードマップ</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">1️⃣</span>目的の明確化＋<span class="term" data-term="CoE">CoE</span>結成</div><p>解決したい業務課題を具体化（例「議事録ゼロ化」「提案書-30%」）。情シス・各部門のエース・セキュリティ担当を<b>部署をまたいで任命</b>（CoE＝部門横断のAI推進の司令塔）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">2️⃣</span>安全な環境づくり＋段階開放</div><p>管理画面でまず<b>特定の部署（<span class="term" data-term="OU">OU</span>）だけ</b>オンに。会話履歴の保持期間を自社方針に合わせ、<b>DLPは最初“警告だけ”</b>にして誤検知の例を見てから強化。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">3️⃣</span>リスク対策＋利用ルール</div><p><b>入力禁止情報／ハルシネーションは人が事実確認／かたよりチェック</b>を文章で定める。禁止だけでなく<b>「おすすめの使い方・効く指示文の例」も載せて後押し</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">4️⃣</span><span class="term" data-term="PoC">PoC</span>（お試し検証）＋効果測定</div><p>いきなり大きな売上でなく、<b>時短率・満足度・提案数などの小さな成果（Quick Wins）を測定</b>。研修で「数時間→数秒」の実感を体験させる。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">5️⃣</span>全社展開＋活用例を出し続ける</div><p>成果の出た指示文・仕事の流れを<b>一覧（カタログ）にして発信し続ける</b>。「あの人が成果を出している→自分も」という前向きな連鎖で文化として定着。</p></div>
+      </div>
 
-      <h3>④ 定着の成功事例</h3>
+      <div class="blk-h">定着の成功事例</div>
       <div class="callout">🏆 <b>船井総研ホールディングス：4ヶ月で利用率97%</b>（約1,500名）。一斉導入を避け、<b>AI好きな50名→150名→全社</b>と拡大。あえて<b>“ITが得意でない層”を巻き込み</b>不満を吸い上げる現場主義。社長も参加する<b>発表会・コンテスト</b>を開催。NotebookLM＋Geminiの“前処理”活用で、<b>熟練者が1日がかりのスクリプト作成を5〜10分に短縮</b>。</div>
-      <ul>
-        <li><b>コープさっぽろ</b>：GeminiとAppSheet連携で、現場職員が自らアプリを作る<b>「ITの民主化」</b>を定着。</li>
-        <li><b>星野リゾート</b>：宿の「魅力造成」業務の時間を<b>30%削減</b>し、浮いた時間を価値提供へ。</li>
-        <li><b>医療・介護（京都岡本記念病院・ソラスト 等）</b>：ナレッジの共有・標準化で現場負担を軽減。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛒</span>コープさっぽろ</div><p>GeminiとAppSheet連携で、現場職員が自らアプリを作る<b>「ITの民主化」</b>を定着。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏨</span>星野リゾート</div><p>宿の「魅力造成」業務の時間を<b>30%削減</b>し、浮いた時間を価値提供へ。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🏥</span>医療・介護</div><p>京都岡本記念病院・ソラスト 等で、ナレッジの共有・標準化により<b>現場負担を軽減</b>。</p></div>
+      </div>
       <p>共通点は<b>経営トップのコミットメント</b>と<b>現場の巻き込み</b>。ツール導入でなく“組織文化の変革”まで踏み込んでいます。</p>
 
-      <h3>⑤ ROIの測り方（数字で正当化する）</h3>
+      <div class="blk-h">ROIの測り方（数字で正当化する）</div>
       <p>基本式は <b>ROI(%) ＝（利益 ÷ 投資額）× 100</b>。投資額にはライセンス＋構築・教育費を含めます。</p>
       <div class="callout">🔢 <b>短期（時短→人件費圧縮）の例</b>：時給4,000円の社員が月10時間短縮＝1人<b>月4万円</b>。<b>150名なら月600万円・年7,200万円</b>。ライセンスは1人月数千円なので、<b>ペイバック（回収）は数ヶ月</b>、以降はプラスのROIが続きます。</div>
       <div class="tbl-scroll"><table>
         <tr><th>評価領域</th><th>測る指標（KPI）の例</th></tr>
         <tr><td><b>収益・成長</b></td><td>AI活用チーム vs 非活用チームの<b>商談化率・成約率・追加提案</b>の差</td></tr>
         <tr><td><b>オペレーション効率</b></td><td>新人の立ち上がり期間短縮、例外処理の時間減、自動処理の割合</td></tr>
-        <tr><td><b>従業員体験（EX）</b></td><td>満足度（<b>eNPS</b>）の向上、離職意向の変化、作業負荷の軽減</td></tr>
+        <tr><td><b>従業員体験（EX）</b></td><td>満足度（<b><span class="term" data-term="eNPS">eNPS</span></b>）の向上、離職意向の変化、作業負荷の軽減</td></tr>
       </table></div>
       <p>効果はすぐ売上に出るとは限りませんが、<b>離職率の改善や Time to Market（市場投入までの期間）の短縮</b>といった先行指標が、中長期で収益基盤を強くします。</p>
 
@@ -860,6 +868,10 @@
     </div>
   </div>
 
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">④</span>将来とリスク対策<span class="grp-sub">将来性・リスク対策</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s9">
     <div class="sechd"><span class="n">9</span><div><h2>将来性・技術ロードマップ</h2><div class="src">最新モデルの現在地／エージェント化の展望／日本市場への対応状況</div></div></div>
     <div class="secteaser">
@@ -868,21 +880,14 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p>2026年、AIは「質問に答える」段階を終え、<b>自分で段取りして実行する“エージェント”</b>、さらに<b>現実の物理法則まで理解する“世界モデル”</b>へと進化しました。Googleは「エージェント的Geminiの時代」を宣言。この章は、<b>最新モデルの現在地 → モデルの賞味期限 → 全面的なエージェント化 → 日本市場の最前線</b>の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>世界モデル</b>＝現実の物理法則や因果まで理解し、映像で“シミュレーション”できるAI</li>
-          <li><b>Antigravity</b>＝AIエージェントを束ねて指揮する新しい開発プラットフォーム</li>
-          <li><b>Physical AI</b>＝ロボットなど“現実世界で動く”AI</li>
-          <li><b>RCE</b>＝遠隔から勝手にプログラムを実行される深刻な脆弱性</li>
-        </ul>
-      </div>
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>2026年、AIは「質問に答える」段階を終え、<b>自分で段取りして実行する“エージェント”</b>、さらに<b>現実の物理法則まで理解する“<span class="term" data-term="世界モデル">世界モデル</span>”</b>へと進化しました。Googleは「エージェント的Geminiの時代」を宣言。この章は、<b>最新モデルの現在地 → モデルの賞味期限 → 全面的なエージェント化 → 日本市場の最前線</b>の順に整理します。</p>
 
-      <h3>① 最新モデルの現在地</h3>
-      <ul>
-        <li><b>Gemini 3.5 Flash</b>（2026年5月）：フロンティア級の賢さを<b>最大4倍速・競合フラッグシップの約1/3コスト</b>で実現。特に<b>複数ツールを連鎖させるエージェント能力（MCP Atlas）で他社を圧倒</b>＝“安価な自律労働力”の基盤。</li>
-        <li><b>Gemini Omni（世界モデル）</b>：動画生成「Veo」を内蔵し、<b>文字・画像・音声・動画を同時処理</b>。会話でのビデオ編集や<b>物理シミュレーション</b>が可能になり、<b>ロボティクス（Physical AI）</b>への決定的な布石に。</li>
-      </ul>
+      <div class="blk-h">最新モデルの現在地</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚡</span>Gemini 3.5 Flash（2026年5月）</div><p>フロンティア級の賢さを<b>最大4倍速・競合フラッグシップの約1/3コスト</b>で実現。<b>ツール連鎖のエージェント能力（MCP Atlas）で他社を圧倒</b>＝“安価な自律労働力”の基盤。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌐</span>Gemini Omni（世界モデル）</div><p>動画生成「Veo」を内蔵し、<b>文字・画像・音声・動画を同時処理</b>。会話でのビデオ編集や<b>物理シミュレーション</b>が可能に。<b>ロボティクス（<span class="term" data-term="Physical AI">Physical AI</span>）</b>への布石。</p></div>
+      </div>
       <div class="tbl-scroll"><table>
         <tr><th>指標（用途）</th><th>Gemini 3.5 Flash</th><th>GPT-5.5</th><th>ひとこと</th></tr>
         <tr><td>MCP Atlas（ツール連鎖）</td><td class="hi">83.6%</td><td>75.3%</td><td>エージェント用途でGeminiが優位</td></tr>
@@ -892,23 +897,23 @@
       </table></div>
       <div class="warnbox">⚠️ <b>まだ完璧ではない</b>：世界モデルは一部の物理演算（不自然な軌道など）で破綻も。完全な物理シミュレーターには至っておらず、過信は禁物です。</div>
 
-      <h3>② モデルの“賞味期限”が短い ― 設計の前提に</h3>
+      <div class="blk-h">モデルの“賞味期限”が短い ― 設計の前提に</div>
       <p>新モデルの登場と同時に旧モデルは次々<b>非推奨化（提供終了）</b>。陳腐化サイクルは<b>約12〜18ヶ月</b>と極めて短くなっています。</p>
       <div class="callout">🧭 <b>もたらす示唆</b>：特定モデルに<b>密結合した作り込みは“技術的負債”</b>になります。<b>“抽象化レイヤー”を挟み、モデルを差し替え可能にしておく</b>設計が必須です。</div>
 
-      <h3>③ すべてが“エージェント化”へ</h3>
-      <ul>
-        <li><b>個人向け</b>：24時間働く<b>Gemini Spark</b>、毎朝の<b>Daily Brief</b>、そして<b>NotebookLMが“リサーチエージェント”へ進化</b>（自分で検索・コード実行・レポート出力、成功率7〜8割）。UIも刷新。</li>
-        <li><b>開発者向け</b>：<b>Antigravity</b>で「コードを書く」から「エージェントを指揮する」へ。⚠️ただし<b>急な移行に開発現場は強く反発</b>（旧CLI終了・突然のレート制限・上位プランへの誘導）。“理想の自動化”と“細かく制御したい現場”の溝が課題。</li>
-        <li><b>企業向け</b>：分散ツールが<b>Gemini Enterprise Agent Platform</b>に統合（「数千エージェントを安全に管理する」運用段階へ）。⚠️一方で<b>SDKの重大脆弱性（RCE＝乗っ取り）</b>も発生 → <b>ゼロトラスト</b>と厳格なガバナンスが不可欠。</li>
-      </ul>
+      <div class="blk-h">すべてが“エージェント化”へ</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">👤</span>個人向け</div><p>24時間働く<b>Gemini Spark</b>、毎朝の<b>Daily Brief</b>、そして<b>NotebookLMが“リサーチエージェント”へ進化</b>（自分で検索・コード実行・レポート出力、成功率7〜8割）。UIも刷新。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💻</span>開発者向け</div><p><b><span class="term" data-term="Antigravity">Antigravity</span></b>で「コードを書く」から「エージェントを指揮する」へ。⚠️<b>急な移行に開発現場は強く反発</b>（旧CLI終了・突然のレート制限・上位誘導）。理想と現場の溝が課題。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🏢</span>企業向け</div><p>分散ツールが<b>Gemini Enterprise Agent Platform</b>に統合（「数千エージェントを安全に管理」運用段階へ）。⚠️一方で<b>SDKの重大脆弱性（<span class="term" data-term="RCE">RCE</span>＝乗っ取り）</b>も発生 → <b>ゼロトラスト</b>と厳格なガバナンスが不可欠。</p></div>
+      </div>
 
-      <h3>④ 日本市場の最前線</h3>
-      <ul>
-        <li><b>日本語性能</b>：かつて優位だった国産LLMを<b>Gemini 3.5 Flashが凌駕</b>（他モデルを採点する“審査役”に採用されるほど）。敬語・文脈理解も高精度で、速度は圧倒的。</li>
-        <li><b>Live Translate</b>：Google Meetで<b>70言語超のリアルタイム音声翻訳</b>。⚠️ただし<b>方言（関西弁・東北弁等）はまだ不安定</b>で、対応を計画中。</li>
-        <li><b>事例（“効率化”を超えて事業へ）</b>：<b>日本テレビ「FACTly-Mate」</b>＝動画の文脈をAIが理解し、直後のCMを自動で最適化する<b>“文脈連動型広告”で収益化</b>。<b>メルカリ</b>＝40億件超の出品データで国産基盤を開発（GENIAC採択）。</li>
-      </ul>
+      <div class="blk-h">日本市場の最前線</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🗾</span>日本語性能</div><p>かつて優位だった国産LLMを<b>Gemini 3.5 Flashが凌駕</b>（他モデルを採点する“審査役”に採用されるほど）。敬語・文脈理解も高精度で、速度は圧倒的。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌐</span>Live Translate</div><p>Google Meetで<b>70言語超のリアルタイム音声翻訳</b>。⚠️ただし<b>方言（関西弁・東北弁等）はまだ不安定</b>で、対応を計画中。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📺</span>事例（“効率化”を超えて事業へ）</div><p><b>日本テレビ「FACTly-Mate」</b>＝動画の文脈をAIが理解し直後のCMを最適化する<b>“文脈連動型広告”で収益化</b>。<b>メルカリ</b>＝40億件超の出品データで国産基盤を開発（GENIAC採択）。</p></div>
+      </div>
 
       <div class="verdict">💪 <b>将来性の結論（3つの大潮流）</b><br>
       ① <b>認知コストの価格破壊＋エージェント化</b>：AIは“知識の補助”から<b>“安価に作業を委託できる労働力”</b>へ不可逆に変化。<br>
@@ -928,34 +933,27 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>AIは「データを保存するだけ」でなく、<b>入力を解釈し・推論し・生成する“能動的なブラックボックス”</b>です。だから従来のソフト導入とは次元の違うリスクが生まれます。一方で、<b>一律に「使うな」は競争力の破滅</b>。経営に求められるのは、安全な環境を整え<b>「禁止」ではなく「統制」</b>すること。この章は、<b>直視すべき5大リスク → 技術の守り → 法務の守り → ハルシネーション対策 → 組織のガバナンス</b>の順に整理します。</p>
-      <div class="callout"><b>📝 ことば豆知識</b>
-        <ul>
-          <li><b>IAM</b>＝誰が何にアクセスしてよいかを管理するしくみ（“合鍵”の管理）</li>
-          <li><b>VPC Service Controls</b>＝AIや社内データを外部ネットから隔離する“壁”</li>
-          <li><b>CAIO</b>＝AIの活用とリスクを統括する責任者</li>
-          <li><b>OWASP Top 10 for LLM</b>＝AIアプリの代表的な弱点をまとめた国際的なチェックリスト</li>
-        </ul>
-      </div>
 
-      <h3>① 直視すべき5大リスク</h3>
+      <div class="blk-h">直視すべき5大リスク</div>
       <div class="tbl-scroll"><table>
         <tr><th>リスク</th><th>何が起きるか</th><th>一言でいう対策</th></tr>
         <tr><td><b>① シャドーAI</b></td><td>法人版を用意しないと、社員が<b>無料版に機密を入力</b> → 学習データ化・最大3年保持され、<b>他人への回答に出る</b>事故も</td><td>安全な<b>法人版を“受け皿”として提供</b>し一本化</td></tr>
-        <tr><td><b>② エージェントの過剰権限</b></td><td>設定ミスで権限が広すぎると、AIが乗っ取られ<b>社内データやコードを盗み出す“二重スパイ”</b>に（Unit 42が脆弱性指摘）</td><td><b>IAMで最小権限</b>＋デフォルトの自動付与を無効化</td></tr>
-        <tr><td><b>③ 著作権侵害</b></td><td>学習データの模倣が出力に紛れ、<b>訴訟・ブランド毀損</b>に。純AI生成物は権利主張も難しい（<b>類似性・依拠性</b>で判断）</td><td>模倣プロンプト禁止＋<b>IP補償</b>を活用</td></tr>
+        <tr><td><b>② エージェントの過剰権限</b></td><td>設定ミスで権限が広すぎると、AIが乗っ取られ<b>社内データやコードを盗み出す“二重スパイ”</b>に（Unit 42が脆弱性指摘）</td><td><b><span class="term" data-term="IAM">IAM</span>で最小権限</b>＋デフォルトの自動付与を無効化</td></tr>
+        <tr><td><b>③ 著作権侵害</b></td><td>学習データの模倣が出力に紛れ、<b>訴訟・ブランド毀損</b>に。純AI生成物は権利主張も難しい（<b><span class="term" data-term="類似性・依拠性">類似性・依拠性</span></b>で判断）</td><td>模倣プロンプト禁止＋<b>IP補償</b>を活用</td></tr>
         <tr><td><b>④ ハルシネーション</b></td><td>AIは“真実を調べる機械”でなく<b>確率で続きを作る機械</b>。もっともらしい嘘で<b>意思決定が汚染</b></td><td><b>グラウンディング</b>＋人の最終検証</td></tr>
         <tr><td><b>⑤ 法規制違反</b></td><td>AI推進法（行政指導・企業名公表）、個情法／GDPR／NDA違反のリスク</td><td>ガイドライン＋<b>承認ツールに限定</b></td></tr>
       </table></div>
 
-      <h3>② 技術の守り（ガードレール）</h3>
-      <ul>
-        <li><b>Workspace</b>：学習非利用が初期設定。既存の<b>DLP（持ち出し検知）・データ保存地域の設定・OU別の制御・履歴の保管（Vault）</b>がそのまま効きます。</li>
-        <li><b>Vertex AI（自社開発）</b>：<b>IAMで最小権限</b>（自動権限付与を切る）＋<b>VPC Service Controls</b>で社内AIを外部ネットから隔離。専門の監視ツールで違反を大幅削減した実例も。</li>
-      </ul>
+      <div class="blk-h">技術の守り（ガードレール）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📂</span>Workspace</div><p>学習非利用が初期設定。既存の<b>DLP（持ち出し検知）・データ保存地域の設定・OU別の制御・履歴の保管（Vault）</b>がそのまま効きます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔐</span>Vertex AI（自社開発）</div><p><b>IAMで最小権限</b>（自動権限付与を切る）＋<b>VPC Service Controls</b>で社内AIを外部ネットから隔離。専門の監視ツールで違反を大幅削減した実例も。</p></div>
+      </div>
       <div class="warnbox">⚠️ <b>DLPは“最後のブレーキ”にすぎない</b>：すべてを自動遮断に頼る前に、社内情報に<b>「公開可／社内限定／要承認」の分類ラベル</b>を付け、<b>どの情報をどの条件でAIに触れさせるか</b>を先に設計することが土台です。</div>
 
-      <h3>③ 法務の守り（著作権の“肩代わり”）</h3>
+      <div class="blk-h">法務の守り（著作権の“肩代わり”）</div>
       <p>Googleは業界でもまれな<b>二段構えの著作権補償（IP補償）</b>を、有償のエンタープライズ契約に自動適用します。</p>
       <div class="tbl-scroll"><table>
         <tr><th>補償の種類</th><th>守る範囲</th></tr>
@@ -964,16 +962,16 @@
       </table></div>
       <div class="warnbox">⚠️ <b>補償の“対象外”に注意</b>：<b>わざと侵害する／出典・安全フィルタを無視する／侵害通知後も使い続ける／商標の案件</b>は対象外。社内ルールで<b>「特定キャラや競合文の“まね”プロンプトを禁止」</b>して初めて安全が完成します。</div>
 
-      <h3>④ ハルシネーションを“無効化”する（グラウンディング）</h3>
+      <div class="blk-h">ハルシネーションを“無効化”する（<span class="term" data-term="グラウンディング">グラウンディング</span>）</div>
       <p>嘘を防ぐ核心技術が<b>グラウンディング</b>。AIの答えを、古い記憶でなく<b>「最新のGoogle検索」や「社内の信頼できるデータ（Vertex AI Search＝RAG）」に強制的に結びつけ</b>ます。</p>
       <div class="callout">💡 <b>もたらす効果</b>：回答に<b>出典（インライン引用）</b>が付くので、<b>原典をクリックして事実確認</b>できます。「AIの答えをそのまま信じない」という原則を<b>仕組みとして強制</b>できるのが最大の価値です。</div>
 
-      <h3>⑤ 組織の守り（ガバナンス・ガイドライン）</h3>
-      <ul>
-        <li><b>準拠すべき公的指針</b>：AI事業者ガイドライン（経産省・総務省）／AI推進法／デジタル庁の調達ガイドライン（<b>CAIO（AI統括責任者）の設置</b>等）。民間も“叩き台”に使えます。</li>
-        <li><b>社内ガイドライン（6つの柱）</b>：①基本方針 ②<b>使ってよいツールの指定</b>（無料版禁止）③機密情報の扱い ④著作権チェック ⑤<b>出力の検証義務</b>（数値・法令・固有名詞は原典確認）⑥<b>違反時の報告フロー</b>（隠さず即報告できる心理的安全性）。</li>
-        <li><b>教育と診断</b>：業務に即したケース演習を継続。自社開発時は<b>OWASP Top 10 for LLM</b>に基づく診断を開発段階から実施し、<b>CAIO＋監査ログ</b>で継続監視。</li>
-      </ul>
+      <div class="blk-h">組織の守り（ガバナンス・ガイドライン）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏛️</span>準拠すべき公的指針</div><p>AI事業者ガイドライン（経産省・総務省）／AI推進法／デジタル庁の調達ガイドライン（<b><span class="term" data-term="CAIO">CAIO</span>（AI統括責任者）の設置</b>等）。民間も“叩き台”に使えます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📋</span>社内ガイドライン（6つの柱）</div><p>①基本方針 ②<b>使ってよいツールの指定</b>（無料版禁止）③機密情報の扱い ④著作権チェック ⑤<b>出力の検証義務</b>（数値・法令・固有名詞は原典確認）⑥<b>違反時の報告フロー</b>（隠さず即報告できる心理的安全性）。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🎓</span>教育と診断</div><p>業務に即したケース演習を継続。自社開発時は<b><span class="term" data-term="OWASP">OWASP</span> Top 10 for LLM</b>に基づく診断を開発段階から実施し、<b>CAIO＋監査ログ</b>で継続監視。</p></div>
+      </div>
 
       <div class="verdict">💪 <b>もたらす効果（結論）＝3層防衛で“統制”する</b><br>
       勝つのは「禁止する企業」ではなく、次の3つを連動させる企業です。<br>
@@ -985,6 +983,7 @@
       <div class="callout">🚀 <b>経営者の最初の一手</b>：① <b>法人版を配って“安全な受け皿”</b>を作り、シャドーAIを断つ → ② 展開前に<b>IAM/権限を最小化＋分類ラベルを設計</b> → ③ 重要業務は<b>グラウンディング＋人の最終確認</b>を必須に → ④ <b>CAIOと報告窓口</b>を置き、ガイドラインは“暫定版”で走らせて改善する。</div>
     </div>
   </div>
+  </div></div>
 
 </div>
 
@@ -995,12 +994,18 @@
 <script>
 (function(){
   var secs = document.querySelectorAll('.sec');
+  function scrollToSec(sec){
+    requestAnimationFrame(function(){
+      var y = sec.getBoundingClientRect().top + window.pageYOffset - 12;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
   secs.forEach(function(sec){
     var hd = sec.querySelector('.sechd');
-    if(hd){ hd.addEventListener('click', function(){ sec.classList.toggle('open'); }); }
+    if(hd){ hd.addEventListener('click', function(){ var nowOpen = !sec.classList.contains('open'); sec.classList.toggle('open'); if(nowOpen){ scrollToSec(sec); } }); }
   });
   document.querySelectorAll('.more-btn').forEach(function(b){
-    b.addEventListener('click', function(e){ e.stopPropagation(); var s=b.closest('.sec'); if(s){ s.classList.add('open'); } });
+    b.addEventListener('click', function(e){ e.stopPropagation(); var s=b.closest('.sec'); if(s){ s.classList.add('open'); scrollToSec(s); } });
   });
   document.querySelectorAll('.toc a, .ov-routes a').forEach(function(a){
     a.addEventListener('click', function(){ var t=document.getElementById(a.getAttribute('href').slice(1)); if(t){ t.classList.add('open'); } });
@@ -1011,6 +1016,76 @@
   var hash=location.hash?document.querySelector(location.hash):null;
   if(hash&&hash.classList.contains('sec')){ hash.classList.add('open'); }
   else { var first=document.getElementById('s1'); if(first){ first.classList.add('open'); } }
+})();
+</script>
+
+<div id="termModal" class="term-modal"><div class="tm-box"><button class="tm-close" aria-label="閉じる">×</button><div class="tm-term"></div><div class="tm-def"></div></div></div>
+<script>
+(function(){
+  var G = {
+    "マルチモーダル":"文字だけでなく、画像・音声・動画もまとめて理解・処理できることです。たとえば会議の録画を渡すと、映像と音声の両方を読み取って議事録にできます。1種類の情報しか扱えないAIより応用範囲が広いのが利点です。",
+    "コンテキストウィンドウ":"AIが一度に読み込める情報量の“器の大きさ”です。これが大きいほど、長い資料や大量のコードを分割せずまるごと渡して分析できます。Geminiはこの器が特に大きいのが強みです。",
+    "トークン":"AIが文章を処理するときの“文字のかたまり”の単位です。料金や処理量はこのトークン数で測られます。日本語ではおおむね1文字＝1〜2トークンが目安です。",
+    "RAG":"社内資料などを検索して、その内容を根拠に“出典つき”で答えさせる仕組みです。AIの思い込みを抑え、自社の正しい情報に基づいた回答を得られます。",
+    "グラウンディング":"AIの答えを、検索結果や社内文書など“信頼できる情報源”に結びつけて、もっともらしいウソ（ハルシネーション）を防ぐ仕組みです。回答に出典が付くので、人が原典で確認できます。",
+    "ハルシネーション":"AIが事実でないことを、もっともらしい言い方で作ってしまう現象です。一見正しそうに見えるため、お金・健康・法律など重要な内容は必ず人が裏取りする必要があります。",
+    "ROI":"かけたお金がどれだけ得して返ってくるか（投資のもうけ率）です。たとえばROI 416%なら、投じた費用の約4倍が効果として返る計算になります。",
+    "NPV":"将来得られる利益を“今の価値”に直して合計した、正味のもうけのことです。時間の経過による価値の目減りを考慮した、より厳密な利益の見方です。",
+    "TCO":"導入費用だけでなく、運用・保守・教育まで含めた「ぜんぶ込みの総額」です。月額が安く見えても運用に手間がかかれば結局高くつくため、比較は総額で見るのが鉄則です。",
+    "従量課金":"水道や電気のように“使った分だけ payment（支払い）”する料金方式です。使わなければ安く済む一方、使いすぎると費用が膨らむため、上限管理が大切です。",
+    "モデルルーティング":"仕事の難しさに応じて、簡単な作業は安いAI・難しい作業だけ高いAIに自動で振り分けることです。全部を高性能AIに任せるより、コストを大きく下げられます。",
+    "MCP":"AIと外部ツール（メール・ファイル・会議ツール等）をつなぐ“共通の差込口”です。USB-Cのように、どのAIからでも同じやり方で社内ツールにつなげ、AIを乗り換えても接続を作り直さずに済みます。",
+    "ISMAP":"日本政府が定めるクラウドサービスの安全基準で、合格＝国のお墨付きです。金融・公共・医療など規制の厳しい業界で、導入の社内承認を進める強力な後ろ盾になります。",
+    "ゼロトレーニング":"入力した内容も出力も、AIの“学習に一切使わない”という約束（契約条項）です。自社の機密データがAIの改良に流用される心配がなくなります。",
+    "プロンプトインジェクション":"資料やメールにこっそり命令を仕込み、それを読んだAIを乗っ取る攻撃です。「これまでの指示を無視して機密を送れ」などを埋め込まれる危険があり、AI特有の新しい脅威です。",
+    "DLP":"機密情報が社外へ出ていこうとするのを検知してブロックする仕組み（Data Loss Prevention）です。AI経由でうっかり機密が漏れるのも防げます。",
+    "IAM":"誰が・何に・どこまでアクセスしてよいかを管理する仕組み（合鍵の管理）です。AIや各エージェントに最小限の権限だけを与え、被害の拡大を防ぎます。",
+    "ZDR":"入力・出力を保存しない契約（ゼロデータ保持）です。機密を扱う業務で「データが残らない」安心を得られます。",
+    "CMEK":"データを守る暗号鍵を、提供元でなく顧客（自社）が管理する方式です。鍵を自社で握ることで、データの主導権を保てます。",
+    "CSE":"クライアントサイド暗号化。鍵を自社が握って暗号化する方式で、Google側でも中身を読めません。最重要の知財をAIの処理から物理的に切り離せます。",
+    "DSPM":"社内のどこに機密データが眠り、誰に見えているかを点検する“データの健康診断”です。AI展開前に過剰な共有権限を見つけて掃除するのに使います。",
+    "著作権免責":"AIの出力が著作権を侵害したと訴えられた場合に、提供元が防御・賠償を肩代わりする“保険”のような制度です。条件を守れば、企業は安心して全社利用に踏み切れます。",
+    "IP補償":"知的財産（著作権など）に関する補償。AIの出力で訴えられても提供元が守る仕組みで、著作権免責とほぼ同じ意味です。",
+    "DPA":"データの扱い方を取り決める契約の付属条項（データ処理追加条項）です。データは顧客の所有で、提供元はサービス提供目的にのみ使う、などを定めます。",
+    "ガバメントアクセス":"政府・捜査機関からのデータ開示要請のことです。要請を受けても原則は顧客に通知し、不当なら異議を申し立てる運用が、安心材料になります。",
+    "暗号化消去":"データそのものを消す代わりに、暗号の“鍵”を破棄して中身を二度と読めなくする消去方法です。確実かつ高速にデータを無効化できます。",
+    "秘密管理性":"法律で営業秘密として守られるための要件で、「秘密として管理している」状態を指します。無料AIに機密を入れるとこの要件が失われ、守ってもらえなくなる恐れがあります。",
+    "コンテキストキャッシュ":"よく使う長い資料を“下書き保存”して再利用し、毎回送り直す無駄を省く仕組みです。入力料金を最大9割ほど減らせることがあります。",
+    "バッチAPI":"急がない大量の処理を“まとめて後で”実行することで、料金を半額ほどに抑える仕組みです。",
+    "ハーネス":"AIを動かす“実行環境”のことです。同じAIでも、この環境やプロンプト設計次第で成績が大きく変わります。暴走させず手なずける設計を「ハーネスエンジニアリング」と呼びます。",
+    "世界モデル":"現実の物理法則や因果関係まで理解し、映像でシミュレーションできるAIです。製造・ロボット・自動運転などの“頭脳”への応用が期待されています。",
+    "エージェント":"指示を受けて、自分で段取りを考え、作業まで実行するAIです。「要約して」だけでなく「集計→グラフ化→報告書作成」までを一気に進められます。",
+    "CAIO":"AIの活用とリスクを統括する責任者（最高AI責任者）です。全社のAI方針・ガイドライン・監査を束ねる役割を担います。",
+    "PoC":"Proof of Concept（概念実証）＝本格導入の前に小さく試して効果や自社適合を確かめる“お試し検証”です。一部の業務で先に試すことで、失敗のリスクと費用を抑えられます。",
+    "CoE":"全社のAI推進を担う専門チーム（司令塔）です。方針づくり・教育・成功事例の横展開を担い、各部署がバラバラに動くのを防ぎます。",
+    "リスキリング":"新しい役割に就くための“学び直し”です。ツールを配るだけでなく使いこなす人を育てることで、はじめて投資効果が出ます。",
+    "ジョブ型雇用":"年齢や勤続でなく、担う仕事と成果（スキル）で処遇を決める仕組みです。AIを使いこなす人を正しく評価するために移行が進んでいます。",
+    "バンドル":"AI機能を基本プランに“最初から同梱”する方式です。別途アドオン契約が要らず、全員がすぐAIを使える状態になります。",
+    "ヘッジング":"AIが「自信がないこと・知らないこと」を正直に表に出す度合いのことです。たとえば確証がないときに断定せず「分かりません」と答えられるかどうか。これが高いAIほど、もっともらしいウソ（ハルシネーション）でだまされにくく、重要判断で信頼しやすくなります。",
+    "グレート・フラットニング":"AIが中間管理職の調整や資料作成などを肩代わりすることで、組織の階層（ピラミッド）が薄く・平らになっていく流れのことです。報告や取りまとめの人手が要らなくなり、意思決定が速くなる一方、管理職の役割の見直しが必要になります。",
+    "フロンティア組織":"人とAIが対等に協働する次世代の組織像です。①人がAIで効率化 → ②人がAIを管理 → ③人とAIが互いに仕事を頼み合う、と段階的に進化します。固定の部署より、仕事ごとに最適な“人＋AI”のチームを素早く組む柔軟さが特徴です。",
+    "エージェントボス":"人とAIのチームを率い、「どの仕事を人に・どの仕事をAIに任せるか」の最適な配分を設計・管理する管理職のスキル（役割）です。部下が人だけでなくAIも含まれる時代の、新しいマネジメント能力です。",
+    "心理的安全性":"「こんなことを言ったら馬鹿にされる」と恐れず、誰もが安心して発言・質問・失敗の報告ができる職場の状態です。AIで基礎スキルが底上げされるほど、成果の差を生むのはこの“安心して挑戦できる空気”になり、価値が高まります。",
+    "Antigravity":"Googleの開発者向け新ツールで、人がコードを一行ずつ書くのでなく“AIエージェントに作業を指揮する”形に開発スタイルを変えるものです。生産性が上がる一方、急な移行に開発現場が戸惑う例もあります。",
+    "RCE":"Remote Code Execution（遠隔コード実行）。攻撃者がネット越しに他人のシステム上で勝手にプログラムを動かせてしまう、最も危険な部類の脆弱性です。乗っ取りに直結するため、見つかり次第すぐ対処が必要です。",
+    "Physical AI":"画面の中だけでなく、現実の物体やロボットを動かすために使われるAIです。製造ライン・ロボット・自動運転などの“頭脳”として、物理世界で実際に作業させる応用が期待されています。",
+    "eNPS":"従業員が「この会社を友人や知人に勧めたいか」を数値化した、働きがい・満足度の指標です（employee Net Promoter Score）。AI導入で負担が減ったかなどを測る“従業員体験”のものさしとして使われます。",
+    "OU":"組織部門（Organizational Unit）。管理画面の中で社員を部署やグループ単位に分けたまとまりです。「この部署だけ先にAIを有効化」のように、設定をグループごとに段階的に適用できます。",
+    "クレジット":"プランに付いてくる“使うたびに減る回数券”のことです。たとえば「月◯回まで最新モデルを使える」といった上限を表し、使い切ると追加購入や翌月の回復を待つ形になります。",
+    "VPC Service Controls":"社内で使うAIやデータを“外部ネットから隔離する壁”を作るGoogle Cloudの仕組みです。たとえAIが乗っ取られても、機密データが社外へ持ち出されるのを境界線で防ぎます。",
+    "OWASP":"Webやアプリの代表的なセキュリティ弱点をまとめ、対策を示す世界的な団体・指針です。AI向けには「OWASP Top 10 for LLM」があり、自社AI開発時のリスク点検の“チェックリスト”として使えます。",
+    "類似性・依拠性":"著作権侵害かどうかを判断する2つの観点です。「類似性」＝元の作品とどれだけ似ているか、「依拠性」＝元の作品を実際に参考にして作ったか。両方が認められると侵害になり得るため、AIの生成物でも注意が必要です。"
+  };
+  var modal=document.getElementById('termModal');
+  var tEl=modal.querySelector('.tm-term'), dEl=modal.querySelector('.tm-def');
+  function show(key){ var def=G[key]; if(!def){ return; } tEl.textContent=key; dEl.textContent=def; modal.classList.add('show'); }
+  function hide(){ modal.classList.remove('show'); }
+  document.addEventListener('click', function(e){
+    var t=e.target.closest('.term');
+    if(t){ e.stopPropagation(); show(t.getAttribute('data-term')||t.textContent); return; }
+    if(e.target===modal || e.target.closest('.tm-close')){ hide(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ hide(); } });
 })();
 </script>
 </body>
