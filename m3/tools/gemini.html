@@ -1014,7 +1014,7 @@
   if(ca){ ca.addEventListener('click', function(){ secs.forEach(function(s){ s.classList.remove('open'); }); }); }
   var hash=location.hash?document.querySelector(location.hash):null;
   if(hash&&hash.classList.contains('sec')){ hash.classList.add('open'); }
-  else { var first=document.getElementById('s1'); if(first){ first.classList.add('open'); } }
+  // 初期表示は全章閉じた状態（URLに#指定があればその章だけ開く）
 })();
 </script>
 
