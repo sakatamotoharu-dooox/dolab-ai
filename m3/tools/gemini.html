@@ -123,7 +123,6 @@
     .brandmark{background:none !important;border:1px solid #ccc !important;color:var(--navy) !important;box-shadow:none !important;}
     .brandname{color:var(--navy) !important;text-shadow:none !important;}
     .sec{break-inside:avoid;}
-    .sec-grid{grid-template-columns:1fr !important;} .feat-grid{grid-template-columns:1fr !important;}
     a[href]{color:var(--navy);text-decoration:none;}
   }
 
@@ -192,8 +191,8 @@
   @media(max-width:760px){.feat-grid{grid-template-columns:1fr;}}
 
   /* ===== 用語クリックで説明ポップアップ ===== */
-  .term{color:var(--g-d);border-bottom:1.5px dotted var(--g);cursor:pointer;font-weight:700;white-space:nowrap;}
-  .term:hover{background:var(--g-bg);}
+  .term{color:var(--ink);border-bottom:1.5px dotted var(--ink);cursor:pointer;font-weight:700;white-space:nowrap;}
+  .term:hover{background:#ececec;}
   .term-modal{position:fixed;inset:0;background:rgba(15,20,40,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
   .term-modal.show{display:flex;}
   .tm-box{background:#fff;max-width:460px;width:100%;border-radius:16px;padding:26px 26px 24px;box-shadow:0 14px 44px rgba(0,0,0,.32);position:relative;}
@@ -214,9 +213,9 @@
   .grp-n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--g);color:#fff;font-size:20px;flex:0 0 auto;box-shadow:0 2px 8px rgba(27,36,71,.18);}
   .grp-sub{font-size:13px;font-weight:600;color:var(--sub);margin-left:auto;}
   .sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
-  .sec-grid .sec{margin:0;}
+  .sec-grid .sec{margin:0;align-self:start;}
+  /* 開いた章だけ全幅（2列ぶち抜き）に広げて大きく読みやすく。閉じたカードは2列のコンパクトな見た目・サイズのまま変化しない */
   .sec-grid .sec.open{grid-column:1 / -1;}
-  .sec-grid:has(.sec.open){grid-template-columns:1fr;}
   @media(max-width:820px){.sec-grid{grid-template-columns:1fr;}}
 
   /* ===== 章ごとの固有アクセント色 ===== */
@@ -316,7 +315,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiは「文章を作る」だけにとどまりません。<b>メール・文書・表計算など毎日使うアプリに溶け込み、画像・音声・動画も一度にこなす“仕事の土台”</b>へ進化しています。この章は、<b>3つの基本の強み → アプリ別の使い方 → 社内資料専用AI「NotebookLM」 → 動画自動作成「Google Vids」 → 効果</b>の順に紹介します。</p>
 
       <div class="blk-h">3つの“基本の強み”がすごい</div>
@@ -379,7 +378,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiへの投資は「ソフトの値段」ではなく、<b>“時間と知的生産力への投資”</b>です。外部調査では <b>3年でROI 416%・投資回収は6ヶ月未満</b> という、めったに見ない高い効果が実証されています。この章は、<b>料金の全体像 → 効果の金額（ROI）→ 競合とのコスト比較 → 見えにくい出費 → 業種別の効果</b>の順に整理します。</p>
 
       <div class="blk-h">料金の全体像 ― “2つの入口”を分けて見る</div>
@@ -472,7 +471,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p><b>「すべてに勝つ万能AI」の時代は終わり</b>、仕事の性質で使い分ける時代になりました。この章は、3大サービス（<b>Google Gemini／OpenAI ChatGPT／Anthropic Claude</b>）を、性能・マルチモーダル・料金・安全性の観点で公平に比べ、<b>Geminiの“勝ちどころ”</b>を明確にします。</p>
 
       <div class="blk-h">性能 ― “得意分野”がはっきり分かれる</div>
@@ -535,7 +534,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>AIが社内データに直接つながる時代、論点は「何ができるAIか」から<b>「自社のデータをどう守りながら使うか」</b>へ移りました。Geminiは<b>①入力をAIの学習に使わない ②データを国内に置いたまま使える ③国の安全基準（ISMAP）に合格 ④著作権で訴えられてもGoogleが肩代わり</b>まで揃え、リスクを“仕組みで”抑えます。この章は、データ保護 → データ主権 → 認証 → 情報漏れ対策 → エージェントの管理 → 攻撃への防御 → 著作権の肩代わり → 競合の順に整理します。</p>
 
       <div class="blk-h">データは“AIの学習に使わない・本人が見られるものしか見ない”</div>
@@ -622,7 +621,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiの料金は<b>“3つの入口”</b>で考えると整理できます。社員が日常で使う<b>Workspace（1人ごとの定額）</b>、個人・クリエイター向けの<b>月額プラン（Google One）</b>、自社システムに組み込む<b>開発者向けAPI（使った分だけ払う）</b>。2025年にWorkspaceは<b>「AIを別売りの追加機能 → 基本プランに最初から付ける」</b>へ大きく変わりました。この章は各料金を整理し、<b>用途別に「どれを選ぶか」</b>を示します。</p>
 
       <div class="blk-h">まず全体像 ― 料金は“3つの入口”</div>
@@ -696,7 +695,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>Geminiの全社導入は、単なる便利ツールの追加ではなく、<b>組織のかたち・意思決定・人材のあり方そのものを変える経営テーマ</b>です。情報を「探す・まとめる」手間がほぼゼロになると、これまで人手と階層で支えていた仕事の前提が崩れます。この章は、<b>フラット化 → 管理職の役割の変化 → 人事評価 → 学び直し（<span class="term" data-term="リスキリング">リスキリング</span>）→ 定着</b>の順に整理します。</p>
 
       <div class="blk-h">組織の階層が減る（フラット化）</div>
@@ -754,7 +753,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>導入では性能と同じくらい<b>「契約と法律の整理」</b>が重要です。<b>どの国の法律で争うか・データはAIの学習に使われないか・解約時に消えるか・著作権で訴えられたら誰が守るか</b>は、<b>使うプラン（無料か、有料の法人版か）で根本的に変わります</b>。この章は、準拠法／管轄 → DPA → データ削除 → 無料と有料の決定的な差 → 著作権／IP補償 → 日本国内の法律、の順に整理します。</p>
 
       <div class="blk-h">どの国の法律で・どこで争うか（準拠法・管轄）</div>
@@ -819,7 +818,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>導入の本当の課題は「優れたAIを買うこと」ではなく、<b>全従業員に定着させ、はっきりした効果（ROI）に変えること</b>です。配って現場任せにすると、一部の人しか使わず元の手作業に戻りがち。さらに、<b>シャドーAI（個人のツールをバラバラに使うこと）</b>による情報漏れも深刻化します。この章は、<b>プラン選び → 導入前の準備 → 5ステップの進め方 → 定着事例 → 効果（ROI）の測定</b>の順に整理します。</p>
 
       <div class="blk-h">プラン選びの勘所（管理体制＝ガバナンスを軸に選ぶ）</div>
@@ -880,7 +879,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>2026年、AIは「質問に答える」段階を終え、<b>自分で段取りして実行する“エージェント”</b>、さらに<b>現実の物理法則まで理解する“<span class="term" data-term="世界モデル">世界モデル</span>”</b>へと進化しました。Googleは「エージェント的Geminiの時代」を宣言。この章は、<b>最新モデルの現在地 → モデルの賞味期限 → 全面的なエージェント化 → 日本市場の最前線</b>の順に整理します。</p>
 
       <div class="blk-h">最新モデルの現在地</div>
@@ -933,7 +932,7 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 オレンジの点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>AIは「データを保存するだけ」でなく、<b>入力を解釈し・推論し・生成する“能動的なブラックボックス”</b>です。だから従来のソフト導入とは次元の違うリスクが生まれます。一方で、<b>一律に「使うな」は競争力の破滅</b>。経営に求められるのは、安全な環境を整え<b>「禁止」ではなく「統制」</b>すること。この章は、<b>直視すべき5大リスク → 技術の守り → 法務の守り → ハルシネーション対策 → 組織のガバナンス</b>の順に整理します。</p>
 
       <div class="blk-h">直視すべき5大リスク</div>
