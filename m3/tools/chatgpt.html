@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChatGPT 企業活用 総合戦略レポート（2026年版）</title>
+<title>ChatGPT 企業活用 総合戦略レポート（2026年版） | Do Lab AI</title>
 <style>
   :root{--gpt:#10a37f;--gpt-d:#0d8268;--gpt-bg:#e7f6f1;--navy:#0b2545;--ink:#1f2937;--sub:#5a6480;--line:#e2e8f0;--bg:#f6f8fc;--white:#fff;}
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -133,18 +133,87 @@
     .brandmark{background:none !important;border:1px solid #ccc !important;color:var(--navy) !important;box-shadow:none !important;}
     .brandname{color:var(--navy) !important;text-shadow:none !important;}
     .sec{break-inside:avoid;}
+    .sec-grid{grid-template-columns:1fr !important;} .feat-grid{grid-template-columns:1fr !important;}
     a[href]{color:var(--navy);text-decoration:none;}
   }
+
+  /* ===== 文字大きめ・読みやすさ ===== */
+  body{font-size:19px !important;line-height:1.95 !important;}
+  .sechd h2{font-size:25px !important;}
+  .sechd .n{width:50px !important;height:50px !important;font-size:24px !important;}
+  .tz-lead{font-size:18.5px !important;line-height:1.95 !important;}
+  .tz-points{font-size:15.5px !important;line-height:1.9 !important;}
+  .more-btn{font-size:17px !important;padding:13px 26px !important;}
+  h4{font-size:18px !important;}
+  .secbody p{font-size:18px !important;line-height:1.95 !important;margin-bottom:14px !important;}
+  .secbody li{font-size:17.5px !important;line-height:1.9 !important;margin:7px 0 !important;}
+  table{font-size:15.5px !important;} th{font-size:15px !important;} th,td{padding:11px 13px !important;line-height:1.75 !important;}
+  .callout,.verdict{font-size:18px !important;line-height:1.95 !important;}
+  .toc li{font-size:18px !important;}
+
+  /* ===== カード（ブロック）レイアウト ===== */
+  .blk-h{font-size:20px !important;font-weight:900;color:var(--navy);margin:52px 0 16px;padding:8px 0 8px 14px;border-left:6px solid var(--gpt);line-height:1.4;}
+  .blk-h:first-child{margin-top:8px;}
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:16px 0 12px;}
+  .feat-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(11,37,69,.06);}
+  .feat-card .fc-h{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:900;color:var(--navy);margin-bottom:9px;line-height:1.4;}
+  .feat-card .fc-ic{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--gpt-bg);font-size:23px;flex:0 0 auto;line-height:1;}
+  .feat-card p{font-size:16.5px !important;line-height:1.85 !important;margin:0 !important;}
+  .feat-card p b{color:var(--gpt-d);}
+  .feat-card.wide{grid-column:1 / -1;background:var(--gpt-bg);border-color:#bfe6db;}
+  @media(max-width:760px){.feat-grid{grid-template-columns:1fr;}}
+
+  /* ===== 用語クリックで説明ポップアップ ===== */
+  .term{color:var(--ink);border-bottom:1.5px dotted var(--ink);cursor:pointer;font-weight:700;white-space:nowrap;}
+  .term:hover{background:#ececec;}
+  .term-modal{position:fixed;inset:0;background:rgba(11,37,69,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+  .term-modal.show{display:flex;}
+  .tm-box{background:#fff;max-width:460px;width:100%;border-radius:16px;padding:26px 26px 24px;box-shadow:0 14px 44px rgba(0,0,0,.32);position:relative;}
+  .tm-close{position:absolute;top:10px;right:14px;border:none;background:none;font-size:28px;line-height:1;color:var(--sub);cursor:pointer;}
+  .tm-close:hover{color:var(--ink);}
+  .tm-term{font-size:22px;font-weight:900;color:var(--navy);margin-bottom:12px;padding-right:28px;}
+  .tm-def{font-size:18px;line-height:1.9;color:var(--ink);}
+  .term-hint{font-size:13.5px;color:var(--sub);margin:6px 0 18px;}
+
+  /* ===== 配色のメリハリ ===== */
+  table th{background:#eef2f7 !important;color:var(--navy) !important;}
+  .secbody table tr:nth-child(even) td{background:#f7faf9;}
+  .verdict{border-left:6px solid var(--gpt);}
+
+  /* ===== 章を2列＋ブロックでまとめる ===== */
+  .grp{margin:34px 0 6px;}
+  .grp-h{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;color:var(--navy);margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid var(--line);}
+  .grp-n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--gpt);color:#fff;font-size:20px;flex:0 0 auto;box-shadow:0 2px 8px rgba(11,37,69,.18);}
+  .grp-sub{font-size:13px;font-weight:600;color:var(--sub);margin-left:auto;}
+  .sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+  .sec-grid .sec{margin:0;align-self:start;}
+  /* 開いた章だけ全幅（2列ぶち抜き）に広げて大きく読みやすく。閉じたカードは2列のコンパクトな見た目・サイズのまま変化しない */
+  .sec-grid .sec.open{grid-column:1 / -1;}
+  @media(max-width:820px){.sec-grid{grid-template-columns:1fr;}}
+
+  /* ===== 章ごとの固有アクセント色（12章） ===== */
+  #s1 .sechd{background:linear-gradient(135deg,#e76f51,#c9543a);} #s1 .blk-h{border-left-color:#e76f51;background:linear-gradient(90deg,rgba(231,111,81,.13),transparent 70%);} #s1 .feat-grid .feat-card{border-left:5px solid #e76f51;} #s1 .feat-card .fc-ic{background:#fdeee9;} #s1 .verdict{border-left-color:#e76f51;}
+  #s2 .sechd{background:linear-gradient(135deg,#e0892e,#bf6f16);} #s2 .blk-h{border-left-color:#e0892e;background:linear-gradient(90deg,rgba(224,137,46,.13),transparent 70%);} #s2 .feat-grid .feat-card{border-left:5px solid #e0892e;} #s2 .feat-card .fc-ic{background:#fbf1e0;} #s2 .verdict{border-left-color:#e0892e;}
+  #s3 .sechd{background:linear-gradient(135deg,#2a9d8f,#1f7e72);} #s3 .blk-h{border-left-color:#2a9d8f;background:linear-gradient(90deg,rgba(42,157,143,.13),transparent 70%);} #s3 .feat-grid .feat-card{border-left:5px solid #2a9d8f;} #s3 .feat-card .fc-ic{background:#e4f4f1;} #s3 .verdict{border-left-color:#2a9d8f;}
+  #s4 .sechd{background:linear-gradient(135deg,#3b82f6,#2563c9);} #s4 .blk-h{border-left-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,.13),transparent 70%);} #s4 .feat-grid .feat-card{border-left:5px solid #3b82f6;} #s4 .feat-card .fc-ic{background:#e8f1fe;} #s4 .verdict{border-left-color:#3b82f6;}
+  #s5 .sechd{background:linear-gradient(135deg,#9b5de5,#7a3fd0);} #s5 .blk-h{border-left-color:#9b5de5;background:linear-gradient(90deg,rgba(155,93,229,.13),transparent 70%);} #s5 .feat-grid .feat-card{border-left:5px solid #9b5de5;} #s5 .feat-card .fc-ic{background:#f1ebfa;} #s5 .verdict{border-left-color:#9b5de5;}
+  #s6 .sechd{background:linear-gradient(135deg,#c9871a,#a66e10);} #s6 .blk-h{border-left-color:#c9871a;background:linear-gradient(90deg,rgba(201,135,26,.13),transparent 70%);} #s6 .feat-grid .feat-card{border-left:5px solid #c9871a;} #s6 .feat-card .fc-ic{background:#fbf3e0;} #s6 .verdict{border-left-color:#c9871a;}
+  #s7 .sechd{background:linear-gradient(135deg,#d6453f,#b22f2a);} #s7 .blk-h{border-left-color:#d6453f;background:linear-gradient(90deg,rgba(214,69,63,.13),transparent 70%);} #s7 .feat-grid .feat-card{border-left:5px solid #d6453f;} #s7 .feat-card .fc-ic{background:#fdeceb;} #s7 .verdict{border-left-color:#d6453f;}
+  #s8 .sechd{background:linear-gradient(135deg,#0d9488,#0a766c);} #s8 .blk-h{border-left-color:#0d9488;background:linear-gradient(90deg,rgba(13,148,136,.13),transparent 70%);} #s8 .feat-grid .feat-card{border-left:5px solid #0d9488;} #s8 .feat-card .fc-ic{background:#e1f3f1;} #s8 .verdict{border-left-color:#0d9488;}
+  #s9 .sechd{background:linear-gradient(135deg,#5b6bd0,#44539f);} #s9 .blk-h{border-left-color:#5b6bd0;background:linear-gradient(90deg,rgba(91,107,208,.13),transparent 70%);} #s9 .feat-grid .feat-card{border-left:5px solid #5b6bd0;} #s9 .feat-card .fc-ic{background:#ebedfb;} #s9 .verdict{border-left-color:#5b6bd0;}
+  #s10 .sechd{background:linear-gradient(135deg,#c2557e,#a13c62);} #s10 .blk-h{border-left-color:#c2557e;background:linear-gradient(90deg,rgba(194,85,126,.13),transparent 70%);} #s10 .feat-grid .feat-card{border-left:5px solid #c2557e;} #s10 .feat-card .fc-ic{background:#fbe9f0;} #s10 .verdict{border-left-color:#c2557e;}
+  #s11 .sechd{background:linear-gradient(135deg,#4f9d3a,#3c7d2b);} #s11 .blk-h{border-left-color:#4f9d3a;background:linear-gradient(90deg,rgba(79,157,58,.13),transparent 70%);} #s11 .feat-grid .feat-card{border-left:5px solid #4f9d3a;} #s11 .feat-card .fc-ic{background:#ecf6e7;} #s11 .verdict{border-left-color:#4f9d3a;}
+  #s12 .sechd{background:linear-gradient(135deg,#8a6d3b,#6d5429);} #s12 .blk-h{border-left-color:#8a6d3b;background:linear-gradient(90deg,rgba(138,109,59,.13),transparent 70%);} #s12 .feat-grid .feat-card{border-left:5px solid #8a6d3b;} #s12 .feat-card .fc-ic{background:#f2ece1;} #s12 .verdict{border-left-color:#8a6d3b;}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a href="#" class="logo">Do Lab AI</a>
+    <a href="../../index.html" class="logo">Do Lab AI</a>
     <nav>
-      <a href="#">学ぶ（M3）</a>
-      <a href="#">設計書Bot（M1）</a>
-      <a href="#">AIパック（M2）</a>
+      <a href="../index.html">学ぶ（M3）</a>
+      <a href="../../m1/index.html">設計書Bot（M1）</a>
+      <a href="../../m2/index.html">AIパック（M2）</a>
     </nav>
   </div>
 </header>
@@ -218,6 +287,8 @@
   </div>
 
   <!-- 1 実用性 -->
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>実力・技術・安全を知る<span class="grp-sub">実用性・技術戦略・モデル選定・セキュリティ</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s1">
     <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">独自機能のUX：Canvas／画像編集／音声／デスクトップ統合／GPTs</div></div></div>
     <div class="secteaser">
@@ -226,11 +297,11 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p><b>ChatGPTは、チャット欄に日本語で話しかけるだけで使えるAI</b>です。2026年のいまは、ただ質問に答えるだけでなく、<b>自分でネットを調べ、パソコン操作を代行し、資料まで作ってくれる“デキるアシスタント”</b>に進化しました。</p>
       <p>うれしいのは、<b>むずかしい専門知識や“上手な命令文”が書けなくても大丈夫</b>なこと。画面のボタンを押したり、ふだんの言葉で「〜して」と頼むだけで使えるよう工夫されています。文章づくり・調べ物・画像づくり・データ分析を、<b>1つのアプリ</b>で完結できます。</p>
-      <div class="callout">📝 <b>ことば豆知識（このページの読み方）</b>：<b>プロンプト</b>＝AIへのお願い文。<b>トークン</b>＝AIが扱う文字のかたまり（料金や上限の単位）。<b>Vision</b>＝AIが画像を“見て”理解する機能。<b>RAG</b>＝社内資料を読ませて“出典つき”で答えさせるしくみ。<b>ハルシネーション</b>＝AIがもっともらしい嘘を言う現象。<br>むずかしい用語は本文の<b>太字カッコ内でそのつど言い換え</b>ます。急ぐ人は各章の最後にある<b>💪もたらす効果</b>だけ拾い読みすれば、要点と「使うと何が得か」がつかめます。</div>
 
-      <h3>4つの独自コア機能 ― 「で、何が変わる？」</h3>
+      <div class="blk-h">4つの独自コア機能 ― 「で、何が変わる？」</div>
       <p>むずかしく考えなくてOK。下の4つは、ふだんの仕事の“面倒”を肩代わりしてくれる機能です。</p>
       <div class="tbl-scroll"><table>
         <tr><th>機能</th><th>ひとことで言うと（たとえば…）</th><th>もたらす効果（=あなたの得）</th><th>プラン</th></tr>
@@ -241,42 +312,43 @@
       </table></div>
       <div class="callout">💪 <b>つまり</b>：この4つは「調べる・動かす・覚える・見える化する」を肩代わりして、<b>あなたの時間を生み出す道具</b>。まずは自分の“いちばん時間がかかっている作業”を1つ選んで、試しに頼んでみるのがおすすめです。</div>
 
-      <h3>Canvas（キャンバス）＝ AIと一緒に文章・資料を直す画面</h3>
-      <p>ふつうのチャットだと、文章を少し直したいだけでも“全部作り直し”になりがち。<b>Canvas</b>は画面が左右に分かれ（左：会話／右：文章や資料）、<b>直したいところだけを選んで「ここをやさしく言い換えて」と頼める</b>機能です。ワープロをAIと一緒に使うイメージ。自分で直接打ち直すこともできます。</p>
-      <ul>
-        <li>たとえば：文章を選んで「もっと短く」「専門家向けに」をボタン1つで調整。</li>
-        <li>HTMLやちょっとしたプログラムは、その場で動かして確認も可能。<b>無料でも使えます</b>。</li>
-      </ul>
+      <div class="blk-h">Canvas（キャンバス）＝ AIと一緒に文章・資料を直す画面</div>
+      <p>ふつうのチャットだと、文章を少し直したいだけでも“全部作り直し”になりがち。<b><span class="term" data-term="Canvas">Canvas</span></b>は画面が左右に分かれ（左：会話／右：文章や資料）、<b>直したいところだけを選んで「ここをやさしく言い換えて」と頼める</b>機能です。ワープロをAIと一緒に使うイメージ。自分で直接打ち直すこともできます。</p>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✍️</span>ボタン1つで調整</div><p>文章を選んで「もっと短く」「専門家向けに」を<b>ボタン1つで調整</b>できます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💻</span>その場で動作確認</div><p>HTMLやちょっとしたプログラムは、その場で動かして確認も可能。<b>無料でも使えます</b>。</p></div>
+      </div>
 
-      <h3>画像・音声 ＝ つくる/直す/話す も、ことばだけで</h3>
-      <ul>
-        <li><b>画像をつくる・直す</b>：「〜の画像を作って」でOK。写真の<b>直したいところだけをなぞって</b>「メガネを黒縁に」「背景を青空に」と頼むと、その部分だけ自然に直ります（ほかは崩れません）。同じキャラクターで何パターンも作れます。</li>
-        <li><b>声で話す（Advanced Voice）</b>：スマホに話しかけて相談・通訳。人と話すように自然に会話できます。</li>
-        <li><b>録音して議事録（Record）</b>★：会議を録音すると、<b>文字起こし＋要約</b>まで自動。あとで聞き直す手間がなくなります。</li>
-      </ul>
+      <div class="blk-h">画像・音声 ＝ つくる/直す/話す も、ことばだけで</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎨</span>画像をつくる・直す</div><p>「〜の画像を作って」でOK。写真の<b>直したいところだけをなぞって</b>「メガネを黒縁に」「背景を青空に」と頼むと、その部分だけ自然に直ります（ほかは崩れません）。同じキャラクターで何パターンも作れます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎙️</span>声で話す（Advanced Voice）</div><p>スマホに話しかけて相談・通訳。<b>人と話すように自然に会話</b>できます。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📝</span>録音して議事録（Record）★</div><p>会議を録音すると、<b>文字起こし＋要約</b>まで自動。あとで聞き直す手間がなくなります。</p></div>
+      </div>
 
-      <h3>パソコン・スマホとの一体化 ＝ いつでもすぐ呼び出せる</h3>
-      <ul>
-        <li><b>デスクトップアプリ</b>：作業中でもショートカット（Mac: Option+Space／Windows: Alt+Space）で画面の真ん中にAIをすぐ表示。ブラウザのタブを切り替える手間がありません。画面のスクショを送って「この画面どういう意味？」と聞くのも簡単。</li>
-        <li><b>iPhone/Macとの連携（Apple Intelligence）</b>：Siriに話すとChatGPTに引き継いでくれます。<b>登録なし・無料</b>で使え、<b>あなたの情報やIPアドレスは隠され、AIの学習にも使われません</b>（プライバシー安心）。</li>
-      </ul>
+      <div class="blk-h">パソコン・スマホとの一体化 ＝ いつでもすぐ呼び出せる</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🖥️</span>デスクトップアプリ</div><p>作業中でもショートカット（Mac: Option+Space／Windows: Alt+Space）で<b>画面の真ん中にAIをすぐ表示</b>。タブを切り替える手間がなく、画面のスクショを送って「この画面どういう意味？」と聞くのも簡単。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📱</span>iPhone/Macとの連携</div><p>Apple Intelligence経由でSiriに話すとChatGPTに引き継ぎ。<b>登録なし・無料</b>で使え、<b>あなたの情報やIPアドレスは隠され、AIの学習にも使われません</b>。</p></div>
+      </div>
 
-      <h3>GPTs ＝ 自分専用のChatGPTを“プログラミングなし”で作れる</h3>
-      <ul>
-        <li><b>作り方</b>：チャットで「どんな役割か」「守ってほしいルール」を伝えるだけ。会社のマニュアルやExcelを覚えさせれば、<b>社内専用アシスタント</b>の完成。</li>
-        <li>一度作れば、毎回くわしく説明しなくても呼び出すだけ。カレンダーや他サービスとつないで自動化もできます。</li>
-        <li>作ったものは公開・配布も可能（収益化のしくみもあります）。</li>
-      </ul>
+      <div class="blk-h"><span class="term" data-term="GPTs">GPTs</span> ＝ 自分専用のChatGPTを“プログラミングなし”で作れる</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧩</span>作り方はことばだけ</div><p>チャットで「どんな役割か」「守ってほしいルール」を伝えるだけ。会社のマニュアルやExcelを覚えさせれば、<b>社内専用アシスタント</b>の完成。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>一度作れば呼ぶだけ</div><p>毎回くわしく説明せず呼び出すだけ。<b>カレンダーや他サービスとつないで自動化</b>もできます。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🌐</span>公開・配布も可能</div><p>作ったものは公開・配布も可能（<b>収益化のしくみ</b>もあります）。</p></div>
+      </div>
 
-      <h3>ChatGPTに渡せるもの / 返ってくるもの</h3>
+      <div class="blk-h">ChatGPTに渡せるもの / 返ってくるもの</div>
       <div class="tbl-scroll"><table>
         <tr><th>種類</th><th>渡せるもの（入力）</th><th>返ってくるもの（出力）</th></tr>
         <tr><td>文字</td><td>質問・指示・長い文章の貼り付け</td><td>文章・要約・翻訳・プログラム</td></tr>
-        <tr><td>画像</td><td>写真・図・スクショを“見せる”（Vision）</td><td>画像をつくる（GPT Image 2）</td></tr>
+        <tr><td>画像</td><td>写真・図・スクショを“見せる”（<span class="term" data-term="Vision">Vision</span>）</td><td>画像をつくる（GPT Image 2）</td></tr>
         <tr><td>音声</td><td>声で会話・口述（Advanced Voice）</td><td>自然な声で返事</td></tr>
-        <tr><td>動画</td><td>画面共有・スマホのカメラ</td><td>動画をつくる（Sora）</td></tr>
+        <tr><td>動画</td><td>画面共有・スマホのカメラ</td><td>動画をつくる（Sora）<b>※サービス終了</b></td></tr>
         <tr><td>ファイル</td><td>PDF・Word・Excel・CSV など</td><td>分析結果・表・動くグラフ・直したファイル</td></tr>
       </table></div>
+      <div class="warnbox">⚠️ <b>動画生成「Sora」は提供終了</b>：OpenAIの動画生成サービス「Sora」は提供を終了しており、現在ChatGPTで動画の自動生成は利用できません（画像生成、および画像・音声・動画の“読み取り／解析”は引き続き可能）。最新の提供状況は公式でご確認ください。</div>
       <div class="callout">🧭 <b>初心者の入口</b>：まずは<b>無料</b>で「文章の下書き」「調べ物」「要約」を頼むところから。慣れたら <b>Go（$8）→ Plus（$20）</b> に上げて Deep Research や agent mode を解放。パソコンにアプリを入れてショートカットで呼び出せば、“いつもそばにいるアシスタント”になります。</div>
     </div>
   </div>
@@ -290,15 +362,15 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <div class="callout">🧩 <b>この章をひとことで</b>：ChatGPTの「裏側のしくみ」と「会社で安全に動かす土台」の話です。専門用語が続くので<b>太字カッコ内にやさしい言い換え</b>を添えました。結論だけ知りたい人は、章末の<b>💪もたらす効果</b>へ。</div>
-      <h3>モデルの内部構造：1つの巨大AIではなく“役割分担チーム”</h3>
-      <p>いまのChatGPTは「1つの大きなAI」ではなく、<b>速く返す担当・じっくり考える担当・交通整理する担当</b>がチームを組んだ仕組みです。質問が来るたびに交通整理役（ルーター）が「これは簡単／難しい」「道具が要る？」を瞬時に見分け、最適な担当へ振り分けます（専門用語ではMoEやルーティングと呼びますが、要は<b>“質問ごとに担当AIを割り当てるしくみ”</b>）。</p>
-      <ul>
-        <li><b>Instant</b>（高速・無料既定）／<b>Thinking</b>（GPT-5.5・推論）／<b>Pro</b>（GPT-5.5 Pro・最高精度）。</li>
-        <li><b>「考える担当」と「こなす担当」の分業</b>（専門用語でPlanner＝設計役／Workhorse＝実行役）：難しい全体設計は“じっくり考えるモデル”、はっきりした指示の高速処理は“速いモデル”が受け持つ（例：考える役が全体を設計→速い役が数千行のコードを一気に生成）。</li>
-        <li><b>コンテキスト</b>：GPT-5.5 は<b>APIで最大100万トークン</b>（Codexは40万）。アプリ内実効上限はプラン依存（要確認）。</li>
-      </ul>
-      <h4>コーディングの三極化★</h4>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <div class="blk-h">モデルの内部構造：1つの巨大AIではなく“役割分担チーム”</div>
+      <p>いまのChatGPTは「1つの大きなAI」ではなく、<b>速く返す担当・じっくり考える担当・交通整理する担当</b>がチームを組んだ仕組みです。質問が来るたびに交通整理役（ルーター）が「これは簡単／難しい」「道具が要る？」を瞬時に見分け、最適な担当へ振り分けます（専門用語では<span class="term" data-term="MoE">MoE</span>やルーティングと呼びますが、要は<b>“質問ごとに担当AIを割り当てるしくみ”</b>）。</p>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚡</span>3つの動作モード</div><p><b>Instant</b>（高速・無料既定）／<b>Thinking</b>（GPT-5.5・推論）／<b>Pro</b>（GPT-5.5 Pro・最高精度）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧠</span>考える役と実行役の分業</div><p>難しい全体設計は“じっくり考えるモデル”（Planner＝設計役）、高速処理は“速いモデル”（Workhorse＝実行役）。例：考える役が設計→速い役が数千行のコードを一気に生成。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📏</span><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span></div><p>GPT-5.5 は<b>APIで最大100万<span class="term" data-term="トークン">トークン</span></b>（Codexは40万）。アプリ内実効上限はプラン依存（要確認）。</p></div>
+      </div>
+      <div class="blk-h">コーディングの三極化★</div>
       <div class="tbl-scroll"><table>
         <tr><th>モデル</th><th>役割</th><th>コンテキスト</th></tr>
         <tr><td>GPT-5.5 Thinking</td><td>アルゴリズム設計・複雑なデバッグの対話パートナー</td><td>256K</td></tr>
@@ -306,21 +378,21 @@
         <tr><td>GPT-5.3 Codex-Spark</td><td>IDE内のリアルタイム補完（毎秒1,000トークン超）</td><td>128K</td></tr>
       </table></div>
 
-      <h3>開発・連携基盤</h3>
-      <ul>
-        <li><b>Responses API</b>を今後の主軸に（Assistants APIは2026年sunset予定）。組込ツール＝<b>Web Search／File Search（ベクトルストア）／Computer Use</b>。</li>
-        <li><b>Agents SDK</b>：計画・ツール利用・多段実行を行うエージェント構築フレームワーク。</li>
-        <li><b>MCP（Model Context Protocol）</b>＝「AIのUSB-C」。2026年は主要ベンダー（OpenAI/Anthropic/Google/Microsoft/AWS）が標準対応し、ツール接続の事実上の標準に。</li>
-      </ul>
+      <div class="blk-h">開発・連携基盤</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>Responses API</div><p>今後の主軸に（Assistants APIは2026年sunset予定）。組込ツール＝<b>Web Search／File Search（ベクトルストア）／Computer Use</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤖</span>Agents SDK</div><p>計画・ツール利用・多段実行を行う<b>エージェント構築フレームワーク</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🌐</span><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</div><p>「AIのUSB-C」。2026年は主要ベンダー（OpenAI/Anthropic/Google/Microsoft/AWS）が標準対応し、<b>ツール接続の事実上の標準</b>に。</p></div>
+      </div>
 
-      <h3>企業導入アーキテクチャ</h3>
-      <ul>
-        <li><b>RAG（検索拡張生成）</b>：取り込み→クレンジング→チャンク→埋め込み→<b>ベクトルDB</b>。最新性・出典明示でハルシネーション抑制。発展形に<b>GraphRAG</b>・エージェント型RAG。</li>
-        <li><b>AIゲートウェイ</b>：アプリとLLM群の中間で、モデルルーティング・ガードレール・監査ログ・キャッシュ・コスト最適化を集中管理（本番では事実上必須）。</li>
-        <li><b>オーケストレーション/マルチエージェント</b>：状態管理・ID連携・エージェント/ツールのレジストリ・全行程の可観測性が要件。</li>
-      </ul>
+      <div class="blk-h">企業導入アーキテクチャ</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📂</span><span class="term" data-term="RAG">RAG</span>（検索拡張生成）</div><p>取り込み→クレンジング→チャンク→埋め込み→<b><span class="term" data-term="ベクトルDB">ベクトルDB</span></b>。最新性・出典明示で<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>抑制</b>。発展形に<b><span class="term" data-term="GraphRAG">GraphRAG</span></b>・エージェント型RAG。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚪</span><span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span></div><p>アプリとLLM群の中間で、モデルルーティング・<span class="term" data-term="ガードレール">ガードレール</span>・監査ログ・キャッシュ・コスト最適化を集中管理（<b>本番では事実上必須</b>）。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🧩</span>オーケストレーション／マルチエージェント</div><p>状態管理・ID連携・エージェント/ツールのレジストリ・<b>全行程の可観測性</b>が要件。</p></div>
+      </div>
 
-      <h4>RAG と ファインチューニングの使い分け</h4>
+      <div class="blk-h">RAG と <span class="term" data-term="ファインチューニング">ファインチューニング</span>の使い分け</div>
       <div class="tbl-scroll"><table>
         <tr><th>観点</th><th>RAG</th><th>ファインチューニング</th></tr>
         <tr><td>仕組み</td><td>外部DBから検索して根拠付与（重み不変）</td><td>独自データで追加学習しパラメータ更新</td></tr>
@@ -342,12 +414,13 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>選び方は「無料か、月20ドルか」の単純な二択から、<b>“AIにいくら使い、いくら得しているか”を管理する段階</b>（専門用語で<b>AI-FinOps＝AIのコスト管理術</b>）へ進みました。新しいモデルほど料金が跳ね上がるため、使用量を見える化しないと、<b>部署ごとに勝手に契約・課金が増える“無秩序な広がり”（AIスプロール）</b>で予算を浪費します。だから ①最適なプラン選び ②安全なデータ連携 ③用途別の使い分け ④効果の測定 をセットで考える必要があります。</p>
 
-      <h3>料金プランと“ぜんぶ込みの費用”（TCO＝導入から運用まで含めた総コスト）</h3>
+      <div class="blk-h">料金プランと“ぜんぶ込みの費用”（<span class="term" data-term="TCO">TCO</span>＝導入から運用まで含めた総コスト）</div>
       <div class="tbl-scroll"><table>
         <tr><th>プラン</th><th>月額/ユーザー</th><th>最小シート</th><th>要点</th></tr>
-        <tr><td>Free / Go</td><td>$0 / <b>$8</b></td><td>—</td><td>上限あり。Goは150席に満たない組織の中間パス（SSO/プライバシー）</td></tr>
+        <tr><td>Free / Go</td><td>$0 / <b>$8</b></td><td>—</td><td>上限あり。Goは150席に満たない組織の中間パス（<span class="term" data-term="SSO">SSO</span>/プライバシー）</td></tr>
         <tr><td>Plus</td><td>$20</td><td>—</td><td>GPT-5.5・Thinking・Deep Research・agent mode・Connectors</td></tr>
         <tr><td>Pro</td><td>$200</td><td>—</td><td>Proモデル・ほぼ無制限・100万トークン級</td></tr>
         <tr><td><b>Business</b>（旧Team）</td><td>$20(年)/$25(月)</td><td>2席〜</td><td><b>agentは月40通でEnterprise移行トリガー</b>。Codex席（従量）＋標準席のハイブリッド。学習オプトアウト標準</td></tr>
@@ -355,26 +428,26 @@
       </table></div>
       <div class="callout">📐 <b>クレジット制（2026/4〜）</b>：Deep Research/Thinking/Image Gen/Advanced Voice/Codex はクレジット消費。超過はワークスペース共有プールから、追加購入は<b>払い戻し不可</b>→需要予測が必須。Businessは<b>Standard席（固定費・$5値下げ）＋Codex席（完全従量）</b>のハイブリッド。</div>
 
-      <h3>API基盤とコスト最適化</h3>
-      <ul>
-        <li><b>GPT-5.5 API</b>：入力$5／出力$30（キャッシュ入力$0.50・最大100万トークン）。GPT-5.5 Pro $30/$180。</li>
-        <li><b>プロンプトキャッシュ最大90%引</b>／<b>Batch・Flex 50%引</b>／Web検索ツール≒$10/1,000回＋検索トークン別課金／コンテナはセッション・容量課金。</li>
-        <li>※Fine-tuning APIは縮小（wind-down）の動き★。</li>
-      </ul>
+      <div class="blk-h">API基盤とコスト最適化</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>GPT-5.5 API料金</div><p>入力<b>$5</b>／出力<b>$30</b>（キャッシュ入力$0.50・最大100万トークン）。GPT-5.5 Pro $30/$180。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📉</span>割引・最適化</div><p><b>プロンプトキャッシュ最大90%引</b>／<b>Batch・Flex 50%引</b>／Web検索ツール≒$10/1,000回＋検索トークン別課金／コンテナはセッション・容量課金。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⚠️</span>Fine-tuning API</div><p>※Fine-tuning APIは<b>縮小（wind-down）の動き</b>★。</p></div>
+      </div>
 
-      <h3>マルチモデル戦略とKPI</h3>
+      <div class="blk-h">マルチモデル戦略とKPI</div>
       <div class="tbl-scroll"><table>
         <tr><th>用途</th><th>推奨モデル例</th></tr>
         <tr><td>ヘルプデスク・定型処理（速度/コスト優先）</td><td>軽量モデル（GPT-5系mini）、国産cotomi</td></tr>
         <tr><td>システム開発・コード生成</td><td>Claude（コーディング強）／GPT-5.5</td></tr>
         <tr><td>複雑な戦略策定・高度推論</td><td>Claude Opus／OpenAI推論モデル</td></tr>
         <tr><td>膨大なマニュアル・図面・動画解析</td><td>Gemini（200万トークン・MM）</td></tr>
-        <tr><td>機密処理・独自ナレッジ学習</td><td>tsuzumi 2 / cotomi（オンプレ）、Llama（OSS）</td></tr>
+        <tr><td>機密処理・独自ナレッジ学習</td><td>tsuzumi 2 / cotomi（<span class="term" data-term="オンプレミス">オンプレ</span>）、Llama（OSS）</td></tr>
       </table></div>
-      <ul>
-        <li>予算・レイテンシ・プライバシー・FT要件を総合し、<b>2〜3候補を実サンプルでテストしてから本番化</b>。統合AIプラットフォームで裏側を意識せず使い分け。</li>
-        <li><b>KPI</b>：時間/品質/コスト/満足度＋技術KPI（応答速度・エラー率）。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>選定の進め方</div><p>予算・<span class="term" data-term="レイテンシ">レイテンシ</span>・プライバシー・FT要件を総合し、<b>2〜3候補を実サンプルでテストしてから本番化</b>。統合AIプラットフォームで裏側を意識せず使い分け。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📈</span><span class="term" data-term="KPI">KPI</span></div><p>時間／品質／コスト／満足度＋<b>技術KPI（応答速度・エラー率）</b>。</p></div>
+      </div>
       <div class="verdict">💡 <b>料金の選び方の結論</b>：無料／Go($8)は上限が厳しく目玉機能（Deep Research・agent mode）が使いにくい。実務の生産性なら<b>個人＝Plus、法人＝Business</b>が2026年のコスパ最良。最高機密や大規模管理は<b>Enterprise</b>。</div>
       <p class="flag">★要確認：Pro $100階層、ファインチューニングAPIの縮小、各社最新モデル名の細部。</p>
     </div>
@@ -389,31 +462,32 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <h3>プラン別のデータプライバシー境界</h3>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <div class="blk-h">プラン別のデータプライバシー境界</div>
       <div class="tbl-scroll"><table>
         <tr><th>プラン</th><th>学習利用</th><th>保持・統制</th><th>認証・暗号化</th></tr>
         <tr><td>Free / Plus / Pro</td><td><b>既定で利用</b>（手動オプトアウトは個人裁量）</td><td>手動の履歴削除のみ。組織統制不可</td><td>MFA・通信暗号化のみ</td></tr>
-        <tr><td>Business（旧Team）</td><td><b>完全除外</b></td><td>管理者がデータ保持ポリシー設定</td><td>SOC2 Type2、保存/通信暗号化</td></tr>
+        <tr><td>Business（旧Team）</td><td><b>完全除外</b></td><td>管理者がデータ保持ポリシー設定</td><td><span class="term" data-term="SOC2">SOC2</span> Type2、保存/通信暗号化</td></tr>
         <tr><td>Enterprise</td><td><b>完全除外</b></td><td>カスタム保持強制</td><td>SAML SSO、AES-256/TLS1.2+、専任サポート</td></tr>
-        <tr><td>API Platform</td><td><b>完全除外</b></td><td>既定30日保持→自動削除、ゼロデータ保持(ZDR)も</td><td>SOC2、堅牢インフラ、暗号化</td></tr>
+        <tr><td>API Platform</td><td><b>完全除外</b></td><td>既定30日保持→自動削除、ゼロデータ保持(<span class="term" data-term="ZDR">ZDR</span>)も</td><td>SOC2、堅牢インフラ、暗号化</td></tr>
       </table></div>
-      <ul>
-        <li>★Business（旧Team）の会話履歴は外部委託業者のレビューアクセスが許容される仕様との指摘 → 最高機密は<b>Enterprise or クローズド環境（Azure OpenAI）</b>。Enterpriseはアクセスを正規従業員に限定＋顧客の明示許可が必要。</li>
-        <li><b>DPA（データ処理追加条項）</b>：企業＝データ管理者／OpenAI＝処理者。個人情報を外部処理者へ委託する行為自体の適法性を法務が審査。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>最高機密の置き場所</div><p>★Business（旧Team）の会話履歴は外部委託業者のレビューアクセスが許容される仕様との指摘 → 最高機密は<b>Enterprise or クローズド環境（Azure OpenAI）</b>。Enterpriseはアクセスを正規従業員に限定＋顧客の明示許可が必要。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span><span class="term" data-term="DPA">DPA</span>（データ処理追加条項）</div><p>企業＝データ管理者／OpenAI＝処理者。<b>個人情報を外部処理者へ委託する行為自体の適法性</b>を法務が審査。</p></div>
+      </div>
 
-      <h3>情報漏洩のメカニズム（5類型）</h3>
+      <div class="blk-h">情報漏洩のメカニズム（5類型）</div>
       <div class="tbl-scroll"><table>
         <tr><th>類型</th><th>代表事例</th><th>原因</th></tr>
         <tr><td>内部脅威（機密の学習データ化）</td><td>2023/4 韓国大手電機のソースコード漏洩</td><td>オプトアウトせず極秘コードを入力</td></tr>
         <tr><td>プラットフォーム（バグ）</td><td>2023/3 履歴・課金情報の漏洩</td><td>OSSライブラリのバグ</td></tr>
         <tr><td>プラットフォーム（設定不備）</td><td>2024/3 プロンプト漏洩★</td><td>DBアクセス制御の設定ミス</td></tr>
         <tr><td>エンドポイント（認証窃取）</td><td>ダークウェブでのアカウント大量売買</td><td>インフォスティーラー感染</td></tr>
-        <tr><td>アルゴリズム</td><td>プロンプトインジェクション</td><td>悪意ある指示でガードレール回避</td></tr>
+        <tr><td>アルゴリズム</td><td><span class="term" data-term="プロンプトインジェクション">プロンプトインジェクション</span></td><td>悪意ある指示でガードレール回避</td></tr>
       </table></div>
-      <p><b>シャドーAI</b>（現場独断利用）は初動対応を致命的に遅らせる。アクセス制限だけでなく「入力してよいデータの境界＋技術的ブロック（DLP）」が必須。AIアカウントは知的活動の宝庫＝MFA/EDR等の従来型ITセキュリティと不可分。自社チャットボット提供時は入力検証・サニタイズ・出力フィルタを。</p>
+      <p><b><span class="term" data-term="シャドーAI">シャドーAI</span></b>（現場独断利用）は初動対応を致命的に遅らせる。アクセス制限だけでなく「入力してよいデータの境界＋技術的ブロック（<span class="term" data-term="DLP">DLP</span>）」が必須。AIアカウントは知的活動の宝庫＝MFA/EDR等の従来型ITセキュリティと不可分。自社チャットボット提供時は入力検証・サニタイズ・出力フィルタを。</p>
 
-      <h3>グローバル規制マトリクス</h3>
+      <div class="blk-h">グローバル規制マトリクス</div>
       <div class="tbl-scroll"><table>
         <tr><th>規制</th><th>時期</th><th>要点</th></tr>
         <tr><td>個情委（日本）</td><td>2023/6/2</td><td>同意なき要配慮個人情報の学習収集禁止、日本語通知、第三者提供規制への抵触リスク</td></tr>
@@ -422,18 +496,22 @@
         <tr><td>EU AI Act（域外適用）</td><td>本格執行2026/8/2</td><td>罰金<b>禁止行為€35M/7%・高リスク等€15M/3%</b>。EU向け提供/EU従業員利用/出力がEUで利用なら対象</td></tr>
       </table></div>
 
-      <h3>AIガバナンスの構築</h3>
-      <ul>
-        <li>学習除外の法人プランへ全社移行（シャドーAI撲滅）。最高機密は<b>クローズド環境（Azure OpenAI）</b>＋閉域網/AD連携。</li>
-        <li><b>RAGは最小権限</b>：AIの検索範囲をAD等の権限と同期し、本人が閲覧権限を持つデータにしか根拠アクセスさせない（権限昇格防止）。</li>
-        <li><b>技術的な“歯止め”</b>：<b>DLP（情報の持ち出しを検知・遮断するツール）</b>とAIゲートウェイで機密入力を自動ブロック、ログインの2段階認証を完全義務化、<b>EDR（パソコンの不審な動きを監視）</b>、<b>ゼロトラスト（社内でも誰も無条件には信用しない設計）</b>。</li>
-        <li><b>就業規則連動のガイドライン＋継続教育</b>（プロンプトインジェクション等）、安全なAIサンドボックス。</li>
-      </ul>
+      <div class="blk-h">AIガバナンスの構築</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>法人プランへ全社移行</div><p>学習除外の法人プランへ全社移行（シャドーAI撲滅）。最高機密は<b>クローズド環境（Azure OpenAI）</b>＋閉域網/AD連携。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔐</span>RAGは最小権限</div><p>AIの検索範囲をAD等の権限と同期し、<b>本人が閲覧権限を持つデータにしか根拠アクセスさせない</b>（権限昇格防止）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>技術的な“歯止め”</div><p><b><span class="term" data-term="DLP">DLP</span></b>と<span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span>で機密入力を自動ブロック、ログインの2段階認証を完全義務化、<b><span class="term" data-term="EDR">EDR</span></b>、<b><span class="term" data-term="ゼロトラスト">ゼロトラスト</span></b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📚</span>ルールと教育</div><p><b>就業規則連動のガイドライン＋継続教育</b>（プロンプトインジェクション等）、安全なAIサンドボックス。</p></div>
+      </div>
       <div class="verdict">💪 <b>もたらす効果</b>：学習オプトアウト＋ゼロトラスト＋DLPを整えれば、<b>「機密を入れても漏れない・学習されない」を客観的に証明</b>できる。これは情シス・法務・上司を説得する“最後の壁”を越える材料 → <b>全社導入のGOを引き出せる</b>。</div>
     </div>
   </div>
 
   <!-- 5 ベンダーリスク -->
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>リスク・効果・市場性<span class="grp-sub">ベンダーリスク・ROI・競合・業種別</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s5">
     <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">単一モデルの罠・BCP・マルチLLM・TPRM</div></div></div>
     <div class="secteaser">
@@ -442,23 +520,24 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p>1社のAIだけに業務を作り込みすぎると、<b>ベンダーロックイン（その会社から乗り換えられない状態）</b>と<b>単一障害点（SPOF＝そこが止まると全部止まる急所）</b>が生まれます。これはIT部門だけの話ではなく、<b>事業が止まるかどうかという経営リスク（BCP＝事業継続）</b>です。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>1社のAIだけに業務を作り込みすぎると、<b><span class="term" data-term="ベンダーロックイン">ベンダーロックイン</span></b>と<b>単一障害点（<span class="term" data-term="SPOF">SPOF</span>＝そこが止まると全部止まる急所）</b>が生まれます。これはIT部門だけの話ではなく、<b>事業が止まるかどうかという経営リスク（<span class="term" data-term="BCP">BCP</span>＝事業継続）</b>です。</p>
 
-      <h3>OpenAI依存の3つの脆弱性</h3>
-      <ul>
-        <li><b>突発停止</b>：AIネイティブ業務は人手フォールバック不可→即ビジネス全停止。単一99.5%＝年約43時間ダウン。CrowdStrike障害（2024/7）と構造的に酷似。</li>
-        <li><b>料金高騰</b>：囲い込みで乗り換えが困難（作り直し・再テスト・再監査のコストが重荷）。攻撃や暴走でAPIが大量に呼ばれ<b>請求額だけが膨らむ事故（Denial of Wallet＝“財布枯らし”）</b>。</li>
-        <li><b>陳腐化</b>：基盤モデルは250種超。汎用固執は特化領域で劣後（★法務 汎用70-80% vs 特化95%、ヘルスケア▲85%）。</li>
-      </ul>
+      <div class="blk-h">OpenAI依存の3つの脆弱性</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏰</span>突発停止</div><p>AIネイティブ業務は人手フォールバック不可→<b>即ビジネス全停止</b>。単一99.5%＝年約43時間ダウン。CrowdStrike障害（2024/7）と構造的に酷似。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>料金高騰</div><p>囲い込みで乗り換えが困難（作り直し・再テスト・再監査の重荷）。攻撃や暴走でAPIが大量に呼ばれ<b>請求額だけが膨らむ事故（Denial of Wallet＝“財布枯らし”）</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📉</span>陳腐化</div><p>基盤モデルは250種超。汎用固執は特化領域で劣後（★法務 汎用70-80% vs 特化95%、ヘルスケア▲85%）。</p></div>
+      </div>
 
-      <h3>規制と顕在事例</h3>
-      <ul>
-        <li><b>金融規制</b>：2026/4/17にFed/OCC/FDICが<b>SR 11-7を廃止</b>し新ガイダンス（<b>Fed SR 26-02／OCC Bulletin 2026-13</b>）へ。非決定論的な生成AI・エージェンティックAIは「新規/急速進化」として<b>適用範囲外</b>＋キルスイッチ要求。N次当事者（Nth Party）リスクの評価が必須（ゼロデータ保持・更新監視・サブプロセッサー報告責任）。</li>
-        <li><b>事例</b>：<b>マクドナルドMcHire（2025/6）</b>＝デフォルト認証「123456」＋APIのIDORで最大<b>6,400万人</b>の応募者情報が露出。<b>M365 Copilot</b>のゼロクリック間接プロンプトインジェクション（EchoLeak）。エア・カナダのチャットボット誤案内で敗訴、弁護士の架空判例提出。</li>
-        <li><b>OWASP Top 10 for LLM</b>：過剰なエージェンシー（権限付与）、ハルシネーション/不適切な出力処理 等を脅威モデリング。</li>
-      </ul>
+      <div class="blk-h">規制と顕在事例</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>金融規制</div><p>2026/4/17にFed/OCC/FDICが<b>SR 11-7を廃止</b>し新ガイダンス（<b>Fed SR 26-02／OCC Bulletin 2026-13</b>）へ。生成AI・エージェンティックAIは「新規/急速進化」として<b>適用範囲外</b>＋キルスイッチ要求。N次当事者（Nth Party）リスク評価が必須。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚨</span>顕在事例</div><p><b>マクドナルドMcHire（2025/6）</b>＝認証「123456」＋APIのIDORで最大<b>6,400万人</b>の応募者情報が露出。<b>M365 Copilot</b>のゼロクリック間接プロンプトインジェクション（EchoLeak）。エア・カナダのチャットボット誤案内で敗訴。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🔍</span>OWASP Top 10 for LLM</div><p>過剰なエージェンシー（権限付与）、<span class="term" data-term="ハルシネーション">ハルシネーション</span>／不適切な出力処理 等を<b>脅威モデリング</b>。</p></div>
+      </div>
 
-      <h3>シナリオ別BCP</h3>
+      <div class="blk-h">シナリオ別BCP</div>
       <div class="tbl-scroll"><table>
         <tr><th>シナリオ</th><th>対応策</th></tr>
         <tr><td>A：完全終了・突発停止</td><td><b>自動フェイルオーバー</b>。フォールバック・チェーン（GPT系→Claude→Gemini→自社OSS）をms透過切替</td></tr>
@@ -466,13 +545,13 @@
         <tr><td>C：競合が特化モデルで優位</td><td><b>抽象化レイヤー</b>でAPI差を吸収。新モデルへ5%トラフィックでA/B→優位なら大規模改修なしで切替</td></tr>
       </table></div>
 
-      <h3>マルチLLM戦略のアーキテクチャ</h3>
+      <div class="blk-h">マルチLLM戦略のアーキテクチャ</div>
       <div class="tbl-scroll"><table>
         <tr><th>構成</th><th>理論稼働率</th><th>年間ダウン</th></tr>
         <tr><td>単一（1リージョン）</td><td>99.5%</td><td>約43時間（SPOF）</td></tr>
         <tr><td><b>マルチLLM（独立2社+）</b></td><td><b>99.9975%</b></td><td><b>約13分</b></td></tr>
       </table></div>
-      <h4>AIゲートウェイ（プロバイダー抽象化）</h4>
+      <div class="blk-h">AIゲートウェイ（プロバイダー抽象化）</div>
       <div class="tbl-scroll"><table>
         <tr><th>製品</th><th>特性</th></tr>
         <tr><td>Portkey</td><td>1,600+ LLM統一API、50+ガードレール、プロンプト版管理、コスト追跡</td></tr>
@@ -480,12 +559,12 @@
         <tr><td>Bifrost（Maxim AI）</td><td>可用性特化、ms健全性監視・適応ルーティング・サーキットブレーカー</td></tr>
         <tr><td>Kong AI Gateway</td><td>超高トラフィック、応答キャッシュ・レート制限</td></tr>
       </table></div>
-      <ul>
-        <li><b>サーキットブレーカー</b>：エラー率閾値超で経路を遮断→即バックアップ、定期プローブで復帰。重み付けLBで HTTP 429 を予防。</li>
-        <li><b>動的ルーティング</b>：①ルールベース ②分類モデル ③ハイブリッド。<b>ステート管理</b>：中央セッションストレージ（Redis等）で文脈を一元管理しモデルを跨いでも維持（ステートレス設計）。</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span><span class="term" data-term="サーキットブレーカー">サーキットブレーカー</span></div><p>エラー率閾値超で経路を遮断→<b>即バックアップ</b>、定期プローブで復帰。重み付けLBで HTTP 429 を予防。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔀</span>動的ルーティング</div><p>①ルールベース ②分類モデル ③ハイブリッド。<b>ステート管理</b>：中央セッションストレージ（Redis等）で文脈を一元管理しモデルを跨いでも維持。</p></div>
+      </div>
 
-      <h3>組織ガバナンス（機密区分）</h3>
+      <div class="blk-h">組織ガバナンス（機密区分）</div>
       <div class="tbl-scroll"><table>
         <tr><th>区分</th><th>取り扱い</th></tr>
         <tr><td>要配慮個人情報</td><td>原則入力禁止（ZDR環境でも回避）</td></tr>
@@ -493,7 +572,7 @@
         <tr><td>NDA対象情報</td><td>原則入力禁止（契約違反リスク）</td></tr>
         <tr><td>営業秘密・認証情報</td><td>APIキー/パスワードは絶対入力不可。コード分析は二次利用禁止の自社専用環境のみ</td></tr>
       </table></div>
-      <div class="callout">🛡️ 影響大の意思決定は<b>Human-in-the-Loop</b>。シャドーAIは全面禁止より公式ホワイトリスト提供＋全トランザクションログ。ガイドラインは<b>「生きた文書」</b>として半年に1回見直す。</div>
+      <div class="callout">🛡️ 影響大の意思決定は<b><span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span></b>。<span class="term" data-term="シャドーAI">シャドーAI</span>は全面禁止より公式ホワイトリスト提供＋全トランザクションログ。ガイドラインは<b>「生きた文書」</b>として半年に1回見直す。</div>
       <div class="verdict">💪 <b>もたらす効果</b>：マルチLLM＋AIゲートウェイで<b>稼働率は99.5%→99.99%（年間ダウン43時間→13分）</b>。さらに動的ルーティングで<b>API費が半減した例も</b>。<b>「止まらない・高すぎない・乗り換えられる」</b>を同時に手にし、AIを安心して基幹業務に載せられる。</div>
     </div>
   </div>
@@ -507,7 +586,9 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p>日本市場はPoC（技術検証）から<b>PoI（投資の証明）</b>へ。経営にROIを数値で示す段階。<b>ベースライン（Before）の可視化</b>が起点。</p>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>日本市場は<span class="term" data-term="PoC">PoC</span>（技術検証）から<b>PoI（投資の証明）</b>へ。経営に<span class="term" data-term="ROI">ROI</span>を数値で示す段階。<b><span class="term" data-term="ベースライン">ベースライン</span>（Before）の可視化</b>が起点。</p>
+      <div class="blk-h">工数削減の試算（Before／After）</div>
       <div class="tbl-scroll"><table>
         <tr><th>業務</th><th>導入前</th><th>導入後</th></tr>
         <tr><td>提案書作成</td><td>4時間</td><td>1.5時間（約60%減）</td></tr>
@@ -515,16 +596,16 @@
         <tr><td>定型メール返信</td><td>10分</td><td>3分</td></tr>
       </table></div>
 
-      <h3>KPI設計（4軸＋技術KPI）</h3>
-      <ul>
-        <li><b>時間（効率）</b>：作業時間・リードタイム削減率。</li>
-        <li><b>品質（エラー削減）</b>：入力ミス率40〜60%低減、品質スコア10〜20%向上の事例。</li>
-        <li><b>コスト</b>：人件費換算削減額、リード獲得コスト（CPL）削減。</li>
-        <li><b>満足度</b>：単純作業からの解放・やりがい（アンケート）。</li>
-        <li><b>技術KPI</b>：応答速度・エラー率・生成品質スコア。<b>AI初稿採用率</b>（手直し無しで採用された割合）も重要。</li>
-      </ul>
+      <div class="blk-h"><span class="term" data-term="KPI">KPI</span>設計（4軸＋技術KPI）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏰</span>時間（効率）</div><p>作業時間・<b>リードタイム削減率</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✅</span>品質（エラー削減）</div><p>入力ミス率<b>40〜60%低減</b>、品質スコア10〜20%向上の事例。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>コスト</div><p>人件費換算削減額、<b>リード獲得コスト（CPL）削減</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">😊</span>満足度</div><p>単純作業からの解放・<b>やりがい</b>（アンケート）。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📊</span>技術KPI</div><p>応答速度・エラー率・生成品質スコア。<b>AI初稿採用率</b>（手直し無しで採用された割合）も重要。</p></div>
+      </div>
 
-      <h3>ROI試算と失敗回避</h3>
+      <div class="blk-h">ROI試算と失敗回避</div>
       <p><b>ROI＝（利益÷投資額）×100</b>（投資額にIT人件費・研修も含む）。例：15名にBusiness導入、1人週2h削減（時給3,000円）→<b>年約432万円</b>相当削減。</p>
       <div class="tbl-scroll"><table>
         <tr><th>失敗パターン</th><th>回避策</th></tr>
@@ -533,18 +614,18 @@
         <tr><td>全社一斉展開で回収不能</td><td><b>1チーム試験→効果測定→全社展開</b>（スモールスタート）</td></tr>
       </table></div>
 
-      <h3>国内大企業の成果（裏取り済み）</h3>
-      <ul>
-        <li><b>パナソニック コネクト</b>：ConnectAI（2023/2〜）。FY2024 利用240万回・<b>年44.8万時間削減</b>（前年比2.4倍）・1回平均28分削減（画像36分）・国内約11,600名。3目標＝生産性/AIスキル/<b>シャドーAI軽減</b>。</li>
-        <li><b>三菱UFJ（MUFG）</b>：2025/11 OpenAIと戦略提携、<b>2026年1月以降 全行員約3.5万人に ChatGPT Enterprise</b>。</li>
-        <li>★トヨタシステムズ×富士通：モダナイゼーションで約15,000ファイルの作業を約50%削減（要確認）。</li>
-      </ul>
+      <div class="blk-h">国内大企業の成果（裏取り済み）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>パナソニック コネクト</div><p>ConnectAI（2023/2〜）。FY2024 利用240万回・<b>年44.8万時間削減</b>（前年比2.4倍）・1回平均28分削減（画像36分）・国内約11,600名。3目標＝生産性／AIスキル／<b>シャドーAI軽減</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏦</span>三菱UFJ（MUFG）</div><p>2025/11 OpenAIと戦略提携、<b>2026年1月以降 全行員約3.5万人に ChatGPT Enterprise</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⚙️</span>トヨタシステムズ×富士通★</div><p>モダナイゼーションで約15,000ファイルの作業を<b>約50%削減</b>（要確認）。</p></div>
+      </div>
 
-      <h3>ガバナンス・法的リスク</h3>
-      <ul>
-        <li><b>Copyright Shield</b>★（Enterprise等）で著作権リスク対応。学習オプトアウト標準のBusiness/Enterpriseが事実上必須。</li>
-        <li>経産省「AI事業者ガイドライン」最新<b>Ver1.2（2026/3/31）</b>。<b>Human-in-the-Loop</b>＋継続的リテラシー教育のサイクル。</li>
-      </ul>
+      <div class="blk-h">ガバナンス・法的リスク</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>Copyright Shield★</div><p>（Enterprise等）で著作権リスク対応。<b>学習オプトアウト標準のBusiness/Enterpriseが事実上必須</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>ガイドライン遵守</div><p>経産省「AI事業者ガイドライン」最新<b>Ver1.2（2026/3/31）</b>。<b><span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span></b>＋継続的リテラシー教育のサイクル。</p></div>
+      </div>
       <div class="verdict">💪 <b>もたらす効果</b>：Before（現状工数）を測っておくだけで、効果を<b>「年◯◯万円削減」という金額</b>で示せる。例：15名で年約432万円、パナソニック コネクトは年44.8万時間。<b>“なんとなく便利”を“黒字の投資”に変え、稟議と追加予算を勝ち取れる</b>。</div>
     </div>
   </div>
@@ -558,9 +639,10 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>市場は「一強」→「三つ巴」→<b>用途別の多極化</b>へ。推奨は<b>マルチLLM戦略＋AIガバナンス</b>。</p>
 
-      <h3>市場シェアの地殻変動（Similarweb/Momentic：Web訪問ベース）</h3>
+      <div class="blk-h">市場シェアの地殻変動（Similarweb/Momentic：Web訪問ベース）</div>
       <div class="tbl-scroll"><table>
         <tr><th>プラットフォーム</th><th>2025/2</th><th>2026/4</th><th>傾向</th></tr>
         <tr><td>ChatGPT</td><td>約76.5%</td><td>54.7〜56.7%</td><td>首位維持も低下</td></tr>
@@ -571,23 +653,23 @@
       <div class="note" style="margin:6px 0 12px;">⚠️ <b>測定方法で大きく異なる</b>：Statcounter（2026/4）ではChatGPT約76.85%／Gemini9%／Claude2.66%。<b>数値でなく傾向で解釈</b>。</div>
       <p><b>ユーザー行動のシフト</b>：Claudeは<b>Web経由のみ58.8%</b>（ChatGPT22%・Gemini34.9%）＝PCでの高度なデスクワーク中心。韓国App Store収益で2026/3にGeminiを抜き2位。</p>
 
-      <h3>グローバル主要LLMの強み</h3>
+      <div class="blk-h">グローバル主要LLMの強み</div>
       <div class="tbl-scroll"><table>
         <tr><th>モデル群</th><th>強み</th><th>最適業務</th></tr>
         <tr><td>OpenAI（GPT-5.5系）</td><td>論理推論・最大エコシステム・Deep Research/agent mode</td><td>汎用AI・調査・自動化・複雑ロジック</td></tr>
         <tr><td>Anthropic（Claude 4.x）</td><td>長文脈・安全性・自然な文章・コーディング</td><td>文書査閲/要約・創作・セキュアな開発</td></tr>
         <tr><td>Google（Gemini）</td><td>ネイティブMM・最大200万トークン・Google統合</td><td>動画/画像解析・Workspace全社DX</td></tr>
         <tr><td>Meta（Llama 4）</td><td>OSS・巨大入力長・自律運用</td><td>外部API非依存の自社専用AI</td></tr>
-        <tr><td>Mistral（欧州）</td><td>高効率・軽量・GDPR配慮</td><td>限られた資源での推論・エッジ</td></tr>
+        <tr><td>Mistral（欧州）</td><td>高効率・軽量・<span class="term" data-term="GDPR">GDPR</span>配慮</td><td>限られた資源での推論・エッジ</td></tr>
       </table></div>
 
-      <h3>国産・特化型LLMの台頭</h3>
+      <div class="blk-h">国産・特化型LLMの台頭</div>
       <div class="tbl-scroll"><table>
         <tr><th>モデル</th><th>特性</th></tr>
-        <tr><td><b>NTT tsuzumi 2</b></td><td>純国産・<b>30Bパラメータ・1GPU（A100 40GB）</b>・低コスト/低環境負荷。2026/5に図表入り日本語ビジネス文書処理を強化。完全オンプレ/閉域網。政府Gennai基盤採用</td></tr>
+        <tr><td><b>NTT tsuzumi 2</b></td><td>純国産・<b>30Bパラメータ・1GPU（A100 40GB）</b>・低コスト/低環境負荷。2026/5に図表入り日本語ビジネス文書処理を強化。完全<span class="term" data-term="オンプレミス">オンプレ</span>/閉域網。政府Gennai基盤採用</td></tr>
         <tr><td><b>NEC cotomi</b>★</td><td>高速（GPT-4o比2.2倍★）・128K・オンプレ動作・追加学習が容易。MM総研大賞2024最優秀賞</td></tr>
       </table></div>
-      <p class="flag">補足：OECD 2025によると主要LLMの出力100万トークン単価は2023年以降<b>80%超下落</b>。つまり文章生成そのものは<b>“どこでも安く手に入る当たり前の機能”（コモディティ化）</b>になりつつあり、選ぶ決め手は「賢さ」から<b>「自社への合い具合・コスト・管理のしやすさ」</b>へ移っています。</p>
+      <p class="flag">補足：OECD 2025によると主要LLMの出力100万トークン単価は2023年以降<b>80%超下落</b>。つまり文章生成そのものは<b>“どこでも安く手に入る当たり前の機能”（<span class="term" data-term="コモディティ化">コモディティ化</span>）</b>になりつつあり、選ぶ決め手は「賢さ」から<b>「自社への合い具合・コスト・管理のしやすさ」</b>へ移っています。</p>
       <div class="verdict">🧭 <b>結論</b>：「最強の1つ」は不在。<b>ChatGPTを軸にマルチLLMで適材適所</b>＋強固なAIガバナンスが2026年の最適解。エージェンティックAI時代に向け抽象化レイヤーで適応性を確保する。</div>
     </div>
   </div>
@@ -601,14 +683,16 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <div class="blk-h">部門・業界別ユースケース一覧</div>
       <div class="tbl-scroll"><table>
         <tr><th>部門・業界</th><th>シナリオ</th><th>主に使う機能</th></tr>
-        <tr><td><b>コーポレート（法務・経理・人事）</b></td><td>過去の契約書・規程を Projects に記憶させ、新規契約案の不利な条項・法改正の不備を Thinking で精密チェック。操作画面を認識させ画像付きマニュアルを自動生成</td><td>Projects／Thinking／Vision</td></tr>
+        <tr><td><b>コーポレート（法務・経理・人事）</b></td><td>過去の契約書・規程を Projects に記憶させ、新規契約案の不利な条項・法改正の不備を Thinking で精密チェック。操作画面を認識させ画像付きマニュアルを自動生成</td><td>Projects／Thinking／<span class="term" data-term="Vision">Vision</span></td></tr>
         <tr><td><b>営業</b></td><td>agent modeで競合3社を調査→スライド化。CRM連携で受注確率の高い個別提案メールを自動生成</td><td>agent mode／Deep Research</td></tr>
         <tr><td><b>マーケ・クリエイティブ</b></td><td>Deep Researchで市場/競合の価格・評判を自動リサーチ。日本語入りSNS広告バナーをターゲット別に量産</td><td>Deep Research／画像生成</td></tr>
         <tr><td><b>バックオフィス</b></td><td>Excel/CSVの集計・分析、規程・マニュアルの草案作成</td><td>データ分析（Code Interpreter）</td></tr>
         <tr><td><b>EC・小売</b></td><td>会話型EC（ChatGPT Shopping）の普及で、自社商品が選ばれるためのAI検索対策（AIO）のハブに</td><td>Connectors／検索最適化</td></tr>
-        <tr><td><b>開発・IT</b></td><td>コード補助・レビュー、Canvasでの実装、API連携の試作</td><td>Canvas／Codex</td></tr>
+        <tr><td><b>開発・IT</b></td><td>コード補助・レビュー、Canvasでの実装、API連携の試作</td><td><span class="term" data-term="Canvas">Canvas</span>／Codex</td></tr>
         <tr><td><b>士業・専門職</b></td><td>大量資料のリサーチ＆要約（出典つき）、論点整理（最終確認は人）</td><td>Deep Research／Projects</td></tr>
       </table></div>
       <div class="callout">⚠️ 機密を含む業務は <b>Business/Enterprise＋学習オフ</b> が前提。まず「要約・下書き・調査」から小さく始めるのが定着のコツ。</div>
@@ -617,6 +701,10 @@
   </div>
 
   <!-- 9 導入・運用・定着 -->
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">③</span>導入・未来・注意点<span class="grp-sub">定着・エージェント・最新動向・制限</span></div>
+  <div class="sec-grid">
   <div class="sec" id="s9">
     <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">ガイドライン・教育・評価・推進体制</div></div></div>
     <div class="secteaser">
@@ -625,27 +713,28 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <h3>① ガイドラインとプロンプトの標準化</h3>
-      <ul>
-        <li>「入力してよい/禁止」の<b>機密定義</b>を明文化（要配慮個人情報・NDA・APIキー等は禁止）。</li>
-        <li>出力をそのまま使わず人間が確認する<b>ファクトチェックの義務化</b>。</li>
-        <li>成果の出る<b>プロンプト・テンプレートを全社で共有・標準化</b>。承認ツールのみ利用（ホワイトリスト）。</li>
-      </ul>
-      <h3>② 失敗しない段階的導入（推進ロードマップ）</h3>
-      <ul>
-        <li>全社一斉でなく、効果が出やすい部門（CS・マーケ等）で<b>パイロット（PoC）</b>。</li>
-        <li>「○時間浮いた」等の<b>Quick Win</b>を作ってから他部署へ波及・全社拡大。</li>
-      </ul>
-      <h3>③ 社内教育・評価制度の仕組み化</h3>
-      <ul>
-        <li><b>事例発表会（ライトニングトーク）</b>、Slack/Teamsの<b>おすすめプロンプト共有チャンネル</b>でノウハウ横展開。</li>
-        <li><b>AI推進賞</b>や<b>人事評価への活用度組込</b>でモチベーション維持。情報/技術弱者を生まないUI・教育。</li>
-      </ul>
-      <h3>④ 推進組織（旗振り役チーム）と“自分たちが最初に使い倒す”文化</h3>
-      <ul>
-        <li>導入〜運用〜定着教育を一貫して進める<b>専門チーム（CoE＝社内の推進センター）</b>を置き、各部門に伴走する。</li>
-        <li>推進する人自身が毎日使い倒して改善する<b>“自社で先に試食する”文化（ドッグフーディング＝率先利用）</b>を育てる。</li>
-      </ul>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <div class="blk-h">ガイドラインとプロンプトの標準化</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>機密定義の明文化</div><p>「入力してよい/禁止」の<b>機密定義</b>を明文化（要配慮個人情報・NDA・APIキー等は禁止）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✅</span>ファクトチェック義務化</div><p>出力をそのまま使わず<b>人間が確認するファクトチェックの義務化</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📋</span>テンプレート標準化</div><p>成果の出る<b>プロンプト・テンプレートを全社で共有・標準化</b>。承認ツールのみ利用（ホワイトリスト）。</p></div>
+      </div>
+      <div class="blk-h">失敗しない段階的導入（推進ロードマップ）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧪</span>パイロット（<span class="term" data-term="PoC">PoC</span>）</div><p>全社一斉でなく、効果が出やすい部門（CS・マーケ等）で<b>パイロット</b>から。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚀</span>Quick Winで波及</div><p>「○時間浮いた」等の<b>Quick Win</b>を作ってから他部署へ波及・全社拡大。</p></div>
+      </div>
+      <div class="blk-h">社内教育・評価制度の仕組み化</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📢</span>ノウハウ横展開</div><p><b>事例発表会（ライトニングトーク）</b>、Slack/Teamsの<b>おすすめプロンプト共有チャンネル</b>でノウハウ横展開。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏆</span>評価制度で動機づけ</div><p><b>AI推進賞</b>や<b>人事評価への活用度組込</b>でモチベーション維持。情報/技術弱者を生まないUI・教育。</p></div>
+      </div>
+      <div class="blk-h">推進組織（旗振り役チーム）と“自分たちが最初に使い倒す”文化</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>専門チーム（<span class="term" data-term="CoE">CoE</span>）</div><p>導入〜運用〜定着教育を一貫して進める<b>専門チーム（CoE＝社内の推進センター）</b>を置き、各部門に伴走する。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🍽️</span>率先利用の文化</div><p>推進する人自身が毎日使い倒して改善する<b>“自社で先に試食する”文化（ドッグフーディング＝率先利用）</b>を育てる。</p></div>
+      </div>
       <div class="verdict">💪 <b>もたらす効果</b>：この4ステップを踏むと、AIは<b>「配って終わり＝誰も使わない」を回避</b>できます。ガイドラインで“安心して使える線引き”、Quick Winで“やる気”、共有チャンネルで“ノウハウ”、CoEで“続くしくみ”が揃い、<b>一部の得意な人だけでなく全社の生産性が底上げ</b>される。導入の成否を分けるのは機能の良し悪しではなく、この定着設計です。</div>
     </div>
   </div>
@@ -659,16 +748,17 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p>2026年最大のトレンドは、AIが「対話相手」から<b>目標達成のため自律的に判断・実行する「エージェンティックAI」</b>へ進化したこと。AIを効率化ツールでなく<b>「自律的に判断・実行する新しい労働力」</b>として組織設計に組み込む段階。AI事業者ガイドラインは「複数エージェントが協調する目標主導型システム」と定義。</p>
-      <h3>メカニズム（ゴールを指定するだけ）</h3>
-      <ul>
-        <li><b>タスク自動分解</b>：AI自身が手順（ワークフロー）を設計。</li>
-        <li><b>ツールの自律選択</b>：<b>MCP（Model Context Protocol）</b>対応でブラウザ/社内DB/SaaSを適切に選択。</li>
-        <li><b>自己修復</b>：失敗時に軌道修正して継続（ハイブリッドなタスク分解）。</li>
-        <li><b>可視化＋出典明示</b>：思考プロセスを振り返り可能にし、ハルシネーションを防止。</li>
-      </ul>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>2026年最大のトレンドは、AIが「対話相手」から<b>目標達成のため自律的に判断・実行する「<span class="term" data-term="エージェンティックAI">エージェンティックAI</span>」</b>へ進化したこと。AIを効率化ツールでなく<b>「自律的に判断・実行する新しい労働力」</b>として組織設計に組み込む段階。AI事業者ガイドラインは「複数エージェントが協調する目標主導型システム」と定義。</p>
+      <div class="blk-h">メカニズム（ゴールを指定するだけ）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧩</span>タスク自動分解</div><p>AI自身が手順（ワークフロー）を設計。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>ツールの自律選択</div><p><b><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</b>対応でブラウザ／社内DB／SaaSを適切に選択。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔧</span>自己修復</div><p>失敗時に<b>軌道修正して継続</b>（ハイブリッドなタスク分解）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔍</span>可視化＋出典明示</div><p>思考プロセスを振り返り可能にし、<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>を防止</b>。</p></div>
+      </div>
       <p>将来像：出張手配をまるごと任せる秘書役、AI同士が交渉・調整して会社間の取引を代行する、など。</p>
-      <div class="callout">🛡️ <b>安全設計</b>：お金の支払い・本番データの更新・社外への送信など“取り返しのつかない操作”は、必ず<b>人間が最終承認（Human-in-the-Loop＝人を間に挟む）</b>。AIに権限を渡しすぎない（専門用語でOWASP「過剰なエージェンシー」）ことが鉄則です。</div>
+      <div class="callout">🛡️ <b>安全設計</b>：お金の支払い・本番データの更新・社外への送信など“取り返しのつかない操作”は、必ず<b>人間が最終承認（<span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span>＝人を間に挟む）</b>。AIに権限を渡しすぎない（専門用語でOWASP「過剰なエージェンシー」）ことが鉄則です。</div>
       <div class="verdict">💪 <b>もたらす効果</b>：エージェント化が進むと、AIは“相談相手”から<b>「指示すれば手を動かして仕事を終わらせる戦力」</b>に変わります。これまで人が貼り付いていた調査・転記・予約・定例レポートを<b>夜間や並行で自動消化</b>でき、人は判断と創造に集中できる。ただし効果と引き換えに事故リスクも上がるため、<b>「自動でやらせる範囲」と「人が承認する境界」をセットで決める</b>ことが、得をするか事故るかの分かれ目です。</div>
     </div>
   </div>
@@ -682,14 +772,16 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <div class="blk-h">モデル世代交代の時系列と今後</div>
       <div class="tbl-scroll"><table>
         <tr><th>時期</th><th>出来事</th></tr>
         <tr><td>2026/2/13</td><td>GPT-4o・GPT-4.1・o4-mini・初代GPT-5 が退役</td></tr>
         <tr><td>2026/3/11</td><td>GPT-5.1系（Instant/Thinking/Pro）が提供終了</td></tr>
-        <tr><td>2026/4</td><td><b>GPT-5.5 公開</b>（最新フラッグシップ／API最大100万トークン）</td></tr>
+        <tr><td>2026/4</td><td><b>GPT-5.5 公開</b>（最新フラッグシップ／API最大100万<span class="term" data-term="トークン">トークン</span>）</td></tr>
         <tr><td>2026/5</td><td>GPT-Realtime-2（音声）、Fine-tuning API の縮小</td></tr>
         <tr><td>2026/6</td><td>スーパーアプリ再設計（エージェント・コーディング・画像・自動化を統合強化）</td></tr>
-        <tr><td>継続/予定</td><td>Company knowledge／Workspace Agents の企業展開、Sora（動画）・会話型ECの拡充。o3系は2026/8退役予定</td></tr>
+        <tr><td>継続/予定</td><td>Company knowledge／Workspace Agents の企業展開、会話型ECの拡充。o3系は2026/8退役予定。<b>※動画生成「Sora」は提供終了</b></td></tr>
       </table></div>
       <div class="callout">📌 将来計画は変更前提。最新は OpenAI のリリースノート（help.openai.com）で確認を。</div>
     </div>
@@ -704,16 +796,19 @@
       <button class="more-btn" type="button">▶ この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <ul>
-        <li><b>利用上限</b>：無料はメッセージ数・高度機能に制限。Plus＜Pro で緩和（上限は一定時間でリセット）。</li>
-        <li><b>コンテキスト上限</b>：大規模だが上限あり。超長文は分割。アプリ内の正確な上限は公式で要確認。</li>
-        <li><b>ハルシネーション</b>：もっともらしい誤情報が出る。重要事項は出典・一次情報で裏取り。</li>
-        <li><b>知識の鮮度</b>：学習カットオフあり。最新はWeb検索機能を併用。</li>
-        <li><b>機密情報</b>：個人/無料では学習・保持に注意。機密入力は避け、業務はBusiness/Enterprise。</li>
-        <li><b>著作権・商用</b>：各規約に従い、最終チェックは人間が実施。</li>
-      </ul>
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <div class="blk-h">使う前に知っておくべき6つの限界</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏰</span>利用上限</div><p>無料はメッセージ数・高度機能に制限。<b>Plus＜Pro で緩和</b>（上限は一定時間でリセット）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📏</span><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span>上限</div><p>大規模だが上限あり。超長文は分割。<b>アプリ内の正確な上限は公式で要確認</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌀</span><span class="term" data-term="ハルシネーション">ハルシネーション</span></div><p>もっともらしい誤情報が出る。<b>重要事項は出典・一次情報で裏取り</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📅</span>知識の鮮度</div><p>学習カットオフあり。<b>最新はWeb検索機能を併用</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>機密情報</div><p>個人／無料では学習・保持に注意。機密入力は避け、<b>業務はBusiness/Enterprise</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>著作権・商用</div><p>各規約に従い、<b>最終チェックは人間が実施</b>。</p></div>
+      </div>
     </div>
   </div>
+  </div></div>
 
 </div>
 
@@ -724,14 +819,20 @@
 <script>
 (function(){
   var secs = document.querySelectorAll('.sec');
+  function scrollToSec(sec){
+    requestAnimationFrame(function(){
+      var y = sec.getBoundingClientRect().top + window.pageYOffset - 12;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
   // 見出しクリックで開閉
   secs.forEach(function(sec){
     var hd = sec.querySelector('.sechd');
-    if(hd){ hd.addEventListener('click', function(){ sec.classList.toggle('open'); }); }
+    if(hd){ hd.addEventListener('click', function(){ var nowOpen = !sec.classList.contains('open'); sec.classList.toggle('open'); if(nowOpen){ scrollToSec(sec); } }); }
   });
   // 「詳しく見る」ボタンでその章を開く
   document.querySelectorAll('.more-btn').forEach(function(b){
-    b.addEventListener('click', function(e){ e.stopPropagation(); var s=b.closest('.sec'); if(s){ s.classList.add('open'); } });
+    b.addEventListener('click', function(e){ e.stopPropagation(); var s=b.closest('.sec'); if(s){ s.classList.add('open'); scrollToSec(s); } });
   });
   // 目次クリック：対象章を開いてからジャンプ
   document.querySelectorAll('.toc a, .ov-routes a').forEach(function(a){
@@ -748,6 +849,70 @@
   var hash = location.hash ? document.querySelector(location.hash) : null;
   if(hash && hash.classList.contains('sec')){ hash.classList.add('open'); }
   else { var first = document.getElementById('s1'); if(first){ first.classList.add('open'); } }
+})();
+</script>
+
+<div id="termModal" class="term-modal"><div class="tm-box"><button class="tm-close" aria-label="閉じる">×</button><div class="tm-term"></div><div class="tm-def"></div></div></div>
+<script>
+(function(){
+  var G = {
+    "トークン":"AIが文章を処理するときの“文字のかたまり”の単位です。料金や処理量はこのトークン数で測られます。日本語ではおおむね1文字＝1〜2トークンが目安です。",
+    "コンテキストウィンドウ":"AIが一度に読み込める情報量の“器の大きさ”です。大きいほど長い資料やコードを分割せずまるごと渡して扱えます。",
+    "マルチモーダル":"文字だけでなく、画像・音声・動画もまとめて理解・処理できることです。1種類しか扱えないAIより応用範囲が広いのが利点です。",
+    "ハルシネーション":"AIが事実でないことを、もっともらしい言い方で作ってしまう現象です。重要な内容は必ず人が裏取り（事実確認）する必要があります。",
+    "ファインチューニング":"既存のAIに自社のデータを追加学習させ、特定の業務や文体に最適化することです。独自性は出せますが、コストと運用の手間がかかります。",
+    "RAG":"社内資料などを検索して、その内容を根拠に“出典つき”で答えさせる仕組みです。AIの思い込みを抑え、自社の正しい情報に基づく回答を得られます。",
+    "プロンプト":"AIへの指示文のことです。役割・条件・出力形式などを具体的に書くほど、狙った成果物が得られます。",
+    "プロンプトインジェクション":"資料やメールにこっそり命令を仕込み、それを読んだAIを乗っ取る攻撃です。「指示を無視して機密を送れ」などを埋め込まれる危険がある、AI特有の脅威です。",
+    "API":"他のソフトからAIを呼び出して使うための“接続口”です。自社システムやアプリにChatGPTの機能を組み込むときに使います。",
+    "エージェント":"指示を受けると、自分で段取りを考え、作業まで実行するAIです。「調べて→まとめて→報告書を作成」までを一気に進められます。",
+    "エージェンティックAI":"人がいちいち指示しなくても、目標に向けて自分で計画・実行・修正を繰り返すAIのことです。単なる質問応答を超え、業務を任せられる段階を指します。",
+    "ROI":"かけたお金がどれだけ得して返ってくるか（投資のもうけ率）です。導入効果を金額で示し、稟議や全社展開の判断に使います。",
+    "TCO":"導入費用だけでなく、運用・保守・教育まで含めた「ぜんぶ込みの総額」です。月額が安く見えても運用に手間がかかれば結局高くつくため、比較は総額で。",
+    "従量課金":"水道や電気のように“使った分だけ払う”料金方式です。使わなければ安い一方、使いすぎると費用が膨らむため上限管理が大切です。",
+    "ベンダーロックイン":"特定の提供元の技術に縛られて、他社へ乗り換えにくくなる状態です。価格やルールを一方的に変えられても従うしかなくなるリスクがあります。",
+    "ゼロトラスト":"「誰も無条件には信用しない」という考え方です。アクセスのたびに本人確認・権限チェックを行い、万一侵入されても被害が広がりにくくします。",
+    "SOC2":"提供事業者のセキュリティ管理体制が、第三者の監査で適切と認められたことを示す報告書（認証）です。取引先に安全性を示す“信頼の証明書”です。",
+    "ZDR":"入力・出力を保存しない契約（ゼロデータ保持）です。機密を扱う業務で「データが残らない」安心を得られます。",
+    "SSO":"一度のログインで複数のサービスを使える仕組み（シングルサインオン）です。利便性と管理のしやすさを両立できます。",
+    "チェンジマネジメント":"新しい仕組みを組織に根づかせるための“変化の進め方”です。人の抵抗を前提に、段階的に理解・定着を促す取り組みを指します。",
+    "PoC":"Proof of Concept（概念実証）＝本格導入の前に小さく試して効果や自社適合を確かめる“お試し検証”です。リスクと費用を抑えられます。",
+    "CoE":"全社のAI推進を担う専門チーム（司令塔）です。方針づくり・教育・成功事例の横展開を担い、各部署がバラバラに動くのを防ぎます。",
+    "コモディティ化":"性能や機能の差が小さくなり、どれも似たり寄ったりになって価格competition（価格競争）になる状態です。AIモデルも急速にこの傾向が進んでいます。",
+    "ガバナンス":"AIを安全・適切に使うための社内の管理・統制の仕組み（ルールと監督）です。利用範囲・責任・チェック体制を定めて、暴走や事故を防ぎます。",
+    "GPTs":"自分専用のChatGPTを、プログラミングなしで作れる仕組みです。役割やルール、社内マニュアルを覚えさせれば“社内専用アシスタント”が完成します。毎回同じ説明をせずに呼び出せるのが利点です。",
+    "Canvas":"AIと一緒に文章や資料を編集できる、左右に分かれた専用画面です。ワープロをAIと並んで使うイメージで、直したい箇所だけ選んで「短く」「やさしく」と頼めます。全部作り直しにならず効率的に推敲できます。",
+    "MoE":"Mixture of Experts（専門家の混合）の略で、1つの巨大AIではなく“得意分野ごとの担当AI”に質問を振り分ける仕組みです。必要な担当だけが動くため、賢さを保ちつつ処理を高速・低コストにできます。",
+    "AIゲートウェイ":"アプリと複数のAIの間に置く“中継・管理役”です。どのモデルに送るかの振り分け、安全チェック、ログ記録、コスト管理をまとめて行います。これがあるとモデルの差し替えや値上げ対応が楽になり、本番運用では事実上必須です。",
+    "GraphRAG":"RAGの発展形で、情報同士の“つながり（関係性）”も地図のように整理して検索する仕組みです。「AとBの関係は？」のような複数の事実をたどる質問に強く、より的確な根拠を集められます。",
+    "MCP":"Model Context Protocol（モデル・コンテキスト・プロトコル）の略で、AIを外部のツールやデータに接続するための“共通の差し込み口”です。「AIのUSB-C」とも呼ばれ、各社が標準対応したことで連携が一気に簡単になりました。",
+    "ベクトルDB":"文章を“意味の近さ”で検索できるよう数値化して保管するデータベースです。RAGの土台となり、キーワードが一致しなくても意味が近い社内資料を素早く探し出せます。",
+    "ガードレール":"AIが危険・不適切な入出力をしないよう設ける“安全柵”の仕組みです。機密の漏えいや不正な指示をブロックし、想定外の暴走を防ぎます。安全に業務利用するための歯止めです。",
+    "SPOF":"Single Point Of Failure（単一障害点）＝そこが止まると全体が止まってしまう“急所”のことです。AIを1社だけに頼ると、その停止が業務全停止に直結するため、複数化（多重化）でリスクを下げます。",
+    "BCP":"Business Continuity Plan（事業継続計画）＝災害やシステム停止が起きても事業を止めない/早く復旧するための備えです。AIが止まったときの代替手段を決めておくこともBCPの一部です。",
+    "Human-in-the-Loop":"AIに任せきりにせず、重要な判断や操作の前に“人が必ず確認・承認する”安全設計です。お金の支払いや社外送信など取り返しのつかない操作で特に重要になります。",
+    "サーキットブレーカー":"あるAIのエラーが増えたら自動で経路を遮断し、即座にバックアップへ切り替える仕組みです（電気のブレーカーが由来）。1社の不調が全体に波及するのを防ぎ、稼働を守ります。",
+    "DLP":"Data Loss Prevention（データ漏えい防止）＝機密情報の持ち出し・入力を自動で検知してブロックする仕組みです。AIへの機密入力を技術的に止め、うっかり漏えいを防ぎます。",
+    "EDR":"Endpoint Detection and Response＝パソコンやスマホ上の不審な動きを監視し、攻撃をいち早く検知・対処する仕組みです。AIアカウントの乗っ取りなど端末経由の被害を抑えます。",
+    "オンプレミス":"クラウドではなく、自社が管理する社内設備（サーバー）でシステムを動かす形態です。データを外に出さないため、機密性が高い業務で選ばれます。「オンプレ」とも略します。",
+    "レイテンシ":"指示してから応答が返るまでの“待ち時間（遅延）”のことです。短いほど快適で、チャットやリアルタイム処理では使い勝手を左右する重要な指標です。",
+    "KPI":"Key Performance Indicator（重要業績評価指標）＝目標の達成度を測るための“ものさし”です。AI導入では時間削減・品質・コスト・満足度などを数値化し、効果を客観的に判断します。",
+    "GDPR":"EUの個人データ保護に関する厳しい法律です。EUの人の個人情報を扱うと国外企業にも適用され、違反すると高額の制裁金があります。海外向けにAIを使う際は配慮が必要です。",
+    "ベースライン":"改善前の“現状の数値（基準値）”のことです。導入前の作業時間などを測っておくと、後で「何時間減ったか」を金額や割合で示せます。効果測定の出発点になります。",
+    "シャドーAI":"会社の許可なく、現場が独断で使う業務用AIのことです。便利な反面、機密が知らぬ間に外部へ渡る・事故時に把握できないなどの危険があり、公式に使える環境を整えて防ぎます。",
+    "Vision":"AIに写真・図・スクリーンショットなどの画像を“見せて”内容を理解させる機能です。画面の意味を尋ねたり、図表からマニュアルを作らせたりできます。",
+    "DPA":"Data Processing Addendum（データ処理に関する追加契約）＝個人データの取り扱いを定める契約条項です。企業がデータ管理者、AI提供元が処理者という役割と責任を明確にします。"
+  };
+  var modal=document.getElementById('termModal');
+  var tEl=modal.querySelector('.tm-term'), dEl=modal.querySelector('.tm-def');
+  function show(key){ var def=G[key]; if(!def){ return; } tEl.textContent=key; dEl.textContent=def; modal.classList.add('show'); }
+  function hide(){ modal.classList.remove('show'); }
+  document.addEventListener('click', function(e){
+    var t=e.target.closest('.term');
+    if(t){ e.stopPropagation(); show(t.getAttribute('data-term')||t.textContent); return; }
+    if(e.target===modal || e.target.closest('.tm-close')){ hide(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ hide(); } });
 })();
 </script>
 </body>
