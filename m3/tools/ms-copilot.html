@@ -1,220 +1,946 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Microsoft Copilot の紹介 | Do Lab AI</title>
-  <link rel="stylesheet" href="../../assets/style.css">
-  <style>
-    /* AIツール紹介ページ — 共通レイアウト（テーマ色をツール別に差し替え） */
-    :root{ --tool:#0078d4; --tool-d:#005a9e; --tool-bg:#e5f1fb; }
-    /* フォント種類を開発ガイド(#122)と統一 */
-    body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;}
-    .page-title{font-size:42px !important;line-height:1.18;}
-    .toolhead{display:flex;align-items:center;gap:16px;margin:6px 0 6px;}
-    .toollogo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#0078d4,#2aa5e0 50%,#41c2a8);color:#fff;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
-    .toolhead .maker{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--tool-d);text-transform:uppercase;}
-    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--tool);color:#fff;font-size:15px;font-weight:800;padding:12px 26px;border-radius:8px;text-decoration:none;transition:opacity .2s;}
-    .cta:hover{opacity:.88;color:#fff;}
-    .backlink{display:inline-block;margin-bottom:18px;font-size:13px;font-weight:700;color:var(--navy-2);}
-    .printbtn{float:right;background:var(--tool);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
-    .printbtn:hover{opacity:.88;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft 365 Copilot 経営者のための導入ガイド（2026年版） | Do Lab AI</title>
+<style>
+  :root{--g:#0f6cbd;--g-d:#0a4f8f;--g-bg:#e8f1fb;--navy:#0a2a43;--ink:#1f2533;--sub:#5b6b7b;--line:#dbe6f2;--bg:#f5f9fd;--white:#fff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;}
+  .site-header{background:var(--navy);color:#fff;}
+  .site-header .header-inner{max-width:1040px;margin:0 auto;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .site-header .logo{font-size:20px;font-weight:900;color:#fff;text-decoration:none;}
+  .site-header nav{display:flex;gap:26px;}
+  .site-header nav a{color:#cfe0f0;font-size:14px;font-weight:700;text-decoration:none;}
+  .site-header nav a:hover{color:#fff;}
+  .hero{background:linear-gradient(135deg,#0a4f8f,#0f6cbd 52%,#33a0dd);color:#fff;padding:46px 0 42px;}
+  .hero .in{max-width:1040px;margin:0 auto;padding:0 26px;}
+  .brandrow{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+  .brandmark{flex:0 0 auto;width:64px;height:64px;border-radius:17px;background:#fff;color:var(--g);box-shadow:0 8px 22px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;}
+  .brandmark svg{width:36px;height:36px;}
+  .brandtext{display:flex;flex-direction:column;line-height:1.12;}
+  .brandname{font-size:32px;font-weight:900;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .brandsub{font-size:13px;font-weight:700;color:rgba(255,255,255,.9);margin-top:3px;}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:14px;}
+  .hero h1{font-size:31px;font-weight:900;line-height:1.42;margin-bottom:14px;}
+  .hero h1 .hl{background:linear-gradient(transparent 62%,rgba(255,255,255,.34) 62%);padding:0 2px;}
+  .hero p{font-size:15px;color:rgba(255,255,255,.94);max-width:900px;line-height:1.95;}
+  .hero .pills{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;}
+  .hero .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:700;}
+  @media(max-width:760px){.brandname{font-size:26px;}.brandmark{width:54px;height:54px;}.hero h1{font-size:23px;}}
 
-    .sec{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px 30px;margin-bottom:20px;box-shadow:var(--shadow);}
-    .sec-h{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-    .sec-no{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--tool),var(--tool-d));color:#fff;font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center;}
-    .sec-h h2{font-size:26px;font-weight:900;color:var(--navy);line-height:1.25;}
-    .sec .lead{font-size:16px;color:var(--text);line-height:1.8;}
-    .sec .lead b{color:var(--tool-d);}
+  .wrap{max-width:1040px;margin:0 auto;padding:26px 26px 70px;}
+  .toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 14px;flex-wrap:wrap;}
+  .backlink{display:inline-block;font-size:13px;font-weight:700;color:var(--g-d);text-decoration:none;}
+  .backlink:hover{text-decoration:underline;}
+  .printbtn{background:var(--g);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:800;cursor:pointer;}
+  .printbtn:hover{opacity:.88;}
+  .accordion-ctrl{display:flex;gap:8px;flex-wrap:wrap;}
+  .ctrlbtn{background:#fff;color:var(--g-d);border:1.5px solid var(--g);border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer;}
+  .ctrlbtn:hover{background:var(--g-bg);}
+  .note{background:#eef6ff;border:1px solid #b9d6f2;border-radius:12px;padding:14px 20px;font-size:13px;color:#20507d;margin:8px 0 22px;}
+  .note b{color:#0a4f8f;}
 
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 2px;}
-    .chip{background:var(--tool-bg);color:var(--tool-d);font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;}
+  .intro-hub{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 26px;margin:8px 0 24px;box-shadow:0 2px 12px rgba(10,42,67,.06);}
+  .ih-block{padding:18px 0;border-top:1px solid var(--line);}
+  .ih-block:first-child{border-top:none;}
+  .ih-h{font-size:16px;font-weight:900;color:var(--navy);margin-bottom:11px;}
+  .ih-outcomes{list-style:none;padding:0;margin:0;}
+  .ih-outcomes li{position:relative;padding-left:22px;font-size:14px;line-height:1.8;margin:6px 0;}
+  .ih-outcomes li::before{content:"\2713";position:absolute;left:0;color:var(--g-d);font-weight:900;}
+  .ih-outcomes b{color:var(--g-d);}
+  .ih-steps{list-style:none;padding:0;margin:0;}
+  .ih-steps li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.7;margin:9px 0;}
+  .step-n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--g);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .ih-steps b{color:var(--g-d);}
+  .ih-p{font-size:14px;line-height:1.85;color:var(--ink);margin:0 0 10px;}
+  .ih-p b{color:var(--g-d);}
+  .ov-routes{display:flex;flex-wrap:wrap;gap:8px;margin:0;align-items:center;}
+  .ov-routes-label{color:var(--navy);font-size:12.5px;font-weight:800;}
+  .ov-routes a{background:var(--g-bg);border:1px solid var(--g);color:var(--g-d);text-decoration:none;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:8px;}
+  .ov-routes a:hover{background:var(--g);color:#fff;}
 
-    .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-    .plan{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 18px;text-align:center;}
-    .plan.hl{border:2px solid var(--tool);position:relative;box-shadow:var(--shadow-lg);}
-    .plan.hl::before{content:"業務利用向け";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:12px;font-weight:800;padding:3px 13px;border-radius:999px;white-space:nowrap;}
-    .plan .name{font-size:17px;font-weight:900;color:var(--navy);}
-    .plan .price{font-size:21px;font-weight:900;color:var(--tool-d);margin:6px 0 2px;line-height:1.15;}
-    .plan .price span{font-size:12px;color:var(--muted);font-weight:500;}
-    .plan .who{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 28px;margin:8px 0 26px;box-shadow:0 2px 10px rgba(10,42,67,.05);}
+  .toc strong{display:block;color:var(--g-d);font-size:14px;font-weight:800;margin-bottom:12px;}
+  .toc ol{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px;padding-left:22px;}
+  .toc li{font-size:15px;margin:4px 0;font-weight:700;}
+  .toc a{color:var(--navy);text-decoration:none;}
+  .toc a:hover{color:var(--g-d);text-decoration:underline;}
 
-    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-    .ucard{background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:20px 22px;}
-    .ucard .ic{font-size:34px;}
-    .ucard h4{font-size:21px;font-weight:800;color:var(--navy);margin:6px 0 6px;}
-    .ucard p{font-size:16px;color:var(--muted);line-height:1.7;}
+  .sec{margin:0 0 16px;}
+  .sechd{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0f6cbd,#0a4f8f);color:#fff;border-radius:14px 14px 0 0;padding:18px 24px;cursor:pointer;user-select:none;transition:filter .15s;}
+  .sechd:hover{filter:brightness(1.06);}
+  .sechd::after{content:"\25BE";margin-left:auto;font-size:18px;font-weight:900;opacity:.92;transition:transform .25s;flex:0 0 auto;}
+  .sec.open .sechd::after{transform:rotate(180deg);}
+  .sechd .n{flex:0 0 auto;width:44px;height:44px;border-radius:11px;background:rgba(255,255,255,.22);font-size:21px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+  .sechd h2{font-size:21px;font-weight:900;line-height:1.3;}
+  .sechd .src{font-size:11.5px;font-weight:700;opacity:.9;margin-top:2px;}
+  .secteaser{background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;padding:18px 24px 20px;box-shadow:0 2px 12px rgba(10,42,67,.06);}
+  .tz-lead{font-size:14px;color:var(--ink);margin:0 0 9px;line-height:1.85;}
+  .tz-lead b{color:var(--g-d);}
+  .tz-points{font-size:12.5px;color:var(--sub);margin:0 0 14px;line-height:1.75;padding:8px 12px;background:#eaf2fb;border-radius:8px;}
+  .tz-points b{color:var(--g-d);}
+  .more-btn{display:inline-flex;align-items:center;gap:6px;background:var(--g);color:#fff;border:none;border-radius:9px;padding:11px 22px;font-size:13.5px;font-weight:800;cursor:pointer;transition:opacity .15s,transform .1s;box-shadow:0 2px 8px rgba(15,108,189,.3);}
+  .more-btn:hover{opacity:.9;transform:translateY(-1px);}
+  .sec.open .secteaser{display:none;}
+  .secbody{display:none;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;padding:22px 26px;box-shadow:0 2px 12px rgba(10,42,67,.06);}
+  .sec.open .secbody{display:block;}
 
-    .prompt{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--tool);border-radius:10px;padding:14px 18px;margin:10px 0;}
-    .prompt .q{font-size:12.5px;font-weight:800;color:var(--tool-d);margin-bottom:4px;}
-    .prompt p{font-size:15px;color:var(--text);line-height:1.7;}
-    /* 会話デモ（自動再生・動画風アニメーション） */
-    .democap{font-size:14px;font-weight:700;color:var(--tool-d);margin:20px 0 6px;}
-    .demo{background:#0d1117;border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(11,37,69,.18);}
-    .demo-bar{background:#1b2230;display:flex;align-items:center;gap:7px;padding:10px 14px;}
-    .demo-bar .d{width:11px;height:11px;border-radius:50%;}
-    .demo-bar .r{background:#ff5f57;}.demo-bar .y{background:#febc2e;}.demo-bar .g{background:#28c840;}
-    .demo-bar .t{margin-left:8px;font-size:12px;color:#8a93a8;font-weight:700;flex:1;}
-    .demo-bar .live{font-size:10px;font-weight:800;color:#fff;background:var(--tool);padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
-    .demo-body{padding:16px;min-height:206px;display:flex;flex-direction:column;justify-content:flex-end;}
-    .bub{padding:10px 14px;border-radius:13px;margin-bottom:9px;font-size:14.5px;max-width:88%;line-height:1.6;opacity:0;}
-    .bub.me{background:var(--tool);color:#fff;margin-left:auto;border-bottom-right-radius:4px;}
-    .bub.ai{background:#eef1f5;color:#1e2438;border-bottom-left-radius:4px;}
-    .bub .who{display:block;font-size:11px;font-weight:800;margin-bottom:2px;opacity:.85;}
-    .bub.ai .who{color:var(--tool-d);opacity:1;}
-    .b1{animation:b1 13s infinite;}.b2{animation:b2 13s infinite;}.b3{animation:b3 13s infinite;}.b4{animation:b4 13s infinite;}
-    @keyframes b1{0%,3%{opacity:0;transform:translateY(7px);}7%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
-    @keyframes b2{0%,20%{opacity:0;transform:translateY(7px);}25%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
-    @keyframes b3{0%,46%{opacity:0;transform:translateY(7px);}51%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
-    @keyframes b4{0%,66%{opacity:0;transform:translateY(7px);}71%,93%{opacity:1;transform:none;}97%,100%{opacity:0;}}
-    @media(prefers-reduced-motion:reduce){.bub{opacity:1 !important;animation:none !important;}}
+  h3{font-size:17px;font-weight:800;color:var(--navy);margin:22px 0 8px;padding-left:11px;border-left:4px solid var(--g);}
+  h3:first-child{margin-top:0;}
+  h4{font-size:14.5px;font-weight:800;color:var(--g-d);margin:14px 0 4px;}
+  p{font-size:14.5px;line-height:1.85;margin-bottom:10px;}
+  p b,li b,td b{color:var(--g-d);}
+  ul{margin:6px 0 10px;padding-left:22px;}
+  li{font-size:14px;line-height:1.8;margin:4px 0;}
+  table{width:100%;border-collapse:collapse;margin:8px 0 10px;font-size:12.5px;}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;line-height:1.6;}
+  th{background:var(--g-bg);color:var(--navy);font-weight:800;font-size:12px;}
+  .tbl-scroll{overflow-x:auto;}
+  .big,.hi,.metric{color:var(--g-d);font-weight:900;}
+  .lk-hi{color:#b42318;font-weight:800;} .lk-mid{color:#a85a1c;font-weight:800;} .lk-lo{color:#15803d;font-weight:800;}
+  .flag{font-size:12.5px;color:var(--sub);margin-top:6px;}
+  .callout{background:var(--g-bg);border-left:4px solid var(--g);border-radius:8px;padding:11px 16px;font-size:14px;margin:10px 0;color:#20507d;line-height:1.8;}
+  .callout b{color:var(--g-d);}
+  .warnbox{background:#fff5f3;border:1px solid #f0c0b3;border-left:4px solid #d4583c;border-radius:8px;padding:12px 16px;font-size:14px;margin:10px 0;color:#8a3a26;line-height:1.8;}
+  .warnbox b{color:#b42318;}
+  .okbox{background:#eef7f1;border:1px solid #bfe0cc;border-left:4px solid #2f9e63;border-radius:8px;padding:12px 16px;font-size:14px;margin:10px 0;color:#1f6b42;line-height:1.8;}
+  .okbox b{color:#15803d;}
+  .verdict{background:var(--navy);color:#fff;border-radius:10px;padding:15px 19px;font-size:14.5px;line-height:1.85;margin:12px 0;}
+  .verdict b{color:#8fc4ef;}
+  footer{text-align:center;color:var(--sub);font-size:13px;padding:26px;}
+  @media(max-width:760px){.toc ol{grid-template-columns:1fr;}}
+  @media print{
+    @page{margin:14mm;}
+    .site-header,.printbtn,.backlink,.accordion-ctrl{display:none !important;}
+    .secbody{display:block !important;} .secteaser{display:none !important;}
+    .sechd::after{display:none !important;}
+    .hero{background:none;color:var(--navy);padding:0 0 10px;}
+    .hero .tag,.hero .pill{background:none;border:1px solid #ccc;color:var(--navy);}
+    .hero p,.hero .brandsub{color:var(--sub);}
+    .brandmark{background:none !important;border:1px solid #ccc !important;color:var(--navy) !important;box-shadow:none !important;}
+    .brandname{color:var(--navy) !important;text-shadow:none !important;}
+    .sec{break-inside:avoid;}
+    a[href]{color:var(--navy);text-decoration:none;}
+  }
 
-    .wsgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-    .ws{display:flex;gap:13px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:15px 17px;}
-    .ws .ic{font-size:26px;flex:0 0 auto;}
-    .ws h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px;}
-    .ws p{font-size:13.5px;color:var(--muted);line-height:1.6;}
+  /* ===== 文字大きめ・読みやすさ強化（内容はそのまま／文字サイズのみ拡大） ===== */
+  body{font-size:19px !important;line-height:1.95 !important;}
+  .hero h1{font-size:36px !important;line-height:1.5 !important;}
+  .hero p{font-size:19px !important;line-height:2 !important;}
+  .hero .pill{font-size:16px !important;}
+  .hero .tag{font-size:15px !important;}
+  .brandname{font-size:38px !important;}
+  .brandsub{font-size:16px !important;}
 
-    .links{display:flex;flex-wrap:wrap;gap:10px;}
-    .links a{font-size:14px;font-weight:700;color:var(--navy-2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-decoration:none;}
-    .links a:hover{border-color:var(--tool);}
-    .fine{font-size:12.5px;color:var(--muted);margin-top:12px;}
+  .ih-h{font-size:20px !important;}
+  .ih-outcomes li,.ih-steps li,.ih-p{font-size:18px !important;line-height:1.9 !important;}
+  .ov-routes a,.ov-routes-label{font-size:15.5px !important;}
+  .step-n{width:30px !important;height:30px !important;font-size:17px !important;}
 
-    @media(max-width:720px){.plans,.grid2,.wsgrid{grid-template-columns:1fr;}}
-    @media print{
-      @page{margin:14mm;}
-      .site-header,.site-footer,.backlink,.printbtn{display:none !important;}
-      .page-container{margin:0;max-width:100%;padding:0;}
-      .sec{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
-      .bub{opacity:1 !important;animation:none !important;}
-      a[href]{color:var(--navy);text-decoration:none;}
-    }
-  </style>
+  .toc strong{font-size:18px !important;}
+  .toc li{font-size:18px !important;}
+
+  .sechd h2{font-size:25px !important;}
+  .sechd .src{font-size:14px !important;}
+  .sechd .n{width:50px !important;height:50px !important;font-size:24px !important;}
+
+  .tz-lead{font-size:18.5px !important;line-height:1.95 !important;}
+  .tz-points{font-size:15.5px !important;line-height:1.9 !important;}
+  .more-btn{font-size:17px !important;padding:13px 26px !important;}
+
+  /* 説明ブロック（①②③…）ごとに、ゆとりのある間隔をあける */
+  h3{font-size:21px !important;margin-top:44px !important;margin-bottom:14px !important;padding-top:8px !important;}
+  h3:first-child{margin-top:6px !important;}
+  h4{font-size:18px !important;margin-top:22px !important;}
+  p{font-size:18px !important;line-height:1.95 !important;margin-bottom:14px !important;}
+  li{font-size:17.5px !important;line-height:1.9 !important;margin:7px 0 !important;}
+  .secbody ul{margin:10px 0 18px !important;}
+  /* 注意書き・ポイント枠も上下にゆとりを */
+  .callout,.warnbox,.okbox{margin:18px 0 !important;}
+  .verdict{margin:26px 0 18px !important;}
+  .tbl-scroll{margin:14px 0 20px !important;}
+
+  table{font-size:15.5px !important;}
+  th{font-size:15px !important;}
+  th,td{padding:11px 13px !important;line-height:1.75 !important;}
+
+  .callout,.warnbox,.okbox,.verdict{font-size:18px !important;line-height:1.95 !important;}
+  .flag{font-size:15px !important;}
+  .note{font-size:16px !important;}
+  footer{font-size:15px !important;}
+
+  @media(max-width:760px){
+    body{font-size:17px !important;}
+    .hero h1{font-size:27px !important;}
+    table{font-size:14px !important;}
+  }
+
+  /* ===== カード（ブロック）レイアウト ===== */
+  .blk-h{font-size:20px !important;font-weight:900;color:var(--navy);margin:52px 0 16px;padding:8px 0 8px 14px;border-left:6px solid var(--g);line-height:1.4;}
+  .blk-h:first-child{margin-top:8px;}
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:16px 0 12px;}
+  .feat-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(10,42,67,.06);}
+  .feat-card .fc-h{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:900;color:var(--navy);margin-bottom:9px;line-height:1.4;}
+  .feat-card .fc-ic{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--g-bg);font-size:23px;flex:0 0 auto;line-height:1;}
+  .feat-card p{font-size:16.5px !important;line-height:1.85 !important;margin:0 !important;}
+  .feat-card p b{color:var(--g-d);}
+  .feat-card.wide{grid-column:1 / -1;background:var(--g-bg);border-color:#c7ddf3;}
+  @media(max-width:760px){.feat-grid{grid-template-columns:1fr;}}
+
+  /* ===== 用語クリックで説明ポップアップ ===== */
+  .term{color:var(--ink);border-bottom:1.5px dotted var(--ink);cursor:pointer;font-weight:700;white-space:nowrap;}
+  .term:hover{background:#ececec;}
+  .term-modal{position:fixed;inset:0;background:rgba(10,30,50,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+  .term-modal.show{display:flex;}
+  .tm-box{background:#fff;max-width:460px;width:100%;border-radius:16px;padding:26px 26px 24px;box-shadow:0 14px 44px rgba(0,0,0,.32);position:relative;}
+  .tm-close{position:absolute;top:10px;right:14px;border:none;background:none;font-size:28px;line-height:1;color:var(--sub);cursor:pointer;}
+  .tm-close:hover{color:var(--ink);}
+  .tm-term{font-size:22px;font-weight:900;color:var(--navy);margin-bottom:12px;padding-right:28px;}
+  .tm-def{font-size:18px;line-height:1.9;color:var(--ink);}
+  .term-hint{font-size:13.5px;color:var(--sub);margin:6px 0 18px;}
+
+  /* ===== 配色のメリハリ ===== */
+  table th{background:#e8f1fb !important;color:var(--navy) !important;}
+  .secbody table tr:nth-child(even) td{background:#f4f9fe;}
+  .verdict{border-left:6px solid var(--g);}
+
+  /* ===== 章を2列＋ブロックでまとめる ===== */
+  .grp{margin:34px 0 6px;}
+  .grp-h{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;color:var(--navy);margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid var(--line);}
+  .grp-n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--g);color:#fff;font-size:20px;flex:0 0 auto;box-shadow:0 2px 8px rgba(10,42,67,.18);}
+  .grp-sub{font-size:13px;font-weight:600;color:var(--sub);margin-left:auto;}
+  .sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+  .sec-grid .sec{margin:0;align-self:start;}
+  /* 開いた章だけ全幅（2列ぶち抜き）に広げて大きく読みやすく。閉じたカードは2列のコンパクトな見た目・サイズのまま変化しない */
+  .sec-grid .sec.open{grid-column:1 / -1;}
+  @media(max-width:820px){.sec-grid{grid-template-columns:1fr;}}
+
+  /* ===== 章ごとの固有アクセント色 ===== */
+  #s1 .sechd{background:linear-gradient(135deg,#0f6cbd,#0a4f8f);} #s1 .blk-h{border-left-color:#0f6cbd;background:linear-gradient(90deg,rgba(15,108,189,.13),transparent 70%);} #s1 .feat-grid .feat-card{border-left:5px solid #0f6cbd;} #s1 .feat-card .fc-ic{background:#e8f1fb;} #s1 .verdict{border-left-color:#0f6cbd;}
+  #s2 .sechd{background:linear-gradient(135deg,#e0892e,#bf6f16);} #s2 .blk-h{border-left-color:#e0892e;background:linear-gradient(90deg,rgba(224,137,46,.13),transparent 70%);} #s2 .feat-grid .feat-card{border-left:5px solid #e0892e;} #s2 .feat-card .fc-ic{background:#fbf1e0;} #s2 .verdict{border-left-color:#e0892e;}
+  #s3 .sechd{background:linear-gradient(135deg,#2a9d8f,#1f7e72);} #s3 .blk-h{border-left-color:#2a9d8f;background:linear-gradient(90deg,rgba(42,157,143,.13),transparent 70%);} #s3 .feat-grid .feat-card{border-left:5px solid #2a9d8f;} #s3 .feat-card .fc-ic{background:#e4f4f1;} #s3 .verdict{border-left-color:#2a9d8f;}
+  #s4 .sechd{background:linear-gradient(135deg,#3b82f6,#2563c9);} #s4 .blk-h{border-left-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,.13),transparent 70%);} #s4 .feat-grid .feat-card{border-left:5px solid #3b82f6;} #s4 .feat-card .fc-ic{background:#e8f1fe;} #s4 .verdict{border-left-color:#3b82f6;}
+  #s5 .sechd{background:linear-gradient(135deg,#9b5de5,#7a3fd0);} #s5 .blk-h{border-left-color:#9b5de5;background:linear-gradient(90deg,rgba(155,93,229,.13),transparent 70%);} #s5 .feat-grid .feat-card{border-left:5px solid #9b5de5;} #s5 .feat-card .fc-ic{background:#f1ebfa;} #s5 .verdict{border-left-color:#9b5de5;}
+  #s6 .sechd{background:linear-gradient(135deg,#c9871a,#a66e10);} #s6 .blk-h{border-left-color:#c9871a;background:linear-gradient(90deg,rgba(201,135,26,.13),transparent 70%);} #s6 .feat-grid .feat-card{border-left:5px solid #c9871a;} #s6 .feat-card .fc-ic{background:#fbf3e0;} #s6 .verdict{border-left-color:#c9871a;}
+  #s7 .sechd{background:linear-gradient(135deg,#d6453f,#b22f2a);} #s7 .blk-h{border-left-color:#d6453f;background:linear-gradient(90deg,rgba(214,69,63,.13),transparent 70%);} #s7 .feat-grid .feat-card{border-left:5px solid #d6453f;} #s7 .feat-card .fc-ic{background:#fdeceb;} #s7 .verdict{border-left-color:#d6453f;}
+  #s8 .sechd{background:linear-gradient(135deg,#0d9488,#0a766c);} #s8 .blk-h{border-left-color:#0d9488;background:linear-gradient(90deg,rgba(13,148,136,.13),transparent 70%);} #s8 .feat-grid .feat-card{border-left:5px solid #0d9488;} #s8 .feat-card .fc-ic{background:#e1f3f1;} #s8 .verdict{border-left-color:#0d9488;}
+  #s9 .sechd{background:linear-gradient(135deg,#5b6bd0,#44539f);} #s9 .blk-h{border-left-color:#5b6bd0;background:linear-gradient(90deg,rgba(91,107,208,.13),transparent 70%);} #s9 .feat-grid .feat-card{border-left:5px solid #5b6bd0;} #s9 .feat-card .fc-ic{background:#ebedfb;} #s9 .verdict{border-left-color:#5b6bd0;}
+  #s10 .sechd{background:linear-gradient(135deg,#c2557e,#a13c62);} #s10 .blk-h{border-left-color:#c2557e;background:linear-gradient(90deg,rgba(194,85,126,.13),transparent 70%);} #s10 .feat-grid .feat-card{border-left:5px solid #c2557e;} #s10 .feat-card .fc-ic{background:#fbe9f0;} #s10 .verdict{border-left-color:#c2557e;}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="../../index.html" class="logo">Do Lab AI</a>
-      <nav>
-        <a href="../index.html">学ぶ（M3）</a>
-        <a href="../../m1/index.html">設計書Bot（M1）</a>
-        <a href="../../m2/index.html">AIパック（M2）</a>
-      </nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="logo">Do Lab AI</a>
+    <nav><a href="../index.html">学ぶ（M3）</a><a href="../../m1/index.html">設計書Bot（M1）</a><a href="../../m2/index.html">AIパック（M2）</a></nav>
+  </div>
+</header>
+
+<header class="hero"><div class="in">
+  <div class="brandrow">
+    <span class="brandmark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2 L14.1 8.4 L20.5 6.2 L15.9 11.2 L22 12 L15.9 12.8 L20.5 17.8 L14.1 15.6 L12 22 L9.9 15.6 L3.5 17.8 L8.1 12.8 L2 12 L8.1 11.2 L3.5 6.2 L9.9 8.4 Z" fill="currentColor"/></svg></span>
+    <span class="brandtext"><span class="brandname">Microsoft 365 Copilot</span><span class="brandsub">Microsoft ・ 経営者のための導入ガイド</span></span>
+  </div>
+  <span class="tag">🟦 EXECUTIVE GUIDE ｜ 2026年版</span>
+  <h1>新しいAIを開くのではなく、<br><span class="hl">いつものWord・Excel・Teamsの中で“隣に座るAI”</span>を。</h1>
+  <p>Microsoft 365 Copilot（マイクロソフト365 コパイロット）は、Microsoftが提供する法人向けの業務AIです。最大の特徴は、<b>Word・Excel・PowerPoint・Outlook・Teamsといった“いつものアプリの中で”そのままAIを呼び出せる</b>こと。さらに <b>Microsoft Graph（社内のメール・予定・ファイル・チャット）を根拠に自社データに基づいて回答</b>し、<b>入力は学習に使わない・テナント分離・Purview／Entraで管理</b>できるエンタープライズ設計です。本ガイドは「何ができるか・費用・他社比較・安全性・法律・これから」までを経営判断に使える形で全10章にまとめています。<b>ROIや効果の数値は2026年時点の試算・目安</b>であり、料金・仕様は必ずMicrosoft公式・自社の法務／情シスでご確認ください。</p>
+  <div class="pills">
+    <span class="pill">📎 Word/Excel/PowerPoint/Outlook/Teamsに統合</span>
+    <span class="pill">🔗 Microsoft Graphで社内データに基づく回答</span>
+    <span class="pill">🛡️ 学習に使わない・テナント分離・Purview/Entra</span>
+    <span class="pill">🤖 Copilot Studioで自社エージェント</span>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="toprow">
+    <a href="#s1" class="backlink">↓ 本編（目次）へ</a>
+    <div class="accordion-ctrl">
+      <button class="ctrlbtn" id="openAll">＋ すべて開く</button>
+      <button class="ctrlbtn" id="closeAll">－ すべて閉じる</button>
+      <button class="printbtn" onclick="document.querySelectorAll('.sec').forEach(function(s){s.classList.add('open')});window.print();">🖨 PDFで保存／印刷</button>
     </div>
-  </header>
+  </div>
+  <div class="note">⚠️ 料金・製品名・認証・将来計画は変動します。本ガイドは<b>2026年時点の調査情報</b>を経営判断向けに整理したもので、数値は<b>試算・目安・引用</b>を含み、法的助言ではありません。導入前にMicrosoft公式・一次情報、自社の法務／情シスでご確認ください。</div>
 
-  <div class="page-container">
-    <button class="printbtn" onclick="window.print()">🖨 PDFで保存／印刷</button>
-    <a href="index.html" class="backlink">← AIツール紹介 一覧に戻る</a>
-    <p class="page-sub" style="color:var(--tool-d);font-weight:700;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;">M3 — 学ぶ ｜ AIツール紹介</p>
-
-    <div class="toolhead">
-      <div class="toollogo">✦</div>
-      <div>
-        <div class="maker">Microsoft</div>
-        <h1 class="page-title" style="margin:0;">Microsoft Copilot</h1>
-      </div>
+  <div class="intro-hub">
+    <div class="ih-block">
+      <div class="ih-h">🎯 このガイドを読むと、こう動ける</div>
+      <ul class="ih-outcomes">
+        <li>議事録・メール・Excel集計・提案資料の作成を<b>いつものアプリの中でCopilotに任せ</b>、付加価値の低い作業から人を解放できる。</li>
+        <li><b>時短を金額に直す試算</b>（目安）を根拠に、効果を数字で示して<b>稟議（社内の予算承認）・全社展開</b>を通せる。</li>
+        <li><b>学習不使用・テナント分離・Purview／Entra・EU Data Boundary・SOC 2／ISO／HIPAA対応</b>などを根拠に、規制の厳しい業界でも安全に展開できる。</li>
+      </ul>
     </div>
-    <p class="page-sub" style="margin:6px 0 16px;">Word・Excel・Outlook・Teams など、普段のMicrosoft 365アプリの中で使えるAIアシスタント。</p>
-    <a class="cta" href="https://copilot.microsoft.com" target="_blank" rel="noopener">公式サイトを開く →</a>
-
-    <div style="height:22px;"></div>
-
-    <!-- ① 概要・特徴 -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">1</div><h2>サービス概要・特徴</h2></div>
-      <p class="lead">Microsoft Copilot（旧 Bing AI / Microsoft 365 Copilot）は、Microsoftが提供するAIアシスタント。<b>Word・Excel・Outlook・Teams など Microsoft 365 アプリに組み込まれている</b>のが最大の特徴で、普段の業務アプリの中でそのままAIを呼び出せます。Webチャット版（無料）もあります。</p>
-      <div class="chips">
-        <span class="chip">🧩 Microsoft 365に統合</span>
-        <span class="chip">🪟 Windowsにも標準搭載</span>
-        <span class="chip">🔎 Web検索（Bing）連携</span>
-        <span class="chip">🖼️ 画像生成にも対応</span>
-      </div>
-    </section>
-
-    <!-- ② 使い方のポイント -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">2</div><h2>使い方のポイント（プロンプト例）</h2></div>
-      <p class="lead" style="margin-bottom:10px;">「<b>どのアプリの・何を・どうしたいか</b>」を伝えると、各アプリの中で効率よく使えます👇</p>
-      <div class="prompt"><div class="q">📊 Excelの数式</div><p>「この売上表に、月別合計と前月比を出す数式を入れて。グラフも作って。」</p></div>
-      <div class="prompt"><div class="q">🗒️ Teamsの議事録</div><p>「この会議の文字起こしから、決定事項とToDo（担当つき）を箇条書きでまとめて。」</p></div>
-      <div class="prompt"><div class="q">📧 Outlookのメール</div><p>「このスレッドを3行で要約して、丁寧な返信案も作って。」</p></div>
-
-      <p class="democap">▼ 実際に動かしている様子（自動再生）</p>
-      <div class="demo">
-        <div class="demo-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">Microsoft Copilot（Excel）</span><span class="live">● 自動再生</span></div>
-        <div class="demo-body">
-          <div class="bub me b1"><span class="who">あなた</span>この売上表に、月別合計を出す数式と前月比を入れて。</div>
-          <div class="bub ai b2"><span class="who">✦ Copilot</span>合計は SUM、前月比は (今月−先月)/先月 で算出します。C列とD列に数式を入れました。</div>
-          <div class="bub me b3"><span class="who">あなた</span>月別売上のグラフも作って。</div>
-          <div class="bub ai b4"><span class="who">✦ Copilot</span>折れ線グラフを作成し、シートに挿入しました 👇</div>
-        </div>
-      </div>
-      <p class="fine">※ 上記は表示イメージです（自動でくり返し再生）。実際の画面は Microsoft 公式でご確認ください。</p>
-    </section>
-
-    <!-- ③ Office連携 -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">3</div><h2>Word・Excel・Teams・Outlook での活用</h2></div>
-      <p class="lead" style="margin-bottom:12px;">普段使う Microsoft 365 アプリの中で、そのままCopilotを呼び出せます（Microsoft 365 Copilot 契約時）。</p>
-      <div class="wsgrid">
-        <div class="ws"><span class="ic">📝</span><div><h4>Word</h4><p>文章のたたき台作成・要約・体裁の調整。</p></div></div>
-        <div class="ws"><span class="ic">📊</span><div><h4>Excel</h4><p>数式の作成、集計・分析、グラフの自動生成。</p></div></div>
-        <div class="ws"><span class="ic">🎥</span><div><h4>Teams</h4><p>会議の自動要約・メモ作成、ToDo抽出。</p></div></div>
-        <div class="ws"><span class="ic">📧</span><div><h4>Outlook</h4><p>長いメールの要約、返信文の下書き作成。</p></div></div>
-        <div class="ws"><span class="ic">📽️</span><div><h4>PowerPoint</h4><p>プレゼン資料のたたき台作成・スライド構成の提案。</p></div></div>
-        <div class="ws"><span class="ic">📓</span><div><h4>OneNote</h4><p>メモの整理・議事録のまとめ・アイデアの構造化。</p></div></div>
-      </div>
-    </section>
-
-    <!-- ④ 中小企業での活用シーン -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">4</div><h2>中小企業での主な活用シーン</h2></div>
-      <div class="grid2">
-        <div class="ucard"><span class="ic">🗒️</span><h4>議事録の自動化</h4><p>Teams会議をそのまま要約し、決定事項とToDoを整理。</p></div>
-        <div class="ucard"><span class="ic">📈</span><h4>Excel数式の生成</h4><p>「やりたいこと」を言うだけで集計・分析の数式を作成。</p></div>
-        <div class="ucard"><span class="ic">📧</span><h4>メール要約・返信</h4><p>Outlookの長いスレッドを要約し、返信案も用意。</p></div>
-        <div class="ucard"><span class="ic">📑</span><h4>資料作成</h4><p>Word・PowerPointで報告書や提案資料のたたき台を作成。</p></div>
-        <div class="ucard"><span class="ic">🌐</span><h4>翻訳・多言語対応</h4><p>海外取引先へのメールや資料を自然な英語に翻訳。</p></div>
-        <div class="ucard"><span class="ic">🔍</span><h4>チェック・校正</h4><p>文章の誤り・抜け漏れの確認、表現の改善提案。</p></div>
-      </div>
-    </section>
-
-    <!-- ⑤ 他ツールとの使い分け -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">5</div><h2>他ツールとの使い分け</h2></div>
-      <p class="lead" style="margin-bottom:10px;"><b>Microsoft Copilotは「Microsoft 365（Office）を使う職場」に最適</b>。Word・Excel・Teamsの中で完結できます。Google中心なら <b>Gemini</b>、まず万能に試すなら <b>ChatGPT</b>、長文・丁寧さなら <b>Claude</b> が得意です。</p>
-      <div class="links">
-        <a href="gemini.html">✦ Gemini の紹介</a>
-        <a href="chatgpt.html">🤖 ChatGPT の紹介</a>
-        <a href="../compare.html">⚖️ AIツール比較表</a>
-      </div>
-    </section>
-
-    <!-- ⑥ 料金プラン -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">6</div><h2>料金プラン</h2></div>
-      <div class="plans">
-        <div class="plan"><div class="name">無料版（Copilot）</div><div class="price">¥0<span>/月</span></div><div class="who">Webチャットで利用<br>（旧 Bing Chat）</div></div>
-        <div class="plan hl"><div class="name">Microsoft 365 Copilot</div><div class="price">約¥4,500<span>/人・月</span></div><div class="who">Word/Excel/Teams等の<br>アプリ内で利用（M365契約が必要）</div></div>
-      </div>
-      <p class="fine">※ 料金・提供条件は変わることがあります（年契約・対象ライセンスなどの条件あり）。正確な内容は <b>Microsoft 公式ページ</b> でご確認ください。</p>
-    </section>
-
-    <!-- ⑦ 公式リンク -->
-    <section class="sec">
-      <div class="sec-h"><div class="sec-no">7</div><h2>公式リンク</h2></div>
-      <div class="links">
-        <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">🔗 Microsoft Copilot（copilot.microsoft.com）</a>
-        <a href="https://www.microsoft.com/microsoft-365/copilot" target="_blank" rel="noopener">🔗 Microsoft 365 Copilot</a>
-        <a href="https://support.microsoft.com/copilot" target="_blank" rel="noopener">🔗 ヘルプ・サポート</a>
-      </div>
-    </section>
-
+    <div class="ih-block">
+      <div class="ih-h">🚀 今すぐ始める3ステップ</div>
+      <ol class="ih-steps">
+        <li><span class="step-n">1</span><span><b>整える</b>：展開前に<span class="term" data-term="過剰共有">過剰共有</span>（権限の緩いフォルダ）を棚卸しし、Purviewで機密を仕分ける</span></li>
+        <li><span class="step-n">2</span><span><b>試す</b>：1部署にライセンスを配り、“時間を食う作業”（議事録・メール・Excel）を任せて効果を測る</span></li>
+        <li><span class="step-n">3</span><span><b>広げる</b>：うまくいった使い方（プロンプト）を横展開し、Copilot Studioで自社エージェントも作って全社へ定着</span></li>
+      </ol>
+    </div>
+    <div class="ih-block">
+      <div class="ih-h">📚 このガイドの歩き方</div>
+      <p class="ih-p">本ガイドは Microsoft 365 Copilot を<b>「実用性・効果・比較」から「セキュリティ・組織・法務・導入」、そして「将来性・リスク対策」まで全10章</b>で網羅。各章は<b>タイトル＋説明＋「詳しく読む」ボタン</b>で並ぶので、<b>気になるテーマだけ開けます</b>。</p>
+      <p class="ov-routes"><b class="ov-routes-label">目的別の入口 →</b><a href="#s1">何ができる？</a><a href="#s2">コスト・ROI</a><a href="#s3">他社と比較</a><a href="#s4">安全性</a><a href="#s8">始め方</a></p>
+    </div>
   </div>
 
-  <footer class="site-footer">
-    <p>© 2026 Do Lab AI — 株式会社 Dooox</p>
-  </footer>
+  <div class="toc"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11.5px;">👆 各見出しをクリックで開閉／目次クリックでその章へジャンプ＆展開</span></strong>
+    <ol>
+      <li><a href="#s1">実用性・業務活用</a></li>
+      <li><a href="#s2">ROI・コスト効果</a></li>
+      <li><a href="#s3">競合・代替サービス比較</a></li>
+      <li><a href="#s4">セキュリティ・コンプライアンス</a></li>
+      <li><a href="#s5">プラン・料金体系</a></li>
+      <li><a href="#s6">組織・人材への影響</a></li>
+      <li><a href="#s7">法的・契約上の留意点</a></li>
+      <li><a href="#s8">導入ロードマップ</a></li>
+      <li><a href="#s9">将来性・技術ロードマップ</a></li>
+      <li><a href="#s10">導入・運用上のリスクと対策</a></li>
+    </ol>
+  </div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#0f6cbd">①</span>Copilotの実力を知る<span class="grp-sub">実用性・効果・比較・安全性</span></div>
+  <div class="sec-grid">
+  <div class="sec" id="s1">
+    <div class="sechd"><span class="n">1</span><div><h2>実用性・業務活用</h2><div class="src">アプリ統合／Microsoft Graphで社内データ活用／Pages／Copilot Studio／Agents</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">Copilotの真価は「新しいAIを開く」のではなく、<b>いつものWord・Excel・Teamsの“中で”隣に座って助けてくれる</b>こと。さらに社内のメール・ファイル・会議（Microsoft Graph）を根拠に“自社のことを分かった上で”答えます。まずは「何ができるか」をつかみましょう。</p>
+      <p class="tz-points"><b>この章の要点：</b>いつものアプリに統合 ／ Microsoft Graphで社内データ活用 ／ アプリ別の使いどころ ／ Pages・Studio・Agents ／ 効果の体感</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Microsoft 365 Copilotの最大の強みは「新しいAI画面を開く」ことではなく、<b>いつものWord・Excel・PowerPoint・Outlook・Teamsの“中で”そのまま呼び出せる</b>こと。加えて、社内のメール・予定・ファイル・チャットを根拠に“自社の文脈を分かった上で”答えます。この章は、<b>3つの基本の強み → アプリ別の使いどころ → 製品（Pages／Copilot Studio／Agents）→ 効果</b>の順に紹介します。</p>
+
+      <div class="blk-h">3つの“基本の強み”がすごい</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📎</span>いつものアプリの中で使える</div><p>別のAIサイトに移動せず、<b>Word・Excel・PowerPoint・Outlook・Teams・OneNote</b>の画面でそのまま呼び出せます。学習コストが低く、現場が“自然に”使い始められるのが最大の利点です。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔗</span>社内データに基づいて答える</div><p><span class="term" data-term="Microsoft Graph">Microsoft Graph</span>（社内のメール・予定・ファイル・会議）と<span class="term" data-term="セマンティックインデックス">セマンティックインデックス</span>を使い、<b>自社の情報を根拠に回答</b>。「先週の会議の決定事項は？」に社内文脈で答えられます。</p></div>
+      </div>
+      <div class="callout">🔑 <b>Copilotの安心の核＝“権限を尊重する”</b>：Copilotは <b><span class="term" data-term="Entra ID">Entra ID</span>（会社のIDのしくみ）で、あなたが本来アクセスできる情報だけ</b>を参照します。見る権限のない他人のファイルを勝手に引っぱってくることはありません（※権限設定が正しければ、の前提。緩いと問題に＝後述）。</div>
+
+      <div class="blk-h">AIのウソ（<span class="term" data-term="ハルシネーション">ハルシネーション</span>）を抑える設計</div>
+      <p>Copilotは、社内の実データ（Graph）や指定した資料を根拠に答える<span class="term" data-term="グラウンディング">グラウンディング</span>で、AIの推測が混ざるのを抑えます。回答には<b>参照元へのリンク</b>が付くことが多く、原典で裏取りしやすいのが利点です。とはいえ誤りはゼロにできません。</p>
+      <div class="warnbox">⚠️ <b>万能ではない</b>：どんなに賢いAIでも、もっともらしい誤りはゼロにできません。<b>健康・お金・法律（YMYL＝人生やお金に関わる重要分野）は人の最終確認を必須</b>とし、数値・法令・固有名詞は原典で確認するのが鉄則です。</div>
+
+      <div class="blk-h">アプリ別の“使いどころ”</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>アプリ</th><th>できること（例）</th></tr>
+        <tr><td><b>📝 Word</b></td><td>文章のたたき台作成・要約・体裁の調整。既存資料から下書きを生成</td></tr>
+        <tr><td><b>📊 Excel</b></td><td>「やりたいこと」を言うだけで数式・集計・分析・グラフを作成</td></tr>
+        <tr><td><b>🎥 Teams</b></td><td>会議の自動要約、決定事項・ToDo（担当つき）の抽出、欠席者への追いつき</td></tr>
+        <tr><td><b>📧 Outlook</b></td><td>長いスレッドの要約、返信文の下書き、丁寧・簡潔などトーン調整</td></tr>
+        <tr><td><b>📽️ PowerPoint</b></td><td>Wordの下書きからスライドのたたき台作成・構成提案</td></tr>
+      </table></div>
+
+      <div class="blk-h">Copilot Pages ― AIと人の“共同編集キャンバス”</div>
+      <p><span class="term" data-term="Copilot Pages">Copilot Pages</span>（コパイロット ページ）は、Copilotが作った文章・表を<b>横のキャンバスに残し、AIと人が一緒に編集して仕上げる</b>機能。会話の答えを“作業できる成果物”として残せるので、対話しながら少しずつ完成させられます。</p>
+
+      <div class="blk-h">Copilot Studio・Agents ― “作業まで任せる”自社エージェント</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛠️</span>Copilot Studio</div><p><b>ノーコード（プログラム不要）で自社専用の<span class="term" data-term="エージェント">エージェント</span>を作れる</b>ツール。社内FAQ対応、申請の受付、特定業務の自動化などを、現場に近い人が組み立てられます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤖</span>Agents（エージェント）</div><p>指示に答えるだけでなく、<b>複数の手順を自分で段取りして実行</b>するAI。受発注の下処理や定型業務の自動化など“作業そのもの”を任せる方向へ進んでいます。</p></div>
+      </div>
+      <div class="callout">🟩 <b>2つの入口を知っておく</b>：全社に広く配れる<b><span class="term" data-term="Copilot Chat">Microsoft 365 Copilot Chat</span></b>（Entra認証の安全な業務チャット＋従量課金でエージェント利用）と、アプリ内フル機能の<b>Microsoft 365 Copilot</b>（対象M365ライセンスが前提）。まずChatで広げ、効く部署にフル機能を厚く配る、という設計ができます。</div>
+
+      <div class="blk-h">どれだけ効くか（効果の体感）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏱️</span>時短（試算・目安）</div><p>議事録・メール要約・Excel集計・下書きを任せると、<b>1人あたり週数時間規模の削減</b>が見込めます（業務により変動。自社で計測を）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>品質も向上</div><p>資料・メールの“たたき台”の質が高く、<b>手直し時間が減る</b>のが利点。人は最終判断と仕上げに集中できます。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🧩</span>得意な使いどころ</div><p><b>Teams会議の議事録自動化</b>、<b>Outlookメールの要約・返信</b>、<b>Excelの集計・分析</b>、<b>Word/PowerPointの資料作成</b>、<b>社内Q&A（Graph活用）</b>が王道です。</p></div>
+      </div>
+      <div class="warnbox">⚠️ <b>運用の注意</b>：効果の数値は<b>2026年時点の調査・試算で、業務や運用で大きく変動</b>します。導入前に小さく試して自社で計測し、Microsoft公式の最新情報を確認してください。</div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
+      Copilotの実用性は<b>「便利なツール」を超えて“いつものアプリに座る相棒”級</b>。移動ゼロで使え、社内データを根拠に答えるため、議事録・メール・集計・資料づくりといった付加価値の低い作業から人を解放します。狙うべきは“時短”だけでなく、<b>浮いた時間を戦略・創造・顧客対応へ振り向ける</b>ことです。</div>
+
+      <div class="callout">🚀 <b>経営者の最初の一手</b>：① <b>「Teams議事録」「Outlook要約」「Excel集計」</b>の1つから着手 → ② <b>権限を整えてMicrosoft Graph連携</b>で“社内のことを分かるAI”に → ③ <b>Copilot Pagesで成果物を磨き、Copilot Studioで自社エージェント</b>へ → ④ <b>お金や健康など重要なことは人の最終確認</b>を必ず残す。</div>
+    </div>
+  </div>
+
+  <div class="sec" id="s2">
+    <div class="sechd"><span class="n">2</span><div><h2>ROI・コスト効果</h2><div class="src">料金のしくみ／効果の金額（試算）／競合とのコスト感／見えにくい出費の抑え方</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">Copilotへの投資は「ソフトの値段」でなく“時間と知的生産力への投資”。料金のしくみ（前提のM365ライセンスも忘れずに）から、時短を金額に直す試算（目安）、競合とのコスト感、見えにくい出費の抑え方までを整理します。数値は試算・目安として扱ってください。</p>
+      <p class="tz-points"><b>この章の要点：</b>料金の全体像（前提ライセンス＋Copilot） ／ 効果の金額（試算） ／ コスト感の比較 ／ 見えにくい出費の抑え方</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Copilotへの投資は「ソフトの値段」ではなく、<b>“時間と知的生産力への投資”</b>です。この章は、<b>料金の全体像 → 効果の金額（試算）→ 競合とのコスト感 → 見えにくい出費</b>の順に整理します。ROIや効果の数値は<b>2026年時点の試算・目安</b>であり、必ず自社で計測・確認してください。</p>
+
+      <div class="blk-h">料金の全体像 ― “前提ライセンス＋Copilot”で見る</div>
+      <p>Microsoft 365 Copilotの料金でつまずきやすいのが、<b>Copilotの料金だけでは使えない</b>点です。フル機能版は<b>対象のMicrosoft 365ライセンス（Business Standard/Premium、E3/E5 等）を持っていることが前提</b>で、その“上に”Copilotを載せます。</p>
+      <div class="tbl-scroll"><table>
+        <tr><th>プラン</th><th>月額（目安）</th><th>主な対象</th><th>特徴</th></tr>
+        <tr><td><b>無料 Copilot</b></td><td>¥0</td><td>個人のお試し</td><td>Web/Windowsの無料チャット。Web検索=Bing、画像=Designer。<b>社内データは非連携</b></td></tr>
+        <tr><td><b>Copilot Pro</b></td><td>約¥3,200/月（$20）</td><td>個人の本格利用</td><td>個人向け有料。一部アプリ内で利用。<b>法人の社内データ連携は対象外</b></td></tr>
+        <tr><td class="hi"><b>Microsoft 365 Copilot</b></td><td class="hi">約¥4,500/人・月（$30・年契約）</td><td>法人の本命</td><td>アプリ内フル機能＋<b>社内データ連携</b>。<b>前提のM365ライセンスが別途必要</b></td></tr>
+        <tr><td><b>Microsoft 365 Copilot Chat</b></td><td>従量＋Entra保護</td><td>全社に広く配布</td><td>Entra認証の安全な業務チャット。エージェント利用は<b>使った分だけ課金</b></td></tr>
+      </table></div>
+      <div class="callout">📐 <b>読み解き</b>：法人の本命は<b>Microsoft 365 Copilot（約¥4,500・人月）</b>。ただし<b>前提となるM365ライセンス費が別途</b>かかる点を投資額に必ず入れてください。全社に広く薄く配るなら<b>Copilot Chat（従量）</b>で入口を作り、効く部署にフル機能を厚く、という設計が現実的です。料金は改定されるため必ず公式で最新を確認。</div>
+
+      <div class="blk-h">効果の金額（ROI）― “時短を金額に直す”試算の作り方</div>
+      <p>派手な調査数値を持ち出すより、<b>自社の時短を金額に直す</b>のが説得力のある進め方です。基本式は <b><span class="term" data-term="ROI">ROI</span>(%) ＝（効果 ÷ 投資額）× 100</b>。</p>
+      <div class="verdict">💰 <b>投資対効果の“試算”の例（目安・要検証）</b><br>
+      ・時給4,000円の社員が <b>月10時間</b> 短縮 ＝ 1人あたり <b>月4万円</b> の効果（試算）。<br>
+      ・<b>100名なら月400万円・年4,800万円</b>（試算）。Copilotは約4,500円/人月のため、<b>回収は数ヶ月</b>という財務モデルが描けます（※前提M365ライセンス費は別途で見込む）。<br>
+      ※あくまで前提を置いた試算。実際の効果は業務・運用で変動します。</div>
+      <div class="callout">🔎 <b>本質</b>：これは「ソフトのアップグレード」ではなく、<b>“人の時間と頭脳を解放して、もうけを生む仕事へ振り向ける投資”</b>。議事録や返信に費やしていた時間が提案スピードや顧客対応の増加＝<b>売上の成長</b>につながります。</div>
+
+      <div class="blk-h">競合とのコスト感（法人向け・ざっくり目安）</div>
+      <p>本当の総額（<span class="term" data-term="TCO">TCO</span>）は、ライセンス費だけでなく前提ライセンス・権限整備・教育・運用まで含めて見ます。法人向けAIの月額感は次のとおり（2026年時点の目安・各社改定あり）。</p>
+      <div class="tbl-scroll"><table>
+        <tr><th>サービス（法人）</th><th>月額の目安</th><th>前提・特徴</th></tr>
+        <tr><td class="hi"><b>Microsoft 365 Copilot</b></td><td>約¥4,500・人月（$30）</td><td>要M365ライセンス。<b>Office統合＋社内データ連携</b></td></tr>
+        <tr><td>ChatGPT Enterprise（OpenAI）</td><td>個別見積（目安）</td><td>汎用・エージェントが強い。単体ツール</td></tr>
+        <tr><td>Gemini for Workspace（Google）</td><td>数千円台・人月（目安）</td><td>Google Workspace中心の職場に統合</td></tr>
+      </table></div>
+      <div class="callout">🧭 <b>見方</b>：単価だけで決めず、<b>“いつものアプリの中で使える＋社内データに基づく”価値</b>を含めて総額で比較を。<b>すでにMicrosoft 365を全社利用している企業</b>は、Office統合で立ち上がりが速く、総コストで有利になりやすいです（詳細は次章「比較」へ）。</div>
+
+      <div class="blk-h">見えにくい出費と、その抑え方</div>
+      <p>Copilotは月額が明快な分、油断しがちですが、<b>“予想外の出費”</b>が効果を圧迫します。先に正体を知って対策を。</p>
+      <div class="warnbox">⚠️ <b>3つの“見えにくい出費”</b>：<br>
+      ・<b>前提のM365ライセンス</b>：Copilot料金の“外側”で発生。E3/E5等の費用も投資額に入れて見る。<br>
+      ・<b>権限整備・教育の初期コスト</b>：<span class="term" data-term="過剰共有">過剰共有</span>の棚卸しやPurview設定、研修に人手と時間がかかる。<br>
+      ・<b>使いこなせないと効果が薄い</b>：配って放置すると一部の人しか使わず、月額だけが積み上がる。</div>
+      <div class="callout">💪 <b>こう抑える</b>：① まず<b>Copilot Chat（従量）で入口を広く</b>作り、効く部署に<b>フル機能を厚く配る</b>（配り方でムダを削る）。② <b>権限棚卸し・Purview設定を先に</b>済ませて“事故コスト”を回避。③ 研修と“効く使い方カタログ”で<b>利用率を上げ、1人あたりの回収を早める</b>。④ <b>シャドーAI（会社に無断の個人AI）を禁止</b>し、安全な法人版へ一本化（二重払いと情報漏れを同時に解消）。</div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
+      Copilotは<b>「時短を金額に直す試算」で投資判断ができる</b>戦略投資です。源泉は<b>①いつものアプリで移動ゼロ、②社内データに基づく回答</b>。日々の議事録・メール・集計・資料を<b>“すぐ使える成果物”に変える</b>のが最大の強み。狙うべきは「コスト削減」だけでなく、<b>浮いた時間を売上づくりへ再投資</b>することです（数値はすべて試算・目安、要検証／前提ライセンス費を必ず投資額に含める）。</div>
+
+      <div class="callout">🚀 <b>経営者のロードマップ（3段階）</b>：<br>
+      <b>① まず安全に開放（1〜3ヶ月）</b>：シャドーAIを断つため、お試しの部署にCopilotを配り、現場に“時短の使い道”を探させる（権限棚卸しを先に）。<br>
+      <b>② 成功例を測って横展開（3〜6ヶ月）</b>：「議事録の自動化」「メール返信」などを抜き出し、<b>減らせた時間をKPIで数値化</b>して他部署へ。<br>
+      <b>③ 自社エージェントへ（6ヶ月〜）</b>：Copilot Studioで定型業務を自動化。<b>Chat（従量）とフル機能の配り分け</b>で“見えにくい出費”を抑える運用ルールを決める。</div>
+    </div>
+  </div>
+
+  <div class="sec" id="s3">
+    <div class="sechd"><span class="n">3</span><div><h2>競合・代替サービス比較</h2><div class="src">Copilot vs ChatGPT vs Gemini vs Claude ― 得意分野・料金・安全性</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">「すべてに勝つ万能AI」の時代は終わり、職場環境と仕事の種類で使い分ける時代へ。主要サービスを公平に比べ、Copilotの“勝ちどころ”（Officeに統合＋社内データgrounding＋エンタープライズ管理）を明確にします。</p>
+      <p class="tz-points"><b>この章の要点：</b>得意分野の比較 ／ 料金・前提の比較 ／ 安全性・管理の比較 ／ “いつもの画面で使える”という最適解</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p><b>「すべてに勝つ万能AI」の時代は終わり</b>、職場環境と仕事の性質で使い分ける時代になりました。この章は、主要サービス（<b>Microsoft Copilot／OpenAI ChatGPT／Google Gemini／Anthropic Claude</b>）を、得意分野・料金・安全性の観点で公平に比べ、<b>Copilotの“勝ちどころ”</b>を明確にします。</p>
+
+      <div class="blk-h">得意分野 ― 職場環境で分かれる</div>
+      <p>最高峰モデルの総合力は<b>ほぼ互角</b>。決め手は“どんな職場で・何に使うか”です。</p>
+      <div class="tbl-scroll"><table>
+        <tr><th>サービス</th><th>得意な領域</th><th>ひとこと</th></tr>
+        <tr><td class="hi"><b>Microsoft Copilot</b></td><td><b>Office（Word/Excel/Teams）に統合＋社内データ活用＋管理</b></td><td>Microsoft 365を使う職場で“いつもの画面”のまま強い</td></tr>
+        <tr><td><b>ChatGPT</b>（OpenAI）</td><td>幅広い汎用・エージェント機能・調べもの</td><td>単体ツールとして用途が広い</td></tr>
+        <tr><td><b>Gemini</b>（Google）</td><td>Google Workspace統合・長文/マルチモーダル</td><td>Google中心の組織と相性◎</td></tr>
+        <tr><td><b>Claude</b>（Anthropic）</td><td>長文の質・文章品質・コーディング</td><td>文書業務・開発・規制業界に強い</td></tr>
+      </table></div>
+      <div class="warnbox">⚠️ <b>“動かす環境”で成績が変わる</b>：同じ土台モデルでも、統合された環境や指示文（プロンプト）の作り方で結果が大きく動きます。<b>点数だけで決めない</b>こと。</div>
+
+      <div class="blk-h">扱えるデータ・連携（社内データへのつながり方）</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>項目</th><th>Copilot</th><th>ChatGPT</th><th>Gemini</th><th>Claude</th></tr>
+        <tr><td>社内データ連携</td><td class="hi">Microsoft Graph（メール/予定/ファイル/会議）</td><td>コネクタ等で連携</td><td class="hi">Google Workspace（Gmail/Drive等）</td><td>MCP・API等で連携</td></tr>
+        <tr><td>得意な使いどころ</td><td>Officeの中の作業・社内Q&A</td><td>幅広い汎用・エージェント</td><td>Workspace連携・長文/動画</td><td>長文の質・コード・文章品質</td></tr>
+        <tr><td>マルチモーダル</td><td>文字・画像・PDF</td><td>文字・画像中心</td><td>文字・画像・音声・動画</td><td>文字・画像・PDF・図</td></tr>
+      </table></div>
+      <div class="callout">🧭 <b>Copilotの独自価値</b>：<b>いつものOfficeの中で、あなたの権限の範囲の社内データに基づいて答える</b>点が際立ちます。Microsoft 365を全社で使っている企業では、導入・定着の立ち上がりが最も速い選択肢になりやすいです。</div>
+
+      <div class="blk-h">基盤モデルとエコシステム</div>
+      <p>Copilotは<b>OpenAIの大規模言語モデル（GPT系）をAzure上で利用</b>する構成が中心（目安）。マルチモーダルにも対応します。強みは“モデルの生の性能”よりも、<b>Office統合・Microsoft Graph・Entra／Purviewの管理</b>という「業務にそのまま乗る土台」の厚さです。</p>
+
+      <div class="blk-h">料金・前提（法人向けの目安）</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>サービス（法人）</th><th>月額の目安</th><th>前提・特性</th></tr>
+        <tr><td class="hi"><b>Microsoft 365 Copilot</b></td><td>約¥4,500・人月（$30）</td><td>要M365ライセンス。Office統合＋社内データ</td></tr>
+        <tr><td>ChatGPT Enterprise</td><td>個別見積（目安）</td><td>汎用・エージェントが強い単体ツール</td></tr>
+        <tr><td>Gemini for Workspace</td><td class="hi">数千円台・人月（目安）</td><td>Google中心の職場に統合・低コスト</td></tr>
+        <tr><td>Claude Team/Enterprise</td><td>約¥3,800・人月〜（目安）</td><td>長文・文章品質・安全性</td></tr>
+      </table></div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💳</span>前提コストに注意</div><p>Copilotは<b>前提のM365ライセンス費が別途</b>。すでにM365を使う企業なら“上乗せ”は約¥4,500で済み、割安に感じられます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💡</span>安く広げるコツ</div><p>全社は<b>Copilot Chat（従量）で入口</b>を作り、<b>効く部署にフル機能を厚く</b>。配り分けで運用費を圧縮できます。</p></div>
+      </div>
+
+      <div class="blk-h">安全性・データの扱い（横並びの要点）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>学習に使うか</div><p>Copilotは<b>入力を基盤モデルの学習に使わない</b>（法人）。ChatGPT/Gemini/Claudeも商用・法人版は同様の方針（各社規約を確認）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧱</span>テナント分離</div><p>Copilotは<b><span class="term" data-term="テナント分離">テナント分離</span></b>で自社のデータを他社と混ぜません。EUデータ境界（EU Data Boundary）にも対応。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>管理・統制</div><p>Copilotは<b><span class="term" data-term="Microsoft Purview">Purview</span>（保護・監査）＋<span class="term" data-term="Microsoft Entra">Entra</span>（ID・条件付きアクセス）</b>で全社を統制できるのが強み。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔑</span>権限の尊重</div><p>Copilotは<b>本人がアクセスできる情報だけ</b>参照。ただし社内の権限が緩いと<span class="term" data-term="過剰共有">過剰共有</span>のリスク（後述）。</p></div>
+      </div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）＝適材適所で使い分け</b><br>
+      ・<b>Officeに統合＋社内データ＋管理</b> → <b>Microsoft Copilot</b>（Microsoft 365を使う職場）<br>
+      ・<b>幅広い汎用・エージェント</b> → ChatGPT　／　・<b>Google中心の職場</b> → Gemini　／　・<b>長文・文章品質・開発</b> → Claude。<br>
+      Copilotの勝ちどころは<b>「いつもの画面で・社内データに基づき・全社で安全に」</b>。Microsoft 365が土台の企業には、<b>2026年の最有力</b>です。</div>
+
+      <div class="callout">🚀 <b>経営者の最初の一手</b>：まず<b>「自社の職場はどのプラットフォームが中心か」</b>を確認。<b>Microsoft 365が中心ならCopilotを“職場AIの土台”</b>に据え、必要に応じて他社AIを役割別に併用する設計にすると、定着スピードと安心の両取りができます。</div>
+    </div>
+  </div>
+
+  <div class="sec" id="s4">
+    <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・コンプライアンス</h2><div class="src">学習不使用・テナント分離／認証（SOC 2・ISO・HIPAA）／Purview・Entra／過剰共有対策</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">論点は「何ができるか」から「自社データをどう守って使うか」へ。学習に使わない・テナント分離・EU Data Boundary・Purview／Entra・各種認証まで。そして<b>Copilot最大の注意点＝過剰共有（oversharing）</b>とその対策を整理します。</p>
+      <p class="tz-points"><b>この章の要点：</b>データ保護（学習不使用・テナント分離） ／ 取得認証 ／ Purview・Entraの管理 ／ 過剰共有への対策</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Copilotが社内データに直接つながる時代、論点は「何ができるAIか」から<b>「自社のデータをどう守りながら使うか」</b>へ移りました。Copilotは<b>①入力を基盤モデルの学習に使わない ②テナント分離＋EUデータ境界 ③SOC 2・ISO・HIPAA等に準拠 ④Purview・Entraで統制</b>を揃えます。一方で<b>Copilot固有の最大の落とし穴＝過剰共有</b>があり、これは“Copilotの弱点”というより“社内の権限設定の放置”の問題です。この章は、データ保護 → 認証 → 管理機能 → 過剰共有対策 → 攻撃への防御の順に整理します。</p>
+
+      <div class="blk-h">データは“学習に使わない・自社の中に閉じる”</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>学習に不使用</div><p>Copilotへの入力・社内データは<b>基盤モデル（GPT系）の学習には使われません</b>（<span class="term" data-term="商用データ保護">商用データ保護</span>。最新条件は公式で確認）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧱</span><span class="term" data-term="テナント分離">テナント分離</span></div><p>自社の契約領域（テナント）にデータを閉じ、<b>他社と混ざりません</b>。<span class="term" data-term="EU Data Boundary">EU Data Boundary</span>で地域要件にも対応。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🔑</span>権限を尊重して参照</div><p>Copilotは<b>本人（Entra ID）がアクセスできる情報だけ</b>を参照します。見る権限のない他人のファイルを勝手に持ち出すことはありません（※権限設定が正しい前提）。</p></div>
+      </div>
+      <div class="okbox">✅ <b>“社内データに基づいて”を安全に</b>：Microsoft Graphの実データを根拠に答えるため、機密の調べものも<b>学習不使用＋テナント分離＋権限尊重</b>の組み合わせで、統制された形で投入できます。</div>
+
+      <div class="blk-h">国際・業界基準の“お墨付き”（取得認証）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📜</span><span class="term" data-term="SOC 2">SOC 2</span>／<span class="term" data-term="ISO 27001">ISO</span></div><p>Microsoftのクラウドは<b>SOC 2・ISO 27001等の主要認証</b>に準拠。セキュリティ運用の客観的な裏づけになります。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏥</span>HIPAA対応（BAA）</div><p>医療情報を扱う米国の <b>HIPAA に対応</b>（<b>BAA＝事業提携契約</b>の締結が可能）。規制業界での承認を後押しします。</p></div>
+      </div>
+      <div class="callout">📋 <b>使い方</b>：これらの認証・準拠は、金融・公共・医療など<b>規制の厳しい業界で社内承認（稟議）を進める後ろ盾</b>になります。自社の要件に対し、どの認証・契約が必要かを情シス／法務で確認しましょう。</div>
+
+      <div class="blk-h">全社運用を支える管理機能（Purview・Entra）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span><span class="term" data-term="Microsoft Purview">Microsoft Purview</span></div><p><b>情報保護ラベル・DLP（情報漏えい防止）・監査</b>を提供。「機密」ラベルの資料の扱いを制御し、<b>誰が・いつ・何をしたか</b>を記録できます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🪪</span><span class="term" data-term="Microsoft Entra">Microsoft Entra</span></div><p><b>ID管理・条件付きアクセス</b>で「誰がどの条件でCopilotを使えるか」を制御。SSOやアクセス制御が全社に効きます。</p></div>
+      </div>
+      <div class="callout">🔍 <b>監査ログ</b>：Copilotのやり取りは<b>監査ログ</b>で追跡できます。事故対応・内部統制の観点で、全社展開の前に監査とラベル設計を整えるのが定石です。</div>
+
+      <div class="blk-h">Copilot最大の注意点 ― “過剰共有（oversharing）”</div>
+      <div class="warnbox">⚠️ <b>これがCopilot導入の一番の落とし穴</b>：Copilotは“本人が見られる情報”だけを参照しますが、<b>SharePointや共有フォルダの権限が緩い（＝実は全社員が見られる状態）</b>だと、本来見せたくない資料（給与表・M&A資料・退職者の残置ファイル等）まで<b>Copilotが一瞬で見つけて要約・引用</b>してしまいます。手作業では“見つからなかった”ものが、AIで“一発で掘り出される”のです。</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧹</span>権限の棚卸し</div><p>展開前に<b>SharePoint・共有フォルダのアクセス権を点検</b>し、行き過ぎた共有・退職者の権限を掃除します。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏷️</span>Purviewのラベル＋DLP</div><p>機密に<b>情報保護ラベル</b>を付け、<b>DLP</b>で扱いを制御。ラベルに応じてCopilotの参照・出力を抑えられます。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🔎</span><span class="term" data-term="Restricted Search">Restricted Search</span>（制限付き検索）</div><p>準備が整うまで<b>Copilotが検索できる範囲を絞る</b>機能。権限整備を進めながら、段階的に安全に開放できます。</p></div>
+      </div>
+
+      <div class="blk-h">AIを狙う攻撃への防御</div>
+      <p>新しい脅威が<b><span class="term" data-term="プロンプトインジェクション">プロンプトインジェクション</span></b>（メールや資料に「機密を外部へ送れ」等の命令をこっそり仕込み、AIが読んだ瞬間に悪用する手口）。対策は多層で。</p>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>プラットフォームの防御</div><p>Microsoftは安全対策を継続的に強化。<b>DLP・条件付きアクセス</b>で外部送信や危険な操作を抑えられます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✅</span>重大操作は人に確認</div><p>エージェントに、取り返しのつかない操作は<b>実行前に承認</b>を求める設計を組み込めます。</p></div>
+      </div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
+      Copilotは、生成AI導入の致命傷になりがちな<b>「情報漏れ・法令違反」を、Microsoftの土台（学習不使用・テナント分離・EUデータ境界・SOC 2/ISO/HIPAA・Purview/Entra）で抑え</b>られます。<b>ただし最大のリスクは“自社側の過剰共有”</b>。ここは製品任せにできず、<b>展開前の権限棚卸し＋Purviewラベル＋Restricted Search</b>が必須です。土台は強いので、あとは“社内の掃除”をやり切るかどうかが分かれ目です（要件は自社で確認）。</div>
+
+      <div class="callout">🚀 <b>経営者のロードマップ（3段階）</b>：<br>
+      <b>① 展開前にデータを掃除</b>：SharePoint・共有フォルダの権限を点検し、過剰共有を是正。機密にPurviewラベルを付ける（Copilotの“探せる範囲”を最小に）。<br>
+      <b>② 管理機能を先に整備</b>：Entraの条件付きアクセス・Purviewの監査/DLPを設定。必要ならRestricted Searchで段階開放。<br>
+      <b>③ 攻撃対策＋人の確認を最後の砦に</b>：プロンプトインジェクション対策を前提に、重要操作は人が承認するルールを徹底。</div>
+    </div>
+  </div>
+
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>料金と組織<span class="grp-sub">料金プラン・人材組織</span></div>
+  <div class="sec-grid">
+  <div class="sec" id="s5">
+    <div class="sechd"><span class="n">5</span><div><h2>プラン・料金体系</h2><div class="src">無料Copilot／Copilot Pro／Microsoft 365 Copilot／Copilot Chat／選び方</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">料金は“4つの入口”（無料／個人Pro／法人フル機能／全社向けChat）。フル機能は前提のM365ライセンスが必要な点に注意。用途別に「どれを選ぶか」を示します。円は目安・改定ありのため、必ず公式で最新を確認してください。</p>
+      <p class="tz-points"><b>この章の要点：</b>4つのプラン ／ 前提ライセンス ／ Chatとフル機能の使い分け ／ 用途別の選び方</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Copilotの料金は<b>“4つの入口”</b>で整理できます。無料の<b>Microsoft Copilot</b>、個人向け有料の<b>Copilot Pro</b>、法人の本命<b>Microsoft 365 Copilot</b>、全社向けの<b>Microsoft 365 Copilot Chat</b>です。この章は各料金を整理し、<b>用途別に「どれを選ぶか」</b>を示します。円は<b>目安・改定あり</b>のため、必ず公式で最新を確認してください。</p>
+
+      <div class="blk-h">4つのプランの全体像</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>プラン</th><th>月額（目安）</th><th>主な対象</th><th>特徴</th></tr>
+        <tr><td>無料 Copilot</td><td>¥0</td><td>個人のお試し</td><td>Web/Windows/アプリの無料チャット。Web検索=Bing、画像=Designer。<b>社内データ非連携</b></td></tr>
+        <tr><td>Copilot Pro</td><td>約¥3,200/月（$20）</td><td>個人の本格利用</td><td>個人向け有料。一部アプリ内で利用。<b>法人の社内データ連携は対象外</b></td></tr>
+        <tr><td class="hi">Microsoft 365 Copilot</td><td class="hi">約¥4,500/人月（$30・年契約）</td><td>法人の本命</td><td>アプリ内フル機能＋<b>社内データ連携</b>。<b>前提のM365ライセンスが必要</b></td></tr>
+        <tr><td>Microsoft 365 Copilot Chat</td><td>従量＋Entra保護</td><td>全社に広く配布</td><td>Entra認証の安全な業務チャット。<b>エージェント利用は使った分だけ課金</b></td></tr>
+      </table></div>
+
+      <div class="blk-h">“前提ライセンス”という落とし穴</div>
+      <div class="warnbox">⚠️ <b>Copilot料金だけでは使えない</b>：フル機能の<b>Microsoft 365 Copilot（約¥4,500・人月）は、対象のM365ライセンス（Business Standard/Premium、E3/E5 等）を持っていることが前提</b>。投資額は「Copilot料金＋前提ライセンス料金」で見積もってください。</div>
+
+      <div class="blk-h">Chatとフル機能の“使い分け”</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🟩</span>広く配るなら Copilot Chat</div><p>Entra認証で安全な業務チャットを<b>全社に広く</b>。エージェント利用は<b>従量課金</b>なので、使った分だけの費用で入口を作れます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🟦</span>厚く使うなら フル機能</div><p>Word/Excel/Teams内のフル機能＋社内データ連携が要る部署に<b>Microsoft 365 Copilot</b>を厚く配ります。</p></div>
+      </div>
+
+      <div class="blk-h">安く広げるコツ</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💡</span>配り分けでムダを削る</div><p>全社は<b>Chat（従量）で入口</b>、効く部署に<b>フル機能を厚く</b>。一律配布より費用対効果が上がります。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚫</span>個人版の業務利用は禁止</div><p>無料Copilot・Copilot Proは<b>社内データ連携・全社管理が対象外</b>。業務利用は法人版に一本化します。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🏢</span>本番運用は管理機能とセットで</div><p>法人利用では<b>学習不使用・テナント分離・Purview/Entra</b>を前提に。契約・データの扱いは公式・法務で確認します。</p></div>
+      </div>
+
+      <div class="blk-h">どれを選ぶ？（用途別ガイド）</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>目的</th><th>おすすめ</th><th>理由</th></tr>
+        <tr><td>個人・お試し</td><td>無料Copilot → Pro</td><td>まず無料で体験。個人の本格利用はPro（※社内データは非連携）</td></tr>
+        <tr><td>全社に広く配る</td><td><b>Copilot Chat</b></td><td>Entra認証で安全＋従量課金で入口を広く</td></tr>
+        <tr><td>部門・全社の生産性</td><td><b>Microsoft 365 Copilot</b></td><td>アプリ内フル機能＋社内データ連携（要M365ライセンス）</td></tr>
+        <tr><td>業務の自動化</td><td>Copilot Studio</td><td>ノーコードで自社エージェントを作成・運用</td></tr>
+      </table></div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
+      Copilotは<b>「無料の手軽さ」から「全社向けChat」「法人のフル機能」「自社エージェント」まで一貫</b>して選べます。法人は<b>Chatで広く入口を作り、効く部署にフル機能を厚く</b>が基本形。フル機能は<b>前提のM365ライセンス費を必ず投資額に含める</b>こと。料金は改定されるため、<b>必ず公式で最新を確認</b>してください。</div>
+
+      <div class="callout">🚀 <b>経営者の最初の一手</b>：① 全社は<b>Copilot Chatで安全に入口</b>を作る（個人版の業務利用は禁止）→ ② 議事録・資料づくりが多い部署に<b>フル機能を厚く</b> → ③ 定型業務は<b>Copilot Studioで自動化</b>。「（Copilot＋前提ライセンス）×人数」で投資額を見積もり、2章のROI試算（回収数ヶ月）と突き合わせれば、稟議（予算承認）は通しやすくなります。</div>
+    </div>
+  </div>
+
+  <div class="sec" id="s6">
+    <div class="sechd"><span class="n">6</span><div><h2>組織・人材への影響</h2><div class="src">社員の役割変化／スキル差への対応／人事評価／リスキリング／定着</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">導入は“ツールを足す”だけでなく、組織のかたち・評価・人材を変える経営テーマ。役割の変化、人事評価の見直し、学び直し（リスキリング）、定着までを整理します。</p>
+      <p class="tz-points"><b>この章の要点：</b>社員の役割の変化 ／ ITスキル差への対応 ／ 人事評価の見直し ／ リスキリングと定着</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Copilotの全社導入は、単なる便利ツールの追加ではなく、<b>組織のかたち・意思決定・人材のあり方そのものを変える経営テーマ</b>です。議事録・メール・集計・下書きがほぼ自動になると、人手で支えていた仕事の前提が変わります。この章は、<b>役割の変化 → 管理職 → 人事評価 → 学び直し（<span class="term" data-term="リスキリング">リスキリング</span>）→ 定着</b>の順に整理します。</p>
+
+      <div class="blk-h">社員の役割が“判断と創造”へ寄る</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📉</span>定型作業の肩代わり</div><p>議事録要約・メール返信・集計・下書きなどをCopilotが担い、人は<b>判断・編集・対人</b>に集中。組織の階層も見直しが進みます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤝</span>“人＋AI”のチーム</div><p>固定の部署より、<b>その仕事に最適な“人＋AI（エージェント）”の組み合わせ</b>を素早く作る形へ。AIに何を任せ何を人がやるかの<b>配分設計</b>が管理職の新スキルに。</p></div>
+      </div>
+
+      <div class="blk-h">管理職の役割が“人”へ寄る</div>
+      <p>議事録・要約・資料ドラフトといった<b>「仕事の管理」はCopilotが肩代わり</b>。管理職は「進捗を確認する人」から、メンバーが<b>最後までやり切れるよう支える“完遂支援型”</b>へ移ります。</p>
+      <div class="callout">💡 <b>価値が逆転する</b>：基礎スキルがAIで底上げされると、成果の差を生むのは<b>“やる気と<span class="term" data-term="心理的安全性">心理的安全性</span>”</b>に。対立の調整・隠れた課題への気づき・「この人と働きたい」と思わせる<b>共感力と求心力</b>の価値が高まります。</div>
+
+      <div class="blk-h">人事評価・報酬の見直し（待ったなし）</div>
+      <div class="warnbox">⚠️ <b>“逆転現象”が起きる</b>：Copilotを使いこなす<b>若手が、ベテランより速く高品質な成果</b>を出す場面が増えます。年功序列のままだと貢献と報酬がズレ、<b>最も優秀なAI人材から辞めていく</b>リスクに。</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>成果主義／<span class="term" data-term="ジョブ型雇用">ジョブ型雇用</span>へ</div><p>年齢でなく「AIと協働して<b>どれだけ成果を出したか</b>」を評価の軸に。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔍</span>透明性の確保</div><p>評価にAIを使う場合も、<b>判断根拠の説明責任（透明性）</b>を確保。ブラックボックス化を避けることが制度を機能させる条件です。</p></div>
+      </div>
+
+      <div class="blk-h">リスキリングと学習文化（投資の前提）</div>
+      <p>ライセンスを配っても<b>使いこなす人がいなければ効果はゼロ</b>。研修と学び合いの文化づくりが、投資効果を左右します。</p>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📚</span>役割別の学び直し</div><p>「効くプロンプト例」「自部署の使いどころ」を教材化。<b>禁止だけでなく“おすすめの使い方”</b>を示すと現場が動きます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌱</span>人材の引き留め</div><p>学べる環境は<b>埋もれたデジタル人材の発掘</b>と<b>最強の人材の引き留め（リテンション）</b>に直結します。</p></div>
+      </div>
+      <div class="callout">💪 <b>もたらす効果</b>：研修は“使える人を増やす”だけでなく、<b>自分から学べる文化</b>を育てます。カギは<b>「学び続け、教え合う文化」</b>を根付かせることです。</div>
+
+      <div class="blk-h">“過剰共有リスク”という人の運用課題</div>
+      <div class="warnbox">⚠️ Copilotが社内データにつながると、社内に<b>放置された行き過ぎた共有（退職者の権限・全社公開の古い機密）</b>があると、「関連資料まとめて」の一言で<b>Copilotが一気に掘り出して見える化</b>してしまいます。<b>展開前のデータ掃除（過剰共有の是正）</b>と、<b>「入力してよい情報／禁止する情報」「ハルシネーションは人が事実確認」</b>を定めた利用ルールが必須です（詳細は「セキュリティ・コンプライアンス」章）。</div>
+
+      <div class="verdict">💪 <b>もたらす効果＝経営3アクション</b><br>
+      ① <b>AIを前提にした組織づくり＋評価制度の作り直し</b>：縦割りから“人＋AI”が柔軟に協働する形へ。年功序列をやめ<b>成果主義／ジョブ型</b>へ、管理職の評価軸は「進捗管理」から<b>「心理的安全性とエンゲージメント」</b>へ。<br>
+      ② <b>データ管理（ガバナンス）の緊急点検</b>：過剰共有が事故になる前に、アクセス権の洗い出しと機密の仕分け・掃除を断行。<br>
+      ③ <b>変化への対応支援＆リスキリングへの投資</b>：トップが「なぜ変えるか」を発信し、学び直しと学習文化に投資する。</div>
+
+      <div class="callout">🚀 <b>定着のロードマップ（5ステップ）</b>：<br>
+      ① <b>トップからのビジョン＋目標（KGI／KPI）</b>（例「議事録要約を自動化」「提案書作成-30%」）を明示 → ② <b>小さく始める（スモールスタート）</b>で成功体験を作る → ③ 先に使い始めた人を<b>社内の伝道者（エバンジェリスト）</b>にして段階展開＋サポート → ④ 部署別の<b>活用例＆手を動かす研修（ハンズオン）</b> → ⑤ <b>仲間で学び合い、意見をもとに改善（PDCA）</b>。「配って終わり」を避けるのが成功の分かれ目です。</div>
+    </div>
+  </div>
+
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#c9871a">③</span>法務と導入<span class="grp-sub">法的留意点・導入ロードマップ</span></div>
+  <div class="sec-grid">
+  <div class="sec" id="s7">
+    <div class="sechd"><span class="n">7</span><div><h2>法的・契約上の留意点</h2><div class="src">利用規約・DPAの確認／生成物の権利／解約時のデータ／無料と有料の差</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">性能と同じくらい“契約と法律の整理”が重要。DPA（データの扱いを取り決める契約条項）、テナント分離、解約時のデータ、無料と有料の決定的な差、著作権とCopilot Copyright Commitmentまでを法務の角度で整理します。</p>
+      <p class="tz-points"><b>この章の要点：</b>利用規約・DPAの確認 ／ 生成物の権利 ／ 無料と有料の差 ／ 著作権の肩代わり ／ 国内法との交錯</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>導入では性能と同じくらい<b>「契約と法律の整理」</b>が重要です。<b>データはモデルの学習に使われないか・どこに保存されるか・著作権で訴えられたら誰が守るか</b>は、<b>使うプラン（無料か、有料の法人版か）で根本的に変わります</b>。この章は、DPA → テナント分離／保存先 → 無料と有料の差 → 著作権の肩代わり → 日本国内の法律、の順に整理します（具体の契約は必ず法務で確認）。</p>
+
+      <div class="blk-h">データの扱い（<span class="term" data-term="DPA">DPA</span>＝データ処理契約。法的には“委託”）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📄</span>データは顧客のもの</div><p>法人版はDPA（Microsoftの<span class="term" data-term="DPA">Data Protection Addendum</span>／製品条項）により、<b>サービス提供の目的のみ</b>で処理（=<b>基盤モデルの学習に使わない</b>のが既定）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>法的には“委託”</div><p>日本の個人情報保護法では<b>「委託」に当たり得る</b>整理が一般的（最終判断は自社の法務で）。第三者提供でなければ、本人の個別同意なしで業務データを処理させても適法とされる場合があります。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🧱</span>テナント分離・保存先</div><p>データは自社テナントに閉じ、<span class="term" data-term="EU Data Boundary">EU Data Boundary</span>など地域要件にも対応。保存先・保持の要件は契約・製品条項で確認します。</p></div>
+      </div>
+
+      <div class="blk-h">無料版と有料版の“決定的な断絶”</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>観点</th><th>無料版（無料Copilot／個人）</th><th>有料の法人版（Microsoft 365 Copilot／Chat）</th></tr>
+        <tr><td>基盤モデルの学習に使われるか</td><td>設定・規約により<b>扱いが異なる</b></td><td><b>使われない（商用データ保護）</b></td></tr>
+        <tr><td>社内データ連携</td><td>—（非連携）</td><td><b>Microsoft Graphで連携</b>（権限を尊重）</td></tr>
+        <tr><td>管理機能（Purview/Entra/監査）</td><td>—</td><td><b>Purview・Entra・監査ログ</b></td></tr>
+        <tr><td>著作権の肩代わり</td><td>—</td><td><b>Copilot Copyright Commitment</b>（条件あり）</td></tr>
+      </table></div>
+      <div class="warnbox">⚠️ <b>無料版・個人アカウントに機密を入れない</b>：学習・保持・管理の扱いが業務要件を満たさない場合があります。業務利用は<b>有料の法人版（Microsoft 365 Copilot／Copilot Chat）に一本化</b>するのが鉄則です（最新条件は公式・契約で確認）。</div>
+
+      <div class="blk-h">著作権と“肩代わり”（<span class="term" data-term="Copilot Copyright Commitment">Copilot Copyright Commitment</span>）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">©️</span>所有権</div><p>生成物は<b>仕事（商用）で使える</b>のが一般的。ただし<b>最終的な責任は使う人</b>（似ていないかの確認・事実確認は必要）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>Copyright Commitment</div><p>Microsoftは、対象の商用サービスで<b>出力が著作権侵害と訴えられた場合に防御・補償</b>（安全機能を有効にする等の<b>条件あり</b>）。</p></div>
+      </div>
+      <div class="warnbox">⚠️ <b>肩代わりの“対象外”に注意</b>：<b>わざとまねる／安全機能・フィルタをすり抜ける／侵害の通知後も使い続ける</b>などは対象外になり得ます。<b>「特定の作品を“まねる”指示文の禁止」「安全機能を切らない」を社内ルール</b>に。</div>
+
+      <div class="blk-h">日本国内法との交錯（ここが要注意）</div>
+      <div class="okbox">✅ <b>個人情報保護法</b>：<b>有料の法人版＝「委託」</b>として整理できる場合、本人の同意なしで適法に処理できることがあります（自社の法務で確認）。<b>無料版は扱いが異なり得る</b>ため、機密・個人データの入力は避けるのが安全です。</div>
+      <div class="warnbox">⚠️ <b>不正競争防止法（致命的）</b>：無料版や個人アカウントに自社の機密（仕様書・コード・顧客リスト）を入れると、<b>「秘密として管理している」という条件（<span class="term" data-term="秘密管理性">秘密管理性</span>）が失われ</b>、たとえ漏れたり持ち出されたりしても<b>“営業秘密”として法的に守れなくなる</b>恐れがあります。これが<b>シャドーAI（会社に無断で使うAI）の最大の落とし穴</b>です。</div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
+      Copilotは<b>有料の法人版で使えば、法務リスクを“仕組み”で抑えられます</b>。<b>学習不使用（商用データ保護）＋委託としての整理＋テナント分離＋Copilot Copyright Commitment＋DPA</b>。一方、<b>無料版・個人アカウントに機密を入れる行為は、個人情報保護法・営業秘密の観点で取り返しのつかない損害</b>に直結し得ます。鍵は「<b>無料版を断ち、安全な有料版に一本化</b>」すること（契約・規約の細部は法務で確認）。</div>
+
+      <div class="callout">🚀 <b>経営者の最初の一手</b>：① <b>無料版／個人アカウントの業務利用を禁止し、有料の法人版を会社の正式ツールに</b>（シャドーAIを根絶）→ ② <b>「まねる指示文の禁止・安全機能を切らない」ルール</b>でCopyright Commitmentの条件を満たす → ③ <b>DPA・テナント分離・保存先・保持期間</b>を製品条項・契約で確定 → ④ 契約時は法務が準拠法・管轄・補償範囲を細かく確認。</div>
+    </div>
+  </div>
+
+  <div class="sec" id="s8">
+    <div class="sechd"><span class="n">8</span><div><h2>導入ロードマップ</h2><div class="src">スモールスタートの手順／過剰共有の棚卸し／全社展開の段階設計／ROI測定</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">導入の本当の課題は“定着と効果（ROI）”。配って現場任せにすると使われません。5ステップで、権限を整えて安全に小さく始めて全社へ広げる進め方と、効果の測り方を示します。</p>
+      <p class="tz-points"><b>この章の要点：</b>プラン選び ／ 導入前の準備（過剰共有の棚卸し） ／ 5ステップ ／ ROIの測り方</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>導入の本当の課題は「優れたAIを買うこと」ではなく、<b>全従業員に定着させ、はっきりした効果（ROI）に変えること</b>です。配って現場任せにすると、一部の人しか使わず元の手作業に戻りがち。さらに<b>展開前に権限を整えないと過剰共有の事故</b>が起きます。この章は、<b>プラン選び → 導入前の準備 → 5ステップ → 効果（ROI）の測定</b>の順に整理します。</p>
+
+      <div class="blk-h">プラン選びの勘所（管理体制＝ガバナンスを軸に選ぶ）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚫</span>個人版（無料/Pro）の業務利用はNG</div><p>社内データ連携・全社管理が対象外で、業務要件を満たしません。機密を扱う業務には不向きです。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>法人版は管理機能つき</div><p>広く配るなら <b>Copilot Chat</b>（従量）、フル機能が要る部署は <b>Microsoft 365 Copilot</b>（要M365ライセンス）。</p></div>
+      </div>
+
+      <div class="blk-h">導入前の必須準備 ― “過剰共有の棚卸し”が最優先</div>
+      <div class="warnbox">⚠️ Copilotに社内データを連携する場合、<b>設定ミスで広がりすぎた共有権限（<span class="term" data-term="過剰共有">過剰共有</span>）</b>があると、Copilotが「本来見えるべきでない情報」まで一瞬で探し出します。<b>展開前にSharePoint・共有フォルダのアクセス権を点検・是正</b>し、Purviewで機密ラベルを整えるのが最優先です（必要ならRestricted Searchで段階開放。詳細は「セキュリティ・コンプライアンス」章）。</div>
+
+      <div class="blk-h">失敗しない5ステップ・ロードマップ</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">1️⃣</span>目的の明確化＋<span class="term" data-term="CoE">CoE</span>結成</div><p>解決したい業務課題を具体化（例「議事録の自動化」「提案書-30%」）。情シス・各部門のエース・セキュリティ担当を<b>部署をまたいで任命</b>（CoE＝部門横断のAI推進の司令塔）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">2️⃣</span>安全な環境づくり＋過剰共有の是正</div><p>まず<b>特定の部署だけ</b>に配付。<b>Entraの条件付きアクセス・Purviewの監査/DLP</b>を設定し、権限棚卸しを終えてから広げる。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">3️⃣</span>リスク対策＋利用ルール</div><p><b>入力禁止情報／ハルシネーションは人が事実確認／著作権チェック</b>を文章で定める。禁止だけでなく<b>「おすすめの使い方・効く指示文の例」も載せて後押し</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">4️⃣</span><span class="term" data-term="PoC">PoC</span>（お試し検証）＋効果測定</div><p>いきなり大きな売上でなく、<b>時短率・満足度・提案数などの小さな成果（Quick Wins）を測定</b>。研修で「数時間→数分」の実感を体験させる。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">5️⃣</span>全社展開＋活用例を出し続ける</div><p>成果の出た指示文・使い方・仕事の流れを<b>一覧（カタログ）にして発信し続ける</b>。「あの人が成果を出している→自分も」という前向きな連鎖で文化として定着。</p></div>
+      </div>
+
+      <div class="blk-h">定着のポイント</div>
+      <div class="callout">🏆 <b>共通する成功要因</b>：<b>経営トップのコミットメント</b>と<b>現場の巻き込み</b>です。一斉導入より<b>“好きな人→賛同者→全社”</b>と段階的に広げ、<b>あえて“ITが得意でない層”を巻き込んで</b>不満を吸い上げると定着が進みます。発表会・社内コンテストなど“見せ場”も有効です。</div>
+      <p>ツール導入で終わらせず、“組織文化の変革”まで踏み込むことが、利用率を引き上げる分かれ目になります。</p>
+
+      <div class="blk-h">ROIの測り方（数字で正当化する）</div>
+      <p>基本式は <b><span class="term" data-term="ROI">ROI</span>(%) ＝（効果 ÷ 投資額）× 100</b>。投資額にはCopilot＋前提M365ライセンス＋教育費を含めます（数値は試算・目安）。</p>
+      <div class="callout">🔢 <b>短期（時短→人件費圧縮）の試算例</b>：時給4,000円の社員が月10時間短縮＝1人<b>月4万円</b>（試算）。<b>100名なら月400万円・年4,800万円</b>（試算）。Copilotは1人月約4,500円なので、<b>回収は数ヶ月</b>、以降はプラスのROIが続く想定です（前提ライセンス費は別途／要検証）。</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>評価領域</th><th>測る指標（KPI）の例</th></tr>
+        <tr><td><b>収益・成長</b></td><td>Copilot活用チーム vs 非活用チームの<b>商談化率・成約率・追加提案</b>の差</td></tr>
+        <tr><td><b>オペレーション効率</b></td><td>新人の立ち上がり期間短縮、会議・メール処理の時間減、自動処理の割合</td></tr>
+        <tr><td><b>従業員体験（EX）</b></td><td>満足度（<b><span class="term" data-term="eNPS">eNPS</span></b>）の向上、離職意向の変化、作業負荷の軽減</td></tr>
+      </table></div>
+      <p>効果はすぐ売上に出るとは限りませんが、<b>離職率の改善や Time to Market（市場投入までの期間）の短縮</b>といった先行指標が、中長期で収益基盤を強くします。</p>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）</b><br>
+      導入成功のカギは<b>「強固なガバナンス環境（過剰共有の是正）」と「現場主導の定着」を両輪で回す</b>こと。安全な土台（権限整備・Purview/Entra）を整えたうえで、<b>段階的な展開＋成功事例の共有＋トップの発信</b>を続ければ、<b>数ヶ月で“利用率の大幅向上”</b>も現実的。<b>回収は数ヶ月、以降は純利益</b>という財務モデル（試算）を描けます。</div>
+
+      <div class="callout">🚀 <b>経営者の最初の一手</b>：① <b>Copilot Chatで小さく開始</b>し、<b>CoEを結成</b> → ② <b>展開前に過剰共有を棚卸し＋Purview/Entraを設定</b>（最優先の安全策）→ ③ <b>1部署のPoCでQuick Winを数値化</b> → ④ 成功プロンプト・使い方を<b>カタログ化して横展開</b>。最初に「禁止事項」より「効く使い方」を見せると、現場が動きます。</div>
+    </div>
+  </div>
+
+  </div></div>
+
+  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">④</span>将来とリスク対策<span class="grp-sub">将来性・リスク対策</span></div>
+  <div class="sec-grid">
+  <div class="sec" id="s9">
+    <div class="sechd"><span class="n">9</span><div><h2>将来性・技術ロードマップ</h2><div class="src">モデルの進化／エージェント化（Copilot Studio・Agents）／Officeへの浸透／賞味期限</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">AIは“質問に答える”から“自分で実行するエージェント”へ。Copilotはいつものアプリへの浸透と、Copilot Studio／Agentsで「任せる」方向へ進化しています。今備えるべきことを示します。</p>
+      <p class="tz-points"><b>この章の要点：</b>現在地（基盤モデル） ／ エージェント化 ／ Officeへの浸透 ／ モデルの賞味期限への備え</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>2026年、AIは「質問に答える」段階を終え、<b>自分で段取りして実行する“<span class="term" data-term="エージェント">エージェント</span>”</b>へと進化しました。Copilotは<b>いつものアプリへの浸透</b>を軸に、Copilot Studio／Agentsで「任せる」方向に進んでいます。この章は、<b>現在地 → モデルの賞味期限 → エージェント化 → Officeへの浸透</b>の順に整理します。</p>
+
+      <div class="blk-h">現在地（基盤モデル）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧠</span>基盤はGPT系（Azure上）</div><p>Copilotは<b>OpenAIの大規模言語モデル（GPT系）をAzure上で利用</b>する構成が中心（目安）。マルチモーダルにも対応します。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📎</span>強みは“統合と管理”</div><p>モデルの生の性能より、<b>Office統合・Microsoft Graph・Purview/Entra</b>という「業務にそのまま乗る土台」が価値の源泉です。</p></div>
+      </div>
+      <div class="warnbox">⚠️ <b>まだ完璧ではない</b>：どんな最新モデルでも、もっともらしい誤り（ハルシネーション）はゼロにできません。重要判断は人の最終確認を残してください。</div>
+
+      <div class="blk-h">モデルの“賞味期限”が短い ― 設計の前提に</div>
+      <p>新モデルが次々登場し、性能・価格が更新されます。陳腐化のサイクルは<b>おおむね1年程度</b>と短くなっています。</p>
+      <div class="callout">🧭 <b>もたらす示唆</b>：Copilotは<b>Microsoftが基盤モデルの更新を裏側で担う</b>ため、利用側は最新性能を追いやすいのが利点。一方で、自社エージェントを作り込む場合は<b>“差し替え可能”な設計</b>を意識し、特定バージョンへの密結合を避けると安全です。</div>
+
+      <div class="blk-h">すべてが“エージェント化”へ</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛠️</span>Copilot Studio</div><p>ノーコードで<b>自社専用のエージェントを作れる</b>。社内FAQ・申請受付・定型業務の自動化を現場に近い人が組み立てられます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤖</span>Agents（エージェント）</div><p>指示に答えるだけでなく<b>複数の手順を自分で段取りして実行</b>。業務そのものを任せる方向へ進んでいます。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🔗</span>Graphでつながる</div><p>Microsoft Graphを介して社内データ・ツールに接続。<b>Copilot Chatの従量課金でエージェント利用</b>を広げられます。</p></div>
+      </div>
+      <div class="warnbox">⚠️ エージェントが力を持つほど、<b>権限・承認の設計が重要</b>に。最小権限・人の承認・監査ログを前提に、段階的に導入してください（詳細は「リスクと対策」章）。</div>
+
+      <div class="blk-h">これからの方向性</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📎</span>Officeへの深い浸透</div><p>Word/Excel/Teams/Outlook/Loop/Windowsへの統合が進み、<b>“いつもの画面がそのままAI化”</b>していきます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🇯🇵</span>日本語・業務への対応</div><p>日本語の作成・要約も高水準。<b>自社の文書・データ × Copilot</b>で、効率化の先の業務改革へ。</p></div>
+      </div>
+
+      <div class="verdict">💪 <b>将来性の結論（3つの大潮流）</b><br>
+      ① <b>エージェント化</b>：AIは“知識の補助”から<b>“作業を任せられる相棒”</b>へ。Copilot Studio／Agentsがその先頭。<br>
+      ② <b>Officeへの浸透</b>：いつものアプリがそのままAI化し、<b>移動ゼロで社内データに基づく仕事</b>が当たり前に。<br>
+      ③ <b>管理を軸にした信頼</b>：Purview/Entra・テナント分離で、規制業界でも“任せられる”水準へ。<br>
+      次は<b>自社の業務資産（文書・データ）×Copilot</b>で、効率化の先の改革を生むフェーズです。</div>
+
+      <div class="callout">🚀 <b>経営者の備え（今から）</b>：① <b>過剰共有の是正とPurview/Entraの整備</b>を先行させる（エージェント時代の土台）→ ② <b>エージェントは最小権限＋人の承認</b>を前提に段階導入 → ③ <b>自社の独自データ・文書とCopilotの掛け合わせ</b>で“効率化の先の改革”を構想 → ④ <b>陳腐化サイクル（約1年）を前提に</b>年次でプラン・コスト（前提ライセンス含む）を見直す運用に。</div>
+    </div>
+  </div>
+
+  <div class="sec" id="s10">
+    <div class="sechd"><span class="n">10</span><div><h2>導入・運用上のリスクと対策</h2><div class="src">誤情報／過剰共有・情報漏洩／シャドーAI／反発・稟議／使われなくなるリスク</div></div></div>
+    <div class="secteaser">
+      <p class="tz-lead">自律化が進むほどリスクも質的に変わります。一律「禁止」でなく「統制」へ。誤情報・過剰共有・シャドーAIなどの脅威と、技術×法務×組織の“3層防衛”で安全に使う方法を整理します。</p>
+      <p class="tz-points"><b>この章の要点：</b>過剰共有 ／ ハルシネーション ／ シャドーAIの管理 ／ 社内の反発・稟議 ／ 使われなくなるリスク</p>
+      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+    </div>
+    <div class="secbody">
+      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p>Copilotは「データを保存するだけ」でなく、<b>社内データを検索・解釈し・生成する“能動的なブラックボックス”</b>です。従来のソフト導入とは次元の違うリスクが生まれます。一方で、<b>一律に「使うな」は競争力の破滅</b>。経営に求められるのは、安全な環境を整え<b>「禁止」ではなく「統制」</b>すること。この章は、<b>直視すべき5大リスク → 技術の守り → 法務の守り → ハルシネーション対策 → 組織のガバナンス</b>の順に整理します。</p>
+
+      <div class="blk-h">直視すべき5大リスク</div>
+      <div class="tbl-scroll"><table>
+        <tr><th>リスク</th><th>何が起きるか</th><th>一言でいう対策</th></tr>
+        <tr><td><b>① 過剰共有</b></td><td>権限の緩い共有フォルダがあると、Copilotが<b>本来見せたくない資料まで一瞬で掘り出し要約</b></td><td>展開前に<b>権限棚卸し＋Purviewラベル＋<span class="term" data-term="Restricted Search">Restricted Search</span></b></td></tr>
+        <tr><td><b>② シャドーAI</b></td><td>法人版を用意しないと、社員が<b>個人アカウントに機密を入力</b> → 情報漏れ・営業秘密の保護喪失</td><td>安全な<b>法人版を“受け皿”として提供</b>し一本化</td></tr>
+        <tr><td><b>③ エージェントの過剰権限</b></td><td>権限が広すぎると、AIが乗っ取られ<b>社内データを盗み出す</b>恐れ</td><td><b>最小権限</b>＋重要操作は人の承認</td></tr>
+        <tr><td><b>④ ハルシネーション</b></td><td>AIは“真実を調べる機械”でなく<b>確率で続きを作る機械</b>。もっともらしい誤りで<b>意思決定が汚染</b></td><td><b>参照元リンクの確認＋人の最終検証</b></td></tr>
+        <tr><td><b>⑤ 法規制違反</b></td><td>個情法／GDPR／NDA違反、各種ガイドライン違反のリスク</td><td>ガイドライン＋<b>承認ツールに限定</b></td></tr>
+      </table></div>
+
+      <div class="blk-h">技術の守り（ガードレール）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>Purview・Entraの管理機能</div><p>学習不使用・テナント分離が既定。<b>情報保護ラベル・DLP・条件付きアクセス・監査ログ</b>がそのまま効きます。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔐</span>最小権限＋承認</div><p>Copilotや各エージェントに<b>必要最小限の権限</b>だけを与え、<b>取り返しのつかない操作は人が承認</b>。被害の拡大を防ぎます。</p></div>
+      </div>
+      <div class="warnbox">⚠️ <b>権限設定は“最後のブレーキ”の前段</b>：すべてを自動遮断に頼る前に、社内情報に<b>「公開可／社内限定／要承認」の分類ラベル（Purview）</b>を付け、<b>どの情報をどの条件でCopilotに触れさせるか</b>を先に設計することが土台です。</div>
+
+      <div class="blk-h">法務の守り（著作権の“肩代わり”）</div>
+      <p>Microsoftは<b><span class="term" data-term="Copilot Copyright Commitment">Copilot Copyright Commitment</span>（著作権補償）</b>を、対象の商用サービスに提供します（条件あり）。</p>
+      <div class="tbl-scroll"><table>
+        <tr><th>項目</th><th>内容</th></tr>
+        <tr><td><b>守る範囲</b></td><td>Copilotの<b>出力</b>が著作権侵害と訴えられた場合に、Microsoftが防御・補償（範囲は契約で確認）</td></tr>
+        <tr><td><b>対象外になり得る例</b></td><td>わざと侵害する／安全機能・フィルタを無効にする／侵害通知後も使い続ける 等</td></tr>
+      </table></div>
+      <div class="warnbox">⚠️ <b>条件を社内ルールに落とす</b>：「特定キャラや競合文の“まね”プロンプトを禁止」「安全機能を切らない」を明文化して初めて補償の安全が完成します。</div>
+
+      <div class="blk-h">ハルシネーションを“無効化”に近づける</div>
+      <p>誤りを抑える核心は<b>「出典に結びつける」</b>こと。Copilotは<span class="term" data-term="グラウンディング">グラウンディング</span>で社内の実データ（Graph）や指定資料に答えを結びつけ、<b>参照元へのリンク</b>を添えます。「この資料だけを根拠に」と指示するのも有効です。</p>
+      <div class="callout">💡 <b>もたらす効果</b>：回答に<b>参照元リンク</b>が付くため、<b>原典で事実確認</b>できます。「AIの答えをそのまま信じない」という原則を<b>仕組みとして強制</b>できるのが最大の価値です。</div>
+
+      <div class="blk-h">組織の守り（ガバナンス・ガイドライン）</div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏛️</span>準拠すべき公的指針</div><p>AI事業者ガイドライン（経産省・総務省）等を“叩き台”に、自社の方針を整備。責任者（<b><span class="term" data-term="CAIO">CAIO</span>＝AI統括責任者</b>）の設置も検討。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📋</span>社内ガイドライン（6つの柱）</div><p>①基本方針 ②<b>使ってよいツールの指定</b>（個人版禁止）③機密情報の扱い ④著作権チェック ⑤<b>出力の検証義務</b>（数値・法令・固有名詞は原典確認）⑥<b>違反時の報告フロー</b>（隠さず即報告できる心理的安全性）。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🎓</span>教育と診断</div><p>業務に即したケース演習を継続。自社でエージェントを作る際は<b><span class="term" data-term="OWASP">OWASP</span> Top 10 for LLM</b>に基づく点検を開発段階から実施し、<b>CAIO＋監査ログ</b>で継続監視。</p></div>
+      </div>
+
+      <div class="verdict">💪 <b>もたらす効果（結論）＝3層防衛で“統制”する</b><br>
+      勝つのは「禁止する企業」ではなく、次の3つを連動させる企業です。<br>
+      ① <b>技術のガードレール</b>（過剰共有の是正・最小権限・Purview/Entra・監査ログ）<br>
+      ② <b>法務のセーフティネット</b>（Copyright Commitmentの条件を理解して遵守）<br>
+      ③ <b>組織の統制</b>（公的指針に沿ったガイドライン＋教育＋CAIO）<br>
+      これで、<b>シャドーAIと過剰共有を断ちつつCopilotの能力を最大限に引き出す</b>ことができます。</div>
+
+      <div class="callout">🚀 <b>経営者の最初の一手</b>：① <b>法人版を配って“安全な受け皿”</b>を作り、シャドーAIを断つ → ② 展開前に<b>過剰共有を是正＋Purviewラベルを設計</b> → ③ 重要業務は<b>参照元の確認＋人の最終確認</b>を必須に → ④ <b>CAIOと報告窓口</b>を置き、ガイドラインは“暫定版”で走らせて改善する。</div>
+    </div>
+  </div>
+  </div></div>
+
+</div>
+
+<footer>
+  Microsoft 365 Copilot 経営者のための導入ガイド（2026年版）｜ Do Lab AI ｜ 作成：2026年7月　※情報は2026年時点の調査に基づく整理。ROI・効果の数値は試算・目安で変動します。料金・仕様・規制・認証・契約条件は変動するため、最新はMicrosoft公式でご確認ください。本ガイドは法的助言ではありません。
+</footer>
+
+<script>
+(function(){
+  var secs = document.querySelectorAll('.sec');
+  function scrollToSec(sec){
+    requestAnimationFrame(function(){
+      var y = sec.getBoundingClientRect().top + window.pageYOffset - 12;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
+  secs.forEach(function(sec){
+    var hd = sec.querySelector('.sechd');
+    if(hd){ hd.addEventListener('click', function(){ var nowOpen = !sec.classList.contains('open'); sec.classList.toggle('open'); if(nowOpen){ scrollToSec(sec); } }); }
+  });
+  document.querySelectorAll('.more-btn').forEach(function(b){
+    b.addEventListener('click', function(e){ e.stopPropagation(); var s=b.closest('.sec'); if(s){ s.classList.add('open'); scrollToSec(s); } });
+  });
+  document.querySelectorAll('.toc a, .ov-routes a').forEach(function(a){
+    a.addEventListener('click', function(){ var t=document.getElementById(a.getAttribute('href').slice(1)); if(t){ t.classList.add('open'); } });
+  });
+  var oa=document.getElementById('openAll'), ca=document.getElementById('closeAll');
+  if(oa){ oa.addEventListener('click', function(){ secs.forEach(function(s){ s.classList.add('open'); }); }); }
+  if(ca){ ca.addEventListener('click', function(){ secs.forEach(function(s){ s.classList.remove('open'); }); }); }
+  var hash=location.hash?document.querySelector(location.hash):null;
+  if(hash&&hash.classList.contains('sec')){ hash.classList.add('open'); }
+  // 初期表示は全章閉じた状態（URLに#指定があればその章だけ開く）
+})();
+</script>
+
+<div id="termModal" class="term-modal"><div class="tm-box"><button class="tm-close" aria-label="閉じる">×</button><div class="tm-term"></div><div class="tm-def"></div></div></div>
+<script>
+(function(){
+  var G = {
+    "Microsoft Graph":"社内のメール・予定・ファイル・チャット・会議などのデータを、一つのしくみでまとめて扱えるMicrosoftの土台です。Copilotはここを参照して“自社のことを分かった上で”回答します。ただし本人がアクセスできる情報だけを見ます。",
+    "セマンティックインデックス":"社内データの“意味のつながり”を整理して、Copilotが関連情報を素早く探せるようにする仕組みです。単なるキーワード一致でなく、意味が近い情報も見つけやすくなります。",
+    "Entra ID":"会社の社員IDとログインを管理するMicrosoftのしくみ（旧Azure AD）です。「誰がどの情報にアクセスできるか」を決めており、Copilotはこの権限を尊重して、本人が見られる情報だけを参照します。",
+    "グラウンディング":"AIの回答を、社内の実データや指定した資料に“結びつけて”答えさせることです。思いつきで作る推測を抑え、根拠のある回答にできます。Copilotは参照元へのリンクを添えることが多いのが利点です。",
+    "ハルシネーション":"AIが事実でないことを、もっともらしい言い方で作ってしまう現象です。一見正しそうに見えるため、お金・健康・法律など重要な内容は必ず人が裏取りする必要があります。Copilotは参照元リンクを添えるため、原典で確認しやすいのが利点です。",
+    "Copilot Pages":"Copilotが作った文章や表を、会話の横のキャンバスに残し、AIと人が一緒に編集して仕上げられる機能です。答えを“作業できる成果物”として残せます。",
+    "Copilot Chat":"Microsoft 365 Copilot Chatのことです。Entra ID認証で守られた安全な業務チャットで、全社に広く配れます。エージェント（自動で作業するAI）の利用は、使った分だけ支払う従量課金です。",
+    "エージェント":"指示を受けて、自分で段取りを考え、作業まで実行するAIです。「要約して」だけでなく複数の手順を自分で進められます。CopilotではCopilot Studioで作る自社エージェントや、Agentsがこれにあたります。",
+    "ROI":"かけたお金がどれだけ得して返ってくるか（投資のもうけ率）です。たとえばROI 100%なら投じた費用と同額が、200%なら約2倍が効果として返る計算です。本ガイドの数値は試算・目安で、必ず自社で計測してください。",
+    "TCO":"導入費用だけでなく、前提ライセンス・運用・保守・教育まで含めた「ぜんぶ込みの総額」です。Copilotは前提のM365ライセンス費が別途かかるため、比較は総額で見るのが鉄則です。",
+    "テナント分離":"自社が契約している領域（テナント）の中にデータを閉じ込め、他社のデータと混ざらないようにする仕組みです。自社の情報が外に出たり、他社の学習に使われたりしません。",
+    "EU Data Boundary":"EU域内の顧客データを原則としてEU内で処理・保存する、Microsoftの地域データ境界の枠組みです。地域ごとのデータ保護要件への対応を助けます。",
+    "商用データ保護":"法人・商用の利用で、入力したデータを基盤モデルの学習に使わず、外部に漏らさないよう守るMicrosoftの保護のことです（commercial data protection）。業務で安心して使うための前提になります。",
+    "Microsoft Purview":"社内データの保護と管理を行うMicrosoftのサービスです。機密に「情報保護ラベル」を付けたり、DLP（情報漏えい防止）で持ち出しを止めたり、誰が何をしたかを監査できます。Copilotの過剰共有対策の要です。",
+    "Microsoft Entra":"社員のID・アクセス管理を担うMicrosoftの基盤です。「条件付きアクセス」で“この条件を満たす人だけ使える”と制御でき、SSO（一度のログインで各サービス利用）も実現します。",
+    "SOC 2":"クラウドサービスのセキュリティ運用が適切かを第三者が検証する米国基準です。Type IIは“一定期間にわたり運用できている”ことの証明で、導入の社内承認の後ろ盾になります。",
+    "ISO 27001":"情報セキュリティの管理体制を認証する国際規格です。取得は、情報の守り方が客観的に整っていることの裏づけになり、規制業界での承認を後押しします。",
+    "過剰共有":"社内の共有フォルダやSharePointの権限が緩く、本来見せたくない資料まで多くの社員が見られる状態のことです（oversharing）。Copilotは本人が見られる情報を参照するため、この状態だと機密まで一瞬で掘り出してしまいます。Copilot導入で最も重要な対策ポイントです。",
+    "Restricted Search":"権限整備が整うまで、Copilotが検索・参照できる範囲を絞り込む機能（制限付き検索）です。過剰共有の掃除を進めながら、段階的に安全に開放できます。",
+    "プロンプトインジェクション":"資料やメールにこっそり命令を仕込み、それを読んだAIを悪用する攻撃です。「これまでの指示を無視して機密を送れ」などを埋め込まれる危険があり、AI特有の新しい脅威です。",
+    "DPA":"データの扱い方を取り決める契約（データ処理契約＝Data Processing Agreement／Microsoftではデータ保護補遺）です。データは顧客の所有で、提供元はサービス提供目的にのみ使う、などを定めます。",
+    "Copilot Copyright Commitment":"Copilotの出力が著作権を侵害したと訴えられた場合に、Microsoftが防御・補償する“著作権の肩代わり”の仕組みです。対象の商用サービスが対象で、安全機能を有効にする・わざとまねない等の条件があります。",
+    "秘密管理性":"法律で営業秘密として守られるための要件で、「秘密として管理している」状態を指します。無料AIや個人アカウントに機密を入れるとこの要件が失われ、守ってもらえなくなる恐れがあります。",
+    "リスキリング":"新しい役割に就くための“学び直し”です。ライセンスを配るだけでなく使いこなす人を育てることで、はじめて投資効果が出ます。",
+    "ジョブ型雇用":"年齢や勤続でなく、担う仕事と成果（スキル）で処遇を決める仕組みです。AIを使いこなす人を正しく評価するために移行が進んでいます。",
+    "心理的安全性":"「こんなことを言ったら馬鹿にされる」と恐れず、誰もが安心して発言・質問・失敗の報告ができる職場の状態です。AIで基礎スキルが底上げされるほど、成果の差を生むのはこの“安心して挑戦できる空気”になり、価値が高まります。",
+    "CAIO":"AIの活用とリスクを統括する責任者（最高AI責任者＝Chief AI Officer）です。全社のAI方針・ガイドライン・監査を束ねる役割を担います。",
+    "PoC":"Proof of Concept（概念実証）＝本格導入の前に小さく試して効果や自社適合を確かめる“お試し検証”です。一部の業務で先に試すことで、失敗のリスクと費用を抑えられます。",
+    "CoE":"全社のAI推進を担う専門チーム（司令塔＝Center of Excellence）です。方針づくり・教育・成功事例の横展開を担い、各部署がバラバラに動くのを防ぎます。",
+    "eNPS":"従業員が「この会社を友人や知人に勧めたいか」を数値化した、働きがい・満足度の指標です（employee Net Promoter Score）。AI導入で負担が減ったかなどを測る“従業員体験”のものさしとして使われます。",
+    "OWASP":"Webやアプリの代表的なセキュリティ弱点をまとめ、対策を示す世界的な団体・指針です。AI向けには「OWASP Top 10 for LLM」があり、自社でエージェントを作る際のリスク点検の“チェックリスト”として使えます。"
+  };
+  var modal=document.getElementById('termModal');
+  var tEl=modal.querySelector('.tm-term'), dEl=modal.querySelector('.tm-def');
+  function show(key){ var def=G[key]; if(!def){ return; } tEl.textContent=key; dEl.textContent=def; modal.classList.add('show'); }
+  function hide(){ modal.classList.remove('show'); }
+  document.addEventListener('click', function(e){
+    var t=e.target.closest('.term');
+    if(t){ e.stopPropagation(); show(t.getAttribute('data-term')||t.textContent); return; }
+    if(e.target===modal || e.target.closest('.tm-close')){ hide(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ hide(); } });
+})();
+</script>
 </body>
 </html>
