@@ -204,6 +204,126 @@
   #s10 .sechd{background:linear-gradient(135deg,#c2557e,#a13c62);} #s10 .blk-h{border-left-color:#c2557e;background:linear-gradient(90deg,rgba(194,85,126,.13),transparent 70%);} #s10 .feat-grid .feat-card{border-left:5px solid #c2557e;} #s10 .feat-card .fc-ic{background:#fbe9f0;} #s10 .verdict{border-left-color:#c2557e;}
   #s11 .sechd{background:linear-gradient(135deg,#4f9d3a,#3c7d2b);} #s11 .blk-h{border-left-color:#4f9d3a;background:linear-gradient(90deg,rgba(79,157,58,.13),transparent 70%);} #s11 .feat-grid .feat-card{border-left:5px solid #4f9d3a;} #s11 .feat-card .fc-ic{background:#ecf6e7;} #s11 .verdict{border-left-color:#4f9d3a;}
   #s12 .sechd{background:linear-gradient(135deg,#8a6d3b,#6d5429);} #s12 .blk-h{border-left-color:#8a6d3b;background:linear-gradient(90deg,rgba(138,109,59,.13),transparent 70%);} #s12 .feat-grid .feat-card{border-left:5px solid #8a6d3b;} #s12 .feat-card .fc-ic{background:#f2ece1;} #s12 .verdict{border-left-color:#8a6d3b;}
+
+  /* ===== 図解（インラインSVG／表）用ラッパ（紺単色系・レスポンシブ・印刷対応） ===== */
+  .figure{margin:18px 0;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 2px 10px rgba(11,37,69,.05);}
+  .figure svg{display:block;width:100%;height:auto;}
+  .figcap{font-size:13.5px !important;color:var(--sub);margin-top:8px !important;line-height:1.65 !important;}
+  .figcap b{color:var(--gpt-d);}
+  .figure .svg-t{font-family:inherit;fill:var(--ink);}
+  .figure .svg-tw{font-family:inherit;fill:#fff;}
+  .figure .svg-ts{font-family:inherit;fill:var(--sub);}
+  @media print{.figure{break-inside:avoid;}}
+
+  /* =========================================================
+     UIリニューアル（#95）：紺統一／ヒーロー・目次圧縮／章＝1行リスト／2カラム／章ビュー
+     ========================================================= */
+  /* --- 配色を紺（ネイビー）基調に統一 --- */
+  :root{--gpt:#1e3a63;--gpt-d:#12294a;--gpt-bg:#eaf0f7;--navy:#0f2544;--line:#dde5ef;--bg:#f4f7fb;}
+  .hero{background:linear-gradient(135deg,#0f2544,#1e3a63 55%,#37567f)!important;padding:18px 0 16px!important;}
+  .grp-n{background:#1e3a63!important;box-shadow:0 2px 8px rgba(15,37,68,.2)!important;}
+  .sechd{background:linear-gradient(135deg,#20406e,#12294a)!important;}
+  .blk-h{border-left-color:#1e3a63!important;background:linear-gradient(90deg,rgba(30,58,99,.10),transparent 70%)!important;}
+  .feat-grid .feat-card{border-left-color:#1e3a63!important;}
+  .feat-card .fc-ic{background:#eaf0f7!important;}
+  .verdict{border-left-color:#1e3a63!important;}
+  .more-btn{box-shadow:0 2px 8px rgba(15,37,68,.28)!important;}
+
+  /* --- ヒーロー圧縮 --- */
+  .brandrow{margin-bottom:9px!important;}
+  .brandmark{width:46px!important;height:46px!important;border-radius:13px!important;}
+  .brandmark svg{width:26px!important;height:26px!important;}
+  .brandname{font-size:24px!important;} .brandsub{font-size:12px!important;}
+  .hero .tag{font-size:11.5px!important;padding:3px 11px!important;margin-bottom:8px!important;}
+  .hero h1{font-size:22px!important;line-height:1.4!important;margin-bottom:8px!important;}
+  .hero p{font-size:13.5px!important;line-height:1.7!important;}
+  .hero .pills{margin-top:11px!important;gap:7px!important;}
+  .hero .pill{font-size:12px!important;padding:5px 10px!important;}
+
+  /* --- 注意書き・概要圧縮 --- */
+  .wrap{max-width:1220px!important;padding:16px 26px 60px!important;}
+  .toprow{margin:2px 0 10px!important;}
+  .note{padding:9px 14px!important;font-size:12.5px!important;line-height:1.6!important;margin:4px 0 12px!important;}
+  .intro-hub{padding:2px 20px!important;margin:6px 0 14px!important;}
+  .ih-block{padding:12px 0!important;}
+  .ih-h{font-size:14.5px!important;margin-bottom:6px!important;}
+  .ih-outcomes li,.ih-steps li,.ih-p{font-size:13px!important;line-height:1.6!important;margin:4px 0!important;}
+  .step-n{width:23px!important;height:23px!important;font-size:12px!important;}
+  .ov-routes a,.ov-routes-label{font-size:12px!important;}
+
+  /* --- 章＝1行リスト --- */
+  .grp{margin:30px 0 6px!important;}
+  .grp-h{font-size:25px!important;margin-bottom:14px!important;padding-bottom:11px!important;border-bottom-width:2px!important;}
+  .grp-h .grp-n{width:46px!important;height:46px!important;font-size:24px!important;border-radius:12px!important;}
+  .grp-sub{font-size:15px!important;font-weight:700!important;color:var(--gpt-d)!important;}
+  .sec-grid{display:block!important;}
+  .sec-grid .sec{margin:0 0 8px!important;}
+  .sec-grid .sec.open{grid-column:auto!important;}
+  .secteaser{display:none!important;}
+  .sechd{padding:12px 16px!important;border-radius:10px!important;gap:13px!important;align-items:center!important;}
+  .sec.open .sechd{border-radius:10px 10px 0 0!important;}
+  .sechd .n{width:34px!important;height:34px!important;font-size:16px!important;border-radius:9px!important;}
+  .sechd h2{font-size:15.5px!important;line-height:1.35!important;}
+  .sechd .src{font-size:11.5px!important;font-weight:600!important;opacity:.82!important;margin-top:2px!important;line-height:1.5!important;}
+  .sechd::after{content:"→"!important;flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-flex;align-items:center;justify-content:center;font-size:16px!important;margin-left:auto;transition:transform .25s;}
+  .sec.open .sechd::after{transform:rotate(90deg)!important;}
+  .secbody{border-radius:0 0 10px 10px!important;}
+  @media(max-width:760px){.grp-h{font-size:20px!important;}.grp-sub{display:none;}.sechd h2{font-size:14.5px!important;}.sechd .src{font-size:11px!important;}}
+
+  /* --- 2カラム（左=目次sticky／右=本体） --- */
+  .layout2{display:flex;align-items:flex-start;gap:26px;}
+  .side{flex:0 0 30%;max-width:330px;position:sticky;top:14px;align-self:flex-start;max-height:calc(100vh - 26px);overflow-y:auto;overflow-x:hidden;padding-right:4px;}
+  .main2{flex:1 1 auto;min-width:0;}
+  .tocnav{padding:14px 16px!important;margin:0!important;position:static!important;}
+  .tocnav strong{font-size:13px!important;margin-bottom:10px!important;display:block;}
+  .tocnav ol{display:block!important;grid-template-columns:none!important;padding-left:0!important;counter-reset:tn;}
+  .tocnav li{list-style:none!important;margin:0!important;font-weight:700;}
+  .tocnav li a{counter-increment:tn;display:block;padding:10px 12px 10px 36px!important;position:relative;border-radius:8px;border-left:3px solid transparent;font-size:13.5px!important;color:var(--navy);text-decoration:none;line-height:1.4;margin:1px 0!important;transition:background .12s,border-color .12s;}
+  .tocnav li a::before{content:counter(tn);position:absolute;left:10px;top:50%;transform:translateY(-50%);min-width:17px;height:17px;line-height:17px;text-align:center;font-size:11px;font-weight:800;color:var(--gpt-d);background:var(--gpt-bg);border-radius:5px;}
+  .tocnav li a:hover{background:var(--gpt-bg);}
+  .tocnav li a.is-active{background:var(--gpt-bg);border-left-color:var(--gpt);color:var(--gpt-d);font-weight:800;}
+  .tocnav li a.is-active::before{background:var(--gpt);color:#fff;}
+  @media(max-width:900px){.layout2{display:block;}.side{position:static;max-width:none;max-height:none;overflow:visible;margin-bottom:16px;}}
+  @media print{.layout2{display:block;}.side{position:static;max-height:none;overflow:visible;}.tocnav{display:none;}}
+
+  /* --- 冒頭の価値提示帯（3カラム） --- */
+  .valueband{display:block!important;background:linear-gradient(180deg,#eef3fa,#f7fafd)!important;border:1px solid #d3deee!important;border-radius:14px!important;box-shadow:0 2px 12px rgba(11,37,69,.05)!important;padding:16px 22px!important;margin:10px 0 18px!important;}
+  .valueband .ih-block{border:none!important;padding:0!important;}
+  .valueband .ih-h{font-size:16px!important;margin-bottom:12px!important;color:var(--navy)!important;}
+  .valueband .ih-outcomes{display:grid!important;grid-template-columns:repeat(3,1fr);gap:12px;margin:0!important;padding:0!important;}
+  .valueband .ih-outcomes li{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px 13px 38px!important;margin:0!important;font-size:13.5px!important;line-height:1.75!important;box-shadow:0 1px 4px rgba(11,37,69,.04);}
+  .valueband .ih-outcomes li::before{left:15px!important;top:14px!important;}
+  .valueband .side-fold{margin-top:13px;border-top:1px solid #d3deee;padding-top:4px;}
+  .valueband .side-fold summary{cursor:pointer;list-style:none;font-size:13px;font-weight:800;color:var(--gpt-d);padding:9px 0 3px;}
+  .valueband .side-fold summary::-webkit-details-marker{display:none;}
+  .valueband .side-fold summary::before{content:"▸ ";}
+  .valueband .side-fold[open] summary::before{content:"▾ ";}
+  .valueband .side-fold[open] .ih-block{padding:10px 0!important;}
+  .valueband .ih-steps li,.valueband .ih-p{font-size:13px!important;line-height:1.7!important;}
+  @media(min-width:821px){.valueband .side-fold[open]{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;align-items:start;}.valueband .side-fold summary{grid-column:1 / -1;}.valueband .side-fold .ih-block{border-top:1px solid var(--line)!important;}}
+  @media(max-width:760px){.valueband .ih-outcomes{grid-template-columns:1fr;}.valueband .side-fold[open]{display:block;}}
+
+  /* --- 章ビュー：項目を選ぶと“その章だけ1ページ全体” --- */
+  .chapterbar{display:none;}
+  body.reading .chapterbar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:2px 0 18px;padding:13px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 14px rgba(11,37,69,.08);position:sticky;top:8px;z-index:5;}
+  .chapterbar .cb-back{background:var(--gpt);color:#fff;border:none;border-radius:10px;padding:15px 26px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 3px 10px rgba(15,37,68,.25);transition:opacity .15s,transform .1s;}
+  .chapterbar .cb-back:hover{opacity:.92;transform:translateY(-1px);}
+  .chapterbar .cb-title{font-size:17px;font-weight:900;color:var(--navy);}
+  .chapterbar .cb-nav{margin-left:auto;display:flex;gap:9px;}
+  .chapterbar .cb-nav button{background:#fff;color:var(--gpt-d);border:1.5px solid var(--gpt);border-radius:9px;padding:12px 16px;font-size:14px;font-weight:800;cursor:pointer;}
+  .chapterbar .cb-nav button:hover{background:var(--gpt-bg);}
+  .chapterbar .cb-nav button:disabled{opacity:.4;cursor:default;}
+  @media(max-width:760px){.chapterbar .cb-back{width:100%;text-align:center;}.chapterbar .cb-nav{margin-left:0;width:100%;}.chapterbar .cb-nav button{flex:1;}}
+  @media screen{
+    body.reading .hero,body.reading .toprow,body.reading .note,body.reading .valueband,body.reading .side,body.reading .grp-h{display:none!important;}
+    body.reading .main2 .sec{display:none!important;}
+    body.reading .main2 .sec.solo{display:block!important;margin:0!important;}
+  }
+  body.reading .layout2{display:block;}
+  body.reading .grp{margin:0!important;}
+  body.reading .sec.solo .sechd{cursor:default;border-radius:12px 12px 0 0!important;}
+  body.reading .sec.solo .sechd::after{display:none!important;}
+  body.reading .sec.solo .secteaser{display:none!important;}
 </style>
 </head>
 <body>
@@ -223,39 +343,46 @@
     <span class="brandmark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 4.5h14A1.5 1.5 0 0 1 20.5 6v8A1.5 1.5 0 0 1 19 15.5H9.5L6 19v-3.5H5A1.5 1.5 0 0 1 3.5 14V6A1.5 1.5 0 0 1 5 4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="1.25" fill="currentColor"/><circle cx="12" cy="10" r="1.25" fill="currentColor"/><circle cx="15.5" cy="10" r="1.25" fill="currentColor"/></svg></span>
     <span class="brandtext"><span class="brandname">ChatGPT</span><span class="brandsub">OpenAI ・ 企業活用 総合戦略レポート</span></span>
   </div>
-  <span class="tag">🟢 ENTERPRISE STRATEGY REPORT ｜ 2026年版</span>
+  <span class="tag">ENTERPRISE STRATEGY REPORT ｜ 2026年版</span>
   <h1>「ただのチャットAI」は、もう終わり。<br><span class="hl">あなたの代わりに調べ、考え、実務を片付ける</span>自律型パートナーへ。</h1>
   <p>実用性から始まり、技術戦略・モデル戦略・セキュリティ・ベンダーリスク・ROI・競合市場までを一気通貫で整理した、経営層／DX推進向けの統合戦略レポート。各項目はディープリサーチ＋ファクトチェック済み。</p>
   <div class="pills">
-    <span class="pill">⚡ Instant（高速）</span>
-    <span class="pill">🧠 Thinking（熟考）</span>
-    <span class="pill">🔬 Deep Research（自律調査）</span>
-    <span class="pill">🤖 agent mode（PC操作代行）</span>
+    <span class="pill">Instant（高速）</span>
+    <span class="pill">Thinking（熟考）</span>
+    <span class="pill">Deep Research（自律調査）</span>
+    <span class="pill">agent mode（PC操作代行）</span>
   </div>
 </div></header>
 
 <div class="wrap">
+  <div class="chapterbar" id="chapterbar">
+    <button class="cb-back" type="button">← 目次に戻る</button>
+    <span class="cb-title"></span>
+    <span class="cb-nav"><button class="cb-prev" type="button">← 前の章</button><button class="cb-next" type="button">次の章 →</button></span>
+  </div>
   <div class="toprow">
     <a href="#s1" class="backlink">↓ 本編（目次）へ</a>
     <div class="accordion-ctrl">
       <button class="ctrlbtn" id="openAll">＋ すべて開く</button>
       <button class="ctrlbtn" id="closeAll">－ すべて閉じる</button>
-      <button class="printbtn" onclick="document.querySelectorAll('.sec').forEach(function(s){s.classList.add('open')});window.print();">🖨 PDFで保存／印刷</button>
+      <button class="printbtn" onclick="document.querySelectorAll('.sec').forEach(function(s){s.classList.add('open')});window.print();">PDFで保存／印刷</button>
     </div>
   </div>
-  <div class="note">⚠️ 料金・モデル名・法規制・市場シェアは頻繁に変動します。本レポートは<b>2026年6月時点</b>の公式・最新情報に基づく整理です。各社公式で最新をご確認ください。文中<b>★＝一次情報で未確認（要確認）</b>。市場シェアは<b>測定方法で数値が大きく異なる</b>ため傾向で解釈してください。</div>
+  <div class="note">料金・モデル名・法規制・市場シェアは頻繁に変動します。本レポートは<b>2026年6月時点</b>の公式・最新情報に基づく整理です。各社公式で最新をご確認ください。文中<b>※＝一次情報で未確認（要確認）</b>。市場シェアは<b>測定方法で数値が大きく異なる</b>ため傾向で解釈してください。</div>
 
-  <div class="intro-hub">
+  <div class="intro-hub valueband">
     <div class="ih-block">
-      <div class="ih-h">🎯 このレポートを読むと、こう動ける</div>
+      <div class="ih-h">このレポートを読むと、こう動ける</div>
       <ul class="ih-outcomes">
         <li>自社の“いちばん時間を食う業務”を特定し、<b>Deep Research／agent mode</b> に置き換えて<b>工数を即削減</b>できる。</li>
         <li><b>個人＝Plus／法人＝Business</b> という最小コストの始め方が分かり、<b>稟議・予算化の根拠（ROI試算）</b>を持てる。</li>
         <li><b>学習オプトアウト・ガバナンス</b>の要点を押さえ、<b>情シス・上司を説得</b>して安全に全社展開できる。</li>
       </ul>
     </div>
+    <details class="side-fold">
+    <summary>始め方・このレポートの歩き方（クリックで開く）</summary>
     <div class="ih-block">
-      <div class="ih-h">🚀 今すぐ始める3ステップ</div>
+      <div class="ih-h">今すぐ始める3ステップ</div>
       <ol class="ih-steps">
         <li><span class="step-n">1</span><span><b>試す</b>：無料／Goで“時間を食う作業”を1つ任せてみる</span></li>
         <li><span class="step-n">2</span><span><b>測る</b>：効果（時間削減）を計測して Plus／Business を稟議</span></li>
@@ -263,13 +390,16 @@
       </ol>
     </div>
     <div class="ih-block">
-      <div class="ih-h">📚 このレポートの歩き方</div>
+      <div class="ih-h">このレポートの歩き方</div>
       <p class="ih-p">本レポートは、ChatGPTを<b>「現場の実用」から「経営の戦略」まで全12章</b>で網羅しています。全部を読む必要はありません。各章は<b>タイトル＋説明＋「詳しく見る」ボタン</b>で並んでいるので、<b>気になるテーマだけ開けます</b>。まず下の説明を眺め、知りたいところからアクセスしてください。</p>
       <p class="ov-routes"><b class="ov-routes-label">目的別の入口 →</b><a href="#s1">とにかく何ができる？</a><a href="#s3">料金で選びたい</a><a href="#s4">安全性が不安</a><a href="#s6">効果を数字で示したい</a><a href="#s8">自部署の使い方</a></p>
     </div>
+    </details>
   </div>
 
-  <div class="toc"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11.5px;letter-spacing:0;">👆 各見出しをクリックで詳細を開閉／目次の項目クリックでその章へジャンプ＆展開</span></strong>
+  <div class="layout2">
+  <aside class="side">
+  <nav class="toc tocnav"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11px;letter-spacing:0;">クリックで右のその章へジャンプ＆展開</span></strong>
     <ol>
       <li><a href="#s1">ChatGPTの実用性</a></li>
       <li><a href="#s2">技術戦略</a></li>
@@ -284,20 +414,22 @@
       <li><a href="#s11">最新アップデート・ロードマップ</a></li>
       <li><a href="#s12">制限・注意点</a></li>
     </ol>
-  </div>
+  </nav>
+  </aside>
 
+  <main class="main2">
   <!-- 1 実用性 -->
   <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>実力・技術・安全を知る<span class="grp-sub">実用性・技術戦略・モデル選定・セキュリティ</span></div>
   <div class="sec-grid">
   <div class="sec" id="s1">
-    <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">独自機能のUX：Canvas／画像編集／音声／デスクトップ統合／GPTs</div></div></div>
+    <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">調べ物・資料づくり・PC操作までAIが肩代わり。Deep Research や agent mode で“いつもの仕事”がどう変わるかを具体例で。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">ChatGPTは日本語で話しかけるだけで、調べ物・PC操作・資料づくりまで代行する“デキるアシスタント”に進化しました。<b>Deep Research</b>（出典つきの調査を数十分で）や <b>agent mode</b>（ブラウザ操作の代行）など、仕事の面倒を肩代わりする独自機能を、使うと何が変わるかまで具体的に紹介します。</p>
       <p class="tz-points"><b>この章の要点：</b>Deep Research ／ agent mode ／ Canvas ／ 画像・音声 ／ GPTs ／ 入出力でできること</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p><b>ChatGPTは、チャット欄に日本語で話しかけるだけで使えるAI</b>です。2026年のいまは、ただ質問に答えるだけでなく、<b>自分でネットを調べ、パソコン操作を代行し、資料まで作ってくれる“デキるアシスタント”</b>に進化しました。</p>
       <p>うれしいのは、<b>むずかしい専門知識や“上手な命令文”が書けなくても大丈夫</b>なこと。画面のボタンを押したり、ふだんの言葉で「〜して」と頼むだけで使えるよう工夫されています。文章づくり・調べ物・画像づくり・データ分析を、<b>1つのアプリ</b>で完結できます。</p>
 
@@ -310,33 +442,72 @@
         <tr><td><b>Projects</b><br>（案件ごとの専用部屋）</td><td><b>案件ごとに資料を入れておける“フォルダ”</b>。例：A社用の部屋に資料を入れると、毎回説明しなくてもA社の前提で答えてくれる</td><td><b>毎回の説明がいらない</b>＆他の案件と情報が混ざらない → <b>並行作業でも品質が安定、情報漏れも防ぐ</b></td><td><span class="badge b-free">無料</span><span class="badge b-paid">有料で拡大</span></td></tr>
         <tr><td><b>Interactive charts</b><br>（動くグラフ）</td><td><b>エクセルなしでグラフ化</b>。例：売上の表を渡すと、画面の中でグラフを作り、マウスで触って数字を確認できる</td><td><b>専門ツールを開かず会話だけで分析</b> → <b>数字が苦手でも一目で状況がわかる</b></td><td><span class="badge b-free">無料も</span><span class="badge b-paid">有料で高精度</span></td></tr>
       </table></div>
-      <div class="callout">💪 <b>つまり</b>：この4つは「調べる・動かす・覚える・見える化する」を肩代わりして、<b>あなたの時間を生み出す道具</b>。まずは自分の“いちばん時間がかかっている作業”を1つ選んで、試しに頼んでみるのがおすすめです。</div>
+      <div class="callout"><b>つまり</b>：この4つは「調べる・動かす・覚える・見える化する」を肩代わりして、<b>あなたの時間を生み出す道具</b>。まずは自分の“いちばん時間がかかっている作業”を1つ選んで、試しに頼んでみるのがおすすめです。</div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 300" role="img" aria-label="ChatGPTの主要機能と業務のつながりの図">
+          <rect x="300" y="122" width="160" height="56" rx="12" fill="#0b2545"/>
+          <text class="svg-tw" x="380" y="146" text-anchor="middle" font-size="17" font-weight="700">ChatGPT</text>
+          <text class="svg-tw" x="380" y="166" text-anchor="middle" font-size="12">（日本語で話しかけるだけ）</text>
+          <!-- 左：4つの機能 -->
+          <g font-size="13" font-weight="700">
+            <rect x="24" y="20" width="200" height="44" rx="9" fill="#e7f6f1" stroke="#274b73"/>
+            <text class="svg-t" x="124" y="47" text-anchor="middle">Deep Research（調査）</text>
+            <rect x="24" y="88" width="200" height="44" rx="9" fill="#e7f6f1" stroke="#274b73"/>
+            <text class="svg-t" x="124" y="115" text-anchor="middle">agent mode（PC操作）</text>
+            <rect x="24" y="168" width="200" height="44" rx="9" fill="#e7f6f1" stroke="#274b73"/>
+            <text class="svg-t" x="124" y="195" text-anchor="middle">Projects（案件の記憶）</text>
+            <rect x="24" y="236" width="200" height="44" rx="9" fill="#e7f6f1" stroke="#274b73"/>
+            <text class="svg-t" x="124" y="263" text-anchor="middle">Interactive charts（可視化）</text>
+          </g>
+          <!-- 矢印：機能→ChatGPT -->
+          <g stroke="#274b73" stroke-width="1.6" fill="none">
+            <path d="M224 42 L300 132"/><path d="M224 110 L300 142"/>
+            <path d="M224 190 L300 158"/><path d="M224 258 L300 168"/>
+          </g>
+          <!-- 右：業務成果 -->
+          <g font-size="13" font-weight="700">
+            <rect x="536" y="52" width="200" height="44" rx="9" fill="#0b2545"/>
+            <text class="svg-tw" x="636" y="79" text-anchor="middle">調べ物・レポート作成</text>
+            <rect x="536" y="128" width="200" height="44" rx="9" fill="#0b2545"/>
+            <text class="svg-tw" x="636" y="155" text-anchor="middle">手作業の代行・自動化</text>
+            <rect x="536" y="204" width="200" height="44" rx="9" fill="#0b2545"/>
+            <text class="svg-tw" x="636" y="231" text-anchor="middle">分析・資料づくり</text>
+          </g>
+          <!-- 矢印：ChatGPT→成果 -->
+          <g stroke="#274b73" stroke-width="1.6" fill="none" marker-end="url(#arrH1)">
+            <path d="M460 140 L536 74"/><path d="M460 150 L536 150"/><path d="M460 160 L536 226"/>
+          </g>
+          <defs><marker id="arrH1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+        </svg>
+        <figcaption class="figcap"><b>図：ChatGPTの主要機能と業務のつながり</b>。4つのコア機能（左）が、ふだんの業務成果（右）に直結します。まず自分の“時間を食う作業”を1つ選び、対応する機能に任せるのが始め方です。</figcaption>
+      </figure>
 
       <div class="blk-h">Canvas（キャンバス）＝ AIと一緒に文章・資料を直す画面</div>
       <p>ふつうのチャットだと、文章を少し直したいだけでも“全部作り直し”になりがち。<b><span class="term" data-term="Canvas">Canvas</span></b>は画面が左右に分かれ（左：会話／右：文章や資料）、<b>直したいところだけを選んで「ここをやさしく言い換えて」と頼める</b>機能です。ワープロをAIと一緒に使うイメージ。自分で直接打ち直すこともできます。</p>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✍️</span>ボタン1つで調整</div><p>文章を選んで「もっと短く」「専門家向けに」を<b>ボタン1つで調整</b>できます。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💻</span>その場で動作確認</div><p>HTMLやちょっとしたプログラムは、その場で動かして確認も可能。<b>無料でも使えます</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">ボタン1つで調整</div><p>文章を選んで「もっと短く」「専門家向けに」を<b>ボタン1つで調整</b>できます。</p></div>
+        <div class="feat-card"><div class="fc-h">その場で動作確認</div><p>HTMLやちょっとしたプログラムは、その場で動かして確認も可能。<b>無料でも使えます</b>。</p></div>
       </div>
 
       <div class="blk-h">画像・音声 ＝ つくる/直す/話す も、ことばだけで</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎨</span>画像をつくる・直す</div><p>「〜の画像を作って」でOK。写真の<b>直したいところだけをなぞって</b>「メガネを黒縁に」「背景を青空に」と頼むと、その部分だけ自然に直ります（ほかは崩れません）。同じキャラクターで何パターンも作れます。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎙️</span>声で話す（Advanced Voice）</div><p>スマホに話しかけて相談・通訳。<b>人と話すように自然に会話</b>できます。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📝</span>録音して議事録（Record）★</div><p>会議を録音すると、<b>文字起こし＋要約</b>まで自動。あとで聞き直す手間がなくなります。</p></div>
+        <div class="feat-card"><div class="fc-h">画像をつくる・直す</div><p>「〜の画像を作って」でOK。写真の<b>直したいところだけをなぞって</b>「メガネを黒縁に」「背景を青空に」と頼むと、その部分だけ自然に直ります（ほかは崩れません）。同じキャラクターで何パターンも作れます。</p></div>
+        <div class="feat-card"><div class="fc-h">声で話す（Advanced Voice）</div><p>スマホに話しかけて相談・通訳。<b>人と話すように自然に会話</b>できます。</p></div>
+        <div class="feat-card wide"><div class="fc-h">録音して議事録（Record）※</div><p>会議を録音すると、<b>文字起こし＋要約</b>まで自動。あとで聞き直す手間がなくなります。</p></div>
       </div>
 
       <div class="blk-h">パソコン・スマホとの一体化 ＝ いつでもすぐ呼び出せる</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🖥️</span>デスクトップアプリ</div><p>作業中でもショートカット（Mac: Option+Space／Windows: Alt+Space）で<b>画面の真ん中にAIをすぐ表示</b>。タブを切り替える手間がなく、画面のスクショを送って「この画面どういう意味？」と聞くのも簡単。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📱</span>iPhone/Macとの連携</div><p>Apple Intelligence経由でSiriに話すとChatGPTに引き継ぎ。<b>登録なし・無料</b>で使え、<b>あなたの情報やIPアドレスは隠され、AIの学習にも使われません</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">デスクトップアプリ</div><p>作業中でもショートカット（Mac: Option+Space／Windows: Alt+Space）で<b>画面の真ん中にAIをすぐ表示</b>。タブを切り替える手間がなく、画面のスクショを送って「この画面どういう意味？」と聞くのも簡単。</p></div>
+        <div class="feat-card"><div class="fc-h">iPhone/Macとの連携</div><p>Apple Intelligence経由でSiriに話すとChatGPTに引き継ぎ。<b>登録なし・無料</b>で使え、<b>あなたの情報やIPアドレスは隠され、AIの学習にも使われません</b>。</p></div>
       </div>
 
       <div class="blk-h"><span class="term" data-term="GPTs">GPTs</span> ＝ 自分専用のChatGPTを“プログラミングなし”で作れる</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧩</span>作り方はことばだけ</div><p>チャットで「どんな役割か」「守ってほしいルール」を伝えるだけ。会社のマニュアルやExcelを覚えさせれば、<b>社内専用アシスタント</b>の完成。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>一度作れば呼ぶだけ</div><p>毎回くわしく説明せず呼び出すだけ。<b>カレンダーや他サービスとつないで自動化</b>もできます。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🌐</span>公開・配布も可能</div><p>作ったものは公開・配布も可能（<b>収益化のしくみ</b>もあります）。</p></div>
+        <div class="feat-card"><div class="fc-h">作り方はことばだけ</div><p>チャットで「どんな役割か」「守ってほしいルール」を伝えるだけ。会社のマニュアルやExcelを覚えさせれば、<b>社内専用アシスタント</b>の完成。</p></div>
+        <div class="feat-card"><div class="fc-h">一度作れば呼ぶだけ</div><p>毎回くわしく説明せず呼び出すだけ。<b>カレンダーや他サービスとつないで自動化</b>もできます。</p></div>
+        <div class="feat-card wide"><div class="fc-h">公開・配布も可能</div><p>作ったものは公開・配布も可能（<b>収益化のしくみ</b>もあります）。</p></div>
       </div>
 
       <div class="blk-h">ChatGPTに渡せるもの / 返ってくるもの</div>
@@ -348,29 +519,29 @@
         <tr><td>動画</td><td>画面共有・スマホのカメラ</td><td>動画をつくる（Sora）<b>※サービス終了</b></td></tr>
         <tr><td>ファイル</td><td>PDF・Word・Excel・CSV など</td><td>分析結果・表・動くグラフ・直したファイル</td></tr>
       </table></div>
-      <div class="warnbox">⚠️ <b>動画生成「Sora」は提供終了</b>：OpenAIの動画生成サービス「Sora」は提供を終了しており、現在ChatGPTで動画の自動生成は利用できません（画像生成、および画像・音声・動画の“読み取り／解析”は引き続き可能）。最新の提供状況は公式でご確認ください。</div>
-      <div class="callout">🧭 <b>初心者の入口</b>：まずは<b>無料</b>で「文章の下書き」「調べ物」「要約」を頼むところから。慣れたら <b>Go（$8）→ Plus（$20）</b> に上げて Deep Research や agent mode を解放。パソコンにアプリを入れてショートカットで呼び出せば、“いつもそばにいるアシスタント”になります。</div>
+      <div class="warnbox"><b>動画生成「Sora」は提供終了</b>：OpenAIの動画生成サービス「Sora」は提供を終了しており、現在ChatGPTで動画の自動生成は利用できません（画像生成、および画像・音声・動画の“読み取り／解析”は引き続き可能）。最新の提供状況は公式でご確認ください。</div>
+      <div class="callout"><b>初心者の入口</b>：まずは<b>無料</b>で「文章の下書き」「調べ物」「要約」を頼むところから。慣れたら <b>Go（$8）→ Plus（$20）</b> に上げて Deep Research や agent mode を解放。パソコンにアプリを入れてショートカットで呼び出せば、“いつもそばにいるアシスタント”になります。</div>
     </div>
   </div>
 
   <!-- 2 技術戦略 -->
   <div class="sec" id="s2">
-    <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">モデル構造・推論方式・開発/連携基盤・企業導入アーキテクチャ</div></div></div>
+    <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">社内データを“出典つき”で安全に使うRAGと、モデルを乗り換え自由にするゲートウェイ。誤回答を減らし、将来の値上げにも数行で対応できる土台とは。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">ChatGPTの裏側は「速く返す・深く考える・交通整理する」役割分担チーム。社内で安全に業務利用する土台として、<b>RAG</b>（社内資料を“出典つき”で答えに使うしくみ）と <b>AIゲートウェイ</b>（モデルを差し替え自由にする中継層）を解説します。RAGとファインチューニングの使い分けも。</p>
       <p class="tz-points"><b>この章の要点：</b>統一システム／ルーター ／ RAG・GraphRAG ／ AIゲートウェイ ／ MCP ／ FTとの使い分け</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">モデルの内部構造：1つの巨大AIではなく“役割分担チーム”</div>
       <p>いまのChatGPTは「1つの大きなAI」ではなく、<b>速く返す担当・じっくり考える担当・交通整理する担当</b>がチームを組んだ仕組みです。質問が来るたびに交通整理役（ルーター）が「これは簡単／難しい」「道具が要る？」を瞬時に見分け、最適な担当へ振り分けます（専門用語では<span class="term" data-term="MoE">MoE</span>やルーティングと呼びますが、要は<b>“質問ごとに担当AIを割り当てるしくみ”</b>）。</p>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚡</span>3つの動作モード</div><p><b>Instant</b>（高速・無料既定）／<b>Thinking</b>（GPT-5.5・推論）／<b>Pro</b>（GPT-5.5 Pro・最高精度）。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧠</span>考える役と実行役の分業</div><p>難しい全体設計は“じっくり考えるモデル”（Planner＝設計役）、高速処理は“速いモデル”（Workhorse＝実行役）。例：考える役が設計→速い役が数千行のコードを一気に生成。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📏</span><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span></div><p>GPT-5.5 は<b>APIで最大100万<span class="term" data-term="トークン">トークン</span></b>（Codexは40万）。アプリ内実効上限はプラン依存（要確認）。</p></div>
+        <div class="feat-card"><div class="fc-h">3つの動作モード</div><p><b>Instant</b>（高速・無料既定）／<b>Thinking</b>（GPT-5.5・推論）／<b>Pro</b>（GPT-5.5 Pro・最高精度）。</p></div>
+        <div class="feat-card"><div class="fc-h">考える役と実行役の分業</div><p>難しい全体設計は“じっくり考えるモデル”（Planner＝設計役）、高速処理は“速いモデル”（Workhorse＝実行役）。例：考える役が設計→速い役が数千行のコードを一気に生成。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span></div><p>GPT-5.5 は<b>APIで最大100万<span class="term" data-term="トークン">トークン</span></b>（Codexは40万）。アプリ内実効上限はプラン依存（要確認）。</p></div>
       </div>
-      <div class="blk-h">コーディングの三極化★</div>
+      <div class="blk-h">コーディングの三極化※</div>
       <div class="tbl-scroll"><table>
         <tr><th>モデル</th><th>役割</th><th>コンテキスト</th></tr>
         <tr><td>GPT-5.5 Thinking</td><td>アルゴリズム設計・複雑なデバッグの対話パートナー</td><td>256K</td></tr>
@@ -380,17 +551,40 @@
 
       <div class="blk-h">開発・連携基盤</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>Responses API</div><p>今後の主軸に（Assistants APIは2026年sunset予定）。組込ツール＝<b>Web Search／File Search（ベクトルストア）／Computer Use</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🤖</span>Agents SDK</div><p>計画・ツール利用・多段実行を行う<b>エージェント構築フレームワーク</b>。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🌐</span><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</div><p>「AIのUSB-C」。2026年は主要ベンダー（OpenAI/Anthropic/Google/Microsoft/AWS）が標準対応し、<b>ツール接続の事実上の標準</b>に。</p></div>
+        <div class="feat-card"><div class="fc-h">Responses API</div><p>今後の主軸に（Assistants APIは2026年sunset予定）。組込ツール＝<b>Web Search／File Search（ベクトルストア）／Computer Use</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">Agents SDK</div><p>計画・ツール利用・多段実行を行う<b>エージェント構築フレームワーク</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h"><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</div><p>「AIのUSB-C」。2026年は主要ベンダー（OpenAI/Anthropic/Google/Microsoft/AWS）が標準対応し、<b>ツール接続の事実上の標準</b>に。</p></div>
       </div>
 
       <div class="blk-h">企業導入アーキテクチャ</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📂</span><span class="term" data-term="RAG">RAG</span>（検索拡張生成）</div><p>取り込み→クレンジング→チャンク→埋め込み→<b><span class="term" data-term="ベクトルDB">ベクトルDB</span></b>。最新性・出典明示で<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>抑制</b>。発展形に<b><span class="term" data-term="GraphRAG">GraphRAG</span></b>・エージェント型RAG。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚪</span><span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span></div><p>アプリとLLM群の中間で、モデルルーティング・<span class="term" data-term="ガードレール">ガードレール</span>・監査ログ・キャッシュ・コスト最適化を集中管理（<b>本番では事実上必須</b>）。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🧩</span>オーケストレーション／マルチエージェント</div><p>状態管理・ID連携・エージェント/ツールのレジストリ・<b>全行程の可観測性</b>が要件。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="RAG">RAG</span>（検索拡張生成）</div><p>取り込み→クレンジング→チャンク→埋め込み→<b><span class="term" data-term="ベクトルDB">ベクトルDB</span></b>。最新性・出典明示で<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>抑制</b>。発展形に<b><span class="term" data-term="GraphRAG">GraphRAG</span></b>・エージェント型RAG。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span></div><p>アプリとLLM群の中間で、モデルルーティング・<span class="term" data-term="ガードレール">ガードレール</span>・監査ログ・キャッシュ・コスト最適化を集中管理（<b>本番では事実上必須</b>）。</p></div>
+        <div class="feat-card wide"><div class="fc-h">オーケストレーション／マルチエージェント</div><p>状態管理・ID連携・エージェント/ツールのレジストリ・<b>全行程の可観測性</b>が要件。</p></div>
       </div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 250" role="img" aria-label="社内資料を出典つきで答えに使うRAGの流れの図">
+          <defs><marker id="arrH2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+          <text class="svg-ts" x="20" y="24" font-size="13" font-weight="700">① 社内資料をためる（前処理）</text>
+          <g font-size="12.5" font-weight="700">
+            <rect x="20" y="36" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="58" text-anchor="middle">社内資料</text><text class="svg-t" x="95" y="74" text-anchor="middle" font-size="11">PDF/Word/規程</text>
+            <rect x="196" y="36" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="271" y="58" text-anchor="middle">整理・分割</text><text class="svg-t" x="271" y="74" text-anchor="middle" font-size="11">チャンク化・埋め込み</text>
+            <rect x="372" y="36" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="447" y="58" text-anchor="middle">ベクトルDB</text><text class="svg-tw" x="447" y="74" text-anchor="middle" font-size="11">意味で検索できる箱</text>
+          </g>
+          <g stroke="#274b73" stroke-width="1.6" fill="none" marker-end="url(#arrH2)"><path d="M170 59 L192 59"/><path d="M346 59 L368 59"/></g>
+          <text class="svg-ts" x="20" y="128" font-size="13" font-weight="700">② 質問に答える（回答生成）</text>
+          <g font-size="12.5" font-weight="700">
+            <rect x="20" y="140" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="168" text-anchor="middle">利用者の質問</text>
+            <rect x="196" y="140" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="271" y="162" text-anchor="middle">関連箇所を検索</text><text class="svg-tw" x="271" y="178" text-anchor="middle" font-size="11">ベクトルDBから抽出</text>
+            <rect x="372" y="140" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="447" y="162" text-anchor="middle">ChatGPTが生成</text><text class="svg-tw" x="447" y="178" text-anchor="middle" font-size="11">根拠を添えて回答</text>
+            <rect x="548" y="140" width="192" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="644" y="162" text-anchor="middle">出典つきの回答</text><text class="svg-t" x="644" y="178" text-anchor="middle" font-size="11">思い込み（ハルシネーション）を抑制</text>
+          </g>
+          <g stroke="#274b73" stroke-width="1.6" fill="none" marker-end="url(#arrH2)"><path d="M170 163 L192 163"/><path d="M346 163 L368 163"/><path d="M522 163 L544 163"/></g>
+          <path d="M447 82 L447 138" stroke="#274b73" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#arrH2)"/>
+        </svg>
+        <figcaption class="figcap"><b>図：社内資料を“出典つき”で答えに使うRAGの流れ</b>。①ためた資料をベクトルDBに整理し、②質問時に関連箇所だけを取り出してChatGPTが根拠つきで回答します。DBを更新するだけで最新情報に追従できます。</figcaption>
+      </figure>
 
       <div class="blk-h">RAG と <span class="term" data-term="ファインチューニング">ファインチューニング</span>の使い分け</div>
       <div class="tbl-scroll"><table>
@@ -400,21 +594,21 @@
         <tr><td>専門知識・文体</td><td>中〜高</td><td>極めて高い（用語/文体を内在化）</td></tr>
         <tr><td>コスト</td><td>中（学習費不要）</td><td>高（PEFT/LoRAで低減可）</td></tr>
       </table></div>
-      <div class="callout">💡 実務最適＝<b>ハイブリッド</b>：FTで専門用語・文体を基盤に内在化し、RAGで最新事実を補完。技術選定は「どのAIか」でなく「<b>開発ループのどの工程にどのモデル/基盤を置くか</b>」のプロセス設計。抽象化レイヤーで差し替え自由度を確保。</div>
-      <div class="verdict">💪 <b>もたらす効果</b>：RAG＋ゲートウェイ基盤を一度作れば、<b>社内データを“出典つき”で安全に活かせて誤回答が激減</b>。さらに<b>モデルを差し替え自由</b>になり、値上げや新モデル登場にも数行の設定変更で即対応 → <b>技術的負債を負わずにAIを伸ばし続けられる</b>。</div>
+      <div class="callout">実務最適＝<b>ハイブリッド</b>：FTで専門用語・文体を基盤に内在化し、RAGで最新事実を補完。技術選定は「どのAIか」でなく「<b>開発ループのどの工程にどのモデル/基盤を置くか</b>」のプロセス設計。抽象化レイヤーで差し替え自由度を確保。</div>
+      <div class="verdict"><b>もたらす効果</b>：RAG＋ゲートウェイ基盤を一度作れば、<b>社内データを“出典つき”で安全に活かせて誤回答が激減</b>。さらに<b>モデルを差し替え自由</b>になり、値上げや新モデル登場にも数行の設定変更で即対応 → <b>技術的負債を負わずにAIを伸ばし続けられる</b>。</div>
     </div>
   </div>
 
   <!-- 3 モデル戦略 -->
   <div class="sec" id="s3">
-    <div class="sechd"><span class="n">3</span><div><h2>モデル戦略と選定基準</h2><div class="src">ライセンス/TCO・API最適化・マルチモデル・KPI</div></div></div>
+    <div class="sechd"><span class="n">3</span><div><h2>モデル戦略と選定基準</h2><div class="src">無料・Plus（$20）・Business…結局どれを選べばいい? “ぜんぶ込みの費用（TCO）”で比べた結論と、料金で損しない決め方。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">無料／Plus（$20）／Business／Enterprise の料金体系と“ぜんぶ込みの費用（TCO）”、2026年のクレジット制、API最適化、用途別のマルチモデル戦略を整理。結論は <b>「個人＝Plus、法人＝Business」</b>。料金で迷ったら、まずこの章です。</p>
       <p class="tz-points"><b>この章の要点：</b>料金表・TCO ／ クレジット制 ／ API最適化 ／ マルチモデル ／ KPI</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>選び方は「無料か、月20ドルか」の単純な二択から、<b>“AIにいくら使い、いくら得しているか”を管理する段階</b>（専門用語で<b>AI-FinOps＝AIのコスト管理術</b>）へ進みました。新しいモデルほど料金が跳ね上がるため、使用量を見える化しないと、<b>部署ごとに勝手に契約・課金が増える“無秩序な広がり”（AIスプロール）</b>で予算を浪費します。だから ①最適なプラン選び ②安全なデータ連携 ③用途別の使い分け ④効果の測定 をセットで考える必要があります。</p>
 
       <div class="blk-h">料金プランと“ぜんぶ込みの費用”（<span class="term" data-term="TCO">TCO</span>＝導入から運用まで含めた総コスト）</div>
@@ -426,13 +620,36 @@
         <tr><td><b>Business</b>（旧Team）</td><td>$20(年)/$25(月)</td><td>2席〜</td><td><b>agentは月40通でEnterprise移行トリガー</b>。Codex席（従量）＋標準席のハイブリッド。学習オプトアウト標準</td></tr>
         <tr><td><b>Enterprise</b></td><td>約$60〜（交渉）</td><td><b>150席・年契約</b></td><td>SSO/RBAC・データレジデンシ・専任CSM。年約$10.8万〜。非営利は最大75%割引（席要件は免除なし）</td></tr>
       </table></div>
-      <div class="callout">📐 <b>クレジット制（2026/4〜）</b>：Deep Research/Thinking/Image Gen/Advanced Voice/Codex はクレジット消費。超過はワークスペース共有プールから、追加購入は<b>払い戻し不可</b>→需要予測が必須。Businessは<b>Standard席（固定費・$5値下げ）＋Codex席（完全従量）</b>のハイブリッド。</div>
+      <div class="callout"><b>クレジット制（2026/4〜）</b>：Deep Research/Thinking/Image Gen/Advanced Voice/Codex はクレジット消費。超過はワークスペース共有プールから、追加購入は<b>払い戻し不可</b>→需要予測が必須。Businessは<b>Standard席（固定費・$5値下げ）＋Codex席（完全従量）</b>のハイブリッド。</div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 250" role="img" aria-label="主要プランの月額料金の比較グラフ">
+          <g font-size="13" font-weight="700">
+            <text class="svg-t" x="14" y="30">Free</text>
+            <text class="svg-t" x="14" y="66">Go</text>
+            <text class="svg-t" x="14" y="102">Plus</text>
+            <text class="svg-t" x="14" y="138">Business</text>
+            <text class="svg-t" x="14" y="174">Enterprise※</text>
+            <text class="svg-t" x="14" y="210">Pro</text>
+          </g>
+          <g>
+            <line x1="150" y1="12" x2="150" y2="222" stroke="#dde5ef" stroke-width="1"/>
+            <rect x="150" y="18" width="2" height="18" fill="#94a3b8"/><text class="svg-ts" x="160" y="32" font-size="12">$0</text>
+            <rect x="150" y="54" width="21" height="18" fill="#274b73"/><text class="svg-t" x="178" y="68" font-size="12" font-weight="700">$8</text>
+            <rect x="150" y="90" width="52" height="18" fill="#0b2545"/><text class="svg-t" x="209" y="104" font-size="12" font-weight="700">$20</text>
+            <rect x="150" y="126" width="65" height="18" fill="#0b2545"/><text class="svg-t" x="222" y="140" font-size="12" font-weight="700">$25</text>
+            <rect x="150" y="162" width="156" height="18" fill="#274b73"/><text class="svg-t" x="313" y="176" font-size="12" font-weight="700">約$60〜</text>
+            <rect x="150" y="198" width="520" height="18" fill="#0b2545"/><text class="svg-tw" x="660" y="212" font-size="12" font-weight="700" text-anchor="end">$200</text>
+          </g>
+        </svg>
+        <figcaption class="figcap"><b>図：主要プランの月額料金（1ユーザーあたり・目安）</b>。数値は2026年時点・米ドル建ての公開価格の概算で、Businessは月額換算、Enterpriseは交渉制のため下限目安（※）。実務のコスパは<b>個人＝Plus、法人＝Business</b>が中心。導入・運用・教育まで含めた<span class="term" data-term="TCO">TCO</span>で比較を。最新は各社公式でご確認ください。</figcaption>
+      </figure>
 
       <div class="blk-h">API基盤とコスト最適化</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>GPT-5.5 API料金</div><p>入力<b>$5</b>／出力<b>$30</b>（キャッシュ入力$0.50・最大100万トークン）。GPT-5.5 Pro $30/$180。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📉</span>割引・最適化</div><p><b>プロンプトキャッシュ最大90%引</b>／<b>Batch・Flex 50%引</b>／Web検索ツール≒$10/1,000回＋検索トークン別課金／コンテナはセッション・容量課金。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⚠️</span>Fine-tuning API</div><p>※Fine-tuning APIは<b>縮小（wind-down）の動き</b>★。</p></div>
+        <div class="feat-card"><div class="fc-h">GPT-5.5 API料金</div><p>入力<b>$5</b>／出力<b>$30</b>（キャッシュ入力$0.50・最大100万トークン）。GPT-5.5 Pro $30/$180。</p></div>
+        <div class="feat-card"><div class="fc-h">割引・最適化</div><p><b>プロンプトキャッシュ最大90%引</b>／<b>Batch・Flex 50%引</b>／Web検索ツール≒$10/1,000回＋検索トークン別課金／コンテナはセッション・容量課金。</p></div>
+        <div class="feat-card wide"><div class="fc-h">Fine-tuning API</div><p>※Fine-tuning APIは<b>縮小（wind-down）の動き</b>※。</p></div>
       </div>
 
       <div class="blk-h">マルチモデル戦略とKPI</div>
@@ -445,24 +662,24 @@
         <tr><td>機密処理・独自ナレッジ学習</td><td>tsuzumi 2 / cotomi（<span class="term" data-term="オンプレミス">オンプレ</span>）、Llama（OSS）</td></tr>
       </table></div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🎯</span>選定の進め方</div><p>予算・<span class="term" data-term="レイテンシ">レイテンシ</span>・プライバシー・FT要件を総合し、<b>2〜3候補を実サンプルでテストしてから本番化</b>。統合AIプラットフォームで裏側を意識せず使い分け。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📈</span><span class="term" data-term="KPI">KPI</span></div><p>時間／品質／コスト／満足度＋<b>技術KPI（応答速度・エラー率）</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">選定の進め方</div><p>予算・<span class="term" data-term="レイテンシ">レイテンシ</span>・プライバシー・FT要件を総合し、<b>2〜3候補を実サンプルでテストしてから本番化</b>。統合AIプラットフォームで裏側を意識せず使い分け。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="KPI">KPI</span></div><p>時間／品質／コスト／満足度＋<b>技術KPI（応答速度・エラー率）</b>。</p></div>
       </div>
-      <div class="verdict">💡 <b>料金の選び方の結論</b>：無料／Go($8)は上限が厳しく目玉機能（Deep Research・agent mode）が使いにくい。実務の生産性なら<b>個人＝Plus、法人＝Business</b>が2026年のコスパ最良。最高機密や大規模管理は<b>Enterprise</b>。</div>
-      <p class="flag">★要確認：Pro $100階層、ファインチューニングAPIの縮小、各社最新モデル名の細部。</p>
+      <div class="verdict"><b>料金の選び方の結論</b>：無料／Go($8)は上限が厳しく目玉機能（Deep Research・agent mode）が使いにくい。実務の生産性なら<b>個人＝Plus、法人＝Business</b>が2026年のコスパ最良。最高機密や大規模管理は<b>Enterprise</b>。</div>
+      <p class="flag">※要確認：Pro $100階層、ファインチューニングAPIの縮小、各社最新モデル名の細部。</p>
     </div>
   </div>
 
   <!-- 4 セキュリティ -->
   <div class="sec" id="s4">
-    <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・リスク管理</h2><div class="src">データ境界・漏洩メカニズム・規制・ガバナンス</div></div></div>
+    <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・リスク管理</h2><div class="src">入力した機密は本当に学習されるのか? プラン別の線引きと漏洩の5類型、情シス・法務・上司を説得できる“最後の壁”の越え方。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">「機密を入れても大丈夫？」に答える章。プラン別の<b>学習利用とデータ境界</b>、情報漏洩の5類型と実例、日本・EUの規制、DLP・ゼロトラストなどのガバナンスまで。<b>情シス・法務・上司を説得する材料</b>がここで揃います。</p>
       <p class="tz-points"><b>この章の要点：</b>学習オプトアウト ／ 漏洩5類型 ／ 規制（日本・EU） ／ ガバナンス・DLP</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">プラン別のデータプライバシー境界</div>
       <div class="tbl-scroll"><table>
         <tr><th>プラン</th><th>学習利用</th><th>保持・統制</th><th>認証・暗号化</th></tr>
@@ -472,16 +689,36 @@
         <tr><td>API Platform</td><td><b>完全除外</b></td><td>既定30日保持→自動削除、ゼロデータ保持(<span class="term" data-term="ZDR">ZDR</span>)も</td><td>SOC2、堅牢インフラ、暗号化</td></tr>
       </table></div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>最高機密の置き場所</div><p>★Business（旧Team）の会話履歴は外部委託業者のレビューアクセスが許容される仕様との指摘 → 最高機密は<b>Enterprise or クローズド環境（Azure OpenAI）</b>。Enterpriseはアクセスを正規従業員に限定＋顧客の明示許可が必要。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span><span class="term" data-term="DPA">DPA</span>（データ処理追加条項）</div><p>企業＝データ管理者／OpenAI＝処理者。<b>個人情報を外部処理者へ委託する行為自体の適法性</b>を法務が審査。</p></div>
+        <div class="feat-card"><div class="fc-h">最高機密の置き場所</div><p>※Business（旧Team）の会話履歴は外部委託業者のレビューアクセスが許容される仕様との指摘 → 最高機密は<b>Enterprise or クローズド環境（Azure OpenAI）</b>。Enterpriseはアクセスを正規従業員に限定＋顧客の明示許可が必要。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="DPA">DPA</span>（データ処理追加条項）</div><p>企業＝データ管理者／OpenAI＝処理者。<b>個人情報を外部処理者へ委託する行為自体の適法性</b>を法務が審査。</p></div>
       </div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 240" role="img" aria-label="プラン別に入力データがAI学習に使われるかどうかの経路図">
+          <defs><marker id="arrH4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+          <!-- 上段：Free/Plus/Pro -->
+          <rect x="20" y="20" width="150" height="52" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="42" text-anchor="middle" font-size="13" font-weight="700">あなたの入力</text><text class="svg-t" x="95" y="60" text-anchor="middle" font-size="11">Free / Plus / Pro</text>
+          <rect x="300" y="20" width="160" height="52" rx="9" fill="#0b2545"/><text class="svg-tw" x="380" y="42" text-anchor="middle" font-size="13" font-weight="700">ChatGPT</text><text class="svg-tw" x="380" y="60" text-anchor="middle" font-size="11">（既定は学習に利用※）</text>
+          <rect x="590" y="20" width="150" height="52" rx="9" fill="#5a6480"/><text class="svg-tw" x="665" y="46" text-anchor="middle" font-size="13" font-weight="700">AIの学習データに</text><text class="svg-tw" x="665" y="63" text-anchor="middle" font-size="11">残る可能性</text>
+          <g stroke="#274b73" stroke-width="1.8" fill="none" marker-end="url(#arrH4)"><path d="M170 46 L296 46"/><path d="M460 46 L586 46"/></g>
+          <!-- 下段：Business/Enterprise/API -->
+          <rect x="20" y="140" width="150" height="52" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="162" text-anchor="middle" font-size="13" font-weight="700">あなたの入力</text><text class="svg-t" x="95" y="180" text-anchor="middle" font-size="11">Business / Enterprise / API</text>
+          <rect x="300" y="140" width="160" height="52" rx="9" fill="#0b2545"/><text class="svg-tw" x="380" y="162" text-anchor="middle" font-size="13" font-weight="700">ChatGPT</text><text class="svg-tw" x="380" y="180" text-anchor="middle" font-size="11">（学習から完全除外）</text>
+          <rect x="590" y="140" width="150" height="52" rx="9" fill="#5a6480"/><text class="svg-tw" x="665" y="170" text-anchor="middle" font-size="13" font-weight="700">AIの学習データ</text>
+          <g stroke="#274b73" stroke-width="1.8" fill="none" marker-end="url(#arrH4)"><path d="M170 166 L296 166"/></g>
+          <!-- 遮断線 -->
+          <line x1="500" y1="128" x2="560" y2="204" stroke="#0b2545" stroke-width="3"/><line x1="560" y1="128" x2="500" y2="204" stroke="#0b2545" stroke-width="3"/>
+          <text class="svg-t" x="530" y="222" text-anchor="middle" font-size="12" font-weight="700">ここで遮断</text>
+        </svg>
+        <figcaption class="figcap"><b>図：プラン別のデータの流れ（学習利用の有無）</b>。個人向け（上段）は既定でAI学習に使われうる（※手動オプトアウト可）一方、<b>法人向け Business / Enterprise / API は学習から完全除外</b>。機密業務は下段のプランが前提です。仕様は各社公式で最新をご確認ください。</figcaption>
+      </figure>
 
       <div class="blk-h">情報漏洩のメカニズム（5類型）</div>
       <div class="tbl-scroll"><table>
         <tr><th>類型</th><th>代表事例</th><th>原因</th></tr>
         <tr><td>内部脅威（機密の学習データ化）</td><td>2023/4 韓国大手電機のソースコード漏洩</td><td>オプトアウトせず極秘コードを入力</td></tr>
         <tr><td>プラットフォーム（バグ）</td><td>2023/3 履歴・課金情報の漏洩</td><td>OSSライブラリのバグ</td></tr>
-        <tr><td>プラットフォーム（設定不備）</td><td>2024/3 プロンプト漏洩★</td><td>DBアクセス制御の設定ミス</td></tr>
+        <tr><td>プラットフォーム（設定不備）</td><td>2024/3 プロンプト漏洩※</td><td>DBアクセス制御の設定ミス</td></tr>
         <tr><td>エンドポイント（認証窃取）</td><td>ダークウェブでのアカウント大量売買</td><td>インフォスティーラー感染</td></tr>
         <tr><td>アルゴリズム</td><td><span class="term" data-term="プロンプトインジェクション">プロンプトインジェクション</span></td><td>悪意ある指示でガードレール回避</td></tr>
       </table></div>
@@ -498,12 +735,12 @@
 
       <div class="blk-h">AIガバナンスの構築</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>法人プランへ全社移行</div><p>学習除外の法人プランへ全社移行（シャドーAI撲滅）。最高機密は<b>クローズド環境（Azure OpenAI）</b>＋閉域網/AD連携。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔐</span>RAGは最小権限</div><p>AIの検索範囲をAD等の権限と同期し、<b>本人が閲覧権限を持つデータにしか根拠アクセスさせない</b>（権限昇格防止）。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>技術的な“歯止め”</div><p><b><span class="term" data-term="DLP">DLP</span></b>と<span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span>で機密入力を自動ブロック、ログインの2段階認証を完全義務化、<b><span class="term" data-term="EDR">EDR</span></b>、<b><span class="term" data-term="ゼロトラスト">ゼロトラスト</span></b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📚</span>ルールと教育</div><p><b>就業規則連動のガイドライン＋継続教育</b>（プロンプトインジェクション等）、安全なAIサンドボックス。</p></div>
+        <div class="feat-card"><div class="fc-h">法人プランへ全社移行</div><p>学習除外の法人プランへ全社移行（シャドーAI撲滅）。最高機密は<b>クローズド環境（Azure OpenAI）</b>＋閉域網/AD連携。</p></div>
+        <div class="feat-card"><div class="fc-h">RAGは最小権限</div><p>AIの検索範囲をAD等の権限と同期し、<b>本人が閲覧権限を持つデータにしか根拠アクセスさせない</b>（権限昇格防止）。</p></div>
+        <div class="feat-card"><div class="fc-h">技術的な“歯止め”</div><p><b><span class="term" data-term="DLP">DLP</span></b>と<span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span>で機密入力を自動ブロック、ログインの2段階認証を完全義務化、<b><span class="term" data-term="EDR">EDR</span></b>、<b><span class="term" data-term="ゼロトラスト">ゼロトラスト</span></b>。</p></div>
+        <div class="feat-card"><div class="fc-h">ルールと教育</div><p><b>就業規則連動のガイドライン＋継続教育</b>（プロンプトインジェクション等）、安全なAIサンドボックス。</p></div>
       </div>
-      <div class="verdict">💪 <b>もたらす効果</b>：学習オプトアウト＋ゼロトラスト＋DLPを整えれば、<b>「機密を入れても漏れない・学習されない」を客観的に証明</b>できる。これは情シス・法務・上司を説得する“最後の壁”を越える材料 → <b>全社導入のGOを引き出せる</b>。</div>
+      <div class="verdict"><b>もたらす効果</b>：学習オプトアウト＋ゼロトラスト＋DLPを整えれば、<b>「機密を入れても漏れない・学習されない」を客観的に証明</b>できる。これは情シス・法務・上司を説得する“最後の壁”を越える材料 → <b>全社導入のGOを引き出せる</b>。</div>
     </div>
   </div>
 
@@ -513,35 +750,35 @@
   <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>リスク・効果・市場性<span class="grp-sub">ベンダーリスク・ROI・競合・業種別</span></div>
   <div class="sec-grid">
   <div class="sec" id="s5">
-    <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">単一モデルの罠・BCP・マルチLLM・TPRM</div></div></div>
+    <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">AIを1社に頼ると、止まった瞬間に業務も全停止。マルチLLMで稼働率99.5%→99.99%、API費が半減した例も。“止まらない・乗り換えられる”体制とは。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">1社のAIだけに頼ると <b>SPOF（止まると全部止まる急所）</b> とロックインという経営リスクに。マルチLLM＋AIゲートウェイで稼働率99.5%→99.99%、動的ルーティングでAPI費が半減した例も。<b>止まらない・高すぎない・乗り換えられる</b>体制の作り方を解説します。</p>
       <p class="tz-points"><b>この章の要点：</b>SPOF・BCP ／ マルチLLM ／ コスト最適化 ／ サーキットブレーカー</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>1社のAIだけに業務を作り込みすぎると、<b><span class="term" data-term="ベンダーロックイン">ベンダーロックイン</span></b>と<b>単一障害点（<span class="term" data-term="SPOF">SPOF</span>＝そこが止まると全部止まる急所）</b>が生まれます。これはIT部門だけの話ではなく、<b>事業が止まるかどうかという経営リスク（<span class="term" data-term="BCP">BCP</span>＝事業継続）</b>です。</p>
 
       <div class="blk-h">OpenAI依存の3つの脆弱性</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏰</span>突発停止</div><p>AIネイティブ業務は人手フォールバック不可→<b>即ビジネス全停止</b>。単一99.5%＝年約43時間ダウン。CrowdStrike障害（2024/7）と構造的に酷似。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>料金高騰</div><p>囲い込みで乗り換えが困難（作り直し・再テスト・再監査の重荷）。攻撃や暴走でAPIが大量に呼ばれ<b>請求額だけが膨らむ事故（Denial of Wallet＝“財布枯らし”）</b>。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📉</span>陳腐化</div><p>基盤モデルは250種超。汎用固執は特化領域で劣後（★法務 汎用70-80% vs 特化95%、ヘルスケア▲85%）。</p></div>
+        <div class="feat-card"><div class="fc-h">突発停止</div><p>AIネイティブ業務は人手フォールバック不可→<b>即ビジネス全停止</b>。単一99.5%＝年約43時間ダウン。CrowdStrike障害（2024/7）と構造的に酷似。</p></div>
+        <div class="feat-card"><div class="fc-h">料金高騰</div><p>囲い込みで乗り換えが困難（作り直し・再テスト・再監査の重荷）。攻撃や暴走でAPIが大量に呼ばれ<b>請求額だけが膨らむ事故（Denial of Wallet＝“財布枯らし”）</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h">陳腐化</div><p>基盤モデルは250種超。汎用固執は特化領域で劣後（※法務 汎用70-80% vs 特化95%、ヘルスケア▲85%）。</p></div>
       </div>
 
       <div class="blk-h">規制と顕在事例</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>金融規制</div><p>2026/4/17にFed/OCC/FDICが<b>SR 11-7を廃止</b>し新ガイダンス（<b>Fed SR 26-02／OCC Bulletin 2026-13</b>）へ。生成AI・エージェンティックAIは「新規/急速進化」として<b>適用範囲外</b>＋キルスイッチ要求。N次当事者（Nth Party）リスク評価が必須。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚨</span>顕在事例</div><p><b>マクドナルドMcHire（2025/6）</b>＝認証「123456」＋APIのIDORで最大<b>6,400万人</b>の応募者情報が露出。<b>M365 Copilot</b>のゼロクリック間接プロンプトインジェクション（EchoLeak）。エア・カナダのチャットボット誤案内で敗訴。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">🔍</span>OWASP Top 10 for LLM</div><p>過剰なエージェンシー（権限付与）、<span class="term" data-term="ハルシネーション">ハルシネーション</span>／不適切な出力処理 等を<b>脅威モデリング</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">金融規制</div><p>2026/4/17にFed/OCC/FDICが<b>SR 11-7を廃止</b>し新ガイダンス（<b>Fed SR 26-02／OCC Bulletin 2026-13</b>）へ。生成AI・エージェンティックAIは「新規/急速進化」として<b>適用範囲外</b>＋キルスイッチ要求。N次当事者（Nth Party）リスク評価が必須。</p></div>
+        <div class="feat-card"><div class="fc-h">顕在事例</div><p><b>マクドナルドMcHire（2025/6）</b>＝認証「123456」＋APIのIDORで最大<b>6,400万人</b>の応募者情報が露出。<b>M365 Copilot</b>のゼロクリック間接プロンプトインジェクション（EchoLeak）。エア・カナダのチャットボット誤案内で敗訴。</p></div>
+        <div class="feat-card wide"><div class="fc-h">OWASP Top 10 for LLM</div><p>過剰なエージェンシー（権限付与）、<span class="term" data-term="ハルシネーション">ハルシネーション</span>／不適切な出力処理 等を<b>脅威モデリング</b>。</p></div>
       </div>
 
       <div class="blk-h">シナリオ別BCP</div>
       <div class="tbl-scroll"><table>
         <tr><th>シナリオ</th><th>対応策</th></tr>
         <tr><td>A：完全終了・突発停止</td><td><b>自動フェイルオーバー</b>。フォールバック・チェーン（GPT系→Claude→Gemini→自社OSS）をms透過切替</td></tr>
-        <tr><td>B：料金高騰</td><td><b>動的ルーティング</b>。難タスクのみプレミアム、定型は軽量へ。事例★：60%迂回で月$50,000→$27,000</td></tr>
+        <tr><td>B：料金高騰</td><td><b>動的ルーティング</b>。難タスクのみプレミアム、定型は軽量へ。事例※：60%迂回で月$50,000→$27,000</td></tr>
         <tr><td>C：競合が特化モデルで優位</td><td><b>抽象化レイヤー</b>でAPI差を吸収。新モデルへ5%トラフィックでA/B→優位なら大規模改修なしで切替</td></tr>
       </table></div>
 
@@ -551,6 +788,20 @@
         <tr><td>単一（1リージョン）</td><td>99.5%</td><td>約43時間（SPOF）</td></tr>
         <tr><td><b>マルチLLM（独立2社+）</b></td><td><b>99.9975%</b></td><td><b>約13分</b></td></tr>
       </table></div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 170" role="img" aria-label="単一構成とマルチLLM構成の年間ダウン時間の比較グラフ">
+          <g font-size="13" font-weight="700">
+            <text class="svg-t" x="14" y="52">単一（1社）</text>
+            <text class="svg-t" x="14" y="118">マルチLLM</text>
+          </g>
+          <line x1="170" y1="20" x2="170" y2="150" stroke="#dde5ef" stroke-width="1"/>
+          <rect x="170" y="30" width="560" height="34" fill="#5a6480"/><text class="svg-tw" x="180" y="52" font-size="13" font-weight="700">年間ダウン 約43時間（稼働率99.5%）</text>
+          <rect x="170" y="96" width="3" height="34" fill="#0b2545"/><text class="svg-t" x="182" y="118" font-size="13" font-weight="700">年間ダウン 約13分（稼働率99.9975%）</text>
+        </svg>
+        <figcaption class="figcap"><b>図：構成別の年間ダウン時間の目安（試算）</b>。1社依存だと停止が業務全停止に直結（年約43時間）。<b>独立2社以上のマルチLLM＋AIゲートウェイ</b>で年約13分まで縮む理論値の試算です。実際の値は各社の稼働実績・構成に依存します。</figcaption>
+      </figure>
+
       <div class="blk-h">AIゲートウェイ（プロバイダー抽象化）</div>
       <div class="tbl-scroll"><table>
         <tr><th>製品</th><th>特性</th></tr>
@@ -560,8 +811,8 @@
         <tr><td>Kong AI Gateway</td><td>超高トラフィック、応答キャッシュ・レート制限</td></tr>
       </table></div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span><span class="term" data-term="サーキットブレーカー">サーキットブレーカー</span></div><p>エラー率閾値超で経路を遮断→<b>即バックアップ</b>、定期プローブで復帰。重み付けLBで HTTP 429 を予防。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔀</span>動的ルーティング</div><p>①ルールベース ②分類モデル ③ハイブリッド。<b>ステート管理</b>：中央セッションストレージ（Redis等）で文脈を一元管理しモデルを跨いでも維持。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="サーキットブレーカー">サーキットブレーカー</span></div><p>エラー率閾値超で経路を遮断→<b>即バックアップ</b>、定期プローブで復帰。重み付けLBで HTTP 429 を予防。</p></div>
+        <div class="feat-card"><div class="fc-h">動的ルーティング</div><p>①ルールベース ②分類モデル ③ハイブリッド。<b>ステート管理</b>：中央セッションストレージ（Redis等）で文脈を一元管理しモデルを跨いでも維持。</p></div>
       </div>
 
       <div class="blk-h">組織ガバナンス（機密区分）</div>
@@ -572,21 +823,21 @@
         <tr><td>NDA対象情報</td><td>原則入力禁止（契約違反リスク）</td></tr>
         <tr><td>営業秘密・認証情報</td><td>APIキー/パスワードは絶対入力不可。コード分析は二次利用禁止の自社専用環境のみ</td></tr>
       </table></div>
-      <div class="callout">🛡️ 影響大の意思決定は<b><span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span></b>。<span class="term" data-term="シャドーAI">シャドーAI</span>は全面禁止より公式ホワイトリスト提供＋全トランザクションログ。ガイドラインは<b>「生きた文書」</b>として半年に1回見直す。</div>
-      <div class="verdict">💪 <b>もたらす効果</b>：マルチLLM＋AIゲートウェイで<b>稼働率は99.5%→99.99%（年間ダウン43時間→13分）</b>。さらに動的ルーティングで<b>API費が半減した例も</b>。<b>「止まらない・高すぎない・乗り換えられる」</b>を同時に手にし、AIを安心して基幹業務に載せられる。</div>
+      <div class="callout">影響大の意思決定は<b><span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span></b>。<span class="term" data-term="シャドーAI">シャドーAI</span>は全面禁止より公式ホワイトリスト提供＋全トランザクションログ。ガイドラインは<b>「生きた文書」</b>として半年に1回見直す。</div>
+      <div class="verdict"><b>もたらす効果</b>：マルチLLM＋AIゲートウェイで<b>稼働率は99.5%→99.99%（年間ダウン43時間→13分）</b>。さらに動的ルーティングで<b>API費が半減した例も</b>。<b>「止まらない・高すぎない・乗り換えられる」</b>を同時に手にし、AIを安心して基幹業務に載せられる。</div>
     </div>
   </div>
 
   <!-- 6 ROI -->
   <div class="sec" id="s6">
-    <div class="sechd"><span class="n">6</span><div><h2>ROI（投資対効果）の定量化</h2><div class="src">PoC→PoI・KPI・国内事例・ガバナンス</div></div></div>
+    <div class="sechd"><span class="n">6</span><div><h2>ROI（投資対効果）の定量化</h2><div class="src">“なんとなく便利”を金額に。提案書づくり約60%減、パナソニック コネクトは年44.8万時間削減。稟議を通すKPIと計算式がそのまま手に入る。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead"><b>“なんとなく便利”を金額で示す</b>章。工数削減の試算（提案書づくり約60%減ほか）、ROIの計算式、よくある失敗の回避策、<b>パナソニック コネクト（年44.8万時間削減）</b>など国内大企業の実績まで。稟議・予算化の根拠がそのまま手に入ります。</p>
       <p class="tz-points"><b>この章の要点：</b>KPI設計（4軸） ／ ROI試算 ／ 失敗回避 ／ 国内事例</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>日本市場は<span class="term" data-term="PoC">PoC</span>（技術検証）から<b>PoI（投資の証明）</b>へ。経営に<span class="term" data-term="ROI">ROI</span>を数値で示す段階。<b><span class="term" data-term="ベースライン">ベースライン</span>（Before）の可視化</b>が起点。</p>
       <div class="blk-h">工数削減の試算（Before／After）</div>
       <div class="tbl-scroll"><table>
@@ -596,13 +847,35 @@
         <tr><td>定型メール返信</td><td>10分</td><td>3分</td></tr>
       </table></div>
 
+      <figure class="figure">
+        <svg viewBox="0 0 760 260" role="img" aria-label="業務ごとの導入前後の作業時間の比較グラフ">
+          <!-- 凡例 -->
+          <rect x="150" y="8" width="14" height="14" fill="#5a6480"/><text class="svg-t" x="170" y="20" font-size="12" font-weight="700">導入前</text>
+          <rect x="240" y="8" width="14" height="14" fill="#0b2545"/><text class="svg-t" x="260" y="20" font-size="12" font-weight="700">導入後（ChatGPT活用）</text>
+          <line x1="150" y1="34" x2="150" y2="248" stroke="#dde5ef" stroke-width="1"/>
+          <!-- 提案書作成 -->
+          <text class="svg-t" x="14" y="66" font-size="13" font-weight="700">提案書作成</text>
+          <rect x="150" y="44" width="480" height="18" fill="#5a6480"/><text class="svg-t" x="637" y="58" font-size="12" font-weight="700">4時間</text>
+          <rect x="150" y="66" width="180" height="18" fill="#0b2545"/><text class="svg-t" x="337" y="80" font-size="12" font-weight="700">1.5時間（約60%減）</text>
+          <!-- 競合調査 -->
+          <text class="svg-t" x="14" y="128" font-size="13" font-weight="700">競合調査</text>
+          <rect x="150" y="106" width="360" height="18" fill="#5a6480"/><text class="svg-t" x="517" y="120" font-size="12" font-weight="700">3時間</text>
+          <rect x="150" y="128" width="90" height="18" fill="#0b2545"/><text class="svg-t" x="247" y="142" font-size="12" font-weight="700">45分</text>
+          <!-- 定型メール -->
+          <text class="svg-t" x="14" y="190" font-size="13" font-weight="700">定型メール返信</text>
+          <rect x="150" y="168" width="60" height="18" fill="#5a6480"/><text class="svg-t" x="217" y="182" font-size="12" font-weight="700">10分</text>
+          <rect x="150" y="190" width="18" height="18" fill="#0b2545"/><text class="svg-t" x="175" y="204" font-size="12" font-weight="700">3分</text>
+        </svg>
+        <figcaption class="figcap"><b>図：業務別の作業時間 Before / After（試算）</b>。数値は本文の試算例（2026年時点）で、業務内容や習熟度で変動します。例として15名でBusiness導入・1人週2時間削減なら<b>年約432万円相当</b>。導入前の<span class="term" data-term="ベースライン">ベースライン</span>計測が金額換算の起点です。</figcaption>
+      </figure>
+
       <div class="blk-h"><span class="term" data-term="KPI">KPI</span>設計（4軸＋技術KPI）</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏰</span>時間（効率）</div><p>作業時間・<b>リードタイム削減率</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✅</span>品質（エラー削減）</div><p>入力ミス率<b>40〜60%低減</b>、品質スコア10〜20%向上の事例。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">💰</span>コスト</div><p>人件費換算削減額、<b>リード獲得コスト（CPL）削減</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">😊</span>満足度</div><p>単純作業からの解放・<b>やりがい</b>（アンケート）。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📊</span>技術KPI</div><p>応答速度・エラー率・生成品質スコア。<b>AI初稿採用率</b>（手直し無しで採用された割合）も重要。</p></div>
+        <div class="feat-card"><div class="fc-h">時間（効率）</div><p>作業時間・<b>リードタイム削減率</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">品質（エラー削減）</div><p>入力ミス率<b>40〜60%低減</b>、品質スコア10〜20%向上の事例。</p></div>
+        <div class="feat-card"><div class="fc-h">コスト</div><p>人件費換算削減額、<b>リード獲得コスト（CPL）削減</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">満足度</div><p>単純作業からの解放・<b>やりがい</b>（アンケート）。</p></div>
+        <div class="feat-card wide"><div class="fc-h">技術KPI</div><p>応答速度・エラー率・生成品質スコア。<b>AI初稿採用率</b>（手直し無しで採用された割合）も重要。</p></div>
       </div>
 
       <div class="blk-h">ROI試算と失敗回避</div>
@@ -616,30 +889,30 @@
 
       <div class="blk-h">国内大企業の成果（裏取り済み）</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>パナソニック コネクト</div><p>ConnectAI（2023/2〜）。FY2024 利用240万回・<b>年44.8万時間削減</b>（前年比2.4倍）・1回平均28分削減（画像36分）・国内約11,600名。3目標＝生産性／AIスキル／<b>シャドーAI軽減</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏦</span>三菱UFJ（MUFG）</div><p>2025/11 OpenAIと戦略提携、<b>2026年1月以降 全行員約3.5万人に ChatGPT Enterprise</b>。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">⚙️</span>トヨタシステムズ×富士通★</div><p>モダナイゼーションで約15,000ファイルの作業を<b>約50%削減</b>（要確認）。</p></div>
+        <div class="feat-card"><div class="fc-h">パナソニック コネクト</div><p>ConnectAI（2023/2〜）。FY2024 利用240万回・<b>年44.8万時間削減</b>（前年比2.4倍）・1回平均28分削減（画像36分）・国内約11,600名。3目標＝生産性／AIスキル／<b>シャドーAI軽減</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">三菱UFJ（MUFG）</div><p>2025/11 OpenAIと戦略提携、<b>2026年1月以降 全行員約3.5万人に ChatGPT Enterprise</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h">トヨタシステムズ×富士通※</div><p>モダナイゼーションで約15,000ファイルの作業を<b>約50%削減</b>（要確認）。</p></div>
       </div>
 
       <div class="blk-h">ガバナンス・法的リスク</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🛡️</span>Copyright Shield★</div><p>（Enterprise等）で著作権リスク対応。<b>学習オプトアウト標準のBusiness/Enterpriseが事実上必須</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>ガイドライン遵守</div><p>経産省「AI事業者ガイドライン」最新<b>Ver1.2（2026/3/31）</b>。<b><span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span></b>＋継続的リテラシー教育のサイクル。</p></div>
+        <div class="feat-card"><div class="fc-h">Copyright Shield※</div><p>（Enterprise等）で著作権リスク対応。<b>学習オプトアウト標準のBusiness/Enterpriseが事実上必須</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">ガイドライン遵守</div><p>経産省「AI事業者ガイドライン」最新<b>Ver1.2（2026/3/31）</b>。<b><span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span></b>＋継続的リテラシー教育のサイクル。</p></div>
       </div>
-      <div class="verdict">💪 <b>もたらす効果</b>：Before（現状工数）を測っておくだけで、効果を<b>「年◯◯万円削減」という金額</b>で示せる。例：15名で年約432万円、パナソニック コネクトは年44.8万時間。<b>“なんとなく便利”を“黒字の投資”に変え、稟議と追加予算を勝ち取れる</b>。</div>
+      <div class="verdict"><b>もたらす効果</b>：Before（現状工数）を測っておくだけで、効果を<b>「年◯◯万円削減」という金額</b>で示せる。例：15名で年約432万円、パナソニック コネクトは年44.8万時間。<b>“なんとなく便利”を“黒字の投資”に変え、稟議と追加予算を勝ち取れる</b>。</div>
     </div>
   </div>
 
   <!-- 7 競合市場 -->
   <div class="sec" id="s7">
-    <div class="sechd"><span class="n">7</span><div><h2>競合・市場ポジション</h2><div class="src">市場シェア・グローバル/国産LLM・コモディティ化</div></div></div>
+    <div class="sechd"><span class="n">7</span><div><h2>競合・市場ポジション</h2><div class="src">ChatGPT・Gemini・Claude、結局どれが強い? 最新の勢力図と各社の得意分野、国産LLMの台頭まで。自社に合うAIの選び方が見える。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead"><b>ChatGPT・Gemini・Claude</b> の今の勢力図と各社の強み・最適業務、国産LLM（tsuzumi／cotomi）の台頭、テキスト生成のコモディティ化まで。結論は「ChatGPTを軸にマルチLLMで適材適所」。<b>自社に合うAIの選び方</b>が見えてきます。</p>
       <p class="tz-points"><b>この章の要点：</b>市場シェアの傾向 ／ 各社の強み ／ 国産LLM ／ コモディティ化</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>市場は「一強」→「三つ巴」→<b>用途別の多極化</b>へ。推奨は<b>マルチLLM戦略＋AIガバナンス</b>。</p>
 
       <div class="blk-h">市場シェアの地殻変動（Similarweb/Momentic：Web訪問ベース）</div>
@@ -650,7 +923,29 @@
         <tr><td>Claude</td><td>約1.4%</td><td>6.0〜8.2%</td><td>最速成長（四半期+306%）</td></tr>
         <tr><td>DeepSeek / Grok / Copilot / Perplexity</td><td>—</td><td>数%台</td><td>地域・ニッチで分散</td></tr>
       </table></div>
-      <div class="note" style="margin:6px 0 12px;">⚠️ <b>測定方法で大きく異なる</b>：Statcounter（2026/4）ではChatGPT約76.85%／Gemini9%／Claude2.66%。<b>数値でなく傾向で解釈</b>。</div>
+      <div class="note" style="margin:6px 0 12px;"><b>測定方法で大きく異なる</b>：Statcounter（2026/4）ではChatGPT約76.85%／Gemini9%／Claude2.66%。<b>数値でなく傾向で解釈</b>。</div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 240" role="img" aria-label="主要AIのWeb訪問ベース市場シェアの推移グラフ">
+          <rect x="150" y="8" width="14" height="14" fill="#5a6480"/><text class="svg-t" x="170" y="20" font-size="12" font-weight="700">2025/2</text>
+          <rect x="250" y="8" width="14" height="14" fill="#0b2545"/><text class="svg-t" x="270" y="20" font-size="12" font-weight="700">2026/4（範囲の中央値で表示）</text>
+          <line x1="150" y1="34" x2="150" y2="228" stroke="#dde5ef" stroke-width="1"/>
+          <!-- ChatGPT -->
+          <text class="svg-t" x="14" y="66" font-size="13" font-weight="700">ChatGPT</text>
+          <rect x="150" y="44" width="428" height="18" fill="#5a6480"/><text class="svg-t" x="585" y="58" font-size="12" font-weight="700">約76.5%</text>
+          <rect x="150" y="66" width="312" height="18" fill="#0b2545"/><text class="svg-t" x="469" y="80" font-size="12" font-weight="700">約55.7%</text>
+          <!-- Gemini -->
+          <text class="svg-t" x="14" y="122" font-size="13" font-weight="700">Gemini</text>
+          <rect x="150" y="100" width="31" height="18" fill="#5a6480"/><text class="svg-t" x="188" y="114" font-size="12" font-weight="700">約5.6%</text>
+          <rect x="150" y="122" width="148" height="18" fill="#0b2545"/><text class="svg-t" x="305" y="136" font-size="12" font-weight="700">約26.5%</text>
+          <!-- Claude -->
+          <text class="svg-t" x="14" y="178" font-size="13" font-weight="700">Claude</text>
+          <rect x="150" y="156" width="8" height="18" fill="#5a6480"/><text class="svg-t" x="165" y="170" font-size="12" font-weight="700">約1.4%</text>
+          <rect x="150" y="178" width="40" height="18" fill="#0b2545"/><text class="svg-t" x="197" y="192" font-size="12" font-weight="700">約7.1%</text>
+        </svg>
+        <figcaption class="figcap"><b>図：主要AIのWeb訪問ベース市場シェアの推移（傾向・目安）</b>。Similarweb/Momentic系の数値で、2026/4は公表レンジの中央値。<b>測定方法で数値が大きく異なる</b>ため、順位や勢いの傾向として解釈してください（ChatGPTは首位維持も低下、Gemini/Claudeが台頭）。</figcaption>
+      </figure>
+
       <p><b>ユーザー行動のシフト</b>：Claudeは<b>Web経由のみ58.8%</b>（ChatGPT22%・Gemini34.9%）＝PCでの高度なデスクワーク中心。韓国App Store収益で2026/3にGeminiを抜き2位。</p>
 
       <div class="blk-h">グローバル主要LLMの強み</div>
@@ -667,23 +962,23 @@
       <div class="tbl-scroll"><table>
         <tr><th>モデル</th><th>特性</th></tr>
         <tr><td><b>NTT tsuzumi 2</b></td><td>純国産・<b>30Bパラメータ・1GPU（A100 40GB）</b>・低コスト/低環境負荷。2026/5に図表入り日本語ビジネス文書処理を強化。完全<span class="term" data-term="オンプレミス">オンプレ</span>/閉域網。政府Gennai基盤採用</td></tr>
-        <tr><td><b>NEC cotomi</b>★</td><td>高速（GPT-4o比2.2倍★）・128K・オンプレ動作・追加学習が容易。MM総研大賞2024最優秀賞</td></tr>
+        <tr><td><b>NEC cotomi</b>※</td><td>高速（GPT-4o比2.2倍※）・128K・オンプレ動作・追加学習が容易。MM総研大賞2024最優秀賞</td></tr>
       </table></div>
       <p class="flag">補足：OECD 2025によると主要LLMの出力100万トークン単価は2023年以降<b>80%超下落</b>。つまり文章生成そのものは<b>“どこでも安く手に入る当たり前の機能”（<span class="term" data-term="コモディティ化">コモディティ化</span>）</b>になりつつあり、選ぶ決め手は「賢さ」から<b>「自社への合い具合・コスト・管理のしやすさ」</b>へ移っています。</p>
-      <div class="verdict">🧭 <b>結論</b>：「最強の1つ」は不在。<b>ChatGPTを軸にマルチLLMで適材適所</b>＋強固なAIガバナンスが2026年の最適解。エージェンティックAI時代に向け抽象化レイヤーで適応性を確保する。</div>
+      <div class="verdict"><b>結論</b>：「最強の1つ」は不在。<b>ChatGPTを軸にマルチLLMで適材適所</b>＋強固なAIガバナンスが2026年の最適解。エージェンティックAI時代に向け抽象化レイヤーで適応性を確保する。</div>
     </div>
   </div>
 
   <!-- 8 業種別シナリオ -->
   <div class="sec" id="s8">
-    <div class="sechd"><span class="n">8</span><div><h2>業種別の活用シナリオ</h2><div class="src">部門別の具体的ユースケース</div></div></div>
+    <div class="sechd"><span class="n">8</span><div><h2>業種別の活用シナリオ</h2><div class="src">自部署はどこから始める? 法務・経理・営業・開発など部門別に“いちばん効く使い方”を一覧化。小さく始めて定着させる導入の地図。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">コーポレート（法務・経理・人事）・営業・マーケ・バックオフィス・開発・士業など、<b>部門別の具体的なユースケース</b>と、それぞれ主に使う機能を一覧化。<b>「自部署はどこから始めるか」</b>が一目で分かり、小さく始めて定着させるコツも紹介します。</p>
       <p class="tz-points"><b>この章の要点：</b>部門別シナリオ ／ 使う機能 ／ 始め方のコツ</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">部門・業界別ユースケース一覧</div>
       <div class="tbl-scroll"><table>
         <tr><th>部門・業界</th><th>シナリオ</th><th>主に使う機能</th></tr>
@@ -695,8 +990,24 @@
         <tr><td><b>開発・IT</b></td><td>コード補助・レビュー、Canvasでの実装、API連携の試作</td><td><span class="term" data-term="Canvas">Canvas</span>／Codex</td></tr>
         <tr><td><b>士業・専門職</b></td><td>大量資料のリサーチ＆要約（出典つき）、論点整理（最終確認は人）</td><td>Deep Research／Projects</td></tr>
       </table></div>
-      <div class="callout">⚠️ 機密を含む業務は <b>Business/Enterprise＋学習オフ</b> が前提。まず「要約・下書き・調査」から小さく始めるのが定着のコツ。</div>
-      <div class="verdict">💪 <b>もたらす効果（この表の使い方）</b>：自分の部署の行を1つ選び、<b>「いちばん時間を食う作業」をその機能に置き換える</b>だけで効果が出ます。営業なら競合調査→スライド化が数時間→数十分、バックオフィスならExcel集計が即時に。<b>「どの部署が・何を・どの機能で・どれだけ短縮できるか」を社内で割り当てる“導入の地図”</b>として使えます。</div>
+      <p class="figcap"><b>表：部門別のユースケースと主に使う機能の対応表</b>。自部署の行を1つ選び、いちばん時間を食う作業を対応機能に置き換えるのが始め方です。「どの部署が・何を・どの機能で短縮するか」を割り当てる“導入の地図”として使えます。</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 150" role="img" aria-label="小さく始めて全社に広げる定着ステップの図">
+          <defs><marker id="arrH8" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+          <g font-size="13" font-weight="700">
+            <rect x="20" y="48" width="150" height="54" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="72" text-anchor="middle">1. 小さく試す</text><text class="svg-t" x="95" y="90" text-anchor="middle" font-size="11">要約・下書き・調査</text>
+            <rect x="234" y="48" width="150" height="54" rx="9" fill="#274b73"/><text class="svg-tw" x="309" y="72" text-anchor="middle">2. 効果を測る</text><text class="svg-tw" x="309" y="90" text-anchor="middle" font-size="11">削減時間を計測</text>
+            <rect x="448" y="48" width="150" height="54" rx="9" fill="#0b2545"/><text class="svg-tw" x="523" y="72" text-anchor="middle">3. 定着させる</text><text class="svg-tw" x="523" y="90" text-anchor="middle" font-size="11">部署の型に</text>
+            <rect x="620" y="48" width="120" height="54" rx="9" fill="#0b2545"/><text class="svg-tw" x="680" y="72" text-anchor="middle">4. 全社へ</text><text class="svg-tw" x="680" y="90" text-anchor="middle" font-size="11">横展開</text>
+          </g>
+          <g stroke="#274b73" stroke-width="1.8" fill="none" marker-end="url(#arrH8)"><path d="M170 75 L230 75"/><path d="M384 75 L444 75"/><path d="M598 75 L616 75"/></g>
+        </svg>
+        <figcaption class="figcap"><b>図：小さく始めて全社に広げる定着ステップ</b>。機密を含む業務は <b>Business/Enterprise＋学習オフ</b> が前提。まず「要約・下書き・調査」から小さく始めるのが定着のコツです。</figcaption>
+      </figure>
+
+      <div class="callout">機密を含む業務は <b>Business/Enterprise＋学習オフ</b> が前提。まず「要約・下書き・調査」から小さく始めるのが定着のコツ。</div>
+      <div class="verdict"><b>もたらす効果（この表の使い方）</b>：自分の部署の行を1つ選び、<b>「いちばん時間を食う作業」をその機能に置き換える</b>だけで効果が出ます。営業なら競合調査→スライド化が数時間→数十分、バックオフィスならExcel集計が即時に。<b>「どの部署が・何を・どの機能で・どれだけ短縮できるか」を社内で割り当てる“導入の地図”</b>として使えます。</div>
     </div>
   </div>
 
@@ -706,73 +1017,114 @@
   <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">③</span>導入・未来・注意点<span class="grp-sub">定着・エージェント・最新動向・制限</span></div>
   <div class="sec-grid">
   <div class="sec" id="s9">
-    <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">ガイドライン・教育・評価・推進体制</div></div></div>
+    <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">“配って終わり＝誰も使わない”をどう防ぐか。ガイドライン→Quick Win→教育→推進チームの4ステップで、全社の生産性を底上げする定着設計。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">導入を <b>「配って終わり＝誰も使わない」にしない</b> ための設計。入力してよい情報のガイドライン標準化、パイロット→Quick Win、教育・評価制度、推進チーム（CoE）まで、<b>定着させる4ステップ</b>を具体的に解説します。</p>
       <p class="tz-points"><b>この章の要点：</b>ガイドライン標準化 ／ 段階導入 ／ 教育・評価 ／ CoE</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">ガイドラインとプロンプトの標準化</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>機密定義の明文化</div><p>「入力してよい/禁止」の<b>機密定義</b>を明文化（要配慮個人情報・NDA・APIキー等は禁止）。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">✅</span>ファクトチェック義務化</div><p>出力をそのまま使わず<b>人間が確認するファクトチェックの義務化</b>。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="fc-ic">📋</span>テンプレート標準化</div><p>成果の出る<b>プロンプト・テンプレートを全社で共有・標準化</b>。承認ツールのみ利用（ホワイトリスト）。</p></div>
+        <div class="feat-card"><div class="fc-h">機密定義の明文化</div><p>「入力してよい/禁止」の<b>機密定義</b>を明文化（要配慮個人情報・NDA・APIキー等は禁止）。</p></div>
+        <div class="feat-card"><div class="fc-h">ファクトチェック義務化</div><p>出力をそのまま使わず<b>人間が確認するファクトチェックの義務化</b>。</p></div>
+        <div class="feat-card wide"><div class="fc-h">テンプレート標準化</div><p>成果の出る<b>プロンプト・テンプレートを全社で共有・標準化</b>。承認ツールのみ利用（ホワイトリスト）。</p></div>
       </div>
       <div class="blk-h">失敗しない段階的導入（推進ロードマップ）</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧪</span>パイロット（<span class="term" data-term="PoC">PoC</span>）</div><p>全社一斉でなく、効果が出やすい部門（CS・マーケ等）で<b>パイロット</b>から。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🚀</span>Quick Winで波及</div><p>「○時間浮いた」等の<b>Quick Win</b>を作ってから他部署へ波及・全社拡大。</p></div>
+        <div class="feat-card"><div class="fc-h">パイロット（<span class="term" data-term="PoC">PoC</span>）</div><p>全社一斉でなく、効果が出やすい部門（CS・マーケ等）で<b>パイロット</b>から。</p></div>
+        <div class="feat-card"><div class="fc-h">Quick Winで波及</div><p>「○時間浮いた」等の<b>Quick Win</b>を作ってから他部署へ波及・全社拡大。</p></div>
       </div>
       <div class="blk-h">社内教育・評価制度の仕組み化</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📢</span>ノウハウ横展開</div><p><b>事例発表会（ライトニングトーク）</b>、Slack/Teamsの<b>おすすめプロンプト共有チャンネル</b>でノウハウ横展開。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏆</span>評価制度で動機づけ</div><p><b>AI推進賞</b>や<b>人事評価への活用度組込</b>でモチベーション維持。情報/技術弱者を生まないUI・教育。</p></div>
+        <div class="feat-card"><div class="fc-h">ノウハウ横展開</div><p><b>事例発表会（ライトニングトーク）</b>、Slack/Teamsの<b>おすすめプロンプト共有チャンネル</b>でノウハウ横展開。</p></div>
+        <div class="feat-card"><div class="fc-h">評価制度で動機づけ</div><p><b>AI推進賞</b>や<b>人事評価への活用度組込</b>でモチベーション維持。情報/技術弱者を生まないUI・教育。</p></div>
       </div>
       <div class="blk-h">推進組織（旗振り役チーム）と“自分たちが最初に使い倒す”文化</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🏢</span>専門チーム（<span class="term" data-term="CoE">CoE</span>）</div><p>導入〜運用〜定着教育を一貫して進める<b>専門チーム（CoE＝社内の推進センター）</b>を置き、各部門に伴走する。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🍽️</span>率先利用の文化</div><p>推進する人自身が毎日使い倒して改善する<b>“自社で先に試食する”文化（ドッグフーディング＝率先利用）</b>を育てる。</p></div>
+        <div class="feat-card"><div class="fc-h">専門チーム（<span class="term" data-term="CoE">CoE</span>）</div><p>導入〜運用〜定着教育を一貫して進める<b>専門チーム（CoE＝社内の推進センター）</b>を置き、各部門に伴走する。</p></div>
+        <div class="feat-card"><div class="fc-h">率先利用の文化</div><p>推進する人自身が毎日使い倒して改善する<b>“自社で先に試食する”文化（ドッグフーディング＝率先利用）</b>を育てる。</p></div>
       </div>
-      <div class="verdict">💪 <b>もたらす効果</b>：この4ステップを踏むと、AIは<b>「配って終わり＝誰も使わない」を回避</b>できます。ガイドラインで“安心して使える線引き”、Quick Winで“やる気”、共有チャンネルで“ノウハウ”、CoEで“続くしくみ”が揃い、<b>一部の得意な人だけでなく全社の生産性が底上げ</b>される。導入の成否を分けるのは機能の良し悪しではなく、この定着設計です。</div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 150" role="img" aria-label="AIを定着させる4ステップのフロー図">
+          <defs><marker id="arrH9" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+          <g font-size="13" font-weight="700">
+            <rect x="12" y="46" width="164" height="58" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="94" y="70" text-anchor="middle">① ガイドライン</text><text class="svg-t" x="94" y="90" text-anchor="middle" font-size="11">入力可否を明文化</text>
+            <rect x="212" y="46" width="164" height="58" rx="9" fill="#274b73"/><text class="svg-tw" x="294" y="70" text-anchor="middle">② パイロット</text><text class="svg-tw" x="294" y="90" text-anchor="middle" font-size="11">Quick Winを作る</text>
+            <rect x="412" y="46" width="164" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="494" y="70" text-anchor="middle">③ 教育・評価</text><text class="svg-tw" x="494" y="90" text-anchor="middle" font-size="11">共有・表彰で横展開</text>
+            <rect x="612" y="46" width="136" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="680" y="70" text-anchor="middle">④ CoE</text><text class="svg-tw" x="680" y="90" text-anchor="middle" font-size="11">続くしくみ</text>
+          </g>
+          <g stroke="#274b73" stroke-width="1.8" fill="none" marker-end="url(#arrH9)"><path d="M176 75 L208 75"/><path d="M376 75 L408 75"/><path d="M576 75 L608 75"/></g>
+        </svg>
+        <figcaption class="figcap"><b>図：AIを定着させる4ステップ</b>。①安心して使える線引き→②Quick Winでやる気→③共有・表彰でノウハウ→④<span class="term" data-term="CoE">CoE</span>で続くしくみ。「配って終わり＝誰も使わない」を避ける定着設計の流れです。</figcaption>
+      </figure>
+
+      <div class="verdict"><b>もたらす効果</b>：この4ステップを踏むと、AIは<b>「配って終わり＝誰も使わない」を回避</b>できます。ガイドラインで“安心して使える線引き”、Quick Winで“やる気”、共有チャンネルで“ノウハウ”、CoEで“続くしくみ”が揃い、<b>一部の得意な人だけでなく全社の生産性が底上げ</b>される。導入の成否を分けるのは機能の良し悪しではなく、この定着設計です。</div>
     </div>
   </div>
 
   <!-- 10 エージェンティックAI -->
   <div class="sec" id="s10">
-    <div class="sechd"><span class="n">10</span><div><h2>エージェンティックAI</h2><div class="src">自律エージェント・MCP連携・Human-in-the-Loop</div></div></div>
+    <div class="sechd"><span class="n">10</span><div><h2>エージェンティックAI</h2><div class="src">AIが自分で段取りして仕事を終わらせる“新しい労働力”へ。任せられる範囲と、お金や本番データに触れる操作を人が承認する安全設計とは。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">2026年最大のトレンド、AIが目標を自分で分解・実行する <b>“新しい労働力”</b> へ。MCP連携・自己修復・思考の可視化のしくみと、お金や本番データに関わる重要操作は<b>人が承認する（Human-in-the-Loop）</b>安全設計を解説します。</p>
       <p class="tz-points"><b>この章の要点：</b>自律実行のしくみ ／ MCP ／ 安全設計（HITL）</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>2026年最大のトレンドは、AIが「対話相手」から<b>目標達成のため自律的に判断・実行する「<span class="term" data-term="エージェンティックAI">エージェンティックAI</span>」</b>へ進化したこと。AIを効率化ツールでなく<b>「自律的に判断・実行する新しい労働力」</b>として組織設計に組み込む段階。AI事業者ガイドラインは「複数エージェントが協調する目標主導型システム」と定義。</p>
       <div class="blk-h">メカニズム（ゴールを指定するだけ）</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🧩</span>タスク自動分解</div><p>AI自身が手順（ワークフロー）を設計。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔌</span>ツールの自律選択</div><p><b><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</b>対応でブラウザ／社内DB／SaaSを適切に選択。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔧</span>自己修復</div><p>失敗時に<b>軌道修正して継続</b>（ハイブリッドなタスク分解）。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔍</span>可視化＋出典明示</div><p>思考プロセスを振り返り可能にし、<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>を防止</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">タスク自動分解</div><p>AI自身が手順（ワークフロー）を設計。</p></div>
+        <div class="feat-card"><div class="fc-h">ツールの自律選択</div><p><b><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</b>対応でブラウザ／社内DB／SaaSを適切に選択。</p></div>
+        <div class="feat-card"><div class="fc-h">自己修復</div><p>失敗時に<b>軌道修正して継続</b>（ハイブリッドなタスク分解）。</p></div>
+        <div class="feat-card"><div class="fc-h">可視化＋出典明示</div><p>思考プロセスを振り返り可能にし、<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>を防止</b>。</p></div>
       </div>
       <p>将来像：出張手配をまるごと任せる秘書役、AI同士が交渉・調整して会社間の取引を代行する、など。</p>
-      <div class="callout">🛡️ <b>安全設計</b>：お金の支払い・本番データの更新・社外への送信など“取り返しのつかない操作”は、必ず<b>人間が最終承認（<span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span>＝人を間に挟む）</b>。AIに権限を渡しすぎない（専門用語でOWASP「過剰なエージェンシー」）ことが鉄則です。</div>
-      <div class="verdict">💪 <b>もたらす効果</b>：エージェント化が進むと、AIは“相談相手”から<b>「指示すれば手を動かして仕事を終わらせる戦力」</b>に変わります。これまで人が貼り付いていた調査・転記・予約・定例レポートを<b>夜間や並行で自動消化</b>でき、人は判断と創造に集中できる。ただし効果と引き換えに事故リスクも上がるため、<b>「自動でやらせる範囲」と「人が承認する境界」をセットで決める</b>ことが、得をするか事故るかの分かれ目です。</div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 280" role="img" aria-label="エージェントが自律的に動くしくみとHuman-in-the-Loopの承認ゲートの図">
+          <defs><marker id="arrH10" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+          <rect x="300" y="14" width="160" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="380" y="38" text-anchor="middle" font-size="13" font-weight="700">ゴールを指定</text><text class="svg-tw" x="380" y="54" text-anchor="middle" font-size="11">（例：出張手配して）</text>
+          <!-- ループ4ノード -->
+          <g font-size="12.5" font-weight="700">
+            <rect x="60" y="96" width="180" height="48" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="150" y="118" text-anchor="middle">① タスク分解</text><text class="svg-t" x="150" y="135" text-anchor="middle" font-size="11">手順を自分で設計</text>
+            <rect x="520" y="96" width="180" height="48" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="610" y="118" text-anchor="middle">② ツール選択</text><text class="svg-t" x="610" y="135" text-anchor="middle" font-size="11">MCPでDB/SaaSへ</text>
+            <rect x="520" y="184" width="180" height="48" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="610" y="206" text-anchor="middle">③ 実行</text><text class="svg-t" x="610" y="223" text-anchor="middle" font-size="11">ブラウザ操作など</text>
+            <rect x="60" y="184" width="180" height="48" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="150" y="206" text-anchor="middle">④ 自己修復</text><text class="svg-t" x="150" y="223" text-anchor="middle" font-size="11">失敗を軌道修正</text>
+          </g>
+          <g stroke="#274b73" stroke-width="1.8" fill="none" marker-end="url(#arrH10)">
+            <path d="M380 60 L380 120 L244 120"/>
+            <path d="M240 120 L516 120"/>
+            <path d="M610 144 L610 180"/>
+            <path d="M520 208 L244 208"/>
+            <path d="M150 184 L150 148"/>
+          </g>
+          <!-- HITL 承認ゲート -->
+          <rect x="290" y="184" width="180" height="48" rx="9" fill="#5a6480"/><text class="svg-tw" x="380" y="204" text-anchor="middle" font-size="12.5" font-weight="700">人が最終承認（HITL）</text><text class="svg-tw" x="380" y="221" text-anchor="middle" font-size="11">支払い・送信・本番更新</text>
+          <g stroke="#274b73" stroke-width="1.8" fill="none" marker-end="url(#arrH10)"><path d="M520 208 L474 208"/><path d="M286 208 L244 208"/></g>
+        </svg>
+        <figcaption class="figcap"><b>図：エージェントの自律サイクルと承認ゲート</b>。ゴールを渡すと①分解→②<span class="term" data-term="MCP">MCP</span>でツール選択→③実行→④自己修復を自分で回します。ただし支払い・社外送信・本番更新など<b>取り返しのつかない操作は人が最終承認（<span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span>）</b>する設計が前提です。</figcaption>
+      </figure>
+
+      <div class="callout"><b>安全設計</b>：お金の支払い・本番データの更新・社外への送信など“取り返しのつかない操作”は、必ず<b>人間が最終承認（<span class="term" data-term="Human-in-the-Loop">Human-in-the-Loop</span>＝人を間に挟む）</b>。AIに権限を渡しすぎない（専門用語でOWASP「過剰なエージェンシー」）ことが鉄則です。</div>
+      <div class="verdict"><b>もたらす効果</b>：エージェント化が進むと、AIは“相談相手”から<b>「指示すれば手を動かして仕事を終わらせる戦力」</b>に変わります。これまで人が貼り付いていた調査・転記・予約・定例レポートを<b>夜間や並行で自動消化</b>でき、人は判断と創造に集中できる。ただし効果と引き換えに事故リスクも上がるため、<b>「自動でやらせる範囲」と「人が承認する境界」をセットで決める</b>ことが、得をするか事故るかの分かれ目です。</div>
     </div>
   </div>
 
   <!-- 11 ロードマップ -->
   <div class="sec" id="s11">
-    <div class="sechd"><span class="n">11</span><div><h2>最新アップデート・ロードマップ</h2><div class="src">モデル世代交代の時系列と今後</div></div></div>
+    <div class="sechd"><span class="n">11</span><div><h2>最新アップデート・ロードマップ</h2><div class="src">GPT-5.5など世代交代を時系列で。“いつ・何が変わるか”を押さえ、古いモデルの退役や新機能の波に乗り遅れないために。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">GPT-5.5公開などモデル世代交代の <b>時系列と今後の予定</b> を一覧化。「いつ・何が変わるか」を押さえ、古いモデルの退役や新機能の波に<b>乗り遅れないため</b>の章です。</p>
       <p class="tz-points"><b>この章の要点：</b>世代交代の時系列 ／ 退役スケジュール ／ 今後の予定</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">モデル世代交代の時系列と今後</div>
       <div class="tbl-scroll"><table>
         <tr><th>時期</th><th>出来事</th></tr>
@@ -783,32 +1135,80 @@
         <tr><td>2026/6</td><td>スーパーアプリ再設計（エージェント・コーディング・画像・自動化を統合強化）</td></tr>
         <tr><td>継続/予定</td><td>Company knowledge／Workspace Agents の企業展開、会話型ECの拡充。o3系は2026/8退役予定。<b>※動画生成「Sora」は提供終了</b></td></tr>
       </table></div>
-      <div class="callout">📌 将来計画は変更前提。最新は OpenAI のリリースノート（help.openai.com）で確認を。</div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 200" role="img" aria-label="2026年のモデル世代交代の時系列">
+          <line x1="40" y1="100" x2="720" y2="100" stroke="#0b2545" stroke-width="3"/>
+          <g font-size="12" font-weight="700" text-anchor="middle">
+            <!-- 2/13 退役 -->
+            <circle cx="90" cy="100" r="7" fill="#5a6480"/><line x1="90" y1="100" x2="90" y2="60" stroke="#274b73" stroke-width="1.4"/><text class="svg-t" x="90" y="50" font-size="12.5">2/13</text><text class="svg-ts" x="90" y="34" font-size="11">GPT-4o等 退役</text>
+            <!-- 3/11 終了 -->
+            <circle cx="210" cy="100" r="7" fill="#5a6480"/><line x1="210" y1="100" x2="210" y2="140" stroke="#274b73" stroke-width="1.4"/><text class="svg-t" x="210" y="156" font-size="12.5">3/11</text><text class="svg-ts" x="210" y="172" font-size="11">GPT-5.1系 終了</text>
+            <!-- 4 公開 -->
+            <circle cx="360" cy="100" r="9" fill="#0b2545"/><line x1="360" y1="100" x2="360" y2="56" stroke="#274b73" stroke-width="1.4"/><text class="svg-t" x="360" y="46" font-size="13" font-weight="700">2026/4</text><text class="svg-t" x="360" y="30" font-size="11.5" font-weight="700">GPT-5.5 公開</text>
+            <!-- 5 -->
+            <circle cx="490" cy="100" r="7" fill="#274b73"/><line x1="490" y1="100" x2="490" y2="140" stroke="#274b73" stroke-width="1.4"/><text class="svg-t" x="490" y="156" font-size="12.5">5月</text><text class="svg-ts" x="490" y="172" font-size="11">音声更新・FT縮小</text>
+            <!-- 6 -->
+            <circle cx="610" cy="100" r="7" fill="#274b73"/><line x1="610" y1="100" x2="610" y2="60" stroke="#274b73" stroke-width="1.4"/><text class="svg-t" x="610" y="50" font-size="12.5">6月</text><text class="svg-ts" x="610" y="34" font-size="11">スーパーアプリ再設計</text>
+            <!-- 8 予定 -->
+            <circle cx="700" cy="100" r="7" fill="#5a6480"/><line x1="700" y1="100" x2="700" y2="140" stroke="#274b73" stroke-width="1.4"/><text class="svg-t" x="700" y="156" font-size="12.5">8月〜</text><text class="svg-ts" x="700" y="172" font-size="11">o3系 退役予定</text>
+          </g>
+        </svg>
+        <figcaption class="figcap"><b>図：2026年のモデル世代交代の時系列（予定を含む）</b>。旧モデルの退役と新モデル公開が短い周期で進みます。将来計画は変更前提のため、最新は OpenAI のリリースノート（help.openai.com）でご確認ください。</figcaption>
+      </figure>
+
+      <div class="callout">将来計画は変更前提。最新は OpenAI のリリースノート（help.openai.com）で確認を。</div>
     </div>
   </div>
 
   <!-- 12 制限・注意点 -->
   <div class="sec" id="s12">
-    <div class="sechd"><span class="n">12</span><div><h2>制限・注意点</h2><div class="src">ハルシネーション・上限・鮮度・機密</div></div></div>
+    <div class="sechd"><span class="n">12</span><div><h2>制限・注意点</h2><div class="src">賢いAIにも6つの限界がある。ハルシネーション・利用上限・知識の鮮度・機密の扱い…トラブルを避けるための最終チェックリスト。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">使う前に知っておくべき <b>限界</b>。利用上限・コンテキスト上限・ハルシネーション（もっともらしい誤り）・知識の鮮度・機密・著作権の注意点をまとめています。<b>トラブルを避ける最終チェック</b>に。</p>
       <p class="tz-points"><b>この章の要点：</b>利用上限 ／ ハルシネーション ／ 知識の鮮度 ／ 機密・著作権</p>
-      <button class="more-btn" type="button">▶ この章を詳しく読む</button>
+      <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
-      <p class="term-hint">💡 点線が引かれた言葉は、クリックすると説明が表示されます。</p>
+      <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">使う前に知っておくべき6つの限界</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⏰</span>利用上限</div><p>無料はメッセージ数・高度機能に制限。<b>Plus＜Pro で緩和</b>（上限は一定時間でリセット）。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📏</span><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span>上限</div><p>大規模だが上限あり。超長文は分割。<b>アプリ内の正確な上限は公式で要確認</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🌀</span><span class="term" data-term="ハルシネーション">ハルシネーション</span></div><p>もっともらしい誤情報が出る。<b>重要事項は出典・一次情報で裏取り</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">📅</span>知識の鮮度</div><p>学習カットオフあり。<b>最新はWeb検索機能を併用</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">🔒</span>機密情報</div><p>個人／無料では学習・保持に注意。機密入力は避け、<b>業務はBusiness/Enterprise</b>。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="fc-ic">⚖️</span>著作権・商用</div><p>各規約に従い、<b>最終チェックは人間が実施</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">利用上限</div><p>無料はメッセージ数・高度機能に制限。<b>Plus＜Pro で緩和</b>（上限は一定時間でリセット）。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span>上限</div><p>大規模だが上限あり。超長文は分割。<b>アプリ内の正確な上限は公式で要確認</b>。</p></div>
+        <div class="feat-card"><div class="fc-h"><span class="term" data-term="ハルシネーション">ハルシネーション</span></div><p>もっともらしい誤情報が出る。<b>重要事項は出典・一次情報で裏取り</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">知識の鮮度</div><p>学習カットオフあり。<b>最新はWeb検索機能を併用</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">機密情報</div><p>個人／無料では学習・保持に注意。機密入力は避け、<b>業務はBusiness/Enterprise</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">著作権・商用</div><p>各規約に従い、<b>最終チェックは人間が実施</b>。</p></div>
       </div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 300" role="img" aria-label="主な限界とその対処法の対応図">
+          <defs><marker id="arrH12" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#274b73"/></marker></defs>
+          <text class="svg-ts" x="20" y="20" font-size="13" font-weight="700">限界（気をつける点）</text>
+          <text class="svg-ts" x="470" y="20" font-size="13" font-weight="700">対処法（こうすれば安全）</text>
+          <g font-size="12.5" font-weight="700">
+            <rect x="20" y="32" width="270" height="40" rx="8" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="34" y="57" font-size="12.5">もっともらしい誤り（ハルシネーション）</text>
+            <rect x="470" y="32" width="270" height="40" rx="8" fill="#0b2545"/><text class="svg-tw" x="484" y="57" font-size="12.5">出典・一次情報で裏取り</text>
+            <rect x="20" y="86" width="270" height="40" rx="8" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="34" y="111">知識の鮮度（学習カットオフ）</text>
+            <rect x="470" y="86" width="270" height="40" rx="8" fill="#0b2545"/><text class="svg-tw" x="484" y="111">Web検索機能を併用</text>
+            <rect x="20" y="140" width="270" height="40" rx="8" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="34" y="165">利用上限・コンテキスト上限</text>
+            <rect x="470" y="140" width="270" height="40" rx="8" fill="#0b2545"/><text class="svg-tw" x="484" y="165">上位プラン／長文は分割</text>
+            <rect x="20" y="194" width="270" height="40" rx="8" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="34" y="219">機密情報の学習・保持</text>
+            <rect x="470" y="194" width="270" height="40" rx="8" fill="#0b2545"/><text class="svg-tw" x="484" y="219">Business/Enterprise＋学習オフ</text>
+            <rect x="20" y="248" width="270" height="40" rx="8" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="34" y="273">著作権・商用リスク</text>
+            <rect x="470" y="248" width="270" height="40" rx="8" fill="#0b2545"/><text class="svg-tw" x="484" y="273">規約遵守＋人が最終チェック</text>
+          </g>
+          <g stroke="#274b73" stroke-width="1.6" fill="none" marker-end="url(#arrH12)">
+            <path d="M290 52 L466 52"/><path d="M290 106 L466 106"/><path d="M290 160 L466 160"/><path d="M290 214 L466 214"/><path d="M290 268 L466 268"/>
+          </g>
+        </svg>
+        <figcaption class="figcap"><b>図：主な限界とその対処法の対応</b>。限界は“使えない”ではなく“こう備える”ものです。左の注意点それぞれに、右の対処をセットで運用すればトラブルを避けられます。仕様・上限は各社公式で最新をご確認ください。</figcaption>
+      </figure>
     </div>
   </div>
   </div></div>
+  </main>
+  </div>
 
 </div>
 
@@ -913,6 +1313,63 @@
     if(e.target===modal || e.target.closest('.tm-close')){ hide(); }
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ hide(); } });
+})();
+</script>
+<script>
+/* 章ビュー：目次項目や章の行を選ぶと、その章だけを1ページ全体で表示（折りたたみ展開ではなく“ページ遷移”風）。
+   URLハッシュ(#sN)連動・ブラウザ戻る対応・スクロール現在地ハイライト。 */
+(function(){
+  var body=document.body;
+  var secList = Array.prototype.slice.call(document.querySelectorAll('.main2 .sec'));
+  var bar=document.getElementById('chapterbar');
+  if(!bar||!secList.length) return;
+  var titleEl=bar.querySelector('.cb-title');
+  var prevBtn=bar.querySelector('.cb-prev'), nextBtn=bar.querySelector('.cb-next');
+  var navLinks=Array.prototype.slice.call(document.querySelectorAll('.tocnav a'));
+  function setActive(id){ navLinks.forEach(function(a){ a.classList.toggle('is-active', a.getAttribute('href')==='#'+id); }); }
+  function idxOf(sec){ return secList.indexOf(sec); }
+  function open(id, push){
+    var sec=document.getElementById(id);
+    if(!sec || !sec.classList.contains('sec')) return;
+    secList.forEach(function(s){ s.classList.remove('solo'); });
+    sec.classList.add('solo'); sec.classList.add('open');
+    body.classList.add('reading');
+    var h2=sec.querySelector('.sechd h2'); titleEl.textContent = h2 ? h2.textContent : '';
+    var i=idxOf(sec); prevBtn.disabled=(i<=0); nextBtn.disabled=(i>=secList.length-1);
+    setActive(id);
+    if(push!==false && location.hash!=='#'+id){ try{ history.pushState(null,'','#'+id); }catch(e){ location.hash=id; } }
+    window.scrollTo(0,0);
+  }
+  function close(push){
+    var solo=document.querySelector('.sec.solo');
+    body.classList.remove('reading');
+    if(solo){ solo.classList.remove('solo'); solo.classList.remove('open'); }
+    if(push!==false){ try{ history.pushState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } }
+    if(solo){ var y=solo.getBoundingClientRect().top+window.pageYOffset-80; window.scrollTo(0,Math.max(0,y)); }
+    else { window.scrollTo(0,0); }
+  }
+  document.addEventListener('click', function(e){
+    var a=e.target.closest('.tocnav a, .ov-routes a');
+    if(a && a.getAttribute('href') && a.getAttribute('href').charAt(0)==='#'){
+      var id=a.getAttribute('href').slice(1);
+      if(document.getElementById(id)){ e.preventDefault(); e.stopImmediatePropagation(); open(id); return; }
+    }
+    var hd=e.target.closest('.sechd, .more-btn');
+    if(hd){
+      // 章ビュー中は上のヘッダーをタップしても折りたたまない（旧アコーディオン開閉を無効化）
+      if(body.classList.contains('reading')){ e.preventDefault(); e.stopImmediatePropagation(); return; }
+      var sec=hd.closest('.sec'); if(sec){ e.preventDefault(); e.stopImmediatePropagation(); open(sec.id); return; }
+    }
+  }, true);
+  bar.querySelector('.cb-back').addEventListener('click', function(){ close(); });
+  prevBtn.addEventListener('click', function(){ var s=document.querySelector('.sec.solo'); var i=idxOf(s); if(i>0) open(secList[i-1].id); });
+  nextBtn.addEventListener('click', function(){ var s=document.querySelector('.sec.solo'); var i=idxOf(s); if(i>=0 && i<secList.length-1) open(secList[i+1].id); });
+  window.addEventListener('popstate', function(){ var h=location.hash.slice(1); if(h && document.getElementById(h) && document.getElementById(h).classList.contains('sec')){ open(h,false); } else { close(false); } });
+  var h0=location.hash.slice(1); if(h0 && document.getElementById(h0) && document.getElementById(h0).classList.contains('sec')){ open(h0,false); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){ if(body.classList.contains('reading')) return; entries.forEach(function(x){ if(x.isIntersecting) setActive(x.target.id); }); }, {rootMargin:'-16% 0px -74% 0px', threshold:0});
+    secList.forEach(function(s){ io.observe(s); });
+  }
 })();
 </script>
 </body>
