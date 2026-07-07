@@ -253,7 +253,7 @@
   .hero .pills{margin-top:11px!important;gap:7px!important;}
   .hero .pill{font-size:12px!important;padding:5px 10px!important;}
 
-  .wrap{max-width:1220px!important;padding:16px 26px 60px!important;}
+  .wrap{max-width:1000px!important;padding:16px 26px 60px!important;}
   .toprow{margin:2px 0 10px!important;}
   .note{padding:9px 14px!important;font-size:12.5px!important;line-height:1.6!important;margin:4px 0 12px!important;}
   .intro-hub{padding:2px 20px!important;margin:6px 0 14px!important;}
@@ -323,7 +323,7 @@
   .chapterbar .cb-nav button:disabled{opacity:.4;cursor:default;}
   @media(max-width:760px){.chapterbar .cb-back{width:100%;text-align:center;}.chapterbar .cb-nav{margin-left:0;width:100%;}.chapterbar .cb-nav button{flex:1;}}
   @media screen{
-    body.reading .hero,body.reading .toprow,body.reading .note,body.reading .valueband,body.reading .side,body.reading .grp-h{display:none!important;}
+    body.reading .hero,body.reading .toprow,body.reading .note,body.reading .valueband,body.reading .side,body.reading .grp-h,body.reading .groupbar{display:none!important;}
     body.reading .main2 .sec{display:none!important;}
     body.reading .main2 .sec.solo{display:block!important;margin:0!important;}
   }
@@ -342,6 +342,38 @@
   .figure .svg-tw{font-family:inherit;fill:#fff;}
   .figure .svg-ts{font-family:inherit;fill:var(--sub);}
   @media print{.figure{break-inside:avoid;}}
+  /* =========================================================
+     1カラム化＋上部グループアンカーバー＋章末リンク（ChatGPT版と同フォーマット）
+     ========================================================= */
+  .main2{max-width:100%;margin:0 auto;}
+  .groupbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+    background:#eef1fb;border:1px solid var(--line);border-radius:11px;padding:7px 12px;margin:4px auto 24px;
+    box-shadow:0 2px 10px rgba(27,36,71,.07);}
+  .groupbar .gb-label{font-size:11.5px;font-weight:700;color:var(--sub);letter-spacing:.02em;}
+  .groupbar a{font-size:12.5px;font-weight:700;color:var(--sub);text-decoration:none;background:#fff;
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap;
+    transition:background .12s,border-color .12s,color .12s;}
+  .groupbar a:hover{color:var(--navy);border-color:var(--g);}
+  .groupbar a.is-active{background:var(--g);color:#fff;border-color:var(--g);box-shadow:0 1px 4px rgba(27,36,71,.22);}
+  @media(max-width:760px){.groupbar{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}.groupbar .gb-label{display:none;}.groupbar a{font-size:12px;padding:6px 11px;}}
+  .grp{scroll-margin-top:80px;}
+  .grp-h{position:sticky;top:50px;z-index:12;background:var(--bg);padding-top:9px!important;box-shadow:0 7px 9px -8px rgba(27,36,71,.16);}
+  @media(max-width:760px){.grp-h{top:56px;}}
+  /* 章ビュー末尾：ほかの章へ飛ぶリンク一覧（現在章を除く。JSで動的生成） */
+  .otherch{display:none;margin:24px auto 8px;}
+  body.reading .otherch{display:block;}
+  .otherch-h{font-size:15px;font-weight:900;color:var(--navy);margin:0 0 12px;padding-bottom:9px;border-bottom:2px solid var(--line);}
+  .otherch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .otherch a{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--ink);box-shadow:0 1px 3px rgba(27,36,71,.04);transition:border-color .12s,box-shadow .12s,transform .1s;}
+  .otherch a:hover{border-color:var(--g);box-shadow:0 3px 10px rgba(27,36,71,.1);transform:translateY(-1px);}
+  .otherch a .oc-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:var(--g-bg);color:var(--g-d);font-size:12px;font-weight:800;flex:0 0 auto;}
+  .otherch a .oc-t{font-size:12.5px;font-weight:700;line-height:1.35;}
+  @media(max-width:760px){.otherch-grid{grid-template-columns:1fr;}}
+  /* 上部メニューへ戻る（フローティング） */
+  .to-top{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--g);color:#fff;text-decoration:none;font-size:13px;font-weight:800;border-radius:999px;padding:11px 16px;box-shadow:0 4px 14px rgba(27,36,71,.28);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;}
+  .to-top.show{opacity:1;pointer-events:auto;transform:none;}
+  body.reading .to-top{display:none!important;}
+  @media print{.groupbar,.to-top{display:none!important;}.grp-h{position:static!important;}}
 </style>
 </head>
 <body>
@@ -411,26 +443,16 @@
     </details>
   </div>
 
-  <div class="layout2">
-  <aside class="side">
-  <nav class="toc tocnav"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11px;">クリックで右のその章へジャンプ＆展開</span></strong>
-    <ol>
-      <li><a href="#s1">実用性・業務活用</a></li>
-      <li><a href="#s2">ROI・コスト効果</a></li>
-      <li><a href="#s3">競合・代替サービス比較</a></li>
-      <li><a href="#s4">セキュリティ・コンプライアンス</a></li>
-      <li><a href="#s5">プラン・料金体系</a></li>
-      <li><a href="#s6">組織・人材への影響</a></li>
-      <li><a href="#s7">法的・契約上の留意点</a></li>
-      <li><a href="#s8">導入ロードマップ</a></li>
-      <li><a href="#s9">将来性・技術ロードマップ</a></li>
-      <li><a href="#s10">導入・運用上のリスクと対策</a></li>
-    </ol>
+  <nav class="groupbar" id="top" aria-label="章グループへ移動">
+    <span class="gb-label">章の構成：</span>
+    <a href="#g1">① Geminiの実力を知る</a>
+    <a href="#g2">② 料金と組織</a>
+    <a href="#g3">③ 法務と導入</a>
+    <a href="#g4">④ 将来とリスク対策</a>
   </nav>
-  </aside>
 
   <main class="main2">
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>Geminiの実力を知る<span class="grp-sub">実用性・効果・比較・安全性</span></div>
+  <div class="grp" id="g1"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>Geminiの実力を知る<span class="grp-sub">実用性・効果・比較・安全性</span></div>
   <div class="sec-grid">
   <div class="sec" id="s1">
     <div class="sechd"><span class="n">1</span><div><h2>実用性・業務活用</h2><div class="src">Geminiは「便利ツール」から“仕事の土台”へ。メール・文書・表計算の中で画像も音声も動画も扱い、社内資料専用AIや動画自動作成まで――何ができて、どこが効くのかが分かります。</div></div></div>
@@ -823,7 +845,7 @@
 
   </div></div>
 
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>料金と組織<span class="grp-sub">料金プラン・人材組織</span></div>
+  <div class="grp" id="g2"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>料金と組織<span class="grp-sub">料金プラン・人材組織</span></div>
   <div class="sec-grid">
   <div class="sec" id="s5">
     <div class="sechd"><span class="n">5</span><div><h2>プラン・料金体系</h2><div class="src">結局どれを選べばいい？ Workspace・個人プラン・開発者APIの“3つの入口”を整理し、多くの企業に最適なBusiness Standard（月1,600円）を軸に、用途別の最適解が分かります。</div></div></div>
@@ -994,7 +1016,7 @@
 
   </div></div>
 
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#c9871a">③</span>法務と導入<span class="grp-sub">法的留意点・導入ロードマップ</span></div>
+  <div class="grp" id="g3"><div class="grp-h"><span class="grp-n" style="background:#c9871a">③</span>法務と導入<span class="grp-sub">法的留意点・導入ロードマップ</span></div>
   <div class="sec-grid">
   <div class="sec" id="s7">
     <div class="sechd"><span class="n">7</span><div><h2>法的・契約上の留意点</h2><div class="src">無料版に機密を入れるとなぜ危ない？ 準拠法・DPA・最大180日での削除・著作権の肩代わりまで、無料と有料の“決定的な差”を法務の角度で整理します（法的助言ではありません）。</div></div></div>
@@ -1156,7 +1178,7 @@
 
   </div></div>
 
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">④</span>将来とリスク対策<span class="grp-sub">将来性・リスク対策</span></div>
+  <div class="grp" id="g4"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">④</span>将来とリスク対策<span class="grp-sub">将来性・リスク対策</span></div>
   <div class="sec-grid">
   <div class="sec" id="s9">
     <div class="sechd"><span class="n">9</span><div><h2>将来性・技術ロードマップ</h2><div class="src">AIは“答える”から“自分で実行するエージェント”、さらに物理世界を理解する“世界モデル”へ。最新モデルとエージェント化・日本市場の最前線から、今備えるべきことが分かります。</div></div></div>
@@ -1310,9 +1332,12 @@
   </div>
   </div></div>
   </main>
-  </div>
+
+  <nav class="otherch" id="otherch" aria-label="ほかの章へ移動"></nav>
 
 </div>
+
+<a href="#top" class="to-top" id="toTop" aria-label="上部メニューへ戻る">↑ 上部メニュー</a>
 
 <footer>
   Gemini（Google）経営者のための導入ガイド（2026年版）｜ Do Lab AI ｜ 作成：2026年6月　※情報は2026年時点の調査に基づく整理。料金・仕様・規制は変動します。最新は各社公式でご確認ください。
@@ -1416,7 +1441,8 @@
 })();
 </script>
 <script>
-/* 章ビュー：目次項目や章の行を選ぶと、その章だけを1ページ全体で表示。URL#sN連動・戻る対応・現在地ハイライト。 */
+/* 章ビュー：章カードを選ぶとその章だけを1ページ全体で表示（ページ遷移風）。URL#sN連動・戻る対応。
+   ＋上部グループ・アンカーバーのスクロール現在地表示・章末「ほかの章」リンク。 */
 (function(){
   var body=document.body;
   var secList = Array.prototype.slice.call(document.querySelectorAll('.main2 .sec'));
@@ -1424,34 +1450,47 @@
   if(!bar||!secList.length) return;
   var titleEl=bar.querySelector('.cb-title');
   var prevBtn=bar.querySelector('.cb-prev'), nextBtn=bar.querySelector('.cb-next');
-  var navLinks=Array.prototype.slice.call(document.querySelectorAll('.tocnav a'));
-  function setActive(id){ navLinks.forEach(function(a){ a.classList.toggle('is-active', a.getAttribute('href')==='#'+id); }); }
   function idxOf(sec){ return secList.indexOf(sec); }
+
+  var savedScroll=0;   // 章を開く直前の一覧スクロール位置（閉じたら正確にここへ戻す）
+  var otherBox=document.getElementById('otherch');
+  function buildOtherCh(current){
+    if(!otherBox) return;
+    var frag='<div class="otherch-h">ほかの章を読む</div><div class="otherch-grid">';
+    secList.forEach(function(s){
+      if(s===current) return;
+      var nEl=s.querySelector('.sechd .n'), hEl=s.querySelector('.sechd h2');
+      var n=nEl?nEl.textContent.trim():'', t=hEl?hEl.textContent.trim():'';
+      frag+='<a href="#'+s.id+'"><span class="oc-n">'+n+'</span><span class="oc-t">'+t+'</span></a>';
+    });
+    frag+='</div>';
+    otherBox.innerHTML=frag;
+  }
+
   function open(id, push){
     var sec=document.getElementById(id);
     if(!sec || !sec.classList.contains('sec')) return;
-    secList.forEach(function(s){ s.classList.remove('solo'); });
+    if(!body.classList.contains('reading')){ savedScroll = window.pageYOffset; }
+    secList.forEach(function(s){ s.classList.remove('solo'); s.classList.remove('open'); });
     sec.classList.add('solo'); sec.classList.add('open');
     body.classList.add('reading');
     var h2=sec.querySelector('.sechd h2'); titleEl.textContent = h2 ? h2.textContent : '';
     var i=idxOf(sec); prevBtn.disabled=(i<=0); nextBtn.disabled=(i>=secList.length-1);
-    setActive(id);
+    buildOtherCh(sec);
     if(push!==false && location.hash!=='#'+id){ try{ history.pushState(null,'','#'+id); }catch(e){ location.hash=id; } }
-    window.scrollTo(0,0);
+    window.scrollTo({top:0,behavior:'instant'});
   }
   function close(push){
-    var solo=document.querySelector('.sec.solo');
     body.classList.remove('reading');
-    if(solo){ solo.classList.remove('solo'); solo.classList.remove('open'); }
+    secList.forEach(function(s){ s.classList.remove('solo'); s.classList.remove('open'); });
     if(push!==false){ try{ history.pushState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } }
-    if(solo){ var y=solo.getBoundingClientRect().top+window.pageYOffset-80; window.scrollTo(0,Math.max(0,y)); }
-    else { window.scrollTo(0,0); }
+    window.scrollTo({top:savedScroll,behavior:'instant'});
   }
   document.addEventListener('click', function(e){
-    var a=e.target.closest('.tocnav a, .ov-routes a');
+    var a=e.target.closest('.ov-routes a, .otherch a');
     if(a && a.getAttribute('href') && a.getAttribute('href').charAt(0)==='#'){
       var id=a.getAttribute('href').slice(1);
-      if(document.getElementById(id)){ e.preventDefault(); e.stopImmediatePropagation(); open(id); return; }
+      if(document.getElementById(id) && document.getElementById(id).classList.contains('sec')){ e.preventDefault(); e.stopImmediatePropagation(); open(id); return; }
     }
     var hd=e.target.closest('.sechd, .more-btn');
     if(hd){
@@ -1464,10 +1503,31 @@
   nextBtn.addEventListener('click', function(){ var s=document.querySelector('.sec.solo'); var i=idxOf(s); if(i>=0 && i<secList.length-1) open(secList[i+1].id); });
   window.addEventListener('popstate', function(){ var h=location.hash.slice(1); if(h && document.getElementById(h) && document.getElementById(h).classList.contains('sec')){ open(h,false); } else { close(false); } });
   var h0=location.hash.slice(1); if(h0 && document.getElementById(h0) && document.getElementById(h0).classList.contains('sec')){ open(h0,false); }
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){ if(body.classList.contains('reading')) return; entries.forEach(function(x){ if(x.isIntersecting) setActive(x.target.id); }); }, {rootMargin:'-16% 0px -74% 0px', threshold:0});
-    secList.forEach(function(s){ io.observe(s); });
+
+  /* 上部グループ・アンカーバー：スクロール現在地表示（4グループ） */
+  var groups=['g1','g2','g3','g4'].map(function(id){ return {el:document.getElementById(id), link:document.querySelector('.groupbar a[href="#'+id+'"]')}; }).filter(function(g){ return g.el && g.link; });
+  var toTop=document.getElementById('toTop');
+  function updateSpy(){
+    if(body.classList.contains('reading')) return;
+    var line=120, cur=null, doc=document.documentElement;
+    if(window.innerHeight + window.scrollY >= doc.scrollHeight - 4){ cur=groups.length?groups[groups.length-1]:null; }
+    else { for(var i=0;i<groups.length;i++){ if(groups[i].el.getBoundingClientRect().top - line <= 0) cur=groups[i]; } }
+    groups.forEach(function(g){ g.link.classList.toggle('is-active', cur && g===cur); });
+    if(toTop){ toTop.classList.toggle('show', window.scrollY > 480); }
   }
+  document.addEventListener('click', function(e){
+    var a=e.target.closest('.groupbar a, .to-top');
+    if(!a) return;
+    var href=a.getAttribute('href')||'';
+    if(href.charAt(0)!=='#') return;
+    e.preventDefault();
+    if(body.classList.contains('reading')) close();
+    var t=href==='#top' ? document.body : document.getElementById(href.slice(1));
+    if(t){ var y=(href==='#top')?0:(t.getBoundingClientRect().top+window.pageYOffset-64); window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+  });
+  var ticking=false;
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ updateSpy(); ticking=false; }); } }, {passive:true});
+  updateSpy();
 })();
 </script>
 </body>
