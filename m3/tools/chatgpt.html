@@ -274,17 +274,48 @@
   .layout2{display:flex;align-items:flex-start;gap:26px;}
   .side{flex:0 0 30%;max-width:330px;position:sticky;top:14px;align-self:flex-start;max-height:calc(100vh - 26px);overflow-y:auto;overflow-x:hidden;padding-right:4px;}
   .main2{flex:1 1 auto;min-width:0;}
-  .tocnav{padding:14px 16px!important;margin:0!important;position:static!important;}
-  .tocnav strong{font-size:13px!important;margin-bottom:10px!important;display:block;}
-  .tocnav ol{display:block!important;grid-template-columns:none!important;padding-left:0!important;counter-reset:tn;}
-  .tocnav li{list-style:none!important;margin:0!important;font-weight:700;}
-  .tocnav li a{counter-increment:tn;display:block;padding:10px 12px 10px 36px!important;position:relative;border-radius:8px;border-left:3px solid transparent;font-size:13.5px!important;color:var(--navy);text-decoration:none;line-height:1.4;margin:1px 0!important;transition:background .12s,border-color .12s;}
-  .tocnav li a::before{content:counter(tn);position:absolute;left:10px;top:50%;transform:translateY(-50%);min-width:17px;height:17px;line-height:17px;text-align:center;font-size:11px;font-weight:800;color:var(--gpt-d);background:var(--gpt-bg);border-radius:5px;}
-  .tocnav li a:hover{background:var(--gpt-bg);}
-  .tocnav li a.is-active{background:var(--gpt-bg);border-left-color:var(--gpt);color:var(--gpt-d);font-weight:800;}
-  .tocnav li a.is-active::before{background:var(--gpt);color:#fff;}
-  @media(max-width:900px){.layout2{display:block;}.side{position:static;max-width:none;max-height:none;overflow:visible;margin-bottom:16px;}}
-  @media print{.layout2{display:block;}.side{position:static;max-height:none;overflow:visible;}.tocnav{display:none;}}
+  /* --- 左サイド：縦プログレス型ロードマップ（章ごとのノード＋進捗ライン） --- */
+  .rmap{padding:15px 13px!important;position:static!important;}
+  .rmap-head{font-size:16px;font-weight:900;color:var(--navy);margin-bottom:8px;}
+  .rmap-head span{display:block;font-size:11.5px;font-weight:600;color:var(--sub);margin-top:2px;}
+  .rmp-intro{display:block;font-size:12px;font-weight:800;color:var(--gpt-d);background:var(--gpt-bg);border:1px solid #cdd9ea;border-radius:9px;padding:8px 11px;margin:2px 0 10px;text-decoration:none;}
+  .rmp-intro:hover{background:#e0e9f6;}
+  .rmap-body{position:relative;}
+  .rmap-list{list-style:none;padding:0;margin:0;position:relative;}
+  .rmap-track,.rmap-fill{position:absolute;left:18px;width:4px;border-radius:4px;z-index:0;}
+  .rmap-track{background:var(--line);}
+  .rmap-fill{background:var(--gpt);height:0;transition:height .18s ease;}
+  .rmp{position:relative;margin:0 0 4px;}
+  .rmp-link{display:flex;gap:11px;align-items:flex-start;text-decoration:none;padding:7px 8px;border-radius:11px;border:1px solid transparent;transition:background .12s,border-color .12s;}
+  .rmp-link:hover{background:var(--gpt-bg);}
+  .rmp-n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--line);color:var(--sub);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .15s;}
+  .rmp-c{min-width:0;}
+  .rmp-c b{display:block;font-size:14px;color:var(--navy);line-height:1.3;}
+  .rmp-d{display:block;font-size:11px;color:var(--sub);line-height:1.5;margin-top:2px;}
+  /* 既読フェーズ：番号を塗り */
+  .rmp.done .rmp-n{background:var(--gpt);border-color:var(--gpt);color:#fff;}
+  /* 現在地フェーズ（スクロールで自動）：はっきり強調 */
+  .rmp.current .rmp-link{background:#d7e3f4;border-color:var(--gpt);box-shadow:inset 4px 0 0 var(--gpt),0 3px 12px rgba(15,37,68,.2);}
+  .rmp.current .rmp-n{background:var(--gpt);border-color:var(--gpt);color:#fff;box-shadow:0 0 0 4px #d7e3f4;transform:scale(1.08);}
+  .rmp.current .rmp-c b{color:var(--gpt-d);}
+  .rmp.current .rmp-d{color:var(--ink);}
+  .rmp-intro.current{background:#d7e3f4;border-color:var(--gpt);box-shadow:inset 4px 0 0 var(--gpt);}
+  /* 右の章にカーソル → 対応フェーズをはっきり強調（左バー＋濃い背景＋番号反転） */
+  .rmp-link:hover{background:var(--gpt-bg);}
+  .rmp.hover .rmp-link{background:#d7e3f4;border-color:var(--gpt);box-shadow:inset 4px 0 0 var(--gpt),0 3px 12px rgba(15,37,68,.22);}
+  .rmp.hover .rmp-n{background:var(--gpt);border-color:var(--gpt);color:#fff;box-shadow:0 0 0 4px #d7e3f4;transform:scale(1.08);}
+  .rmp.hover .rmp-c b{color:var(--gpt-d);}
+  .rmp.hover .rmp-d{color:var(--ink);}
+  /* 左フェーズにカーソル → 右の対応章カードをはっきり強調 */
+  .main2 .sec.hl>.sechd{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--gpt);}
+  .rmp.hover .rmp-n{border-color:var(--gpt);}
+  /* モバイル用「ロードマップを見る」トグル（PCでは非表示） */
+  .toc-toggle{display:none;width:100%;background:var(--gpt);color:#fff;border:none;border-radius:10px;padding:12px 16px;font-size:14px;font-weight:800;cursor:pointer;text-align:left;position:relative;}
+  .toc-toggle::after{content:"▾";position:absolute;right:16px;top:50%;transform:translateY(-50%);transition:transform .2s;}
+  .side.toc-open .toc-toggle::after{transform:translateY(-50%) rotate(180deg);}
+  @media(max-width:900px){.layout2{display:block;}.side{position:static;max-width:none;max-height:none;overflow:visible;margin-bottom:16px;}
+    .toc-toggle{display:block;margin-bottom:0;} .side .rmap{display:none;} .side.toc-open .rmap{display:block;margin-top:10px;}}
+  @media print{.layout2{display:block;}.side{position:static;max-height:none;overflow:visible;}.rmap{display:none;}}
 
   /* --- 冒頭の価値提示帯（3カラム） --- */
   .valueband{display:block!important;background:linear-gradient(180deg,#eef3fa,#f7fafd)!important;border:1px solid #d3deee!important;border-radius:14px!important;box-shadow:0 2px 12px rgba(11,37,69,.05)!important;padding:16px 22px!important;margin:10px 0 18px!important;}
@@ -324,6 +355,49 @@
   body.reading .sec.solo .sechd{cursor:default;border-radius:12px 12px 0 0!important;}
   body.reading .sec.solo .sechd::after{display:none!important;}
   body.reading .sec.solo .secteaser{display:none!important;}
+
+  /* 第0章：導入の3段階フロー図（HTML/CSS・画像生成なし・紺単色） */
+  .stepflow{display:flex;align-items:stretch;gap:10px;margin:12px 0 4px;flex-wrap:wrap;}
+  .stepflow .stepcard{flex:1 1 0;min-width:180px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--gpt);border-radius:12px;padding:13px 15px;box-shadow:0 1px 4px rgba(11,37,69,.05);}
+  .stepflow .stepno{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--gpt);color:#fff;font-weight:900;font-size:14px;margin-bottom:6px;}
+  .stepflow .stepcard b{display:block;font-size:15px;color:var(--navy);margin-bottom:4px;}
+  .stepflow .stepcard p{font-size:12.5px!important;color:var(--sub);line-height:1.65!important;margin:0!important;}
+  .stepflow .stepmap{display:inline-block;margin-top:7px;font-size:11px;font-weight:800;color:var(--gpt-d);background:var(--gpt-bg);border-radius:999px;padding:2px 9px;}
+  .stepflow .steparrow{display:flex;align-items:center;color:var(--gpt);font-size:22px;font-weight:900;flex:0 0 auto;}
+  @media(max-width:760px){.stepflow{flex-direction:column;}.stepflow .steparrow{transform:rotate(90deg);align-self:center;}}
+  /* 第0章の本文フォントを大きく・読みやすく（旧・概要帯用の圧縮13pxを上書き） */
+  #s0 .secbody>p{font-size:19px!important;line-height:2!important;}
+  #s0 .blk-h{font-size:23px!important;margin-top:40px!important;}
+  #s0 .ih-outcomes li,#s0 .ih-steps li,#s0 .ih-p{font-size:19px!important;line-height:1.95!important;margin:9px 0!important;}
+  #s0 .step-n{width:30px!important;height:30px!important;font-size:16px!important;}
+  #s0 .stepflow .stepcard b{font-size:18.5px!important;}
+  #s0 .stepflow .stepcard p{font-size:15px!important;line-height:1.8!important;}
+  #s0 .stepflow .stepno{width:31px!important;height:31px!important;font-size:16px!important;}
+  #s0 .stepflow .stepmap{font-size:12.5px!important;}
+  #s0 .feat-card p{font-size:17.5px!important;line-height:1.9!important;}
+  #s0 .feat-card .fc-h{font-size:18.5px!important;}
+  #s0 .figcap{font-size:15.5px!important;line-height:1.75!important;}
+  #s0 .ov-routes a,#s0 .ov-routes-label{font-size:15px!important;}
+  /* =========================================================
+     1カラム化＋上部グループアンカーバー＋グループ見出しsticky
+     ========================================================= */
+  .main2{max-width:960px;margin:0 auto;}
+  .groupbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:rgba(244,247,251,.96);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:6px auto 18px;max-width:960px;}
+  .groupbar .gb-label{font-size:12px;font-weight:800;color:var(--sub);}
+  .groupbar a{font-size:13px;font-weight:800;color:var(--navy);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;white-space:nowrap;transition:background .12s,border-color .12s,color .12s;}
+  .groupbar a:hover{background:var(--gpt-bg);border-color:var(--gpt);}
+  .groupbar a.is-active{background:var(--gpt);color:#fff;border-color:var(--gpt);}
+  @media(max-width:760px){.groupbar{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}.groupbar .gb-label{display:none;}.groupbar a{font-size:12px;padding:6px 11px;}}
+  /* グループ見出しを読んでいる間、上部に貼り付く（左ナビ無しでも現在地が分かる） */
+  .grp{scroll-margin-top:74px;}
+  .grp-h{position:sticky;top:56px;z-index:12;background:var(--bg);padding-top:6px;}
+  @media(max-width:760px){.grp-h{top:60px;}}
+  /* 上部メニューへ戻る（フローティング） */
+  .to-top{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--gpt);color:#fff;text-decoration:none;font-size:13px;font-weight:800;border-radius:999px;padding:11px 16px;box-shadow:0 4px 14px rgba(15,37,68,.28);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;}
+  .to-top.show{opacity:1;pointer-events:auto;transform:none;}
+  /* 章ビュー・印刷ではアンカーバー等を隠す */
+  body.reading .groupbar, body.reading .to-top{display:none!important;}
+  @media print{.groupbar,.to-top{display:none!important;}.grp-h{position:static!important;}}
 </style>
 </head>
 <body>
@@ -370,59 +444,49 @@
   </div>
   <div class="note">料金・モデル名・法規制・市場シェアは頻繁に変動します。本レポートは<b>2026年6月時点</b>の公式・最新情報に基づく整理です。各社公式で最新をご確認ください。文中<b>※＝一次情報で未確認（要確認）</b>。市場シェアは<b>測定方法で数値が大きく異なる</b>ため傾向で解釈してください。</div>
 
-  <div class="intro-hub valueband">
-    <div class="ih-block">
-      <div class="ih-h">このレポートを読むと、こう動ける</div>
+  <nav class="groupbar" id="top" aria-label="章グループへ移動">
+    <span class="gb-label">章の構成：</span>
+    <a href="#g1">① 実力・技術・安全を知る</a>
+    <a href="#g2">② リスク・効果・市場性</a>
+    <a href="#g3">③ 導入・未来・注意点</a>
+  </nav>
+
+  <main class="main2">
+  <!-- 0 はじめに -->
+  <div class="grp"><div class="grp-h"><span class="grp-n">0</span>はじめに<span class="grp-sub">このレポートの読み方・得られること・始め方</span></div>
+  <div class="sec-grid">
+  <div class="sec" id="s0">
+    <div class="sechd"><span class="n">0</span><div><h2>はじめに ― このレポートで得られること・読み方</h2><div class="src">このレポートの狙い、読むと動けること、始め方の3ステップ、全12章の歩き方。まずここから。</div></div></div>
+    <div class="secbody">
+      <p>本レポートは、ChatGPTを<b>「現場の実用」から「経営の戦略」まで全12章</b>で整理した、経営層／DX推進向けの統合ガイドです。各項目はディープリサーチ＋ファクトチェック済み。<b>全部を読む必要はありません</b>——気になるテーマだけ開いて使えます。数値は2026年時点の目安・試算で、最新は各社公式でご確認ください。</p>
+
+      <div class="blk-h">このレポートを読むと、こう動ける</div>
       <ul class="ih-outcomes">
         <li>自社の“いちばん時間を食う業務”を特定し、<b>Deep Research／agent mode</b> に置き換えて<b>工数を即削減</b>できる。</li>
         <li><b>個人＝Plus／法人＝Business</b> という最小コストの始め方が分かり、<b>稟議・予算化の根拠（ROI試算）</b>を持てる。</li>
         <li><b>学習オプトアウト・ガバナンス</b>の要点を押さえ、<b>情シス・上司を説得</b>して安全に全社展開できる。</li>
       </ul>
-    </div>
-    <details class="side-fold">
-    <summary>始め方・このレポートの歩き方（クリックで開く）</summary>
-    <div class="ih-block">
-      <div class="ih-h">今すぐ始める3ステップ</div>
+
+      <div class="blk-h">今すぐ始める3ステップ</div>
       <ol class="ih-steps">
         <li><span class="step-n">1</span><span><b>試す</b>：無料／Goで“時間を食う作業”を1つ任せてみる</span></li>
         <li><span class="step-n">2</span><span><b>測る</b>：効果（時間削減）を計測して Plus／Business を稟議</span></li>
         <li><span class="step-n">3</span><span><b>広げる</b>：1チームで Quick Win を作り、全社へ展開</span></li>
       </ol>
-    </div>
-    <div class="ih-block">
-      <div class="ih-h">このレポートの歩き方</div>
-      <p class="ih-p">本レポートは、ChatGPTを<b>「現場の実用」から「経営の戦略」まで全12章</b>で網羅しています。全部を読む必要はありません。各章は<b>タイトル＋説明＋「詳しく見る」ボタン</b>で並んでいるので、<b>気になるテーマだけ開けます</b>。まず下の説明を眺め、知りたいところからアクセスしてください。</p>
+
+      <div class="blk-h">このレポートの歩き方（全体像）</div>
+      <p class="ih-p">各章は<b>タイトル＋一言説明＋「→」</b>で並び、選ぶと<b>その章だけを1ページ全体</b>で読めます（章の中では「前の章／次の章」「目次に戻る」で移動）。全体は「実力・技術・安全を知る（1〜4章）／リスク・効果・市場性（5〜8章）／導入・未来・注意点（9〜12章）」の3グループ構成です。まずは気になるテーマから読み進めてください。</p>
       <p class="ov-routes"><b class="ov-routes-label">目的別の入口 →</b><a href="#s1">とにかく何ができる？</a><a href="#s3">料金で選びたい</a><a href="#s4">安全性が不安</a><a href="#s6">効果を数字で示したい</a><a href="#s8">自部署の使い方</a></p>
     </div>
-    </details>
+  </div>
+  </div>
   </div>
 
-  <div class="layout2">
-  <aside class="side">
-  <nav class="toc tocnav"><strong>目次　<span style="font-weight:600;color:var(--sub);font-size:11px;letter-spacing:0;">クリックで右のその章へジャンプ＆展開</span></strong>
-    <ol>
-      <li><a href="#s1">ChatGPTの実用性</a></li>
-      <li><a href="#s2">技術戦略</a></li>
-      <li><a href="#s3">モデル戦略と選定基準</a></li>
-      <li><a href="#s4">セキュリティ・リスク管理</a></li>
-      <li><a href="#s5">ベンダーリスク</a></li>
-      <li><a href="#s6">ROI（投資対効果）の定量化</a></li>
-      <li><a href="#s7">競合・市場ポジション</a></li>
-      <li><a href="#s8">業種別の活用シナリオ</a></li>
-      <li><a href="#s9">導入・運用・定着（チェンジマネジメント）</a></li>
-      <li><a href="#s10">エージェンティックAI</a></li>
-      <li><a href="#s11">最新アップデート・ロードマップ</a></li>
-      <li><a href="#s12">制限・注意点</a></li>
-    </ol>
-  </nav>
-  </aside>
-
-  <main class="main2">
   <!-- 1 実用性 -->
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>実力・技術・安全を知る<span class="grp-sub">実用性・技術戦略・モデル選定・セキュリティ</span></div>
+  <div class="grp" id="g1"><div class="grp-h"><span class="grp-n" style="background:#e76f51">①</span>実力・技術・安全を知る<span class="grp-sub">実用性・技術戦略・モデル選定・セキュリティ</span></div>
   <div class="sec-grid">
   <div class="sec" id="s1">
-    <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">調べ物・資料づくり・PC操作までAIが肩代わり。Deep Research や agent mode で“いつもの仕事”がどう変わるかを具体例で。</div></div></div>
+    <div class="sechd"><span class="n">1</span><div><h2>ChatGPTの実用性</h2><div class="src">調べ物も資料づくりもPC操作もAIが肩代わり。Deep Research・agent mode で“いつもの仕事”はどう変わる?</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">ChatGPTは日本語で話しかけるだけで、調べ物・PC操作・資料づくりまで代行する“デキるアシスタント”に進化しました。<b>Deep Research</b>（出典つきの調査を数十分で）や <b>agent mode</b>（ブラウザ操作の代行）など、仕事の面倒を肩代わりする独自機能を、使うと何が変わるかまで具体的に紹介します。</p>
       <p class="tz-points"><b>この章の要点：</b>Deep Research ／ agent mode ／ Canvas ／ 画像・音声 ／ GPTs ／ 入出力でできること</p>
@@ -526,7 +590,7 @@
 
   <!-- 2 技術戦略 -->
   <div class="sec" id="s2">
-    <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">社内データを“出典つき”で安全に使うRAGと、モデルを乗り換え自由にするゲートウェイ。誤回答を減らし、将来の値上げにも数行で対応できる土台とは。</div></div></div>
+    <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">社内データを“出典つき”で安全に使うRAGと、モデルを乗り換え自由にするゲートウェイ。誤回答を減らす“土台”の作り方。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">ChatGPTの裏側は「速く返す・深く考える・交通整理する」役割分担チーム。社内で安全に業務利用する土台として、<b>RAG</b>（社内資料を“出典つき”で答えに使うしくみ）と <b>AIゲートウェイ</b>（モデルを差し替え自由にする中継層）を解説します。RAGとファインチューニングの使い分けも。</p>
       <p class="tz-points"><b>この章の要点：</b>統一システム／ルーター ／ RAG・GraphRAG ／ AIゲートウェイ ／ MCP ／ FTとの使い分け</p>
@@ -601,7 +665,7 @@
 
   <!-- 3 モデル戦略 -->
   <div class="sec" id="s3">
-    <div class="sechd"><span class="n">3</span><div><h2>モデル戦略と選定基準</h2><div class="src">無料・Plus（$20）・Business…結局どれを選べばいい? “ぜんぶ込みの費用（TCO）”で比べた結論と、料金で損しない決め方。</div></div></div>
+    <div class="sechd"><span class="n">3</span><div><h2>モデル戦略と選定基準</h2><div class="src">無料・Plus（$20）・Business…結局どれを選べばいい? “ぜんぶ込みの費用（TCO）”で比べた、損しない選び方。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">無料／Plus（$20）／Business／Enterprise の料金体系と“ぜんぶ込みの費用（TCO）”、2026年のクレジット制、API最適化、用途別のマルチモデル戦略を整理。結論は <b>「個人＝Plus、法人＝Business」</b>。料金で迷ったら、まずこの章です。</p>
       <p class="tz-points"><b>この章の要点：</b>料金表・TCO ／ クレジット制 ／ API最適化 ／ マルチモデル ／ KPI</p>
@@ -672,7 +736,7 @@
 
   <!-- 4 セキュリティ -->
   <div class="sec" id="s4">
-    <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・リスク管理</h2><div class="src">入力した機密は本当に学習されるのか? プラン別の線引きと漏洩の5類型、情シス・法務・上司を説得できる“最後の壁”の越え方。</div></div></div>
+    <div class="sechd"><span class="n">4</span><div><h2>セキュリティ・リスク管理</h2><div class="src">入力した機密は本当に学習される? プラン別の線引きと漏洩の5類型、情シス・法務を説得できる“最後の壁”の越え方。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">「機密を入れても大丈夫？」に答える章。プラン別の<b>学習利用とデータ境界</b>、情報漏洩の5類型と実例、日本・EUの規制、DLP・ゼロトラストなどのガバナンスまで。<b>情シス・法務・上司を説得する材料</b>がここで揃います。</p>
       <p class="tz-points"><b>この章の要点：</b>学習オプトアウト ／ 漏洩5類型 ／ 規制（日本・EU） ／ ガバナンス・DLP</p>
@@ -747,10 +811,10 @@
   <!-- 5 ベンダーリスク -->
   </div></div>
 
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>リスク・効果・市場性<span class="grp-sub">ベンダーリスク・ROI・競合・業種別</span></div>
+  <div class="grp" id="g2"><div class="grp-h"><span class="grp-n" style="background:#3b82f6">②</span>リスク・効果・市場性<span class="grp-sub">ベンダーリスク・ROI・競合・業種別</span></div>
   <div class="sec-grid">
   <div class="sec" id="s5">
-    <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">AIを1社に頼ると、止まった瞬間に業務も全停止。マルチLLMで稼働率99.5%→99.99%、API費が半減した例も。“止まらない・乗り換えられる”体制とは。</div></div></div>
+    <div class="sechd"><span class="n">5</span><div><h2>ベンダーリスク</h2><div class="src">AIを1社に頼ると、止まれば業務も全停止。“止まらない・乗り換えられる”体制とは（稼働率99.5%→99.99%の作り方）。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">1社のAIだけに頼ると <b>SPOF（止まると全部止まる急所）</b> とロックインという経営リスクに。マルチLLM＋AIゲートウェイで稼働率99.5%→99.99%、動的ルーティングでAPI費が半減した例も。<b>止まらない・高すぎない・乗り換えられる</b>体制の作り方を解説します。</p>
       <p class="tz-points"><b>この章の要点：</b>SPOF・BCP ／ マルチLLM ／ コスト最適化 ／ サーキットブレーカー</p>
@@ -830,7 +894,7 @@
 
   <!-- 6 ROI -->
   <div class="sec" id="s6">
-    <div class="sechd"><span class="n">6</span><div><h2>ROI（投資対効果）の定量化</h2><div class="src">“なんとなく便利”を金額に。提案書づくり約60%減、パナソニック コネクトは年44.8万時間削減。稟議を通すKPIと計算式がそのまま手に入る。</div></div></div>
+    <div class="sechd"><span class="n">6</span><div><h2>ROI（投資対効果）の定量化</h2><div class="src">“なんとなく便利”を金額に。提案書づくり約60%減など、稟議を通すKPIと計算式（国内大企業の実績つき）。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead"><b>“なんとなく便利”を金額で示す</b>章。工数削減の試算（提案書づくり約60%減ほか）、ROIの計算式、よくある失敗の回避策、<b>パナソニック コネクト（年44.8万時間削減）</b>など国内大企業の実績まで。稟議・予算化の根拠がそのまま手に入ります。</p>
       <p class="tz-points"><b>この章の要点：</b>KPI設計（4軸） ／ ROI試算 ／ 失敗回避 ／ 国内事例</p>
@@ -905,7 +969,7 @@
 
   <!-- 7 競合市場 -->
   <div class="sec" id="s7">
-    <div class="sechd"><span class="n">7</span><div><h2>競合・市場ポジション</h2><div class="src">ChatGPT・Gemini・Claude、結局どれが強い? 最新の勢力図と各社の得意分野、国産LLMの台頭まで。自社に合うAIの選び方が見える。</div></div></div>
+    <div class="sechd"><span class="n">7</span><div><h2>競合・市場ポジション</h2><div class="src">ChatGPT・Gemini・Claude、結局どれが強い? 最新の勢力図と得意分野から、自社に合うAIの選び方が見える。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead"><b>ChatGPT・Gemini・Claude</b> の今の勢力図と各社の強み・最適業務、国産LLM（tsuzumi／cotomi）の台頭、テキスト生成のコモディティ化まで。結論は「ChatGPTを軸にマルチLLMで適材適所」。<b>自社に合うAIの選び方</b>が見えてきます。</p>
       <p class="tz-points"><b>この章の要点：</b>市場シェアの傾向 ／ 各社の強み ／ 国産LLM ／ コモディティ化</p>
@@ -971,7 +1035,7 @@
 
   <!-- 8 業種別シナリオ -->
   <div class="sec" id="s8">
-    <div class="sechd"><span class="n">8</span><div><h2>業種別の活用シナリオ</h2><div class="src">自部署はどこから始める? 法務・経理・営業・開発など部門別に“いちばん効く使い方”を一覧化。小さく始めて定着させる導入の地図。</div></div></div>
+    <div class="sechd"><span class="n">8</span><div><h2>業種別の活用シナリオ</h2><div class="src">自部署はどこから始める? 法務・経理・営業・開発など部門別に“いちばん効く使い方”を一覧化した導入の地図。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">コーポレート（法務・経理・人事）・営業・マーケ・バックオフィス・開発・士業など、<b>部門別の具体的なユースケース</b>と、それぞれ主に使う機能を一覧化。<b>「自部署はどこから始めるか」</b>が一目で分かり、小さく始めて定着させるコツも紹介します。</p>
       <p class="tz-points"><b>この章の要点：</b>部門別シナリオ ／ 使う機能 ／ 始め方のコツ</p>
@@ -1014,10 +1078,10 @@
   <!-- 9 導入・運用・定着 -->
   </div></div>
 
-  <div class="grp"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">③</span>導入・未来・注意点<span class="grp-sub">定着・エージェント・最新動向・制限</span></div>
+  <div class="grp" id="g3"><div class="grp-h"><span class="grp-n" style="background:#9b5de5">③</span>導入・未来・注意点<span class="grp-sub">定着・エージェント・最新動向・制限</span></div>
   <div class="sec-grid">
   <div class="sec" id="s9">
-    <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">“配って終わり＝誰も使わない”をどう防ぐか。ガイドライン→Quick Win→教育→推進チームの4ステップで、全社の生産性を底上げする定着設計。</div></div></div>
+    <div class="sechd"><span class="n">9</span><div><h2>導入・運用・定着（チェンジマネジメント）</h2><div class="src">“配って終わり＝誰も使わない”をどう防ぐ? ガイドライン→教育→推進チームで全社に根づかせる定着設計。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">導入を <b>「配って終わり＝誰も使わない」にしない</b> ための設計。入力してよい情報のガイドライン標準化、パイロット→Quick Win、教育・評価制度、推進チーム（CoE）まで、<b>定着させる4ステップ</b>を具体的に解説します。</p>
       <p class="tz-points"><b>この章の要点：</b>ガイドライン標準化 ／ 段階導入 ／ 教育・評価 ／ CoE</p>
@@ -1067,7 +1131,7 @@
 
   <!-- 10 エージェンティックAI -->
   <div class="sec" id="s10">
-    <div class="sechd"><span class="n">10</span><div><h2>エージェンティックAI</h2><div class="src">AIが自分で段取りして仕事を終わらせる“新しい労働力”へ。任せられる範囲と、お金や本番データに触れる操作を人が承認する安全設計とは。</div></div></div>
+    <div class="sechd"><span class="n">10</span><div><h2>エージェンティックAI</h2><div class="src">AIが自分で段取りして仕事を終わらせる“新しい労働力”へ。任せる範囲と、人が承認すべき境界の決め方とは。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">2026年最大のトレンド、AIが目標を自分で分解・実行する <b>“新しい労働力”</b> へ。MCP連携・自己修復・思考の可視化のしくみと、お金や本番データに関わる重要操作は<b>人が承認する（Human-in-the-Loop）</b>安全設計を解説します。</p>
       <p class="tz-points"><b>この章の要点：</b>自律実行のしくみ ／ MCP ／ 安全設計（HITL）</p>
@@ -1117,7 +1181,7 @@
 
   <!-- 11 ロードマップ -->
   <div class="sec" id="s11">
-    <div class="sechd"><span class="n">11</span><div><h2>最新アップデート・ロードマップ</h2><div class="src">GPT-5.5など世代交代を時系列で。“いつ・何が変わるか”を押さえ、古いモデルの退役や新機能の波に乗り遅れないために。</div></div></div>
+    <div class="sechd"><span class="n">11</span><div><h2>最新アップデート・ロードマップ</h2><div class="src">GPT-5.5などモデル世代交代を時系列で。“いつ・何が変わるか”を押さえ、退役や新機能に乗り遅れないために。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">GPT-5.5公開などモデル世代交代の <b>時系列と今後の予定</b> を一覧化。「いつ・何が変わるか」を押さえ、古いモデルの退役や新機能の波に<b>乗り遅れないため</b>の章です。</p>
       <p class="tz-points"><b>この章の要点：</b>世代交代の時系列 ／ 退役スケジュール ／ 今後の予定</p>
@@ -1163,7 +1227,7 @@
 
   <!-- 12 制限・注意点 -->
   <div class="sec" id="s12">
-    <div class="sechd"><span class="n">12</span><div><h2>制限・注意点</h2><div class="src">賢いAIにも6つの限界がある。ハルシネーション・利用上限・知識の鮮度・機密の扱い…トラブルを避けるための最終チェックリスト。</div></div></div>
+    <div class="sechd"><span class="n">12</span><div><h2>制限・注意点</h2><div class="src">賢いAIにも6つの限界がある。ハルシネーション・利用上限・鮮度・機密…トラブルを避ける最終チェックリスト。</div></div></div>
     <div class="secteaser">
       <p class="tz-lead">使う前に知っておくべき <b>限界</b>。利用上限・コンテキスト上限・ハルシネーション（もっともらしい誤り）・知識の鮮度・機密・著作権の注意点をまとめています。<b>トラブルを避ける最終チェック</b>に。</p>
       <p class="tz-points"><b>この章の要点：</b>利用上限 ／ ハルシネーション ／ 知識の鮮度 ／ 機密・著作権</p>
@@ -1208,9 +1272,10 @@
   </div>
   </div></div>
   </main>
-  </div>
 
 </div>
+
+<a href="#top" class="to-top" id="toTop" aria-label="上部メニューへ戻る">↑ 上部メニュー</a>
 
 <footer>
   ChatGPT 企業活用 総合戦略レポート（2026年版）｜ Dooox AIリソース ｜ 作成：2026年6月　※詳細は各項目の個別レポート（01〜06）を参照。仕様・料金・規制は変動します。最新は公式でご確認ください。
@@ -1316,8 +1381,8 @@
 })();
 </script>
 <script>
-/* 章ビュー：目次項目や章の行を選ぶと、その章だけを1ページ全体で表示（折りたたみ展開ではなく“ページ遷移”風）。
-   URLハッシュ(#sN)連動・ブラウザ戻る対応・スクロール現在地ハイライト。 */
+/* 章ビュー：章の行を選ぶと、その章だけを1ページ全体で表示（折りたたみ展開ではなく“ページ遷移”風）。
+   URLハッシュ(#sN)連動・ブラウザ戻る対応。＋上部グループ・アンカーバーのスクロール現在地表示。 */
 (function(){
   var body=document.body;
   var secList = Array.prototype.slice.call(document.querySelectorAll('.main2 .sec'));
@@ -1325,9 +1390,9 @@
   if(!bar||!secList.length) return;
   var titleEl=bar.querySelector('.cb-title');
   var prevBtn=bar.querySelector('.cb-prev'), nextBtn=bar.querySelector('.cb-next');
-  var navLinks=Array.prototype.slice.call(document.querySelectorAll('.tocnav a'));
-  function setActive(id){ navLinks.forEach(function(a){ a.classList.toggle('is-active', a.getAttribute('href')==='#'+id); }); }
   function idxOf(sec){ return secList.indexOf(sec); }
+
+  /* ---- 章ビュー（reading モード）---- */
   function open(id, push){
     var sec=document.getElementById(id);
     if(!sec || !sec.classList.contains('sec')) return;
@@ -1336,7 +1401,6 @@
     body.classList.add('reading');
     var h2=sec.querySelector('.sechd h2'); titleEl.textContent = h2 ? h2.textContent : '';
     var i=idxOf(sec); prevBtn.disabled=(i<=0); nextBtn.disabled=(i>=secList.length-1);
-    setActive(id);
     if(push!==false && location.hash!=='#'+id){ try{ history.pushState(null,'','#'+id); }catch(e){ location.hash=id; } }
     window.scrollTo(0,0);
   }
@@ -1349,14 +1413,14 @@
     else { window.scrollTo(0,0); }
   }
   document.addEventListener('click', function(e){
-    var a=e.target.closest('.tocnav a, .ov-routes a');
+    // 概要内リンク（章へジャンプ）→ 章ビュー
+    var a=e.target.closest('.ov-routes a');
     if(a && a.getAttribute('href') && a.getAttribute('href').charAt(0)==='#'){
       var id=a.getAttribute('href').slice(1);
-      if(document.getElementById(id)){ e.preventDefault(); e.stopImmediatePropagation(); open(id); return; }
+      if(document.getElementById(id) && document.getElementById(id).classList.contains('sec')){ e.preventDefault(); e.stopImmediatePropagation(); open(id); return; }
     }
     var hd=e.target.closest('.sechd, .more-btn');
     if(hd){
-      // 章ビュー中は上のヘッダーをタップしても折りたたまない（旧アコーディオン開閉を無効化）
       if(body.classList.contains('reading')){ e.preventDefault(); e.stopImmediatePropagation(); return; }
       var sec=hd.closest('.sec'); if(sec){ e.preventDefault(); e.stopImmediatePropagation(); open(sec.id); return; }
     }
@@ -1366,10 +1430,36 @@
   nextBtn.addEventListener('click', function(){ var s=document.querySelector('.sec.solo'); var i=idxOf(s); if(i>=0 && i<secList.length-1) open(secList[i+1].id); });
   window.addEventListener('popstate', function(){ var h=location.hash.slice(1); if(h && document.getElementById(h) && document.getElementById(h).classList.contains('sec')){ open(h,false); } else { close(false); } });
   var h0=location.hash.slice(1); if(h0 && document.getElementById(h0) && document.getElementById(h0).classList.contains('sec')){ open(h0,false); }
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){ if(body.classList.contains('reading')) return; entries.forEach(function(x){ if(x.isIntersecting) setActive(x.target.id); }); }, {rootMargin:'-16% 0px -74% 0px', threshold:0});
-    secList.forEach(function(s){ io.observe(s); });
+
+  /* ---- 上部グループ・アンカーバー：スクロール現在地表示 ---- */
+  var groups=[
+    {id:'g1', el:document.getElementById('g1'), link:document.querySelector('.groupbar a[href="#g1"]')},
+    {id:'g2', el:document.getElementById('g2'), link:document.querySelector('.groupbar a[href="#g2"]')},
+    {id:'g3', el:document.getElementById('g3'), link:document.querySelector('.groupbar a[href="#g3"]')}
+  ].filter(function(g){ return g.el && g.link; });
+  var toTop=document.getElementById('toTop');
+  function updateSpy(){
+    if(body.classList.contains('reading')) return;
+    var line=120, cur=null, doc=document.documentElement;
+    if(window.innerHeight + window.scrollY >= doc.scrollHeight - 4){ cur=groups.length?groups[groups.length-1]:null; }
+    else { for(var i=0;i<groups.length;i++){ if(groups[i].el.getBoundingClientRect().top - line <= 0) cur=groups[i]; } }
+    groups.forEach(function(g){ g.link.classList.toggle('is-active', cur && g===cur); });
+    if(toTop){ toTop.classList.toggle('show', window.scrollY > 480); }
   }
+  // アンカーバー／トップへ戻る：スムーズスクロール（reading 中は一度閉じてから移動）
+  document.addEventListener('click', function(e){
+    var a=e.target.closest('.groupbar a, .to-top');
+    if(!a) return;
+    var href=a.getAttribute('href')||'';
+    if(href.charAt(0)!=='#') return;
+    e.preventDefault();
+    if(body.classList.contains('reading')) close();
+    var t=href==='#top' ? document.body : document.getElementById(href.slice(1));
+    if(t){ var y=(href==='#top')?0:(t.getBoundingClientRect().top+window.pageYOffset-64); window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+  });
+  var ticking=false;
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ updateSpy(); ticking=false; }); } }, {passive:true});
+  updateSpy();
 })();
 </script>
 </body>
