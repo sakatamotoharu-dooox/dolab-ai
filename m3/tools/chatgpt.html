@@ -337,14 +337,14 @@
   /* --- 章ビュー：項目を選ぶと“その章だけ1ページ全体” --- */
   .chapterbar{display:none;}
   body.reading .chapterbar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:2px 0 18px;padding:13px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 14px rgba(11,37,69,.08);position:sticky;top:8px;z-index:5;}
-  .chapterbar .cb-back{background:var(--gpt);color:#fff;border:none;border-radius:10px;padding:15px 26px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 3px 10px rgba(15,37,68,.25);transition:opacity .15s,transform .1s;}
-  .chapterbar .cb-back:hover{opacity:.92;transform:translateY(-1px);}
+  .chapterbar .cb-back{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--gpt);color:#fff;border:none;border-radius:14px;font-size:28px;font-weight:900;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(15,37,68,.25);transition:opacity .15s,transform .1s,box-shadow .15s;}
+  .chapterbar .cb-back:hover{opacity:1;transform:translateX(-2px);box-shadow:0 5px 16px rgba(15,37,68,.32);}
   .chapterbar .cb-title{font-size:17px;font-weight:900;color:var(--navy);}
   .chapterbar .cb-nav{margin-left:auto;display:flex;gap:9px;}
   .chapterbar .cb-nav button{background:#fff;color:var(--gpt-d);border:1.5px solid var(--gpt);border-radius:9px;padding:12px 16px;font-size:14px;font-weight:800;cursor:pointer;}
   .chapterbar .cb-nav button:hover{background:var(--gpt-bg);}
   .chapterbar .cb-nav button:disabled{opacity:.4;cursor:default;}
-  @media(max-width:760px){.chapterbar .cb-back{width:100%;text-align:center;}.chapterbar .cb-nav{margin-left:0;width:100%;}.chapterbar .cb-nav button{flex:1;}}
+  @media(max-width:760px){.chapterbar .cb-nav{margin-left:0;width:100%;}.chapterbar .cb-nav button{flex:1;}}
   @media screen{
     body.reading .hero,body.reading .toprow,body.reading .note,body.reading .valueband,body.reading .side,body.reading .grp-h{display:none!important;}
     body.reading .main2 .sec{display:none!important;}
@@ -433,8 +433,7 @@
     <span class="brandtext"><span class="brandname">ChatGPT</span><span class="brandsub">OpenAI ・ 企業活用 総合戦略レポート</span></span>
   </div>
   <span class="tag">ENTERPRISE STRATEGY REPORT ｜ 2026年版</span>
-  <h1>「ただのチャットAI」は、もう終わり。<br><span class="hl">あなたの代わりに調べ、考え、実務を片付ける</span>自律型パートナーへ。</h1>
-  <p>実用性から始まり、技術戦略・モデル戦略・セキュリティ・ベンダーリスク・ROI・競合市場までを一気通貫で整理した、経営層／DX推進向けの統合戦略レポート。各項目はディープリサーチ＋ファクトチェック済み。</p>
+  <h1>「ただのチャットAI」は、もう終わり。<br><span class="hl">調べ・考え・実務まで任せる</span>自律型AIへ。</h1>
   <div class="pills">
     <span class="pill">Instant（高速）</span>
     <span class="pill">Thinking（熟考）</span>
@@ -445,7 +444,7 @@
 
 <div class="wrap">
   <div class="chapterbar" id="chapterbar">
-    <button class="cb-back" type="button">← 目次に戻る</button>
+    <button class="cb-back" type="button" aria-label="目次に戻る" title="目次に戻る">←</button>
     <span class="cb-title"></span>
     <span class="cb-nav"><button class="cb-prev" type="button">← 前の章</button><button class="cb-next" type="button">次の章 →</button></span>
   </div>
