@@ -1401,7 +1401,8 @@
   function open(id, push){
     var sec=document.getElementById(id);
     if(!sec || !sec.classList.contains('sec')) return;
-    secList.forEach(function(s){ s.classList.remove('solo'); });
+    // 他の章の solo/open を必ず解除（prev/next 移動で .open が残り、目次に戻った際に展開表示される不具合を防ぐ）
+    secList.forEach(function(s){ s.classList.remove('solo'); s.classList.remove('open'); });
     sec.classList.add('solo'); sec.classList.add('open');
     body.classList.add('reading');
     var h2=sec.querySelector('.sechd h2'); titleEl.textContent = h2 ? h2.textContent : '';
@@ -1412,7 +1413,8 @@
   function close(push){
     var solo=document.querySelector('.sec.solo');
     body.classList.remove('reading');
-    if(solo){ solo.classList.remove('solo'); solo.classList.remove('open'); }
+    // 目次に戻るときは全章を確実に閉じる（読了章が list 表示で開いたまま残らないように）
+    secList.forEach(function(s){ s.classList.remove('solo'); s.classList.remove('open'); });
     if(push!==false){ try{ history.pushState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } }
     if(solo){ var y=solo.getBoundingClientRect().top+window.pageYOffset-80; window.scrollTo(0,Math.max(0,y)); }
     else { window.scrollTo(0,0); }
