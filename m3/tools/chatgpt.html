@@ -397,6 +397,16 @@
   .grp{scroll-margin-top:80px;}
   .grp-h{position:sticky;top:50px;z-index:12;background:var(--bg);padding-top:9px!important;box-shadow:0 7px 9px -8px rgba(15,37,68,.16);}
   @media(max-width:760px){.grp-h{top:56px;}}
+  /* 章ビュー末尾：ほかの章へ飛ぶリンク一覧（現在の章を除く。JSで動的生成） */
+  .otherch{display:none;margin:24px auto 8px;}
+  body.reading .otherch{display:block;}
+  .otherch-h{font-size:15px;font-weight:900;color:var(--navy);margin:0 0 12px;padding-bottom:9px;border-bottom:2px solid var(--line);}
+  .otherch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .otherch a{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--ink);box-shadow:0 1px 3px rgba(11,37,69,.04);transition:border-color .12s,box-shadow .12s,transform .1s;}
+  .otherch a:hover{border-color:var(--gpt);box-shadow:0 3px 10px rgba(11,37,69,.1);transform:translateY(-1px);}
+  .otherch a .oc-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:var(--gpt-bg);color:var(--gpt-d);font-size:12px;font-weight:800;flex:0 0 auto;}
+  .otherch a .oc-t{font-size:12.5px;font-weight:700;line-height:1.35;}
+  @media(max-width:760px){.otherch-grid{grid-template-columns:1fr;}}
   /* 上部メニューへ戻る（フローティング） */
   .to-top{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--gpt);color:#fff;text-decoration:none;font-size:13px;font-weight:800;border-radius:999px;padding:11px 16px;box-shadow:0 4px 14px rgba(15,37,68,.28);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;}
   .to-top.show{opacity:1;pointer-events:auto;transform:none;}
@@ -1337,6 +1347,8 @@
   </div></div>
   </main>
 
+  <nav class="otherch" id="otherch" aria-label="ほかの章へ移動"></nav>
+
 </div>
 
 <a href="#top" class="to-top" id="toTop" aria-label="上部メニューへ戻る">↑ 上部メニュー</a>
@@ -1458,6 +1470,20 @@
 
   /* ---- 章ビュー（reading モード）---- */
   var savedScroll=0;   // 章を開く直前の一覧スクロール位置（閉じたら正確にここへ戻す）
+  var otherBox=document.getElementById('otherch');
+  // 章ページ末尾に「ほかの章へ飛ぶリンク」を生成（現在の章と はじめに(s0) を除く）
+  function buildOtherCh(current){
+    if(!otherBox) return;
+    var frag='<div class="otherch-h">ほかの章を読む</div><div class="otherch-grid">';
+    secList.forEach(function(s){
+      if(s===current || s.id==='s0') return;
+      var nEl=s.querySelector('.sechd .n'), hEl=s.querySelector('.sechd h2');
+      var n=nEl?nEl.textContent.trim():'', t=hEl?hEl.textContent.trim():'';
+      frag+='<a href="#'+s.id+'"><span class="oc-n">'+n+'</span><span class="oc-t">'+t+'</span></a>';
+    });
+    frag+='</div>';
+    otherBox.innerHTML=frag;
+  }
   function open(id, push){
     var sec=document.getElementById(id);
     if(!sec || !sec.classList.contains('sec')) return;
@@ -1469,6 +1495,7 @@
     body.classList.add('reading');
     var h2=sec.querySelector('.sechd h2'); titleEl.textContent = h2 ? h2.textContent : '';
     var i=idxOf(sec); prevBtn.disabled=(i<=0); nextBtn.disabled=(i>=secList.length-1);
+    buildOtherCh(sec);   // 末尾の「ほかの章」リンクを現在章に合わせて更新
     if(push!==false && location.hash!=='#'+id){ try{ history.pushState(null,'','#'+id); }catch(e){ location.hash=id; } }
     window.scrollTo({top:0,behavior:'instant'});   // クリック時はスライドせず即時表示（視差効果なし）
   }
@@ -1481,8 +1508,8 @@
     window.scrollTo({top:savedScroll,behavior:'instant'});
   }
   document.addEventListener('click', function(e){
-    // 概要内リンク（章へジャンプ）→ 章ビュー
-    var a=e.target.closest('.ov-routes a');
+    // 概要内リンク・章末の「ほかの章」リンク（章へジャンプ）→ 章ビュー
+    var a=e.target.closest('.ov-routes a, .otherch a');
     if(a && a.getAttribute('href') && a.getAttribute('href').charAt(0)==='#'){
       var id=a.getAttribute('href').slice(1);
       if(document.getElementById(id) && document.getElementById(id).classList.contains('sec')){ e.preventDefault(); e.stopImmediatePropagation(); open(id); return; }
