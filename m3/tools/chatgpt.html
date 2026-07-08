@@ -609,19 +609,29 @@
     </div>
     <div class="secbody">
       <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
-      <p><b>ChatGPTは「1つの大きなAI」ではなく、役割の違うAIが集まった“チーム”</b>です。質問が来ると、<b>速く答える担当</b>と<b>じっくり考える担当</b>を自動で切り替えます。だから簡単な質問にはすぐ、むずかしい質問にはよく考えて答えてくれます。私たちは難しい設定をしなくてOK——用途に応じて“賢さ”が自動で選ばれます。</p>
-
-      <div class="blk-h">用途で選べる3つのモード</div>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">Instant（高速）</div><p>ふだんの質問・下書き・要約に。無料でも使える標準モードで、すぐ返ってきます。</p></div>
-        <div class="feat-card"><div class="fc-h">Thinking（じっくり考える）</div><p>複雑な相談・段取り・分析など、“考える時間”が要るとき向け。精度を重視して答えます。</p></div>
-        <div class="feat-card"><div class="fc-h">Pro（最高精度）</div><p>特にむずかしい課題向けの上位モード（上位プラン）。まずは Instant／Thinking で十分です。</p></div>
-      </div>
-      <p>「どれを選ぶか」で悩む必要はありません。ふだんは自動にまかせ、しっかり考えてほしいときだけ「Thinking」を選ぶ——くらいの感覚で大丈夫です。</p>
+      <div class="blk-h">ChatGPTは“チーム”——用途で賢さが変わる</div>
+      <figure class="figure">
+        <svg viewBox="0 0 760 210" role="img" aria-label="ChatGPTが質問を用途別のモードに振り分ける図">
+          <defs><marker id="arM2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8aa0bf"/></marker></defs>
+          <rect x="16" y="80" width="132" height="50" rx="10" fill="#274b73"/><text class="svg-tw" x="82" y="110" text-anchor="middle" font-size="14" font-weight="700">あなたの質問</text>
+          <rect x="196" y="80" width="150" height="50" rx="10" fill="#0b2545"/><text class="svg-tw" x="271" y="103" text-anchor="middle" font-size="13.5" font-weight="700">自動で振り分け</text><text class="svg-tw" x="271" y="120" text-anchor="middle" font-size="11">用途で賢さを選ぶ</text>
+          <g>
+            <rect x="420" y="8" width="324" height="54" rx="9" fill="#e7edf5" stroke="#274b73"/><text class="svg-t" x="436" y="31" font-size="13.5" font-weight="700">Instant（高速）</text><text class="svg-ts" x="436" y="50" font-size="11.5">ふだんの質問・要約・下書き。無料でもOK</text>
+            <rect x="420" y="78" width="324" height="54" rx="9" fill="#e7edf5" stroke="#274b73"/><text class="svg-t" x="436" y="101" font-size="13.5" font-weight="700">Thinking（じっくり考える）</text><text class="svg-ts" x="436" y="120" font-size="11.5">複雑な相談・分析など、精度重視のとき</text>
+            <rect x="420" y="148" width="324" height="54" rx="9" fill="#0b2545"/><text class="svg-tw" x="436" y="171" font-size="13.5" font-weight="700">Pro（最高精度）</text><text class="svg-tw" x="436" y="190" font-size="11.5">特にむずかしい課題向け（上位プラン）</text>
+          </g>
+          <g stroke="#8aa0bf" stroke-width="2" fill="none" marker-end="url(#arM2)">
+            <path d="M148 105 L 194 105"/>
+            <path d="M346 100 C 384 100 384 35 418 35"/>
+            <path d="M346 105 L 418 105"/>
+            <path d="M346 110 C 384 110 384 175 418 175"/>
+          </g>
+        </svg>
+        <figcaption class="figcap"><b>図：ChatGPTは“チーム”。質問を用途に応じたモードへ自動で振り分け</b>、簡単な質問はすぐ、むずかしい質問はよく考えて答えます。ふだんは自動、しっかり考えてほしいときだけ「Thinking」を選べばOK。</figcaption>
+      </figure>
 
       <div class="blk-h">自社の資料を読ませて、“出典つき”で答えさせる</div>
-      <p>ChatGPTは一般的な知識は得意ですが、<b>あなたの会社の社内資料や最新の数字までは知りません</b>。そこで役立つのが<b>「資料を渡して、それを見て答えてもらう」</b>使い方です。手軽にはファイルを添付したり、<b>Projects（案件ごとの“部屋”）</b>に資料を入れておく方法があります。社内システムに組み込むなら、下の図のように<b>資料を検索しやすく整理しておき、質問のたびに関連箇所だけを取り出して答える</b>しくみ（<span class="term" data-term="RAG">RAG</span>）を使います。</p>
-      <p><b>いちばんの利点は「答えの根拠（出典）を一緒に示せる」こと</b>。どの資料のどこを見て答えたかが分かるので、AIにありがちな“もっともらしい思い込み”（<span class="term" data-term="ハルシネーション">ハルシネーション</span>）を減らせます。</p>
+      <p>ChatGPTは一般知識は得意でも、<b>自社の社内資料や最新の数字までは知りません</b>。そこで<b>「資料を渡して、それを見て答えてもらう」</b>——手軽にはファイル添付や <b>Projects（案件ごとの“部屋”）</b>、社内システムなら下図の <span class="term" data-term="RAG">RAG</span> を使います。利点は<b>答えの根拠（出典）を示せる</b>ことで、“思い込み”（<span class="term" data-term="ハルシネーション">ハルシネーション</span>）を減らせます。</p>
 
       <figure class="figure">
         <svg viewBox="0 0 760 250" role="img" aria-label="社内資料を出典つきで答えに使うRAGの流れの図">
@@ -649,7 +659,7 @@
       <div class="callout"><b>かんたんに言うと</b>：ChatGPTに「自社の資料という“カンニングペーパー”」を渡すと、自社の事情に合った、根拠のある答えが返ってきます。まずは<b>ファイル添付や Projects</b> から試すのがおすすめです。</div>
 
       <div class="blk-h">1社のAIに“縛られない”備え（軽く）</div>
-      <p>AIは新しいモデルが次々に登場します。特定の1つだけに深く作り込みすぎると、値上げや性能の変化があったときに乗り換えづらくなります。まずは<b>「いつでも別のAIに乗り換えられるようにしておく」</b>という心構えだけ持っておけば十分です（本格的な作り込みは、導入が進んでから情シスや専門業者と検討すればOK）。</p>
+      <p>AIは新しいモデルが次々に登場します。特定の1つに作り込みすぎると乗り換えづらくなるので、まずは<b>「いつでも別のAIに乗り換えられるようにしておく」</b>心構えだけでOK（本格的な作り込みは導入が進んでから情シス・専門業者と検討）。</p>
 
       <div class="verdict"><b>まとめ</b>：ChatGPTは用途で賢さが変わる“チーム”。<b>自社の資料を読ませれば、出典つきで自社仕様の答え</b>が得られ、思い込みも減ります。むずかしい仕組みづくりは業者・情シスに任せてOK。まずは<b>ファイル添付や Projects で「資料を渡して答えさせる」</b>体験から始めましょう。</div>
     </div>
