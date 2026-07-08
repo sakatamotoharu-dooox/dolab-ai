@@ -601,42 +601,27 @@
 
   <!-- 2 技術戦略 -->
   <div class="sec" id="s2">
-    <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">社内データを“出典つき”で安全に使うRAGと、モデルを乗り換え自由にするゲートウェイ。誤回答を減らす“土台”の作り方。</div></div></div>
+    <div class="sechd"><span class="n">2</span><div><h2>技術戦略</h2><div class="src">ChatGPTを仕事の戦力にする“土台”をやさしく。用途で変わる賢さ、自社の資料を読ませて出典つきで答えさせるコツまで。</div></div></div>
     <div class="secteaser">
-      <p class="tz-lead">ChatGPTの裏側は「速く返す・深く考える・交通整理する」役割分担チーム。社内で安全に業務利用する土台として、<b>RAG</b>（社内資料を“出典つき”で答えに使うしくみ）と <b>AIゲートウェイ</b>（モデルを差し替え自由にする中継層）を解説します。RAGとファインチューニングの使い分けも。</p>
-      <p class="tz-points"><b>この章の要点：</b>統一システム／ルーター ／ RAG・GraphRAG ／ AIゲートウェイ ／ MCP ／ FTとの使い分け</p>
+      <p class="tz-lead">ChatGPTを仕事で活かすための“土台”を、むずかしい専門用語をできるだけ避けてやさしく説明します。ポイントは<b>①用途で賢さを切り替える“チーム”であること／②自社の資料を読ませて「出典つき」で答えさせられること／③特定の1社に縛られない備え</b>の3つです。</p>
+      <p class="tz-points"><b>この章の要点：</b>3つの動作モード ／ 自社資料を読ませるしくみ ／ 出典つきで誤答を減らす ／ 1社に縛られない備え</p>
       <button class="more-btn" type="button">この章を詳しく読む</button>
     </div>
     <div class="secbody">
       <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
-      <div class="blk-h">モデルの内部構造：1つの巨大AIではなく“役割分担チーム”</div>
-      <p>いまのChatGPTは「1つの大きなAI」ではなく、<b>速く返す担当・じっくり考える担当・交通整理する担当</b>がチームを組んだ仕組みです。質問が来るたびに交通整理役（ルーター）が「これは簡単／難しい」「道具が要る？」を瞬時に見分け、最適な担当へ振り分けます（専門用語では<span class="term" data-term="MoE">MoE</span>やルーティングと呼びますが、要は<b>“質問ごとに担当AIを割り当てるしくみ”</b>）。</p>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">3つの動作モード</div><p><b>Instant</b>（高速・無料既定）／<b>Thinking</b>（GPT-5.5・推論）／<b>Pro</b>（GPT-5.5 Pro・最高精度）。</p></div>
-        <div class="feat-card"><div class="fc-h">考える役と実行役の分業</div><p>難しい全体設計は“じっくり考えるモデル”（Planner＝設計役）、高速処理は“速いモデル”（Workhorse＝実行役）。例：考える役が設計→速い役が数千行のコードを一気に生成。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="term" data-term="コンテキストウィンドウ">コンテキスト</span></div><p>GPT-5.5 は<b>APIで最大100万<span class="term" data-term="トークン">トークン</span></b>（Codexは40万）。アプリ内実効上限はプラン依存（要確認）。</p></div>
-      </div>
-      <div class="blk-h">コーディングの三極化※</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>モデル</th><th>役割</th><th>コンテキスト</th></tr>
-        <tr><td>GPT-5.5 Thinking</td><td>アルゴリズム設計・複雑なデバッグの対話パートナー</td><td>256K</td></tr>
-        <tr><td>GPT-5.3 Codex</td><td>複数ファイル横断の自律リファクタ・PR自動生成（バックグラウンド）</td><td>1M</td></tr>
-        <tr><td>GPT-5.3 Codex-Spark</td><td>IDE内のリアルタイム補完（毎秒1,000トークン超）</td><td>128K</td></tr>
-      </table></div>
+      <p><b>ChatGPTは「1つの大きなAI」ではなく、役割の違うAIが集まった“チーム”</b>です。質問が来ると、<b>速く答える担当</b>と<b>じっくり考える担当</b>を自動で切り替えます。だから簡単な質問にはすぐ、むずかしい質問にはよく考えて答えてくれます。私たちは難しい設定をしなくてOK——用途に応じて“賢さ”が自動で選ばれます。</p>
 
-      <div class="blk-h">開発・連携基盤</div>
+      <div class="blk-h">用途で選べる3つのモード</div>
       <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">Responses API</div><p>今後の主軸に（Assistants APIは2026年sunset予定）。組込ツール＝<b>Web Search／File Search（ベクトルストア）／Computer Use</b>。</p></div>
-        <div class="feat-card"><div class="fc-h">Agents SDK</div><p>計画・ツール利用・多段実行を行う<b>エージェント構築フレームワーク</b>。</p></div>
-        <div class="feat-card wide"><div class="fc-h"><span class="term" data-term="MCP">MCP</span>（Model Context Protocol）</div><p>「AIのUSB-C」。2026年は主要ベンダー（OpenAI/Anthropic/Google/Microsoft/AWS）が標準対応し、<b>ツール接続の事実上の標準</b>に。</p></div>
+        <div class="feat-card"><div class="fc-h">Instant（高速）</div><p>ふだんの質問・下書き・要約に。無料でも使える標準モードで、すぐ返ってきます。</p></div>
+        <div class="feat-card"><div class="fc-h">Thinking（じっくり考える）</div><p>複雑な相談・段取り・分析など、“考える時間”が要るとき向け。精度を重視して答えます。</p></div>
+        <div class="feat-card"><div class="fc-h">Pro（最高精度）</div><p>特にむずかしい課題向けの上位モード（上位プラン）。まずは Instant／Thinking で十分です。</p></div>
       </div>
+      <p>「どれを選ぶか」で悩む必要はありません。ふだんは自動にまかせ、しっかり考えてほしいときだけ「Thinking」を選ぶ——くらいの感覚で大丈夫です。</p>
 
-      <div class="blk-h">企業導入アーキテクチャ</div>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h"><span class="term" data-term="RAG">RAG</span>（検索拡張生成）</div><p>取り込み→クレンジング→チャンク→埋め込み→<b><span class="term" data-term="ベクトルDB">ベクトルDB</span></b>。最新性・出典明示で<b><span class="term" data-term="ハルシネーション">ハルシネーション</span>抑制</b>。発展形に<b><span class="term" data-term="GraphRAG">GraphRAG</span></b>・エージェント型RAG。</p></div>
-        <div class="feat-card"><div class="fc-h"><span class="term" data-term="AIゲートウェイ">AIゲートウェイ</span></div><p>アプリとLLM群の中間で、モデルルーティング・<span class="term" data-term="ガードレール">ガードレール</span>・監査ログ・キャッシュ・コスト最適化を集中管理（<b>本番では事実上必須</b>）。</p></div>
-        <div class="feat-card wide"><div class="fc-h">オーケストレーション／マルチエージェント</div><p>状態管理・ID連携・エージェント/ツールのレジストリ・<b>全行程の可観測性</b>が要件。</p></div>
-      </div>
+      <div class="blk-h">自社の資料を読ませて、“出典つき”で答えさせる</div>
+      <p>ChatGPTは一般的な知識は得意ですが、<b>あなたの会社の社内資料や最新の数字までは知りません</b>。そこで役立つのが<b>「資料を渡して、それを見て答えてもらう」</b>使い方です。手軽にはファイルを添付したり、<b>Projects（案件ごとの“部屋”）</b>に資料を入れておく方法があります。社内システムに組み込むなら、下の図のように<b>資料を検索しやすく整理しておき、質問のたびに関連箇所だけを取り出して答える</b>しくみ（<span class="term" data-term="RAG">RAG</span>）を使います。</p>
+      <p><b>いちばんの利点は「答えの根拠（出典）を一緒に示せる」こと</b>。どの資料のどこを見て答えたかが分かるので、AIにありがちな“もっともらしい思い込み”（<span class="term" data-term="ハルシネーション">ハルシネーション</span>）を減らせます。</p>
 
       <figure class="figure">
         <svg viewBox="0 0 760 250" role="img" aria-label="社内資料を出典つきで答えに使うRAGの流れの図">
@@ -644,33 +629,29 @@
           <text class="svg-ts" x="20" y="24" font-size="13" font-weight="700">① 社内資料をためる（前処理）</text>
           <g font-size="12.5" font-weight="700">
             <rect x="20" y="36" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="58" text-anchor="middle">社内資料</text><text class="svg-t" x="95" y="74" text-anchor="middle" font-size="11">PDF/Word/規程</text>
-            <rect x="196" y="36" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="271" y="58" text-anchor="middle">整理・分割</text><text class="svg-t" x="271" y="74" text-anchor="middle" font-size="11">チャンク化・埋め込み</text>
-            <rect x="372" y="36" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="447" y="58" text-anchor="middle">ベクトルDB</text><text class="svg-tw" x="447" y="74" text-anchor="middle" font-size="11">意味で検索できる箱</text>
+            <rect x="196" y="36" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="271" y="58" text-anchor="middle">整理・分割</text><text class="svg-t" x="271" y="74" text-anchor="middle" font-size="11">検索しやすく整理</text>
+            <rect x="372" y="36" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="447" y="58" text-anchor="middle">資料の保管庫</text><text class="svg-tw" x="447" y="74" text-anchor="middle" font-size="11">意味で探せる</text>
           </g>
           <g stroke="#274b73" stroke-width="1.6" fill="none" marker-end="url(#arrH2)"><path d="M170 59 L192 59"/><path d="M346 59 L368 59"/></g>
           <text class="svg-ts" x="20" y="128" font-size="13" font-weight="700">② 質問に答える（回答生成）</text>
           <g font-size="12.5" font-weight="700">
             <rect x="20" y="140" width="150" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="95" y="168" text-anchor="middle">利用者の質問</text>
-            <rect x="196" y="140" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="271" y="162" text-anchor="middle">関連箇所を検索</text><text class="svg-tw" x="271" y="178" text-anchor="middle" font-size="11">ベクトルDBから抽出</text>
+            <rect x="196" y="140" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="271" y="162" text-anchor="middle">関連箇所を検索</text><text class="svg-tw" x="271" y="178" text-anchor="middle" font-size="11">保管庫から抜き出す</text>
             <rect x="372" y="140" width="150" height="46" rx="9" fill="#0b2545"/><text class="svg-tw" x="447" y="162" text-anchor="middle">ChatGPTが生成</text><text class="svg-tw" x="447" y="178" text-anchor="middle" font-size="11">根拠を添えて回答</text>
             <rect x="548" y="140" width="192" height="46" rx="9" fill="#e7f6f1" stroke="#274b73"/><text class="svg-t" x="644" y="162" text-anchor="middle">出典つきの回答</text><text class="svg-t" x="644" y="178" text-anchor="middle" font-size="11">思い込み（ハルシネーション）を抑制</text>
           </g>
           <g stroke="#274b73" stroke-width="1.6" fill="none" marker-end="url(#arrH2)"><path d="M170 163 L192 163"/><path d="M346 163 L368 163"/><path d="M522 163 L544 163"/></g>
           <path d="M447 82 L447 138" stroke="#274b73" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#arrH2)"/>
         </svg>
-        <figcaption class="figcap"><b>図：社内資料を“出典つき”で答えに使うRAGの流れ</b>。①ためた資料をベクトルDBに整理し、②質問時に関連箇所だけを取り出してChatGPTが根拠つきで回答します。DBを更新するだけで最新情報に追従できます。</figcaption>
+        <figcaption class="figcap"><b>図：社内資料を“出典つき”で答えに使うしくみ</b>。①資料を検索しやすく整理して保管し、②質問のたびに関連箇所だけを取り出して、ChatGPTが根拠を添えて回答します。保管した資料を差し替えるだけで最新情報にも追従できます。</figcaption>
       </figure>
 
-      <div class="blk-h">RAG と <span class="term" data-term="ファインチューニング">ファインチューニング</span>の使い分け</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>観点</th><th>RAG</th><th>ファインチューニング</th></tr>
-        <tr><td>仕組み</td><td>外部DBから検索して根拠付与（重み不変）</td><td>独自データで追加学習しパラメータ更新</td></tr>
-        <tr><td>最新情報</td><td>極めて高い（DB更新で即反映）</td><td>低い（再学習が必要）</td></tr>
-        <tr><td>専門知識・文体</td><td>中〜高</td><td>極めて高い（用語/文体を内在化）</td></tr>
-        <tr><td>コスト</td><td>中（学習費不要）</td><td>高（PEFT/LoRAで低減可）</td></tr>
-      </table></div>
-      <div class="callout">実務最適＝<b>ハイブリッド</b>：FTで専門用語・文体を基盤に内在化し、RAGで最新事実を補完。技術選定は「どのAIか」でなく「<b>開発ループのどの工程にどのモデル/基盤を置くか</b>」のプロセス設計。抽象化レイヤーで差し替え自由度を確保。</div>
-      <div class="verdict"><b>もたらす効果</b>：RAG＋ゲートウェイ基盤を一度作れば、<b>社内データを“出典つき”で安全に活かせて誤回答が激減</b>。さらに<b>モデルを差し替え自由</b>になり、値上げや新モデル登場にも数行の設定変更で即対応 → <b>技術的負債を負わずにAIを伸ばし続けられる</b>。</div>
+      <div class="callout"><b>かんたんに言うと</b>：ChatGPTに「自社の資料という“カンニングペーパー”」を渡すと、自社の事情に合った、根拠のある答えが返ってきます。まずは<b>ファイル添付や Projects</b> から試すのがおすすめです。</div>
+
+      <div class="blk-h">1社のAIに“縛られない”備え（軽く）</div>
+      <p>AIは新しいモデルが次々に登場します。特定の1つだけに深く作り込みすぎると、値上げや性能の変化があったときに乗り換えづらくなります。まずは<b>「いつでも別のAIに乗り換えられるようにしておく」</b>という心構えだけ持っておけば十分です（本格的な作り込みは、導入が進んでから情シスや専門業者と検討すればOK）。</p>
+
+      <div class="verdict"><b>まとめ</b>：ChatGPTは用途で賢さが変わる“チーム”。<b>自社の資料を読ませれば、出典つきで自社仕様の答え</b>が得られ、思い込みも減ります。むずかしい仕組みづくりは業者・情シスに任せてOK。まずは<b>ファイル添付や Projects で「資料を渡して答えさせる」</b>体験から始めましょう。</div>
     </div>
   </div>
 
