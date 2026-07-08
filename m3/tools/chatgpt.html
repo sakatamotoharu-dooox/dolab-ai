@@ -541,13 +541,12 @@
 
       <div class="blk-h">4つの独自コア機能 ― 「で、何が変わる？」</div>
       <p>むずかしく考えなくてOK。下の4つは、ふだんの仕事の“面倒”を肩代わりしてくれる機能です。</p>
-      <div class="tbl-scroll"><table>
-        <tr><th>機能</th><th>ひとことで言うと（たとえば…）</th><th>もたらす効果（=あなたの得）</th><th>プラン</th></tr>
-        <tr><td><b>Deep Research</b><br>（深掘り調査）</td><td><b>ネット調査を丸ごとおまかせ</b>。例：「競合5社の料金と評判を調べてレポートにして」と頼むと、AIが何十ものサイトを読んで“出典つき”の資料を作成</td><td><b>数日かかる調査が数十分に</b>。そのまま会議資料へ → <b>意思決定が早まり、調査の外注費も節約</b></td><td><span class="badge b-paid">Plus/Pro/Business</span></td></tr>
-        <tr><td><b>agent mode</b><br>（パソコン操作の代行）</td><td><b>面倒なネット作業を代わりに操作</b>。例：「条件に合うお店を5つ探して表にまとめて」→ AIが実際にブラウザを動かして探し、入力</td><td><b>検索→転記→予約のような手作業から解放</b> → <b>人は“考える仕事”に集中</b>（お金が動く操作は確認を求めるので安全）</td><td><span class="badge b-paid">Plus/Pro</span></td></tr>
-        <tr><td><b>Projects</b><br>（案件ごとの専用部屋）</td><td><b>案件ごとに資料を入れておける“フォルダ”</b>。例：A社用の部屋に資料を入れると、毎回説明しなくてもA社の前提で答えてくれる</td><td><b>毎回の説明がいらない</b>＆他の案件と情報が混ざらない → <b>並行作業でも品質が安定、情報漏れも防ぐ</b></td><td><span class="badge b-free">無料</span><span class="badge b-paid">有料で拡大</span></td></tr>
-        <tr><td><b>Interactive charts</b><br>（動くグラフ）</td><td><b>エクセルなしでグラフ化</b>。例：売上の表を渡すと、画面の中でグラフを作り、マウスで触って数字を確認できる</td><td><b>専門ツールを開かず会話だけで分析</b> → <b>数字が苦手でも一目で状況がわかる</b></td><td><span class="badge b-free">無料も</span><span class="badge b-paid">有料で高精度</span></td></tr>
-      </table></div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h">Deep Research（深掘り調査）<span class="badge b-paid" style="margin-left:8px">Plus/Pro/Business</span></div><p><b>ネット調査を丸ごとおまかせ。</b>例：「競合5社の料金と評判を調べてレポートに」と頼むと、AIが何十ものサイトを読んで“出典つき”の資料を作成。<br><b>効果：数日の調査が数十分に</b>。意思決定が早まり、外注費も節約。</p></div>
+        <div class="feat-card"><div class="fc-h">agent mode（パソコン操作の代行）<span class="badge b-paid" style="margin-left:8px">Plus/Pro</span></div><p><b>面倒なネット作業を代わりに操作。</b>例：「条件に合うお店を5つ探して表に」→ AIがブラウザを動かして探し、入力。<br><b>効果：検索→転記→予約の手作業から解放</b>（お金が動く操作は確認を求めるので安全）。</p></div>
+        <div class="feat-card"><div class="fc-h">Projects（案件ごとの専用部屋）<span class="badge b-free" style="margin-left:8px">無料〜</span></div><p><b>案件ごとに資料を入れておける“フォルダ”。</b>例：A社の部屋に資料を入れると、毎回説明せずA社の前提で回答。<br><b>効果：並行作業でも品質が安定</b>、情報漏れも防止。</p></div>
+        <div class="feat-card"><div class="fc-h">Interactive charts（動くグラフ）<span class="badge b-free" style="margin-left:8px">無料〜</span></div><p><b>エクセルなしでグラフ化。</b>例：売上の表を渡すと、画面の中でグラフを作り、マウスで触って数字を確認。<br><b>効果：数字が苦手でも一目で状況が分かる</b>。</p></div>
+      </div>
       <div class="callout"><b>つまり</b>：この4つは「調べる・動かす・覚える・見える化する」を肩代わりして、<b>あなたの時間を生み出す道具</b>。まずは自分の“いちばん時間がかかっている作業”を1つ選んで、試しに頼んでみるのがおすすめです。</div>
 
       <figure class="figure">
@@ -854,13 +853,10 @@
     <div class="secbody">
       <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">プラン別のデータプライバシー境界</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>プラン</th><th>学習利用</th><th>保持・統制</th><th>認証・暗号化</th></tr>
-        <tr><td>Free / Plus / Pro</td><td><b>既定で利用</b>（手動オプトアウトは個人裁量）</td><td>手動の履歴削除のみ。組織統制不可</td><td>MFA・通信暗号化のみ</td></tr>
-        <tr><td>Business（旧Team）</td><td><b>完全除外</b></td><td>管理者がデータ保持ポリシー設定</td><td><span class="term" data-term="SOC2">SOC2</span> Type2、保存/通信暗号化</td></tr>
-        <tr><td>Enterprise</td><td><b>完全除外</b></td><td>カスタム保持強制</td><td>SAML SSO、AES-256/TLS1.2+、専任サポート</td></tr>
-        <tr><td>API Platform</td><td><b>完全除外</b></td><td>既定30日保持→自動削除、ゼロデータ保持(<span class="term" data-term="ZDR">ZDR</span>)も</td><td>SOC2、堅牢インフラ、暗号化</td></tr>
-      </table></div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="fc-h">個人プラン（Free / Plus / Pro）</div><p><b>学習利用：既定で使われる</b>（※設定で手動オフ可）。<br><b>統制・安全：</b>手動の履歴削除のみで、会社としての統制はできません（MFA・通信暗号化）。<br>→ <b>機密の入力には不向き</b>。</p></div>
+        <div class="feat-card"><div class="fc-h">法人プラン（Business / Enterprise / API）</div><p><b>学習利用：完全に使われない</b>。<br><b>統制・安全：</b>管理者が保持ルールを設定でき、高度な認証・暗号化に対応（<span class="term" data-term="SOC2">SOC2</span>・SAML SSO・ゼロデータ保持 など）。<br>→ <b>機密業務はこちらが前提</b>。</p></div>
+      </div>
       <div class="warnbox"><b>入れてはいけない情報（個人プランでは特に注意）</b>：<b>顧客・社員の個人情報／パスワード・APIキー／未公開の決算・経営情報／NDA（秘密保持）対象の資料</b>。個人プランは初期設定だと入力がAIの学習に使われうるため、<b>機密は「学習されない法人プラン」で扱うか、そもそも入れない</b>のが基本です（個人プランでも設定で学習をオフにできます）。</div>
 
       <figure class="figure">
