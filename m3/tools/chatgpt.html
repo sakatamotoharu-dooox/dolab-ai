@@ -622,30 +622,66 @@
 
       <div class="blk-h">Canvas（キャンバス）＝ AIと一緒に文章・資料を直す画面</div>
       <p>ふつうのチャットだと、文章を少し直したいだけでも“全部作り直し”になりがち。<b><span class="term" data-term="Canvas">Canvas</span></b>は画面が左右に分かれ（左：会話／右：文章や資料）、<b>直したいところだけを選んで「ここをやさしく言い換えて」と頼める</b>機能です。ワープロをAIと一緒に使うイメージ。自分で直接打ち直すこともできます。</p>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">ボタン1つで調整</div><p>文章を選んで「もっと短く」「専門家向けに」を<b>ボタン1つで調整</b>できます。</p></div>
-        <div class="feat-card"><div class="fc-h">その場で動作確認</div><p>HTMLやちょっとしたプログラムは、その場で動かして確認も可能。<b>無料でも使えます</b>。</p></div>
-      </div>
+      <figure class="figure">
+        <svg viewBox="0 0 760 268" role="img" aria-label="Canvasの画面イメージ（左＝会話・右＝文章や資料）の模式図">
+          <rect x="28" y="20" width="704" height="30" rx="10" fill="#0b2545"/>
+          <text class="svg-tw" x="44" y="40" font-size="13" font-weight="700">Canvas（模式図）― 画面が左右に分かれる</text>
+          <rect x="28" y="50" width="704" height="196" fill="#fff" stroke="#dde5ef" stroke-width="1.5"/>
+          <line x1="380" y1="50" x2="380" y2="246" stroke="#dde5ef" stroke-width="1.5"/>
+          <rect x="28" y="50" width="352" height="28" fill="#eef2f7"/><text class="svg-t" x="44" y="69" font-size="12" font-weight="800">左：会話（チャット）</text>
+          <rect x="380" y="50" width="352" height="28" fill="#eef2f7"/><text class="svg-t" x="396" y="69" font-size="12" font-weight="800">右：文章・資料</text>
+          <rect x="48" y="92" width="210" height="32" rx="12" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="60" y="112" font-size="11">たたき台を作りました</text>
+          <rect x="150" y="134" width="214" height="30" rx="12" fill="#274b73"/><text class="svg-tw" x="161" y="153" font-size="11">3行目をやさしく直して</text>
+          <rect x="48" y="174" width="190" height="30" rx="12" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="60" y="193" font-size="11">直しました</text>
+          <rect x="400" y="94" width="300" height="7" rx="3" fill="#dde5ef"/>
+          <rect x="400" y="110" width="312" height="7" rx="3" fill="#dde5ef"/>
+          <rect x="396" y="124" width="324" height="20" rx="5" fill="#e7edf5" stroke="#274b73" stroke-width="1.5"/><text class="svg-t" x="406" y="138" font-size="10.5" font-weight="700">← この行を選んで指示</text>
+          <rect x="400" y="152" width="280" height="7" rx="3" fill="#dde5ef"/>
+          <rect x="400" y="168" width="306" height="7" rx="3" fill="#dde5ef"/>
+          <rect x="400" y="184" width="250" height="7" rx="3" fill="#dde5ef"/>
+          <text class="svg-ts" x="400" y="214" font-size="11">選んだ所だけAIが直す（他は崩れない）</text>
+        </svg>
+        <figcaption class="figcap"><b>図：Canvas の画面イメージ（模式図）</b>。左で会話しながら、右の文章・資料の<b>直したい所だけを選んで指示</b>でき、選んだ部分だけがきれいに直ります（※実画面ではありません）。</figcaption>
+      </figure>
+      <p class="figcap">＋ 文章を選んで「もっと短く」「専門家向けに」を<b>ボタン1つで調整</b>／HTMLなどはその場で動かして確認も（<b>無料でも使えます</b>）。</p>
 
       <div class="blk-h">画像・音声 ＝ つくる/直す/話す も、ことばだけで</div>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">画像をつくる・直す</div><p>「〜の画像を作って」でOK。写真の<b>直したいところだけをなぞって</b>「メガネを黒縁に」「背景を青空に」と頼むと、その部分だけ自然に直ります（ほかは崩れません）。同じキャラクターで何パターンも作れます。</p></div>
-        <div class="feat-card"><div class="fc-h">声で話す（Advanced Voice）</div><p>スマホに話しかけて相談・通訳。<b>人と話すように自然に会話</b>できます。</p></div>
-        <div class="feat-card wide"><div class="fc-h">録音して議事録（Record）※</div><p>会議を録音すると、<b>文字起こし＋要約</b>まで自動。あとで聞き直す手間がなくなります。</p></div>
+      <div class="strength-list">
+        <div class="str-row">
+          <div class="str-name">画像をつくる・直す</div>
+          <div class="str-body">
+            <div class="str-tags"><span>ことばで生成</span><span>部分だけ修正</span><span>同じキャラで量産</span></div>
+            <div class="str-use">「〜の画像を作って」でOK。写真は<b>直したいところだけなぞって</b>「メガネを黒縁に」等、その部分だけ自然に修正（ほかは崩れません）。</div>
+          </div>
+        </div>
+        <div class="str-row">
+          <div class="str-name">声で話す<span>Advanced Voice</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>自然な会話</span><span>相談・通訳</span></div>
+            <div class="str-use">スマホに話しかけるだけ。<b>人と話すように自然に</b>やり取りできます。</div>
+          </div>
+        </div>
+        <div class="str-row">
+          <div class="str-name">録音して議事録<span>Record ※</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>文字起こし</span><span>自動要約</span></div>
+            <div class="str-use">会議を録音すると、<b>文字起こし＋要約</b>まで自動。あとで聞き直す手間がなくなります。</div>
+          </div>
+        </div>
       </div>
 
       <div class="blk-h">パソコン・スマホとの一体化 ＝ いつでもすぐ呼び出せる</div>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">デスクトップアプリ</div><p>作業中でもショートカット（Mac: Option+Space／Windows: Alt+Space）で<b>画面の真ん中にAIをすぐ表示</b>。タブを切り替える手間がなく、画面のスクショを送って「この画面どういう意味？」と聞くのも簡単。</p></div>
-        <div class="feat-card"><div class="fc-h">iPhone/Macとの連携</div><p>Apple Intelligence経由でSiriに話すとChatGPTに引き継ぎ。<b>登録なし・無料</b>で使え、<b>あなたの情報やIPアドレスは隠され、AIの学習にも使われません</b>。</p></div>
-      </div>
+      <ul class="ih-outcomes">
+        <li><b>デスクトップアプリ</b>：作業中でもショートカット（Mac: Option+Space／Windows: Alt+Space）で<b>画面の真ん中にAIをすぐ表示</b>。タブ切り替え不要で、画面のスクショを送って「この画面どういう意味？」も簡単。</li>
+        <li><b>iPhone / Macとの連携</b>：Apple Intelligence経由でSiriから引き継ぎ。<b>登録なし・無料</b>で使え、<b>あなたの情報やIPアドレスは隠され、AIの学習にも使われません</b>。</li>
+      </ul>
 
       <div class="blk-h"><span class="term" data-term="GPTs">GPTs</span> ＝ 自分専用のChatGPTを“プログラミングなし”で作れる</div>
-      <div class="feat-grid">
-        <div class="feat-card"><div class="fc-h">作り方はことばだけ</div><p>チャットで「どんな役割か」「守ってほしいルール」を伝えるだけ。会社のマニュアルやExcelを覚えさせれば、<b>社内専用アシスタント</b>の完成。</p></div>
-        <div class="feat-card"><div class="fc-h">一度作れば呼ぶだけ</div><p>毎回くわしく説明せず呼び出すだけ。<b>カレンダーや他サービスとつないで自動化</b>もできます。</p></div>
-        <div class="feat-card wide"><div class="fc-h">公開・配布も可能</div><p>作ったものは公開・配布も可能（<b>収益化のしくみ</b>もあります）。</p></div>
-      </div>
+      <ol class="ih-steps">
+        <li><span class="step-n">1</span><span><b>ことばで作る</b>：「どんな役割か」「守ってほしいルール」を伝え、会社のマニュアルやExcelを覚えさせれば<b>社内専用アシスタント</b>の完成。</span></li>
+        <li><span class="step-n">2</span><span><b>呼ぶだけで使う</b>：毎回くわしく説明せず呼び出すだけ。<b>カレンダーや他サービスとつないで自動化</b>もできます。</span></li>
+        <li><span class="step-n">3</span><span><b>公開・配布する</b>：作ったものは公開・配布も可能（<b>収益化のしくみ</b>もあります）。</span></li>
+      </ol>
 
       <div class="blk-h">ChatGPTに渡せるもの / 返ってくるもの</div>
       <figure class="figure">
