@@ -425,6 +425,38 @@
   .plancard .pc-note{font-size:12px;color:var(--sub);line-height:1.6;margin-top:7px;}
   @media(max-width:760px){.plancard .pc-tag{margin-left:0;}.plancard .pc-name{font-size:18px;}}
   @media print{.plancard{break-inside:avoid;}}
+  /* シェア勢力図：プラットフォームごとのカード */
+  .share-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 6px;}
+  .sharecard{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gpt);border-radius:12px;padding:13px 16px;box-shadow:0 1px 4px rgba(11,37,69,.05);}
+  .sharecard .sc-name{font-size:17px;font-weight:900;color:var(--navy);}
+  .sharecard .sc-share{font-size:15px;font-weight:800;color:var(--gpt-d);margin:7px 0 3px;}
+  .sharecard .sc-share .sc-arrow{color:var(--sub);font-weight:700;margin:0 4px;}
+  .sharecard .sc-trend{font-size:12.5px;color:var(--sub);}
+  @media(max-width:760px){.share-grid{grid-template-columns:1fr;}}
+  @media print{.sharecard{break-inside:avoid;}}
+  /* 各社の得意分野：強みタグの横並び行 */
+  .strength-list{display:flex;flex-direction:column;gap:10px;margin:14px 0 6px;}
+  .str-row{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 16px;box-shadow:0 1px 4px rgba(11,37,69,.05);}
+  .str-name{flex:0 0 156px;font-weight:900;color:var(--navy);font-size:15px;line-height:1.3;}
+  .str-name span{display:block;font-size:11.5px;font-weight:600;color:var(--sub);margin-top:2px;}
+  .str-body{flex:1 1 auto;min-width:0;}
+  .str-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:7px;}
+  .str-tags span{font-size:12px;font-weight:700;color:var(--gpt-d);background:var(--gpt-bg);border:1px solid var(--line);border-radius:999px;padding:3px 11px;}
+  .str-use{font-size:12.5px;color:var(--sub);}
+  .str-use b{color:var(--ink);}
+  @media(max-width:760px){.str-row{flex-direction:column;gap:8px;}.str-name{flex:none;}}
+  @media print{.str-row{break-inside:avoid;}}
+  /* 勢力図：順位＋勢いのランキング型 */
+  .rank-list{display:flex;flex-direction:column;gap:8px;margin:14px 0 6px;}
+  .rank-row{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 16px;box-shadow:0 1px 4px rgba(11,37,69,.05);}
+  .rk-pos{flex:0 0 34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--gpt);color:#fff;border-radius:9px;font-weight:900;font-size:16px;}
+  .rk-pos.rk-sub{background:var(--gpt-bg);color:var(--gpt-d);font-size:12px;}
+  .rk-name{flex:0 0 108px;font-size:16px;font-weight:900;color:var(--navy);}
+  .rk-share{flex:1 1 auto;min-width:0;font-size:14px;font-weight:800;color:var(--gpt-d);}
+  .rk-share .rk-arrow{color:var(--sub);margin:0 5px;font-weight:700;}
+  .rk-trend{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--sub);}
+  @media(max-width:760px){.rank-row{flex-wrap:wrap;gap:8px 12px;}.rk-share,.rk-trend{flex-basis:100%;}}
+  @media print{.rank-row{break-inside:avoid;}}
   /* 上部メニューへ戻る（フローティング） */
   .to-top{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--gpt);color:#fff;text-decoration:none;font-size:13px;font-weight:800;border-radius:999px;padding:11px 16px;box-shadow:0 4px 14px rgba(15,37,68,.28);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;}
   .to-top.show{opacity:1;pointer-events:auto;transform:none;}
@@ -977,12 +1009,7 @@
       <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <p>「便利そう」で終わらせず、<b>どれくらい効果があるかを数字で示す</b>と、上司や会社を動かしやすくなります。コツは<b>導入する“前”の作業時間を測っておく</b>こと（<span class="term" data-term="ベースライン">ベースライン</span>＝比べるための出発点）。これがあれば「どれだけ減ったか」を金額に変えられます。</p>
       <div class="blk-h">工数削減の試算（Before／After）</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>業務</th><th>導入前</th><th>導入後</th></tr>
-        <tr><td>提案書作成</td><td>4時間</td><td>1.5時間（約60%減）</td></tr>
-        <tr><td>競合調査</td><td>3時間</td><td>45分</td></tr>
-        <tr><td>定型メール返信</td><td>10分</td><td>3分</td></tr>
-      </table></div>
+      <p>よくある業務が、<b>ChatGPT導入でどれだけ時短できるか</b>の試算例です（下図）。バーが短いほど作業時間が減っています。</p>
 
       <figure class="figure">
         <svg viewBox="0 0 760 260" role="img" aria-label="業務ごとの導入前後の作業時間の比較グラフ">
@@ -1059,13 +1086,33 @@
       <p>AIは「ChatGPTの一強」から、<b>用途によって得意なAIが違う“使い分けの時代”</b>へ移っています。どれか1つが全部で勝つわけではありません。</p>
 
       <div class="blk-h">今の勢力図（Web訪問ベースの目安）</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>プラットフォーム</th><th>2025/2</th><th>2026/4</th><th>傾向</th></tr>
-        <tr><td>ChatGPT</td><td>約76.5%</td><td>54.7〜56.7%</td><td>首位維持も低下</td></tr>
-        <tr><td>Gemini</td><td>約5.6%</td><td>25.5〜27.4%</td><td>エコシステム統合で急成長</td></tr>
-        <tr><td>Claude</td><td>約1.4%</td><td>6.0〜8.2%</td><td>最速成長（四半期+306%）</td></tr>
-        <tr><td>DeepSeek / Grok / Copilot / Perplexity</td><td>—</td><td>数%台</td><td>地域・ニッチで分散</td></tr>
-      </table></div>
+      <p>主要AIの利用シェア（Web訪問ベース）の、この1年ほどの変化を<b>プラットフォームごと</b>にまとめました。</p>
+      <div class="rank-list">
+        <div class="rank-row">
+          <div class="rk-pos">1</div>
+          <div class="rk-name">ChatGPT</div>
+          <div class="rk-share">約76.5%<span class="rk-arrow">→</span>54.7〜56.7%</div>
+          <div class="rk-trend">▼ 首位維持も低下</div>
+        </div>
+        <div class="rank-row">
+          <div class="rk-pos">2</div>
+          <div class="rk-name">Gemini</div>
+          <div class="rk-share">約5.6%<span class="rk-arrow">→</span>25.5〜27.4%</div>
+          <div class="rk-trend">▲ エコシステム統合で急成長</div>
+        </div>
+        <div class="rank-row">
+          <div class="rk-pos">3</div>
+          <div class="rk-name">Claude</div>
+          <div class="rk-share">約1.4%<span class="rk-arrow">→</span>6.0〜8.2%</div>
+          <div class="rk-trend">▲ 最速成長（四半期+306%）</div>
+        </div>
+        <div class="rank-row">
+          <div class="rk-pos rk-sub">他</div>
+          <div class="rk-name">その他</div>
+          <div class="rk-share">—<span class="rk-arrow">→</span>数%台</div>
+          <div class="rk-trend">DeepSeek／Grok／Copilot／Perplexity：地域・ニッチで分散</div>
+        </div>
+      </div>
       <div class="note" style="margin:6px 0 12px;"><b>測定方法で大きく異なる</b>：Statcounter（2026/4）ではChatGPT約76.85%／Gemini9%／Claude2.66%。<b>数値でなく傾向で解釈</b>。</div>
 
       <figure class="figure">
@@ -1073,15 +1120,12 @@
           <rect x="150" y="8" width="14" height="14" fill="#5a6480"/><text class="svg-t" x="170" y="20" font-size="12" font-weight="700">2025/2</text>
           <rect x="250" y="8" width="14" height="14" fill="#0b2545"/><text class="svg-t" x="270" y="20" font-size="12" font-weight="700">2026/4（範囲の中央値で表示）</text>
           <line x1="150" y1="34" x2="150" y2="228" stroke="#dde5ef" stroke-width="1"/>
-          <!-- ChatGPT -->
           <text class="svg-t" x="14" y="66" font-size="13" font-weight="700">ChatGPT</text>
           <rect x="150" y="44" width="428" height="18" fill="#5a6480"/><text class="svg-t" x="585" y="58" font-size="12" font-weight="700">約76.5%</text>
           <rect x="150" y="66" width="312" height="18" fill="#0b2545"/><text class="svg-t" x="469" y="80" font-size="12" font-weight="700">約55.7%</text>
-          <!-- Gemini -->
           <text class="svg-t" x="14" y="122" font-size="13" font-weight="700">Gemini</text>
           <rect x="150" y="100" width="31" height="18" fill="#5a6480"/><text class="svg-t" x="188" y="114" font-size="12" font-weight="700">約5.6%</text>
           <rect x="150" y="122" width="148" height="18" fill="#0b2545"/><text class="svg-t" x="305" y="136" font-size="12" font-weight="700">約26.5%</text>
-          <!-- Claude -->
           <text class="svg-t" x="14" y="178" font-size="13" font-weight="700">Claude</text>
           <rect x="150" y="156" width="8" height="18" fill="#5a6480"/><text class="svg-t" x="165" y="170" font-size="12" font-weight="700">約1.4%</text>
           <rect x="150" y="178" width="40" height="18" fill="#0b2545"/><text class="svg-t" x="197" y="192" font-size="12" font-weight="700">約7.1%</text>
@@ -1108,14 +1152,43 @@
       </figure>
 
       <div class="blk-h">各社の得意分野</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>モデル群</th><th>強み</th><th>最適業務</th></tr>
-        <tr><td>OpenAI（GPT-5.5系）</td><td>論理推論・最大エコシステム・Deep Research/agent mode</td><td>汎用AI・調査・自動化・複雑ロジック</td></tr>
-        <tr><td>Anthropic（Claude 4.x）</td><td>長文脈・安全性・自然な文章・コーディング</td><td>文書査閲/要約・創作・セキュアな開発</td></tr>
-        <tr><td>Google（Gemini）</td><td>ネイティブMM・最大200万トークン・Google統合</td><td>動画/画像解析・Workspace全社DX</td></tr>
-        <tr><td>Meta（Llama 4）</td><td>OSS・巨大入力長・自律運用</td><td>外部API非依存の自社専用AI</td></tr>
-        <tr><td>Mistral（欧州）</td><td>高効率・軽量・<span class="term" data-term="GDPR">GDPR</span>配慮</td><td>限られた資源での推論・エッジ</td></tr>
-      </table></div>
+      <div class="strength-list">
+        <div class="str-row">
+          <div class="str-name">OpenAI<span>ChatGPT・GPT-5.5系</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>論理推論</span><span>最大エコシステム</span><span>Deep Research</span><span>agent mode</span></div>
+            <div class="str-use"><b>向いてる業務：</b>汎用AI・調査・自動化・複雑なロジック</div>
+          </div>
+        </div>
+        <div class="str-row">
+          <div class="str-name">Anthropic<span>Claude 4.x</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>長文が得意</span><span>安全性</span><span>自然な文章</span><span>コーディング</span></div>
+            <div class="str-use"><b>向いてる業務：</b>文書の査読／要約・創作・セキュアな開発</div>
+          </div>
+        </div>
+        <div class="str-row">
+          <div class="str-name">Google<span>Gemini</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>マルチモーダル</span><span>最大200万トークン</span><span>Google統合</span></div>
+            <div class="str-use"><b>向いてる業務：</b>動画／画像の解析・Workspace全社DX</div>
+          </div>
+        </div>
+        <div class="str-row">
+          <div class="str-name">Meta<span>Llama 4</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>オープンソース</span><span>巨大な入力長</span><span>自律運用</span></div>
+            <div class="str-use"><b>向いてる業務：</b>外部サービスに依存しない自社専用AI</div>
+          </div>
+        </div>
+        <div class="str-row">
+          <div class="str-name">Mistral<span>欧州</span></div>
+          <div class="str-body">
+            <div class="str-tags"><span>高効率</span><span>軽量</span><span><span class="term" data-term="GDPR">GDPR</span>配慮</span></div>
+            <div class="str-use"><b>向いてる業務：</b>限られた資源での推論・エッジ利用</div>
+          </div>
+        </div>
+      </div>
 
       <div class="blk-h">もう一歩踏み込みたい人へ（各1行・読み飛ばしOK）</div>
       <ul class="ih-outcomes">
