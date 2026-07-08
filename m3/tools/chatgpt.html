@@ -1138,17 +1138,55 @@
     <div class="secbody">
       <p class="term-hint">点線が引かれた言葉は、クリックすると説明が表示されます。</p>
       <div class="blk-h">部門・業界別ユースケース一覧</div>
-      <div class="tbl-scroll"><table>
-        <tr><th>部門・業界</th><th>シナリオ</th><th>主に使う機能</th></tr>
-        <tr><td><b>コーポレート（法務・経理・人事）</b></td><td>過去の契約書・規程を Projects に記憶させ、新規契約案の不利な条項・法改正の不備を Thinking で精密チェック。操作画面を認識させ画像付きマニュアルを自動生成</td><td>Projects／Thinking／<span class="term" data-term="Vision">Vision</span></td></tr>
-        <tr><td><b>営業</b></td><td>agent modeで競合3社を調査→スライド化。CRM連携で受注確率の高い個別提案メールを自動生成</td><td>agent mode／Deep Research</td></tr>
-        <tr><td><b>マーケ・クリエイティブ</b></td><td>Deep Researchで市場/競合の価格・評判を自動リサーチ。日本語入りSNS広告バナーをターゲット別に量産</td><td>Deep Research／画像生成</td></tr>
-        <tr><td><b>バックオフィス</b></td><td>Excel/CSVの集計・分析、規程・マニュアルの草案作成</td><td>データ分析（Code Interpreter）</td></tr>
-        <tr><td><b>EC・小売</b></td><td>会話型EC（ChatGPT Shopping）の普及で、自社商品が選ばれるためのAI検索対策（AIO）のハブに</td><td>Connectors／検索最適化</td></tr>
-        <tr><td><b>開発・IT</b></td><td>コード補助・レビュー、Canvasでの実装、API連携の試作</td><td><span class="term" data-term="Canvas">Canvas</span>／Codex</td></tr>
-        <tr><td><b>士業・専門職</b></td><td>大量資料のリサーチ＆要約（出典つき）、論点整理（最終確認は人）</td><td>Deep Research／Projects</td></tr>
-      </table></div>
-      <p class="figcap"><b>表：部門別のユースケースと主に使う機能の対応表</b>。自部署の行を1つ選び、いちばん時間を食う作業を対応機能に置き換えるのが始め方です。「どの部署が・何を・どの機能で短縮するか」を割り当てる“導入の地図”として使えます。</p>
+      <figure class="figure">
+        <svg viewBox="0 0 760 528" role="img" aria-label="部門別の使い方フロー図：入力からChatGPTの機能を経て成果まで">
+          <defs><marker id="arUC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8aa0bf"/></marker></defs>
+          <text class="svg-ts" x="6" y="16" font-size="12" font-weight="700">部門別の使い方：入力 → ChatGPTの機能 → 成果</text>
+          <text class="svg-ts" x="131" y="34" text-anchor="middle" font-size="10.5">入力（渡すもの・依頼）</text>
+          <text class="svg-ts" x="370" y="34" text-anchor="middle" font-size="10.5">使う機能</text>
+          <text class="svg-ts" x="619" y="34" text-anchor="middle" font-size="10.5">成果（アウトプット）</text>
+          <g>
+            <!-- 1 コーポレート -->
+            <rect x="6" y="42" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="67" font-size="12.5" font-weight="800">コーポレート（法務・経理・人事）</text><text class="svg-ts" x="18" y="87" font-size="11">契約書・規程を渡す</text>
+            <rect x="282" y="42" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="69" text-anchor="middle" font-size="11" font-weight="700">Projects</text><text class="svg-tw" x="370" y="86" text-anchor="middle" font-size="11" font-weight="700">Thinking・Vision</text>
+            <rect x="484" y="42" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="68" font-size="11.5">不利な条項・法改正の不備をチェック</text><text class="svg-t" x="496" y="86" font-size="11.5">＋画像付きマニュアルを自動生成</text>
+            <!-- 2 営業 -->
+            <rect x="6" y="112" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="137" font-size="12.5" font-weight="800">営業</text><text class="svg-ts" x="18" y="157" font-size="11">競合3社の調査を依頼</text>
+            <rect x="282" y="112" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="139" text-anchor="middle" font-size="11" font-weight="700">agent mode</text><text class="svg-tw" x="370" y="156" text-anchor="middle" font-size="11" font-weight="700">Deep Research</text>
+            <rect x="484" y="112" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="138" font-size="11.5">競合スライド・受注確率の高い</text><text class="svg-t" x="496" y="156" font-size="11.5">個別提案メールを自動生成</text>
+            <!-- 3 マーケ -->
+            <rect x="6" y="182" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="207" font-size="12.5" font-weight="800">マーケ・クリエイティブ</text><text class="svg-ts" x="18" y="227" font-size="11">市場・競合の調査を依頼</text>
+            <rect x="282" y="182" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="209" text-anchor="middle" font-size="11" font-weight="700">Deep Research</text><text class="svg-tw" x="370" y="226" text-anchor="middle" font-size="11" font-weight="700">画像生成</text>
+            <rect x="484" y="182" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="208" font-size="11.5">価格・評判のリサーチ＋SNS広告</text><text class="svg-t" x="496" y="226" font-size="11.5">バナーをターゲット別に量産</text>
+            <!-- 4 バックオフィス -->
+            <rect x="6" y="252" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="277" font-size="12.5" font-weight="800">バックオフィス</text><text class="svg-ts" x="18" y="297" font-size="11">Excel／CSVを渡す</text>
+            <rect x="282" y="252" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="285" text-anchor="middle" font-size="11.5" font-weight="700">データ分析</text>
+            <rect x="484" y="252" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="278" font-size="11.5">集計・分析、規程・マニュアルの</text><text class="svg-t" x="496" y="296" font-size="11.5">草案づくり</text>
+            <!-- 5 EC -->
+            <rect x="6" y="322" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="347" font-size="12.5" font-weight="800">EC・小売</text><text class="svg-ts" x="18" y="367" font-size="11">自社商品の情報</text>
+            <rect x="282" y="322" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="349" text-anchor="middle" font-size="11" font-weight="700">Connectors</text><text class="svg-tw" x="370" y="366" text-anchor="middle" font-size="11" font-weight="700">検索最適化</text>
+            <rect x="484" y="322" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="348" font-size="11.5">会話型ECで、自社商品がAI検索で</text><text class="svg-t" x="496" y="366" font-size="11.5">選ばれるための対策のハブに</text>
+            <!-- 6 開発 -->
+            <rect x="6" y="392" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="417" font-size="12.5" font-weight="800">開発・IT</text><text class="svg-ts" x="18" y="437" font-size="11">コード・要件を渡す</text>
+            <rect x="282" y="392" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="425" text-anchor="middle" font-size="11.5" font-weight="700">Canvas／Codex</text>
+            <rect x="484" y="392" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="418" font-size="11.5">コード補助・レビュー、実装、</text><text class="svg-t" x="496" y="436" font-size="11.5">API連携の試作</text>
+            <!-- 7 士業 -->
+            <rect x="6" y="462" width="250" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="18" y="487" font-size="12.5" font-weight="800">士業・専門職</text><text class="svg-ts" x="18" y="507" font-size="11">大量の資料を渡す</text>
+            <rect x="282" y="462" width="176" height="58" rx="9" fill="#0b2545"/><text class="svg-tw" x="370" y="489" text-anchor="middle" font-size="11" font-weight="700">Deep Research</text><text class="svg-tw" x="370" y="506" text-anchor="middle" font-size="11" font-weight="700">Projects</text>
+            <rect x="484" y="462" width="270" height="58" rx="9" fill="#eef2f7" stroke="#dde5ef"/><text class="svg-t" x="496" y="488" font-size="11.5">出典つきの要約・論点整理</text><text class="svg-t" x="496" y="506" font-size="11.5">（最終確認は人）</text>
+          </g>
+          <g stroke="#8aa0bf" stroke-width="2" fill="none" marker-end="url(#arUC)">
+            <path d="M256 71 L280 71"/><path d="M458 71 L482 71"/>
+            <path d="M256 141 L280 141"/><path d="M458 141 L482 141"/>
+            <path d="M256 211 L280 211"/><path d="M458 211 L482 211"/>
+            <path d="M256 281 L280 281"/><path d="M458 281 L482 281"/>
+            <path d="M256 351 L280 351"/><path d="M458 351 L482 351"/>
+            <path d="M256 421 L280 421"/><path d="M458 421 L482 421"/>
+            <path d="M256 491 L280 491"/><path d="M458 491 L482 491"/>
+          </g>
+        </svg>
+        <figcaption class="figcap"><b>図：部門別の使い方（入力 → 機能 → 成果）</b>。自部署の行を1つ選び、いちばん時間を食う作業を対応する機能に置き換えるのが始め方です。「どの部署が・何を・どの機能で短縮するか」を割り当てる“導入の地図”として使えます。</figcaption>
+      </figure>
 
       <figure class="figure">
         <svg viewBox="0 0 760 150" role="img" aria-label="小さく始めて全社に広げる定着ステップの図">
